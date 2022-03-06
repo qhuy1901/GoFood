@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "690116780838",
+    "firebase_url": "https://gofooddatabase-default-rtdb.firebaseio.com",
+    "project_id": "gofooddatabase",
+    "storage_bucket": "gofooddatabase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:690116780838:android:553e9e87f948c8377197e7",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "690116780838-mjg3ggqr2vf55lc1tuau0tui9f1vmiun.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB61r2dH9bheJBuh84DBtZtuc6KoEA335Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "690116780838-mjg3ggqr2vf55lc1tuau0tui9f1vmiun.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
