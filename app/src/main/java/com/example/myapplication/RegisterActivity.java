@@ -76,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
                                                     Toast.makeText(RegisterActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                                                    Intent switchActivityIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                                                    Intent switchActivityIntent = new Intent(RegisterActivity.this, HomeActivity.class);
                                                     startActivity(switchActivityIntent);
                                                     finishAffinity();
                                                 } else {

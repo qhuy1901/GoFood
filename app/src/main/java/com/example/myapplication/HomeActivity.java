@@ -13,15 +13,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
     private TextView tvHello;
     private Button btnLogout;
 
@@ -59,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                Intent switchActivityIntent = new Intent(MainActivity.this, LoginActivity.class);
+                Intent switchActivityIntent = new Intent(HomeActivity.this, LoginActivity.class);
                 startActivity(switchActivityIntent);
             }
         });

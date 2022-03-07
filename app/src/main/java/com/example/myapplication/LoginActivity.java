@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    Intent switchActivityIntent = new Intent(LoginActivity.this, MainActivity.class);
+                                    Intent switchActivityIntent = new Intent(LoginActivity.this, HomeActivity.class);
                                     startActivity(switchActivityIntent);
                                 } else {
                                     Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
