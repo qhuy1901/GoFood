@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <string name="app_name">application_2</string>
+    <string name="loading">Loading…</string>
+    <string name="no_internet_connection">No internet connection!</string>
+<string name="msg_welcome_hong_c">Welcome,
+Hong Cuc!</string>
+<string name="msg_already_a_membe2">Already a Member?</string>
+<string name="lbl_mobile_number">Mobile Number</string>
+<string name="msg_unlock_the_worl">Unlock the world of foody by setting up your delivery address.</string>
+<string name="msg_confirm_passwor">Confirm Password</string>
+<string name="lbl_sign_up">Sign-up</string>
+<string name="msg_already_a_membe">Already a Member? Login</string>
+<string name="lbl_password">Password</string>
+<string name="lbl_select_location">SELECT LOCATION</string>
+<string name="msg_provide_deliver">Provide Delivery Location</string>
+<string name="lbl_login">Login</string>
+<string name="lbl_skip">SKIP &gt;&gt;</string>
+<string name="lbl_register">Register</string>
+<string name="lbl_username">Username</string>
+<string name="lbl_locate_me">Locate Me</string>
+</resources>
