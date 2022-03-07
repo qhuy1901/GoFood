@@ -8,11 +8,19 @@
     tools:context=".RegisterActivity">
 
     <EditText
+        android:id="@+id/edtFullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="70dp"
+        android:hint="Nhập họ và tên"/>
+    <EditText
         android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="5dp"
         android:hint="Nhập email"/>
 
@@ -23,7 +31,18 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="5dp"
-        android:hint="Nhập password" />
+        android:inputType="textPassword"
+        android:hint="Nhập mật khẩu" />
+    <EditText
+        android:id="@+id/edtConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="5dp"
+        android:inputType="textPassword"
+        android:hint="Xác nhận mật khẩu" />
+
     <Button
         android:text="Đăng ký"
         android:layout_gravity="center"

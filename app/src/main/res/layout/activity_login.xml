@@ -35,7 +35,8 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="5dp"
-        android:hint="Nhập password"/>
+        android:inputType="textPassword"
+        android:hint="Nhập mật khẩu"/>
     <Button
         android:text="Đăng nhập"
         android:layout_gravity="center"
