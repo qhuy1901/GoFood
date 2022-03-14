@@ -17,7 +17,47 @@ public class Store
     public String storeCategory;
     public String description;
     public String owner;
-    public Map<String, Boolean> stars = new HashMap<>();
+
+    public String getStoreId() {
+        return storeId;
+    }
+
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public String getStoreCategory() {
+        return storeCategory;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+
+    public void setStoreId(String storeId) {
+        this.storeId = storeId;
+    }
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
+    }
+
+    public void setStoreCategory(String storeCategory) {
+        this.storeCategory = storeCategory;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
 
     public Store() {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
