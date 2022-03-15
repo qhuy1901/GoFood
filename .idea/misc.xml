@@ -5,9 +5,20 @@
       <map>
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.1606425702811245" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout-w936dp/activity_login.xml" value="0.1875" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_choose_store.xml" value="0.25" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_main.xml" value="0.2359375" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_merchant.xml" value="0.12158054711246201" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_register.xml" value="0.18125" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/content_choose_store.xml" value="0.264" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_add_new_store.xml" value="0.13385416666666666" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_first.xml" value="0.25" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_notifications.xml" value="0.13385416666666666" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_second.xml" value="0.25" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_view_store.xml" value="0.1" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/item_store.xml" value="0.13632246376811594" />
       </map>
     </option>
   </component>
