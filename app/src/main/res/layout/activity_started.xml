@@ -4,6 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StartedActivity">
+    android:background="#F2789F"
+    tools:context=".StartedActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="-25dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="713dp"
+        android:layout_height="604dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/pngartboard_1_1"
+        android:viewportWidth="795"
+        android:viewportHeight="661"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-160dp"
+        tools:layout_editor_absoluteY="225dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="300dp"
+        android:layout_height="170dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="MÓN GÌ CŨNG CÓ
+        GOFOOD NGAY!"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:lineHeight="45dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="225dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="112dp"
+        android:layout_height="113dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/mask_group1"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="140dp"
+        tools:layout_editor_absoluteY="91dp" />
+
+    <android.widget.Button
+        android:id="@+id/buttonbd"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_button"
+
+        android:fontFamily="@font/be_vietnam_bold"
+        android:text="BẮT ĐẦU!"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#F2789F"
+        android:textSize="24dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="673dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
