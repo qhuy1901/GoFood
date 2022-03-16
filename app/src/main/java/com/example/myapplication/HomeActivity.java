@@ -16,7 +16,6 @@ import com.google.firebase.database.ValueEventListener;
 public class HomeActivity extends AppCompatActivity {
 
     private TextView tvLocation;
-    DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +24,11 @@ public class HomeActivity extends AppCompatActivity {
 
         tvLocation = (TextView) findViewById(R.id.tvLocation);
         if(WelcomeActivity.type_usr == 1) {
-            myRef.child(LoginActivity.UID).addListenerForSingleValueEvent(new ValueEventListener() {
+            DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Users");
+            myRef.child(LoginActivity.UID).child("cur_location").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    String cur_location = snapshot.child("cur_location").getValue().toString();
-                    Log.d("cur_location", "address = " + cur_location);
+                    String cur_location = snapshot.getValue(String.class);
                     tvLocation.setText(cur_location);
                 }
 
@@ -38,6 +37,8 @@ public class HomeActivity extends AppCompatActivity {
 
                 }
             });
+        }else{
+            tvLocation.setText("MERCHANT LOGIN");
         }
     }
 }

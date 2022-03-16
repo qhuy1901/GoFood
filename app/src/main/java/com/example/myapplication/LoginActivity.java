@@ -17,25 +17,21 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText edtEmail;
-    private EditText edtPassword;
+
     private Button btnSwitchToRegisterActivity;
     private Button btnLogin;
+    private EditText edtEmail;
+    private EditText edtPassword;
 
-    DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Users");
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
     public static String UID = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
 
         // Khai báo các thành phần trong View
         btnSwitchToRegisterActivity = (Button) findViewById(R.id.btnSwitchToRegisterActivity);
@@ -52,32 +48,19 @@ public class LoginActivity extends AppCompatActivity {
                 String email = edtEmail.getText().toString();
                 String password = edtPassword.getText().toString();
                 progressDialog.show();
-
-                if(email.isEmpty() || password.isEmpty()){
-                    Toast.makeText(LoginActivity.this, "Please enter your email or password", Toast.LENGTH_SHORT).show();
-                }else{
-                    myRef.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            String pwd = null;
-                            for(DataSnapshot snap: snapshot.getChildren()){
-                                pwd = snap.child("password").getValue(String.class);
-                                UID = snap.getKey().toString();
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    UID = mAuth.getCurrentUser().getUid();
+                                    Intent switchActivityIntent = new Intent(LoginActivity.this, WelcomeActivity.class);
+                                    startActivity(switchActivityIntent);
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                }
                             }
-                            if(!password.equals(pwd)){
-                                Toast.makeText(LoginActivity.this, "Wrong password", Toast.LENGTH_SHORT).show();
-                            }else{
-                                Intent switchActivityIntent = new Intent(LoginActivity.this, WelcomeActivity.class);
-                                startActivity(switchActivityIntent);
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }
+                        });
             }
         });
         // Xử lý sự kiện click button đăng kí

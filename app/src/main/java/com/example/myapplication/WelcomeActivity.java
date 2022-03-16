@@ -49,7 +49,7 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
     LocationManager locationManager;
     FusedLocationProviderClient fusedLocationProviderClient;
     private Button btnCustomer;
-    private Button btcMerchant;
+    private Button btnMerchant;
     public static int type_usr = 1;
 
     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Users");
@@ -60,7 +60,7 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
         setContentView(R.layout.activity_welcome);
 
         btnCustomer = (Button) findViewById(R.id.btnCustomer);
-        btcMerchant = (Button) findViewById(R.id.btnMerchant);
+        btnMerchant = (Button) findViewById(R.id.btnMerchant);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         btnCustomer.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +81,7 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
             }
         });
 
-        btcMerchant.setOnClickListener(new View.OnClickListener() {
+        btnMerchant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 WelcomeActivity.type_usr = 0;
