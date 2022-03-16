@@ -10,15 +10,18 @@
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_merchant.xml" value="0.12158054711246201" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_register.xml" value="0.18125" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_started.xml" value="0.1" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_welcome.xml" value="0.1" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/content_choose_store.xml" value="0.264" />
-        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_add_new_store.xml" value="0.13385416666666666" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_add_new_store.xml" value="0.2" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_first.xml" value="0.25" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_notifications.xml" value="0.13385416666666666" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_second.xml" value="0.25" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_view_store.xml" value="0.1" />
-        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/item_store.xml" value="0.13632246376811594" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/item_store.xml" value="0.1" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/item_store_category.xml" value="0.1" />
       </map>
     </option>
   </component>

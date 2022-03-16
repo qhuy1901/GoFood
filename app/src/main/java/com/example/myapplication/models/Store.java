@@ -12,11 +12,29 @@ import java.util.Map;
 @IgnoreExtraProperties
 public class Store 
 {
-    public String storeId;
-    public String storeName;
-    public String storeCategory;
-    public String description;
-    public String owner;
+    private String storeId;
+    private String storeName;
+    private String storeCategory;
+    private String description;
+    private String owner;
+    private String avatar;
+
+    public Store() {
+        // Default constructor required for calls to DataSnapshot.getValue(Post.class)
+    }
+
+    public Store(String storeId, String storeName, String storeCategory, String description, String owner, String avatar) {
+        this.storeId = storeId;
+        this.storeName = storeName;
+        this.storeCategory = storeCategory;
+        this.description = description;
+        this.owner = owner;
+        this.avatar = avatar;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
 
     public String getStoreId() {
         return storeId;
@@ -59,16 +77,8 @@ public class Store
         this.owner = owner;
     }
 
-    public Store() {
-        // Default constructor required for calls to DataSnapshot.getValue(Post.class)
-    }
-
-    public Store(String storeId, String storeName, String storeCategory, String description, String owner) {
-        this.storeId = storeId;
-        this.storeName = storeName;
-        this.storeCategory = storeCategory;
-        this.description = description;
-        this.owner = owner;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     @Exclude
@@ -79,6 +89,7 @@ public class Store
         result.put("storeCategory", storeCategory);
         result.put("description", description);
         result.put("owner", owner);
+        result.put("avatar", avatar);
         return result;
     }
 }
