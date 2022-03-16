@@ -35,6 +35,8 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -45,18 +47,23 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
 
 
     LocationManager locationManager;
-    private TextView textview;
-    private Button btnGetLocation;
+    FusedLocationProviderClient fusedLocationProviderClient;
+    private Button btnCustomer;
+    private Button btcMerchant;
+    public static int type_usr = 1;
+
+    DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        btnGetLocation = (Button) findViewById(R.id.btnGetLocation);
-        textview = (TextView) findViewById(R.id.textViewwel);
+        btnCustomer = (Button) findViewById(R.id.btnCustomer);
+        btcMerchant = (Button) findViewById(R.id.btnMerchant);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-        btnGetLocation.setOnClickListener(new View.OnClickListener() {
+        btnCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (ActivityCompat.checkSelfPermission(WelcomeActivity.this,
@@ -64,12 +71,22 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
                         && ActivityCompat.checkSelfPermission(WelcomeActivity.this,
                         Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     getlocation();
-
                 }else{
                     ActivityCompat.requestPermissions(WelcomeActivity.this,
                             new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
                 }
+                Intent switchActivityIntent = new Intent(WelcomeActivity.this, HomeActivity.class);
+                startActivity(switchActivityIntent);
 
+            }
+        });
+
+        btcMerchant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                WelcomeActivity.type_usr = 0;
+                Intent switchActivityIntent = new Intent(WelcomeActivity.this, HomeActivity.class);
+                startActivity(switchActivityIntent);
             }
         });
     }
@@ -79,7 +96,6 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
         try{
             locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5, (LocationListener) WelcomeActivity.this);
-
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -90,7 +106,8 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
         try{
             Geocoder geocoder = new Geocoder(WelcomeActivity.this, Locale.getDefault());
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-            textview.setText(addresses.get(0).getAddressLine(0));
+            String address = addresses.get(0).getAddressLine(0);
+            myRef.child(LoginActivity.UID).child("cur_location").setValue(address);
         }catch (Exception e){
             e.printStackTrace();
         }
