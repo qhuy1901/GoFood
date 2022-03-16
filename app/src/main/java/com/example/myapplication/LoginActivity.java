@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,19 +20,24 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private Button btnSwitchToRegisterActivity;
+    private Button btnLogin;
+    private EditText edtEmail;
+    private EditText edtPassword;
+
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    public static String UID = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        FirebaseAuth mAuth;
-        mAuth = FirebaseAuth.getInstance();
-
         // Khai báo các thành phần trong View
-        Button btnSwitchToRegisterActivity = (Button) findViewById(R.id.btnSwitchToRegisterActivity);
-        Button btnLogin = findViewById(R.id.btnLogin);
-        EditText edtEmail = (EditText) findViewById(R.id.edtEmail);
-        EditText edtPassword = (EditText) findViewById(R.id.edtPassword);
+        btnSwitchToRegisterActivity = (Button) findViewById(R.id.btnSwitchToRegisterActivity);
+        btnLogin = findViewById(R.id.btnLogin);
+        edtEmail = (EditText) findViewById(R.id.edtEmail);
+        edtPassword = (EditText) findViewById(R.id.edtPassword);
         ProgressDialog progressDialog = new ProgressDialog(this);
 
         // Xử lý sự kiện click button Đăng nhập
@@ -47,8 +53,8 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    Intent switchActivityIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                                    UID = mAuth.getCurrentUser().getUid();
+                                    Intent switchActivityIntent = new Intent(LoginActivity.this, WelcomeActivity.class);
                                     startActivity(switchActivityIntent);
                                 } else {
                                     Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
