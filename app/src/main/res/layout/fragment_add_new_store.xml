@@ -22,13 +22,31 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:hint="Miêu tả về quán" />
-    <EditText
-        android:id="@+id/etStoreCategory"
+    <Spinner
+        android:id="@+id/spnStoreCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:hint="Loại quán" />
+        android:layout_marginLeft="20dp"/>
+<!--    <EditText-->
+<!--        android:id="@+id/etStoreCategory"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:hint="Loại quán" />-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Thêm ảnh đại diện của quán:"/>
+    <ImageView
+        android:id="@+id/ivStoreAvatar"
+        android:src="@drawable/btn_them_anh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"/>
     <Button
         android:id="@+id/btnAddStore"
         android:layout_width="match_parent"
