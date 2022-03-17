@@ -14,12 +14,19 @@ import android.widget.TextView;
 
 public class StartedActivity extends AppCompatActivity {
 
+    private Button btnGetStarted;
+
+    private void initUi()
+    {
+        btnGetStarted = (Button) findViewById(R.id.btnGetStarted);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_started);
+        initUi();
 
         //Animations
         Animation topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
@@ -34,15 +41,13 @@ public class StartedActivity extends AppCompatActivity {
         slogan.setAnimation(topAnim);
         img.setAnimation(fadeAnim);
 
-//        Button btnGetStarted = (Button) findViewById(R.id.btnGetStarted);
-//
-//        btnGetStarted.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent switchActivityIntent = new Intent(StartedActivity.this, LoginActivity.class);
-//                startActivity(switchActivityIntent);
-//            }
-//        });
+        btnGetStarted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent switchActivityIntent = new Intent(StartedActivity.this, LoginActivity.class);
+                startActivity(switchActivityIntent);
+            }
+        });
 
     }
 }
