@@ -1,38 +1,83 @@
 package com.example.myapplication;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view. LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class LoginTabFragment extends Fragment {
 
-    TextView un, pass,forgetPass;
-    Button login;
+
+    private Button btnSwitchToRegisterActivity;
+    private Button btnLogin;
+    private EditText edtEmail;
+    private EditText edtPassword, forgetPass;
     float v=0;
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    public static String UID = null;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.login_tab_fragment, container, false);
 
-        un = root.findViewById(R.id.un);
-        pass = root.findViewById(R.id.pass);
+        btnLogin = root.findViewById(R.id.btnLogin);
+        edtEmail = root.findViewById(R.id.edtEmail);
+        edtPassword = root.findViewById(R.id.edtPassword);
         forgetPass = root.findViewById(R.id.fg_pass);
-        login = root.findViewById(R.id.btnLogin);
-        un.setTranslationX(800);
-        pass.setTranslationX(800);
+
+        edtEmail.setTranslationX(800);
+        edtPassword.setTranslationX(800);
         forgetPass.setTranslationX(800);
-        login.setTranslationX(800);
-        un.setAlpha(v);
-        pass.setAlpha(v);
+        btnLogin.setTranslationX(800);
+        edtEmail.setAlpha(v);
+        edtPassword.setAlpha(v);
         forgetPass.setAlpha(v);
-        login.setAlpha(v);
-        un.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
-        pass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
+        btnLogin.setAlpha(v);
+        edtEmail.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
+        edtPassword.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
         forgetPass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
-        login. animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
+        btnLogin. animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
+
+        ProgressDialog progressDialog = new ProgressDialog(this);
+
+        // Xử lý sự kiện click button Đăng nhập
+        btnLogin.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                String email = edtEmail.getText().toString();
+                String password = edtPassword.getText().toString();
+                progressDialog.setMessage("Đang đăng nhập...");
+                progressDialog.show();
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    UID = mAuth.getCurrentUser().getUid();
+                                    Intent switchActivityIntent = new Intent(LoginActivity.this, WelcomeActivity.class);
+                                    startActivity(switchActivityIntent);
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            }
+        });
+
         return root;
     }
 }

@@ -17,7 +17,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#F2789F"
         android:textSize="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/un"
+        app:layout_constraintBottom_toTopOf="@+id/edtFullName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.199"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,11 +25,11 @@
         app:layout_constraintVertical_bias="0.883" />
 
     <EditText
-        android:id="@+id/un"
+        android:id="@+id/edtFullName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/be_vietnam_medium"
-        android:hint="Username/Số điện thoại"
+        android:hint="Username"
         android:paddingLeft="20dp"
         android:background="@drawable/edit_text_bg"
         android:paddingTop="10dp"
@@ -43,7 +43,26 @@
         app:layout_constraintWidth_percent=".8" />
 
     <EditText
-        android:id="@+id/nm"
+        android:id="@+id/edtEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:hint="Email"
+        android:background="@drawable/edit_text_bg"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtFullName"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintWidth_percent=".8"/>
+
+    <EditText
+        android:id="@+id/edtNM"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -57,12 +76,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/un"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmail"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintWidth_percent=".8"/>
 
     <EditText
-        android:id="@+id/pass"
+        android:id="@+id/edtPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -76,11 +95,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nm"
+        app:layout_constraintTop_toBottomOf="@+id/edtNM"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintWidth_percent=".8" />
     <EditText
-        android:id="@+id/cfpass"
+        android:id="@+id/edtConfirmPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -94,16 +113,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pass"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintWidth_percent=".8" />
 
     <android.widget.Button
-        android:id="@+id/btnSignup"
+        android:id="@+id/btnRegister"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/be_vietnam_semibold"
         android:background="@drawable/btn_bg"
+        android:fontFamily="@font/be_vietnam_semibold"
         android:text="Đăng ký"
         android:textAlignment="center"
         android:textColor="#ffffff"
@@ -113,6 +132,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias=".7"
+        app:layout_constraintVertical_bias="0.723"
         app:layout_constraintWidth_percent=".8" />
 </androidx.constraintlayout.widget.ConstraintLayout>
