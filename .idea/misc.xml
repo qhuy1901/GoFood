@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/drawable/custom_button.xml" value="0.10185185185185185" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.10185185185185185" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.1606425702811245" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout-w936dp/activity_login.xml" value="0.1875" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_choose_store.xml" value="0.25" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_home.xml" value="0.152" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_merchant.xml" value="0.12158054711246201" />
