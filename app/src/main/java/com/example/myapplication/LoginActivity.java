@@ -47,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = edtEmail.getText().toString();
                 String password = edtPassword.getText().toString();
+                progressDialog.setMessage("Đang đăng nhập...");
                 progressDialog.show();
                 progressDialog.setMessage("Đang đăng nhập ...");
                 mAuth.signInWithEmailAndPassword(email, password)
