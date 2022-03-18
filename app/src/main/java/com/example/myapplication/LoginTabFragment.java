@@ -25,7 +25,8 @@ public class LoginTabFragment extends Fragment {
     private Button btnSwitchToRegisterActivity;
     private Button btnLogin;
     private EditText edtEmail;
-    private EditText edtPassword, forgetPass;
+    private EditText edtPassword;
+    private TextView forgetPass;
     float v=0;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     public static String UID = null;
@@ -51,7 +52,7 @@ public class LoginTabFragment extends Fragment {
         forgetPass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
         btnLogin. animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
 
-        ProgressDialog progressDialog = new ProgressDialog(this);
+        ProgressDialog progressDialog = new ProgressDialog(getActivity());
 
         // Xử lý sự kiện click button Đăng nhập
         btnLogin.setOnClickListener(new View.OnClickListener()
@@ -63,15 +64,15 @@ public class LoginTabFragment extends Fragment {
                 progressDialog.setMessage("Đang đăng nhập...");
                 progressDialog.show();
                 mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     UID = mAuth.getCurrentUser().getUid();
-                                    Intent switchActivityIntent = new Intent(LoginActivity.this, WelcomeActivity.class);
+                                    Intent switchActivityIntent = new Intent(getActivity(), WelcomeActivity.class);
                                     startActivity(switchActivityIntent);
                                 } else {
-                                    Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), "Authentication failed.", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

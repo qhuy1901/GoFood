@@ -9,15 +9,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+
 public class SignupTabFragment extends Fragment {
     private Button btnRegister;
     private EditText edtFullName, edtNM;
     private EditText edtEmail;
     private EditText edtPassword;
     private EditText edtConfirmPassword;
-    TextView un, nm, pass,cfPass;
-    Button signup;
     float v=0;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.signup_tab_fragment, container, false);

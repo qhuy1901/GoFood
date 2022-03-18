@@ -29,10 +29,10 @@
             android:name=".WelcomeActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".StartedActivity"
             android:exported="false" />
         <activity
-            android:name=".StartedActivity"
+            android:name=".LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.MyApplication.NoActionBar">
             <intent-filter>
