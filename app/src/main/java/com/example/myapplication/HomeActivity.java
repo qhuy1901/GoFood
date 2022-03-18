@@ -25,7 +25,7 @@ public class HomeActivity extends AppCompatActivity {
         tvLocation = (TextView) findViewById(R.id.tvLocation);
         if(WelcomeActivity.type_usr == 1) {
             DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Users");
-            myRef.child(LoginActivity.UID).child("cur_location").addValueEventListener(new ValueEventListener() {
+            myRef.child(LoginTabFragment.UID).child("cur_location").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     String cur_location = snapshot.getValue(String.class);

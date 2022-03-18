@@ -112,7 +112,7 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
             Geocoder geocoder = new Geocoder(WelcomeActivity.this, Locale.getDefault());
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
             String address = addresses.get(0).getAddressLine(0);
-            myRef.child(LoginActivity.UID).child("cur_location").setValue(address);
+            myRef.child(LoginTabFragment.UID).child("cur_location").setValue(address);
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -30,8 +30,6 @@ public class LoginActivity extends AppCompatActivity {
     private TabLayout tablayout;
     private ViewPager viewPager;
 
-    FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    public static String UID = null;
     float v=0;
 
     @Override
