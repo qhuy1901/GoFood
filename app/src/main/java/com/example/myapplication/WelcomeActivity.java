@@ -54,13 +54,18 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
 
     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Users");
 
+    private void initUi()
+    {
+        btnCustomer = (Button) findViewById(R.id.btnCustomer);
+        btnMerchant = (Button) findViewById(R.id.btnMerchant);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        initUi();
 
-        btnCustomer = (Button) findViewById(R.id.btnCustomer);
-        btnMerchant = (Button) findViewById(R.id.btnMerchant);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         btnCustomer.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +90,7 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
             @Override
             public void onClick(View view) {
                 WelcomeActivity.type_usr = 0;
-                Intent switchActivityIntent = new Intent(WelcomeActivity.this, HomeActivity.class);
+                Intent switchActivityIntent = new Intent(WelcomeActivity.this, ChooseStoreActivity.class);
                 startActivity(switchActivityIntent);
             }
         });
