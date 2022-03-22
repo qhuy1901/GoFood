@@ -4,13 +4,14 @@ package com.example.myapplication.models;
 import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.IgnoreExtraProperties;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @IgnoreExtraProperties
-public class Store 
+public class Store implements Serializable
 {
     private String storeId;
     private String storeName;
