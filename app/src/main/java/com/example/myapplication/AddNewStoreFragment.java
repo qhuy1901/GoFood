@@ -59,6 +59,7 @@ public class AddNewStoreFragment extends Fragment implements AdapterView.OnItemS
                 }
             });
 
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
