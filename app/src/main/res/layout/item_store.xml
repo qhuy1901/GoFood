@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clStoreItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -24,6 +25,7 @@
         android:layout_width="344.79dp"
         android:layout_height="134.93dp"
         android:background="@drawable/img_bg"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintHorizontal_bias="0.466"
@@ -50,28 +52,6 @@
         android:id="@+id/tvStoreCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_margin="10dp"
-        android:orientation="vertical">
-        <ImageView
-            android:id="@+id/ivAvatar"
-            android:layout_width="match_parent"
-            android:scaleType="centerCrop"
-            android:layout_height="100dp"></ImageView>
-        <TextView
-            android:id="@+id/tvStoreName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:text="Tên cửa hàng"></TextView>
-        <TextView
-            android:id="@+id/tvStoreCategory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:text="Tên cửa hàng"></TextView>
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
         android:fontFamily="@font/be_vietnam_medium"
         android:text="Danh mục cửa hàng"
         android:textColor="#8F9698"
