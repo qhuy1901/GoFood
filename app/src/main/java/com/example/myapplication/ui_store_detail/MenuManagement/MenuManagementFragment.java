@@ -47,7 +47,7 @@ public class MenuManagementFragment extends Fragment {
         initUi();
 
         // Set Action Bar
-        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+//        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
 
 
