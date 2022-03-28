@@ -50,6 +50,28 @@
         android:id="@+id/tvStoreCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_height="100dp"></ImageView>
+        <TextView
+            android:id="@+id/tvStoreName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Tên cửa hàng"></TextView>
+        <TextView
+            android:id="@+id/tvStoreCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Tên cửa hàng"></TextView>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
         android:fontFamily="@font/be_vietnam_medium"
         android:text="Danh mục cửa hàng"
         android:textColor="#8F9698"
