@@ -23,9 +23,37 @@
     <string-array name="store_category">
         <item>Đồ ăn</item>
         <item>Đồ uống</item>
+        <item>Đồ chay</item>
+        <item>Tráng miệng</item>
+        <item>Bánh kem</item>
+        <item>Món lẩu</item>
+        <item>Cơm hộp</item>
+        <item>Tráng miệng</item>
+        <item>Homemade</item>
+        <item>Vỉa hè</item>
     </string-array>
     <string name="title_activity_store_detail">StoreDetailActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_menu">Menu</string>
+    <string name="title_order">Đơn hàng</string>
+    <string name="title_me">Tôi</string>
+    <string name="title_report">Báo cáo</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

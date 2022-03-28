@@ -8,33 +8,88 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.myapplication.AddNewProductFragment;
+import com.example.myapplication.R;
+import com.example.myapplication.adapter.ViewPagerAdapter;
+import com.example.myapplication.databinding.FragmentAddNewStoreBinding;
 import com.example.myapplication.databinding.FragmentMenuManagementBinding;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MenuManagementFragment extends Fragment {
 
-    private MenuManagementViewModel dashboardViewModel;
+//    private MenuManagementViewModel dashboardViewModel;
     private FragmentMenuManagementBinding binding;
+    private TabLayout tabLayout;
+    private ViewPager2 viewPager;
+    private ViewPagerAdapter viewPagerAdapter;
+
+    private void initUi()
+    {
+        tabLayout = binding.tabLayout;
+        viewPager = binding.viewPager;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                new ViewModelProvider(this).get(MenuManagementViewModel.class);
-
+//        dashboardViewModel =
+//                new ViewModelProvider(this).get(MenuManagementViewModel.class);
         binding = FragmentMenuManagementBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        initUi();
 
-        final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        // Set Action Bar
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+
+
+
+//        final TextView textView = binding.textDashboard;
+//        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String s) {
+//                textView.setText(s);
+//            }
+//        });
+//
+//        binding.btnAddProduct.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                AddNewProductFragment nextFrag= new AddNewProductFragment();
+//                getActivity().getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.menuManagementLayout, nextFrag, "findThisFragment")
+//                        .addToBackStack(null)
+//                        .commit();
+//            }
+//        });
         return root;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        viewPagerAdapter = new ViewPagerAdapter(this.getActivity());
+        viewPager.setAdapter(viewPagerAdapter);
+
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
+            switch (position)
+            {
+                case 1:
+                    tab.setText("Topping");
+                    break;
+                default:
+                    tab.setText("Món ăn");
+                    break;
+            }
+        }).attach();
     }
 
     @Override
