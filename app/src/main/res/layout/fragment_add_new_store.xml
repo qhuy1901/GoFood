@@ -1,65 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".AddNewStoreFragment">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/rectangle1061"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".27"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/etStoreCategory"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginRight="20dp"-->
+    <!--        android:layout_marginLeft="20dp"-->
+    <!--        android:hint="Loại quán" />-->
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/button_second"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="#FFFFFF"
+        android:src="@drawable/icons8_back_arrow_96"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toStartOf="@+id/addnewstore"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.592">
+
+    </androidx.appcompat.widget.AppCompatImageButton>
+
+    <TextView
+        android:id="@+id/addnewstore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:fontFamily="@font/be_vietnam_bold"
+        android:gravity="top"
+        android:text="Thêm cửa hàng mới"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#F2789F"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.684" />
+    <!--    <ScrollView-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        tools:ignore="MissingConstraints">-->
+
+    <TextView
+        android:id="@+id/in4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/be_vietnam_bold"
+        android:gravity="top"
+        android:text="Thông tin quán"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#0A191E"
+        android:textSize="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.031" />
+
     <EditText
         android:id="@+id/etStoreName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:hint="Tên quán" />
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:hint="Tên quán"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/in4"
+        app:layout_constraintTop_toBottomOf="@+id/in4" />
+
+    <EditText
+        android:id="@+id/etAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:hint="Địa chỉ quán"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/etStoreName"
+        app:layout_constraintStart_toStartOf="@+id/etStoreName"
+        app:layout_constraintTop_toBottomOf="@+id/etStoreName" />
+
+    <EditText
+        android:id="@+id/etPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:hint="Số điện thoại"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/etAddress"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/etAddress"
+        app:layout_constraintTop_toBottomOf="@+id/etAddress" />
 
     <EditText
         android:id="@+id/etDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:hint="Miêu tả về quán" />
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:hint="Miêu tả về quán"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/etPhoneNumber"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etPhoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/etPhoneNumber" />
+
+    <TextView
+        android:id="@+id/Cate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/be_vietnam_bold"
+        android:gravity="top"
+        android:text="Danh mục"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#0A191E"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/spnStoreCategory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDescription"
+        app:layout_constraintVertical_bias="0.538" />
+
     <Spinner
         android:id="@+id/spnStoreCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"/>
-<!--    <EditText-->
-<!--        android:id="@+id/etStoreCategory"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginRight="20dp"-->
-<!--        android:layout_marginLeft="20dp"-->
-<!--        android:hint="Loại quán" />-->
+        android:layout_weight="1"
+        android:background="@drawable/spinner_bg"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Cate"
+        app:layout_constraintTop_toBottomOf="@+id/etDescription" />
+
     <TextView
+        android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:text="Thêm ảnh đại diện của quán:"/>
+        android:fontFamily="@font/be_vietnam_bold"
+        android:text="Thêm ảnh đại diện của quán"
+        android:textColor="#333333"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/spnStoreCategory"
+        tools:layout_editor_absoluteX="20dp" />
+
+
+    <!--    </ScrollView>-->
+
     <ImageView
         android:id="@+id/ivStoreAvatar"
-        android:src="@drawable/btn_them_anh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"/>
-    <Button
+        android:src="@drawable/avt"
+        android:layout_margin="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <android.widget.Button
         android:id="@+id/btnAddStore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:text="Thêm quán"/>
+        android:layout_marginRight="20dp"
+        android:background="@drawable/btn1_bg"
+        android:fontFamily="@font/be_vietnam_bold"
+        android:text="Thêm quán"
+        android:textColor="#F2789F"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivStoreAvatar" />
 
-    <Button
-        android:id="@+id/button_second"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:text="@string/previous" />
-</LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

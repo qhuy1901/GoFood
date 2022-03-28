@@ -23,10 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button btnSwitchToRegisterActivity;
-    private Button btnLogin;
-    private EditText edtEmail;
-    private EditText edtPassword;
+
     private TabLayout tablayout;
     private ViewPager viewPager;
 
@@ -47,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         final LoginAdapter adapter = new LoginAdapter(getSupportFragmentManager(),this,tablayout.getTabCount());
         viewPager.setAdapter(adapter);
 
-        viewPager.addOnPageChangeListener(new TabLayout. TabLayoutOnPageChangeListener(tablayout));
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tablayout));
 
         tablayout.setTranslationY(300);
         tablayout.setAlpha(v);
