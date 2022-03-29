@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private TabLayout tablayout;
-    private ViewPager viewPager;
+    private ViewPager2 viewPager;
 
     float v=0;
 
@@ -37,13 +39,20 @@ public class LoginActivity extends AppCompatActivity {
 
         tablayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.view_paper);
-        tablayout.addTab(tablayout.newTab().setText("Đăng nhập"));
-        tablayout.addTab(tablayout.newTab().setText("Đăng ký"));
-        tablayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final LoginAdapter adapter = new LoginAdapter(getSupportFragmentManager(),this,tablayout.getTabCount());
+        final LoginAdapter adapter = new LoginAdapter(this);
         viewPager.setAdapter(adapter);
 
+        new TabLayoutMediator(tablayout, viewPager, (tab, position) -> {
+            switch (position){
+                case 0:
+                    tab.setText("Đăng nhập");
+                    break;
+                case 1:
+                    tab.setText("Đăng ký");
+                    break;
+            }
+        }).attach();
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tablayout));
 
         tablayout.setTranslationY(300);
