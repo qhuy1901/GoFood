@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
@@ -53,7 +54,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
         holder.tvStoreName.setText("Tên cửa hàng: " + store.getStoreName());
         holder.tvStoreCategory.setText("Loại: " + store.getStoreCategory());
         loadAvatarFromFirebaseStorage(holder, store.getAvatar());
-        holder.cvStoreItem.setOnClickListener(new View.OnClickListener() {
+        holder.clStoreItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onClickGoToDetail(store);
@@ -103,14 +104,14 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
         private TextView tvStoreName;
         private TextView tvStoreCategory;
         private ImageView ivAvatar;
-        private CardView cvStoreItem;
+        private ConstraintLayout clStoreItem;
 
         public StoreViewHolder(@NonNull View itemView) {
             super(itemView);
             tvStoreName = itemView.findViewById(R.id.tvStoreName);
             tvStoreCategory = itemView.findViewById(R.id.tvStoreCategory);
             ivAvatar = itemView.findViewById(R.id.ivAvatar);
-            cvStoreItem = itemView.findViewById(R.id.cvStoreItem);
+            clStoreItem = itemView.findViewById(R.id.clStoreItem);
         }
     }
 }

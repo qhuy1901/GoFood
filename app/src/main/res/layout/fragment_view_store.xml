@@ -1,38 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ViewStoreFragment">
+    tools:context=".ViewStoreFragment"
+    android:layout_marginTop="25dp">
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/textview_first"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="30dp"
-            android:textSize="25dp"
-            android:text="Chọn quán" />
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_first"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcvStore"
-            android:layout_width="match_parent"
+            android:layout_width="370dp"
             android:layout_height="match_parent"
-            android:layout_margin="20dp"/>
+            android:layout_marginLeft="15.42dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="15.42dp"
+            android:layout_marginBottom="75dp" />
 
     </LinearLayout>
 
-    <Button
+    <android.widget.Button
         android:id="@+id/button_first"
-        android:layout_width="match_parent"
+        android:layout_width="384dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="Thêm quán" />
-</LinearLayout>
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/btn_themquan_bg"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="Thêm quán"
+        android:textColor="#FFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
