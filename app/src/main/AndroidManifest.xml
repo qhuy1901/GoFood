@@ -14,7 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".AddProductActivity"
+            android:name=".ui_store_detail.MenuManagement.UpdateProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui_store_detail.MenuManagement.AddProductActivity"
             android:exported="false" />
         <activity
             android:name=".StoreDetailActivity"

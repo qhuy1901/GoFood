@@ -2,10 +2,12 @@ package com.example.myapplication.models;
 
 import com.google.firebase.firestore.Exclude;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Product {
+public class Product implements Serializable {
+    private String productId;
     private String productName;
     private int price;
     private String productDescription;
@@ -15,12 +17,21 @@ public class Product {
     public Product() {
     }
 
-    public Product(String productName, int price, String productDescription, String storeId, boolean isAvailable) {
+    public Product(String productId, String productName, int price, String productDescription, String storeId, boolean isAvailable) {
+        this.productId = productId;
         this.productName = productName;
         this.price = price;
         this.productDescription = productDescription;
         this.storeId = storeId;
         this.isAvailable = isAvailable;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public String getProductName() {
@@ -66,6 +77,8 @@ public class Product {
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
+        result.put("productId", productId);
+        result.put("storeId", storeId);
         result.put("productName", productName);
         result.put("price", price);
         result.put("productDescription", productDescription);

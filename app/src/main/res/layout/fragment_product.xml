@@ -27,10 +27,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/sn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Danh dách món ăn"
-        app:layout_constraintTop_toTopOf="@+id/rcv_product_list" />
 </androidx.constraintlayout.widget.ConstraintLayout>
