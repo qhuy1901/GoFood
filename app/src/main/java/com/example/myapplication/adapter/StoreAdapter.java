@@ -1,7 +1,10 @@
 package com.example.myapplication.adapter;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -58,6 +61,11 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
             @Override
             public void onClick(View view) {
                 onClickGoToDetail(store);
+
+                // Lưu mã cửa hàng vào Session
+                SharedPreferences.Editor editor = context.getSharedPreferences("Session", MODE_PRIVATE).edit();
+                editor.putString("storeId", store.getStoreId());
+                editor.apply();
             }
         });
     }
@@ -65,9 +73,9 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
     private void onClickGoToDetail(Store store)
     {
         Intent switchActivityIntent = new Intent(this.context, StoreDetailActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("StoreDetail", store);
-        switchActivityIntent.putExtras(bundle);
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable("StoreDetail", store);
+//        switchActivityIntent.putExtras(bundle);
         context.startActivity(switchActivityIntent);
     }
 
