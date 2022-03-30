@@ -18,10 +18,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_dialog_email"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_product_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/sn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Danh dách món ăn"
+        app:layout_constraintTop_toTopOf="@+id/rcv_product_list" />
 </androidx.constraintlayout.widget.ConstraintLayout>
