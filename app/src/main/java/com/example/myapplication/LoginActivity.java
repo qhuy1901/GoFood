@@ -53,7 +53,6 @@ public class LoginActivity extends AppCompatActivity {
                     break;
             }
         }).attach();
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tablayout));
 
         tablayout.setTranslationY(300);
         tablayout.setAlpha(v);
