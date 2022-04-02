@@ -47,6 +47,7 @@ public class ProductFragment extends Fragment {
         rcvProduct.addItemDecoration(dividerItemDecoration);
 
         productList = new ArrayList<>();
+        productList.clear(); // reset List
         productAdapter = new ProductAdapter(productList, getContext());
         rcvProduct.setAdapter(productAdapter);
     }
@@ -57,13 +58,13 @@ public class ProductFragment extends Fragment {
         binding = FragmentProductBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         initUi();
-        productList.clear(); // reset List
         getProductListFromRealtimeDatabase();
         return root;
     }
 
     private void getProductListFromRealtimeDatabase()
     {
+        Toast.makeText(getContext(), "getProductListFromRealtimeDatabase" + productList.size(),Toast.LENGTH_SHORT).show();
         // Lấy mã cửa hàng
         SharedPreferences prefs = getContext().getSharedPreferences("Session", MODE_PRIVATE);
         String storeId = prefs.getString("storeId", "No name defined");
@@ -74,6 +75,7 @@ public class ProductFragment extends Fragment {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                productList.clear();
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     Product product = postSnapshot.getValue(Product.class);
                     productList.add(product);

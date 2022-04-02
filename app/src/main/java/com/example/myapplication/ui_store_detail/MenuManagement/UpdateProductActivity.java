@@ -6,6 +6,8 @@ import androidx.appcompat.widget.SwitchCompat;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +16,8 @@ import android.widget.EditText;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.models.Product;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class UpdateProductActivity extends AppCompatActivity {
     private EditText etProductName, etPrice, etDescription;
@@ -43,13 +47,13 @@ public class UpdateProductActivity extends AppCompatActivity {
         etPrice.setText(Integer.toString(productInfo.getPrice()));
         etProductName.setText(productInfo.getProductName());
         etDescription.setText(productInfo.getProductDescription());
-        if(productInfo.isAvailable())
+        if(productInfo.getAvailable() == 0)
         {
-            swIsAvailable.setChecked(true);
+            swIsAvailable.setChecked(false);
         }
         else
         {
-            swIsAvailable.setChecked(false);
+            swIsAvailable.setChecked(true);
         }
     }
     @Override
@@ -64,25 +68,45 @@ public class UpdateProductActivity extends AppCompatActivity {
         btnDeleteProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new AlertDialog.Builder(UpdateProductActivity.this)
-                        .setTitle("Xác nhận")
-                        .setMessage("Bạn có chắc muốn xóa món này ra khỏi thực đơn không?")
-                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                goFoodDatabase.deleteProduct(productInfo, getApplicationContext());
+                new SweetAlertDialog(UpdateProductActivity.this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Xác nhận")
+                        .setContentText("Bạn có chắc muốn xóa món này ra khỏi thực đơn không?")
+                        .setConfirmText("OK")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.dismissWithAnimation();
+                                new SweetAlertDialog(UpdateProductActivity.this, SweetAlertDialog.SUCCESS_TYPE)
+                                        .setTitleText("Thành công")
+                                        .setContentText("Đã xóa món ra khỏi thực đơn!")
+                                        .show();
+                                goFoodDatabase.deleteProduct(productInfo, UpdateProductActivity.this);
+                                finish();
                             }
                         })
-                        // A null listener allows the button to dismiss the dialog and take no further action.
-                        .setNegativeButton(android.R.string.cancel, null)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setCancelButton("Cancel", new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.dismissWithAnimation();
+                            }
+                        })
                         .show();
-
             }
         });
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                String productName = etProductName.getText().toString();
+                int price = Integer.parseInt(etPrice.getText().toString());
+                String description = etDescription.getText().toString();
+                SharedPreferences prefs = getApplicationContext().getSharedPreferences("Session", MODE_PRIVATE);
+                String storeId = prefs.getString("storeId", "No name defined");
+                int isAvailable = 0;
+                if(swIsAvailable.isChecked())
+                    isAvailable = 1;
+                Product product= new Product(productInfo.getProductId(), productName, price, description, storeId, isAvailable);
+                goFoodDatabase.updateProduct(product);
+                finish();
             }
         });
     }

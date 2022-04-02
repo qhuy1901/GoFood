@@ -49,6 +49,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
+        holder.setIsRecyclable(false);
         Product product = productList.get(position);
         if(product == null)
             return ;

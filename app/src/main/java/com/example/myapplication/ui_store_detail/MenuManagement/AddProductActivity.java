@@ -50,9 +50,13 @@ public class AddProductActivity extends AppCompatActivity {
                 String description = etDescription.getText().toString();
                 SharedPreferences prefs = getApplicationContext().getSharedPreferences("Session", MODE_PRIVATE);
                 String storeId = prefs.getString("storeId", "No name defined");
-                boolean isAvailable = swIsAvailable.isChecked();
-                goFoodDatabase.writeNewProduct(productName, price, description, storeId, isAvailable);
+                int isAvailable = 0;
+                if(swIsAvailable.isChecked())
+                    isAvailable = 1;
+
+                goFoodDatabase.insertProduct(productName, price, description, storeId, isAvailable);
                 Toast.makeText(getApplicationContext(), "Thêm món ăn mới thành công",Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
     }

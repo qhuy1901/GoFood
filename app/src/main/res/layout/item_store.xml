@@ -26,6 +26,7 @@
         android:layout_height="134.93dp"
         android:background="@drawable/img_bg"
         android:scaleType="centerCrop"
+        android:src="@drawable/default_store"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintHorizontal_bias="0.466"

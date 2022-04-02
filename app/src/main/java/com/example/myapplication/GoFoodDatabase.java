@@ -18,11 +18,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
+
 public class GoFoodDatabase {
     private DatabaseReference mDatabase;
     private FirebaseStorage storage = FirebaseStorage.getInstance();
 
-    public void writeNewProduct(String productName, int price, String productDescription, String storeId, boolean isAvailable) {
+    public void insertProduct(String productName, int price, String productDescription, String storeId, int isAvailable) {
         // Create new post at /user-posts/$userid/$postid and at
         // /posts/$postid simultaneously
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -46,8 +49,26 @@ public class GoFoodDatabase {
         mDatabase.removeValue(new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                Toast.makeText(context, "Xóa món thành công!", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
+
+    public void updateProduct(Product product) {
+        // Create new post at /user-posts/$userid/$postid and at
+        // /posts/$postid simultaneously
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        // Lưu thông tin product vào realtime database
+//        String avatarFileName = "avatar" + key + ".png";
+
+        Map<String, Object> productValues = product.toMap();
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/stores/"+ product.getStoreId() + "/menu/products/" + product.getProductId(), productValues);
+        mDatabase.updateChildren(childUpdates);
+
+        // Lưu ảnh avatar vào firebase storage
+//        addAvatarImageToFirebase(avatarFileName);
+    }
+
 }

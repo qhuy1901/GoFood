@@ -12,18 +12,26 @@ public class Product implements Serializable {
     private int price;
     private String productDescription;
     private String storeId;
-    private boolean isAvailable;
+    private int available;
 
     public Product() {
     }
 
-    public Product(String productId, String productName, int price, String productDescription, String storeId, boolean isAvailable) {
+    public Product(String productId, String productName, int price, String productDescription, String storeId, int available) {
         this.productId = productId;
         this.productName = productName;
         this.price = price;
         this.productDescription = productDescription;
         this.storeId = storeId;
-        this.isAvailable = isAvailable;
+        this.available = available;
+    }
+
+    public int getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(int available) {
+        this.available = available;
     }
 
     public String getProductId() {
@@ -66,13 +74,7 @@ public class Product implements Serializable {
         this.storeId = storeId;
     }
 
-    public boolean isAvailable() {
-        return isAvailable;
-    }
 
-    public void setAvailable(boolean available) {
-        isAvailable = available;
-    }
 
     @Exclude
     public Map<String, Object> toMap() {
@@ -82,7 +84,7 @@ public class Product implements Serializable {
         result.put("productName", productName);
         result.put("price", price);
         result.put("productDescription", productDescription);
-        result.put("isAvailable", isAvailable);
+        result.put("available", available);
         return result;
     }
 }
