@@ -24,6 +24,7 @@
             android:textSize="16dp"
             android:textStyle="bold"/>
         <ImageView
+            android:id="@+id/iv_product_avatar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@drawable/avt"

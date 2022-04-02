@@ -47,7 +47,6 @@ public class ProductFragment extends Fragment {
         rcvProduct.addItemDecoration(dividerItemDecoration);
 
         productList = new ArrayList<>();
-        productList.clear(); // reset List
         productAdapter = new ProductAdapter(productList, getContext());
         rcvProduct.setAdapter(productAdapter);
     }
@@ -64,7 +63,6 @@ public class ProductFragment extends Fragment {
 
     private void getProductListFromRealtimeDatabase()
     {
-        Toast.makeText(getContext(), "getProductListFromRealtimeDatabase" + productList.size(),Toast.LENGTH_SHORT).show();
         // Lấy mã cửa hàng
         SharedPreferences prefs = getContext().getSharedPreferences("Session", MODE_PRIVATE);
         String storeId = prefs.getString("storeId", "No name defined");

@@ -39,9 +39,6 @@ public class MenuManagementFragment extends Fragment {
 
         // Set Action Bar
 //        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
-
-
-
 //        final TextView textView = binding.textDashboard;
 //        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
 //            @Override

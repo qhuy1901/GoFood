@@ -13,6 +13,7 @@ public class Product implements Serializable {
     private String productDescription;
     private String storeId;
     private int available;
+    private String productImage;
 
     public Product() {
     }
@@ -24,6 +25,14 @@ public class Product implements Serializable {
         this.productDescription = productDescription;
         this.storeId = storeId;
         this.available = available;
+    }
+
+    public String getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
     }
 
     public int getAvailable() {
@@ -85,6 +94,7 @@ public class Product implements Serializable {
         result.put("price", price);
         result.put("productDescription", productDescription);
         result.put("available", available);
+        result.put("productImage", productImage);
         return result;
     }
 }
