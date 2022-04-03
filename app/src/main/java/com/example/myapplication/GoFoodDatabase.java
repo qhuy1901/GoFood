@@ -61,24 +61,20 @@ public class GoFoodDatabase {
         mDatabase.removeValue(new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                deleteFileInStorageFirebase("product_image/" + product.getProductImage());
+                deleteFileInStorageFirebase( product.getProductImage());
             }
         });
     }
 
     public void updateProduct(Product product) {
-        // Create new post at /user-posts/$userid/$postid and at
-        // /posts/$postid simultaneously
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         // Lưu thông tin product vào realtime database
 //        String avatarFileName = "avatar" + product.getProductId() + ".png";
-
         Map<String, Object> productValues = product.toMap();
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("/stores/"+ product.getStoreId() + "/menu/products/" + product.getProductId(), productValues);
         mDatabase.updateChildren(childUpdates);
-
 //        addProductImageToFirebase(avatarFileName, );
     }
 

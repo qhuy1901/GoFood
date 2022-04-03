@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
@@ -25,6 +27,7 @@ public class UpdateProductActivity extends AppCompatActivity {
     private Button btnSave, btnDeleteProduct;
     private GoFoodDatabase goFoodDatabase;
     private Product productInfo;
+    private ImageView ivProductImage;
 
     private void initUi()
     {
@@ -34,6 +37,8 @@ public class UpdateProductActivity extends AppCompatActivity {
         btnSave= (Button) findViewById(R.id.activity_update_product_btn_save);
         swIsAvailable = (SwitchCompat) findViewById(R.id.activity_update_product_sw_is_available);
         btnDeleteProduct = (Button) findViewById(R.id.activity_update_product_btn_delete_product);
+        ivProductImage =(ImageView) findViewById(R.id.activity_update_product_iv_product_image);
+
     }
 
     private void receiveProductInfo()
@@ -55,15 +60,17 @@ public class UpdateProductActivity extends AppCompatActivity {
         {
             swIsAvailable.setChecked(true);
         }
+        if(productInfo.getProductImage().isEmpty() == false)
+            goFoodDatabase.loadImageToImageView(ivProductImage, "product_image", productInfo.getProductImage());
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_product);
+        goFoodDatabase = new GoFoodDatabase();
         initUi();
         receiveProductInfo();
         loadData();
-        goFoodDatabase = new GoFoodDatabase();
 
         btnDeleteProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,10 +83,11 @@ public class UpdateProductActivity extends AppCompatActivity {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
                                 sDialog.dismissWithAnimation();
-                                new SweetAlertDialog(UpdateProductActivity.this, SweetAlertDialog.SUCCESS_TYPE)
-                                        .setTitleText("Thành công")
-                                        .setContentText("Đã xóa món ra khỏi thực đơn!")
-                                        .show();
+//                                new SweetAlertDialog(UpdateProductActivity.this, SweetAlertDialog.SUCCESS_TYPE)
+//                                        .setTitleText("Thành công")
+//                                        .setContentText("Đã xóa món ra khỏi thực đơn!")
+//                                        .show();
+                                Toast.makeText(UpdateProductActivity.this, "Đã xóa món ra khỏi thực đơn!", Toast.LENGTH_SHORT).show();
                                 goFoodDatabase.deleteProduct(productInfo, UpdateProductActivity.this);
                                 finish();
                             }
@@ -104,7 +112,7 @@ public class UpdateProductActivity extends AppCompatActivity {
                 int isAvailable = 0;
                 if(swIsAvailable.isChecked())
                     isAvailable = 1;
-                Product product= new Product(productInfo.getProductId(), productName, price, description, storeId, isAvailable);
+                Product product= new Product(productInfo.getProductId(), productName, price, description, storeId, isAvailable, productInfo.getProductImage());
                 goFoodDatabase.updateProduct(product);
                 finish();
             }
