@@ -15,13 +15,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".ui_store_detail.MenuManagement.UpdateProductActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui_store_detail.MenuManagement.AddProductActivity"
+            android:name=".CartActivity"
             android:exported="false" />
         <activity
             android:name=".StoreDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui_store_management.MenuManagement.UpdateProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui_store_management.MenuManagement.AddProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StoreManagementActivity"
             android:exported="false"
             android:label="@string/title_activity_store_detail" />
         <activity

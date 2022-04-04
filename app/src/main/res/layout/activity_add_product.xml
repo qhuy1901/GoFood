@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui_store_detail.MenuManagement.AddProductActivity">
+    tools:context=".ui_store_management.MenuManagement.AddProductActivity">
 
     <LinearLayout
         android:id="@+id/ln_product_image"

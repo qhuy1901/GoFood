@@ -121,7 +121,27 @@ public class GoFoodDatabase {
             }
         });
     }
+    public void loadImageToImageView(@NonNull ImageView iv, String fileName)
+    {
+        StorageReference firebaseStorage = storage.getReference(fileName);
+        try{
+            final File localFile = File.createTempFile(fileName.replace(".png",""),"png");
+            firebaseStorage.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                    Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                    iv.setImageBitmap(bitmap);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
 
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public void loadImageToImageView(@NonNull ImageView iv, String folderName, String image)
     {
         String fileName = image.replace(folderName + "/", "");

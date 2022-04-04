@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/menuManagementLayout"
-    tools:context=".ui_store_detail.MenuManagement.MenuManagementFragment">
+    tools:context=".ui_store_management.MenuManagement.MenuManagementFragment">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"

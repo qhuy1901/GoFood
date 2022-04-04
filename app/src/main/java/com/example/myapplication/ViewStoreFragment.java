@@ -57,6 +57,7 @@ public class ViewStoreFragment extends Fragment{
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                storeList.clear();
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     Store store = postSnapshot.getValue(Store.class);
                     storeList.add(store);

@@ -1,16 +1,12 @@
 package com.example.myapplication.adapter;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.myapplication.ui_store_detail.MenuManagement.MenuManagementFragment;
-import com.example.myapplication.ui_store_detail.MenuManagement.ProductFragment;
-import com.example.myapplication.ui_store_detail.MenuManagement.ToppingFragment;
+import com.example.myapplication.ui_store_management.MenuManagement.ProductFragment;
+import com.example.myapplication.ui_store_management.MenuManagement.ToppingFragment;
 
 public class ViewPagerAdapter extends FragmentStateAdapter {
     public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
