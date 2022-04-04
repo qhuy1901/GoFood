@@ -54,10 +54,10 @@ public class LoginActivity extends AppCompatActivity {
 
 
         // Reset Session
-        SharedPreferences settings = this.getSharedPreferences("cart", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.clear();
-        editor.commit();
+//        SharedPreferences settings = this.getSharedPreferences("cart", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = settings.edit();
+//        editor.clear();
+//        editor.commit();
     }
 
 }

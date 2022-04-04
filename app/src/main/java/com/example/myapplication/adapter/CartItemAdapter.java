@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.models.CartItem;
+import com.example.myapplication.models.CartSession;
 import com.example.myapplication.models.Product;
 
 import java.text.NumberFormat;
@@ -24,12 +25,14 @@ import java.util.Locale;
 public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartItemViewHolder>
 {
     private final List<CartItem> cart;
+    private CartSession cartSession;
     private Context context;
     private GoFoodDatabase goFoodDatabase = new GoFoodDatabase();
 
     public CartItemAdapter(List<CartItem> cart, Context context) {
         this.cart = cart;
         this.context = context;
+        cartSession = new CartSession(context);
     }
 
     @NonNull
@@ -55,6 +58,22 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
         {
             goFoodDatabase.loadImageToImageView(holder.ivProductImage, "product_image" , cartItem.product.getProductImage());
         }
+        holder.btnPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int newQuantity = cartItem.quantity++;
+                cartSession.updateQuantity(cartItem.product.getProductId(), newQuantity);
+                holder.tvQuantity.setText(newQuantity + "");
+            }
+        });
+        holder.btnSubtract.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int newQuantity = cartItem.quantity--;
+                cartSession.updateQuantity(cartItem.product.getProductId(), newQuantity);
+                holder.tvQuantity.setText(newQuantity + "");
+            }
+        });
     }
 
     @Override
