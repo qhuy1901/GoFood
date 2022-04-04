@@ -1,4 +1,4 @@
-package com.example.myapplication.ui_store_detail.MerchantOrder;
+package com.example.myapplication.ui_store_management.Report;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,23 +12,23 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.myapplication.databinding.FragmentMerchantOrderBinding;
+import com.example.myapplication.databinding.FragmentReportBinding;
 
-public class MerchantOrderFragment extends Fragment {
+public class ReportFragment extends Fragment {
 
-    private MerchantOrderViewModel homeViewModel;
-    private FragmentMerchantOrderBinding binding;
+    private ReportViewModel notificationsViewModel;
+    private FragmentReportBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(MerchantOrderViewModel.class);
+        notificationsViewModel =
+                new ViewModelProvider(this).get(ReportViewModel.class);
 
-        binding = FragmentMerchantOrderBinding.inflate(inflater, container, false);
+        binding = FragmentReportBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        final TextView textView = binding.textNotifications;
+        notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

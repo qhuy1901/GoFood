@@ -1,4 +1,4 @@
-package com.example.myapplication.ui_store_detail.MenuManagement;
+package com.example.myapplication.ui_store_management.MenuManagement;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -20,13 +20,6 @@ import android.widget.Toast;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.models.Product;
-import com.example.myapplication.models.Store;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class AddProductActivity extends AppCompatActivity {
 

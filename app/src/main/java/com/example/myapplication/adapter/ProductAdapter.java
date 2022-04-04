@@ -2,15 +2,11 @@ package com.example.myapplication.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -18,18 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
-import com.example.myapplication.StoreDetailActivity;
 import com.example.myapplication.models.Product;
-import com.example.myapplication.models.Store;
-import com.example.myapplication.ui_store_detail.MenuManagement.UpdateProductActivity;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+import com.example.myapplication.ui_store_management.MenuManagement.UpdateProductActivity;
 
-import java.io.File;
-import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
