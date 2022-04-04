@@ -11,18 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.myapplication.HomeActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.models.PopularProductModel;
+import com.example.myapplication.models.Home_CategoriesOrderModel;
 
 import java.util.List;
 
-public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>{
+public class Home_CategoriesOrderAdapter extends RecyclerView.Adapter<Home_CategoriesOrderAdapter.ViewHolder>{
 
     private Context context;
-    private List<PopularProductModel> li_popular_prods;
+    private List<Home_CategoriesOrderModel> li_popular_prods;
 
-    public HomeAdapter(Context context, List<PopularProductModel> li_popular_prods){
+    public Home_CategoriesOrderAdapter(Context context, List<Home_CategoriesOrderModel> li_popular_prods){
         this.context = context;
         this.li_popular_prods = li_popular_prods;
     }
@@ -30,7 +29,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>{
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.popular_products, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.categories_order, parent, false));
     }
 
     @Override

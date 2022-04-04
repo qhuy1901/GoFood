@@ -1,12 +1,12 @@
 package com.example.myapplication.models;
 
-public class PopularProductModel {
+public class Home_CategoriesOrderModel {
     String img_url;
     String name;
     String type;
 
-    public PopularProductModel(){ }
-    public PopularProductModel(String img_url, String name, String type){
+    public Home_CategoriesOrderModel(){ }
+    public Home_CategoriesOrderModel(String img_url, String name, String type){
         this.img_url = img_url;
         this.name = name;
         this.type = type;
