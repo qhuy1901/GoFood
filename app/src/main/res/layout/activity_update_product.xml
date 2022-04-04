@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui_store_detail.MenuManagement.AddProductActivity">
-
+    tools:context=".ui_store_detail.MenuManagement.UpdateProductActivity">
     <LinearLayout
-        android:id="@+id/ln_product_image"
+        android:id="@+id/activity_update_product_ln_product_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -24,7 +23,7 @@
             android:textSize="16dp"
             android:textStyle="bold"/>
         <ImageView
-            android:id="@+id/iv_product_avatar"
+            android:id="@+id/activity_update_product_iv_product_image"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@drawable/avt"
@@ -32,13 +31,13 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ln_product_name"
+        android:id="@+id/activity_update_product_ln_product_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ln_product_image">
+        app:layout_constraintTop_toBottomOf="@+id/activity_update_product_ln_product_image">
         <TextView
             android:layout_width="40dp"
             android:layout_height="wrap_content"
@@ -48,19 +47,19 @@
             android:textSize="16dp"
             android:textStyle="bold" />
         <EditText
-            android:id="@+id/et_product_name"
+            android:id="@+id/activity_update_product_et_product_name"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="5" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ln_price"
+        android:id="@+id/activity_update_product_ln_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ln_product_name">
+        app:layout_constraintTop_toBottomOf="@+id/activity_update_product_ln_product_name">
 
         <TextView
             android:layout_width="40dp"
@@ -72,20 +71,20 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/et_price"
+            android:id="@+id/activity_update_product_et_price"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="5" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ln_is_available"
+        android:id="@+id/activity_update_product_ln_is_available"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ln_price">
+        app:layout_constraintTop_toBottomOf="@+id/activity_update_product_ln_price">
 
         <TextView
             android:layout_width="wrap_content"
@@ -97,30 +96,40 @@
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/sw_is_available"
+            android:id="@+id/activity_update_product_sw_is_available"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="5" />
     </LinearLayout>
 
     <EditText
-        android:id="@+id/et_product_description"
+        android:id="@+id/activity_update_product_et_product_description"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_margin="20dp"
         android:gravity="top"
         android:hint="Mô tả món ăn"
         android:inputType="text|textMultiLine"
-        app:layout_constraintTop_toBottomOf="@+id/ln_is_available" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_update_product_ln_is_available" />
 
     <Button
-        android:id="@+id/btn_add_product"
+        android:id="@+id/activity_update_product_btn_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:background="@color/white"
-        android:text="Thêm mới"
+        android:text="Lưu"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/activity_update_product_btn_delete_product"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Xóa khỏi thực đơn"
+        app:layout_constraintBottom_toTopOf="@+id/activity_update_product_btn_save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

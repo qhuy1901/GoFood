@@ -54,8 +54,8 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
         Store store = storeList.get(position);
         if(store == null)
             return ;
-        holder.tvStoreName.setText("Tên cửa hàng: " + store.getStoreName());
-        holder.tvStoreCategory.setText("Loại: " + store.getStoreCategory());
+        holder.tvStoreName.setText(store.getStoreName());
+        holder.tvStoreCategory.setText(store.getStoreCategory());
         loadAvatarFromFirebaseStorage(holder, store.getAvatar());
         holder.clStoreItem.setOnClickListener(new View.OnClickListener() {
             @Override

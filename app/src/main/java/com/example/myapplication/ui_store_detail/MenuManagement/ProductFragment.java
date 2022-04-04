@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,16 +17,9 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.AddProductActivity;
-import com.example.myapplication.LoginActivity;
-import com.example.myapplication.R;
-import com.example.myapplication.StartedActivity;
 import com.example.myapplication.adapter.ProductAdapter;
-import com.example.myapplication.adapter.StoreAdapter;
-import com.example.myapplication.databinding.FragmentMenuManagementBinding;
 import com.example.myapplication.databinding.FragmentProductBinding;
 import com.example.myapplication.models.Product;
-import com.example.myapplication.models.Store;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -55,7 +47,7 @@ public class ProductFragment extends Fragment {
         rcvProduct.addItemDecoration(dividerItemDecoration);
 
         productList = new ArrayList<>();
-        productAdapter = new ProductAdapter(productList);
+        productAdapter = new ProductAdapter(productList, getContext());
         rcvProduct.setAdapter(productAdapter);
     }
 
@@ -76,11 +68,12 @@ public class ProductFragment extends Fragment {
         String storeId = prefs.getString("storeId", "No name defined");
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference().child("stores").child(storeId).child("Menu");
+        DatabaseReference myRef = database.getReference().child("stores").child(storeId).child("menu").child("products");
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                productList.clear();
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     Product product = postSnapshot.getValue(Product.class);
                     productList.add(product);

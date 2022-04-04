@@ -2,25 +2,54 @@ package com.example.myapplication.models;
 
 import com.google.firebase.firestore.Exclude;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Product {
+public class Product implements Serializable {
+    private String productId;
     private String productName;
     private int price;
     private String productDescription;
     private String storeId;
-    private boolean isAvailable;
+    private int available;
+    private String productImage;
 
     public Product() {
     }
 
-    public Product(String productName, int price, String productDescription, String storeId, boolean isAvailable) {
+    public Product(String productId, String productName, int price, String productDescription, String storeId, int available, String productImage) {
+        this.productId = productId;
         this.productName = productName;
         this.price = price;
         this.productDescription = productDescription;
         this.storeId = storeId;
-        this.isAvailable = isAvailable;
+        this.available = available;
+        this.productImage = productImage;
+    }
+
+    public String getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
+    }
+
+    public int getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(int available) {
+        this.available = available;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public String getProductName() {
@@ -55,21 +84,18 @@ public class Product {
         this.storeId = storeId;
     }
 
-    public boolean isAvailable() {
-        return isAvailable;
-    }
 
-    public void setAvailable(boolean available) {
-        isAvailable = available;
-    }
 
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
+        result.put("productId", productId);
+        result.put("storeId", storeId);
         result.put("productName", productName);
         result.put("price", price);
         result.put("productDescription", productDescription);
-        result.put("isAvailable", isAvailable);
+        result.put("available", available);
+        result.put("productImage", productImage);
         return result;
     }
 }
