@@ -8,7 +8,8 @@
     android:layout_height="match_parent"
     android:background="@color/color_primary"
     tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="-10dp">
+    tools:layout_editor_absoluteY="-10dp"
+    tools:context=".WelcomeActivity">
 
     <ImageView
         android:id="@+id/img_background_logo"
@@ -64,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_welcome" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_customer_role"
+        android:id="@+id/btnCustomer"
         android:layout_width="320dp"
         android:layout_height="58dp"
         android:layout_marginStart="16dp"
@@ -83,7 +84,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_login_as" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_merchant_role"
+        android:id="@+id/btnMerchant"
         android:layout_width="320dp"
         android:layout_height="58dp"
         android:layout_marginTop="32dp"
@@ -97,6 +98,6 @@
         android:paddingEnd="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_customer_role" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCustomer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
