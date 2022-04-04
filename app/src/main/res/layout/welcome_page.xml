@@ -7,9 +7,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_primary"
+    tools:context=".WelcomeActivity"
     tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="-10dp"
-    tools:context=".WelcomeActivity">
+    tools:layout_editor_absoluteY="-10dp">
 
     <ImageView
         android:id="@+id/img_background_logo"
@@ -40,7 +40,7 @@
         android:layout_marginTop="28dp"
         android:fontFamily="@font/be_vietnam_bold"
         android:lineSpacingExtra="8sp"
-        android:text="Xin chào\nThúy Nga"
+        android:text="Xin chào"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="36sp"
@@ -50,19 +50,36 @@
         app:layout_constraintTop_toBottomOf="@+id/img_background_logo" />
 
     <TextView
-        android:id="@+id/txt_login_as"
+        android:id="@+id/txt_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/be_vietnam_bold"
+        android:lineSpacingExtra="8sp"
+        android:text="User Name"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_welcome" />
+
+    <TextView
+        android:id="@+id/txt_login_as"
+        android:layout_width="167dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         android:fontFamily="@font/be_vietnam_bold"
         android:text="Đăng nhập với tư cách"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_welcome" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_username" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCustomer"
@@ -72,12 +89,12 @@
         android:layout_marginTop="52dp"
         android:background="@drawable/welcome_bg_btn_role"
         android:backgroundTint="@color/white"
-        android:fontFamily="@font/be_vietnam_bold"
-        android:text="Khách hàng"
-        android:textColor="@color/color_primary"
         android:drawableStart="@drawable/welcomepage_customer_icon"
+        android:fontFamily="@font/be_vietnam_bold"
         android:paddingStart="60dp"
         android:paddingEnd="60dp"
+        android:text="Khách hàng"
+        android:textColor="@color/color_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,12 +107,12 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/welcome_bg_btn_role"
         android:backgroundTint="@color/white"
-        android:fontFamily="@font/be_vietnam_bold"
-        android:text="Chủ quán"
-        android:textColor="@color/color_primary"
         android:drawableStart="@drawable/welcomepage_merchant_icon"
+        android:fontFamily="@font/be_vietnam_bold"
         android:paddingStart="60dp"
         android:paddingEnd="60dp"
+        android:text="Chủ quán"
+        android:textColor="@color/color_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnCustomer" />
