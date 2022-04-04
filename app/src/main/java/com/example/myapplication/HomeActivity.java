@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.myapplication.adapter.Home_CategoriesOrderAdapter;
+import com.example.myapplication.adapter.Home_RecommendedAdapter;
 import com.example.myapplication.models.Home_CategoriesOrderModel;
+import com.example.myapplication.models.Home_RecommendedOrderModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -28,11 +30,16 @@ public class HomeActivity extends AppCompatActivity {
 
     private TextView tvLocation;
 
+    DatabaseReference realtimedbRef;
+    FirebaseFirestore fire_store;
+
     RecyclerView categories_order_RecyclerView;
     Home_CategoriesOrderAdapter categories_order_Adapter;
     List<Home_CategoriesOrderModel> categories_order_ModelList;
-    DatabaseReference realtimedbRef;
-    FirebaseFirestore fire_store;
+
+    RecyclerView recommended_order_RecyclerView;
+    Home_RecommendedAdapter recommended_order_Adapter;
+    List<Home_RecommendedOrderModel> recommended_order_ModelList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +50,9 @@ public class HomeActivity extends AppCompatActivity {
 
             // get location
             getLocation();
+
+            // get recommended order
+            getRecommendedOrder();
 
             // categories order
             getCategoriesOrder();
@@ -60,7 +70,7 @@ public class HomeActivity extends AppCompatActivity {
         categories_order_Adapter = new Home_CategoriesOrderAdapter(this, categories_order_ModelList);
         categories_order_RecyclerView.setAdapter(categories_order_Adapter);
 
-        fire_store.collection("Popular_Category")
+        fire_store.collection("Categories_Order")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -70,6 +80,29 @@ public class HomeActivity extends AppCompatActivity {
                                 Home_CategoriesOrderModel categories_order = document.toObject(Home_CategoriesOrderModel.class);
                                 categories_order_ModelList.add(categories_order);
                                 categories_order_Adapter.notifyDataSetChanged();
+                            }
+                        }
+                    }
+                });
+    }
+
+    private void getRecommendedOrder(){
+        recommended_order_RecyclerView = findViewById(R.id.recommended_rec);
+        recommended_order_RecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+        recommended_order_ModelList = new ArrayList<>();
+        recommended_order_Adapter = new Home_RecommendedAdapter(this, recommended_order_ModelList);
+        recommended_order_RecyclerView.setAdapter(recommended_order_Adapter);
+
+        fire_store.collection("Recommended_Order")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            for (QueryDocumentSnapshot document: task.getResult()){
+                                Home_RecommendedOrderModel recommended_order = document.toObject(Home_RecommendedOrderModel.class);
+                                recommended_order_ModelList.add(recommended_order);
+                                recommended_order_Adapter.notifyDataSetChanged();
                             }
                         }
                     }

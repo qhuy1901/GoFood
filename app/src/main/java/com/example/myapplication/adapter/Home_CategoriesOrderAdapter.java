@@ -16,7 +16,7 @@ import com.example.myapplication.models.Home_CategoriesOrderModel;
 
 import java.util.List;
 
-public class Home_CategoriesOrderAdapter extends RecyclerView.Adapter<Home_CategoriesOrderAdapter.ViewHolder>{
+public class Home_CategoriesOrderAdapter extends RecyclerView.Adapter<Home_CategoriesOrderAdapter.HomeCategoriesViewHolder>{
 
     private Context context;
     private List<Home_CategoriesOrderModel> li_popular_prods;
@@ -28,12 +28,12 @@ public class Home_CategoriesOrderAdapter extends RecyclerView.Adapter<Home_Categ
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.categories_order, parent, false));
+    public HomeCategoriesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new HomeCategoriesViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.categories_order, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull HomeCategoriesViewHolder holder, int position) {
         Glide.with(context).load(li_popular_prods.get(position).getImg_url()).into(holder.catImg);
         holder.catName.setText(li_popular_prods.get(position).getName());
     }
@@ -43,11 +43,11 @@ public class Home_CategoriesOrderAdapter extends RecyclerView.Adapter<Home_Categ
         return li_popular_prods.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class HomeCategoriesViewHolder extends RecyclerView.ViewHolder {
         ImageView catImg;
         TextView catName;
 
-        public ViewHolder(@NonNull View itemView) {
+        public HomeCategoriesViewHolder(@NonNull View itemView) {
             super(itemView);
             catImg = itemView.findViewById(R.id.cat_img);
             catName = itemView.findViewById(R.id.cat_name);
