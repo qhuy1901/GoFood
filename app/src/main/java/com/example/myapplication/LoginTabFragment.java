@@ -30,6 +30,7 @@ public class LoginTabFragment extends Fragment {
     float v=0;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     public static String UID = null;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.login_tab_fragment, container, false);
