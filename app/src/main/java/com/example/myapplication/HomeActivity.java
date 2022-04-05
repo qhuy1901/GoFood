@@ -31,7 +31,7 @@ public class HomeActivity extends AppCompatActivity {
     private TextView tvLocation;
 
     DatabaseReference realtimedbRef;
-    FirebaseFirestore fire_store;
+    FirebaseFirestore fire_store = FirebaseFirestore.getInstance();;
 
     RecyclerView categories_order_RecyclerView;
     Home_CategoriesOrderAdapter categories_order_Adapter;
@@ -111,7 +111,6 @@ public class HomeActivity extends AppCompatActivity {
 
     private void getLocation(){
         realtimedbRef = FirebaseDatabase.getInstance().getReference("Users");
-        fire_store = FirebaseFirestore.getInstance();
         realtimedbRef.child(LoginTabFragment.UID).child("cur_location").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
