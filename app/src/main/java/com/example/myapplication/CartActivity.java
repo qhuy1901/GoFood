@@ -48,12 +48,19 @@ public class CartActivity extends AppCompatActivity {
         checkEmptyCartImageView();
     }
 
-    private void checkEmptyCartImageView()
+    public void checkEmptyCartImageView()
     {
+        cart = cartSession.getCart();
         if(cart.size() == 0)
+        {
             ivEmptyCart.setVisibility(View.VISIBLE);
+            rcvCart.setVisibility(View.GONE);
+        }
         else
+        {
             ivEmptyCart.setVisibility(View.GONE);
+            rcvCart.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

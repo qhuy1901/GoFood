@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.CartActivity;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.models.CartItem;
@@ -70,6 +71,12 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
             @Override
             public void onClick(View view) {
                 int newQuantity = cartItem.quantity--;
+                if(newQuantity == 0)
+                {
+                    if (context instanceof CartActivity) {
+                        ((CartActivity)context).checkEmptyCartImageView();
+                    }
+                }
                 cartSession.updateQuantity(cartItem.product.getProductId(), newQuantity);
                 holder.tvQuantity.setText(newQuantity + "");
             }

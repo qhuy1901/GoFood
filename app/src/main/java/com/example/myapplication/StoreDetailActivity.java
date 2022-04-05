@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.myapplication.adapter.ProductAdapter;
 import com.example.myapplication.adapter.ProductForStoreDetailAdapter;
+import com.example.myapplication.models.CartSession;
 import com.example.myapplication.models.Product;
 import com.example.myapplication.models.Store;
 import com.google.firebase.database.DataSnapshot;
@@ -23,17 +26,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class StoreDetailActivity extends AppCompatActivity {
 
     private ImageView ivStoreAvatar, ivShowCart;
-    private TextView tvStoreName;
+    private TextView tvStoreName, tvTotal;
     private Store storeInfo;
     private GoFoodDatabase goFoodDatabase;
     private List<Product> productList;
     private RecyclerView rcvProduct;
+    private CartSession cart;
     private ProductForStoreDetailAdapter productForStoreDetailAdapter;
 
     private void initUi()
@@ -42,12 +48,14 @@ public class StoreDetailActivity extends AppCompatActivity {
         tvStoreName = (TextView) findViewById(R.id.tv_store_name);
         rcvProduct = (RecyclerView) findViewById(R.id.rcv_product_list);
         ivShowCart = (ImageView) findViewById(R.id.iv_show_cart);
+        tvTotal = (TextView) findViewById(R.id.tv_total);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rcvProduct.setLayoutManager(linearLayoutManager);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,DividerItemDecoration.VERTICAL);
         rcvProduct.addItemDecoration(dividerItemDecoration);
 
+        cart = new CartSession(StoreDetailActivity.this);
         productList = new ArrayList<>();
         productForStoreDetailAdapter = new ProductForStoreDetailAdapter(productList, this);
         rcvProduct.setAdapter(productForStoreDetailAdapter);
@@ -59,6 +67,16 @@ public class StoreDetailActivity extends AppCompatActivity {
         storeInfo = (Store) intent.getSerializableExtra("store");
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void updateTotalPrice()
+    {
+        Locale localeVN = new Locale("vi", "VN");
+        NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
+        String total = currencyVN.format(cart.getTotal());
+        tvTotal.setText(total);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +84,7 @@ public class StoreDetailActivity extends AppCompatActivity {
         initUi();
         receiveStoreInfo();
         getProductListFromRealtimeDatabase();
+        updateTotalPrice();
 
         goFoodDatabase = new GoFoodDatabase();
 
