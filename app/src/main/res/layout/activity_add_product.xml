@@ -5,30 +5,78 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui_store_detail.MenuManagement.AddProductActivity">
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/rectangle1061"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".27"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/button_second"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="#FFFFFF"
+        android:src="@drawable/icons8_back_arrow_96"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toStartOf="@+id/addnewfood"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.592">
 
+    </androidx.appcompat.widget.AppCompatImageButton>
+
+    <TextView
+        android:id="@+id/addnewfood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:fontFamily="@font/be_vietnam_bold"
+        android:gravity="top"
+            android:text="Thêm món mới"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#F2789F"
+        android:textSize="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.421" />
     <LinearLayout
         android:id="@+id/ln_product_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_weight="1"
+            android:gravity="center|left"
             android:text="Ảnh món"
             android:textSize="16dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
         <ImageView
             android:id="@+id/iv_product_avatar"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/avt"
-            android:layout_weight="5"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:src="@drawable/avt"/>
     </LinearLayout>
 
     <LinearLayout
@@ -36,21 +84,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginRight="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ln_product_image">
         <TextView
-            android:layout_width="40dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_weight="1"
+            android:gravity="center|left"
             android:text="Tên món"
             android:textSize="16dp"
             android:textStyle="bold" />
         <EditText
             android:id="@+id/et_product_name"
-            android:layout_width="wrap_content"
+            android:layout_width="110dp"
             android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_weight="5" />
     </LinearLayout>
 
@@ -58,23 +110,27 @@
         android:id="@+id/ln_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ln_product_name">
 
         <TextView
-            android:layout_width="40dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:text="Giá"
             android:textSize="16dp"
-            android:textStyle="bold" />
+            android:gravity="center|left"
+            android:textStyle="bold"  />
 
         <EditText
             android:id="@+id/et_price"
-            android:layout_width="wrap_content"
+            android:layout_width="110dp"
             android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_weight="5" />
     </LinearLayout>
 
@@ -82,7 +138,7 @@
         android:id="@+id/ln_is_available"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_marginRight="10dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ln_price">
@@ -94,12 +150,15 @@
             android:layout_weight="1"
             android:text="Còn món"
             android:textSize="16dp"
-            android:textStyle="bold" />
+            android:gravity="center|left"
+            android:textStyle="bold"  />
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/sw_is_available"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+
             android:layout_weight="5" />
     </LinearLayout>
 
@@ -108,18 +167,24 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_margin="20dp"
+        android:layout_marginTop="88dp"
         android:gravity="top"
+        android:background="@drawable/img_bg"
         android:hint="Mô tả món ăn"
+        android:padding="5dp"
         android:inputType="text|textMultiLine"
         app:layout_constraintTop_toBottomOf="@+id/ln_is_available" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btn_add_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:background="@color/white"
+        android:background="@drawable/btn2_bg"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:textColor="#FFFFFF"
         android:text="Thêm mới"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

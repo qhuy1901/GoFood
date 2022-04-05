@@ -5,29 +5,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui_store_detail.MenuManagement.UpdateProductActivity">
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/rectangle1061"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".27"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/button_second"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="#FFFFFF"
+        android:src="@drawable/icons8_back_arrow_96"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toStartOf="@+id/addnewfood"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.592">
+
+    </androidx.appcompat.widget.AppCompatImageButton>
+
+    <TextView
+        android:id="@+id/addnewfood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:fontFamily="@font/be_vietnam_bold"
+        android:gravity="top"
+        android:text="Cập nhật món"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#F2789F"
+        android:textSize="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.421" />
+
     <LinearLayout
         android:id="@+id/activity_update_product_ln_product_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginRight="10dp"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <TextView
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:layout_weight="1"
+            android:gravity="center|left"
             android:text="Ảnh món"
             android:textSize="16dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
         <ImageView
             android:id="@+id/activity_update_product_iv_product_image"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/avt"
-            android:layout_weight="5"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:src="@drawable/avt" />
     </LinearLayout>
 
     <LinearLayout
@@ -35,21 +87,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_update_product_ln_product_image">
         <TextView
-            android:layout_width="40dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:layout_weight="1"
+            android:gravity="center|left"
             android:text="Tên món"
             android:textSize="16dp"
             android:textStyle="bold" />
         <EditText
             android:id="@+id/activity_update_product_et_product_name"
-            android:layout_width="wrap_content"
+            android:layout_width="110dp"
             android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_weight="5" />
     </LinearLayout>
 
@@ -57,23 +114,28 @@
         android:id="@+id/activity_update_product_ln_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_update_product_ln_product_name">
 
         <TextView
-            android:layout_width="40dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:layout_weight="1"
             android:text="Giá"
             android:textSize="16dp"
+            android:gravity="center|left"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/activity_update_product_et_price"
-            android:layout_width="wrap_content"
+            android:layout_width="110dp"
             android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_weight="5" />
     </LinearLayout>
 
@@ -81,7 +143,8 @@
         android:id="@+id/activity_update_product_ln_is_available"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_update_product_ln_price">
@@ -89,16 +152,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:layout_weight="1"
             android:text="Còn món"
             android:textSize="16dp"
+            android:gravity="center|left"
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/activity_update_product_sw_is_available"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+
             android:layout_weight="5" />
     </LinearLayout>
 
@@ -107,29 +173,44 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_margin="20dp"
+        android:layout_marginTop="88dp"
         android:gravity="top"
+        android:background="@drawable/img_bg"
         android:hint="Mô tả món ăn"
+        android:padding="5dp"
         android:inputType="text|textMultiLine"
-        app:layout_constraintTop_toBottomOf="@+id/activity_update_product_ln_is_available" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_update_product_ln_is_available"
+        tools:layout_editor_absoluteX="24dp" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/activity_update_product_btn_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="185dp"
+        android:layout_height="60dp"
         android:layout_margin="20dp"
-        android:background="@color/white"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn2_bg"
+        android:fontFamily="@font/be_vietnam_semibold"
         android:text="Lưu"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.811"
+        app:layout_constraintStart_toEndOf="@+id/activity_update_product_btn_delete_product"
+        app:layout_constraintTop_toBottomOf="@+id/activity_update_product_et_product_description"
+        app:layout_constraintVertical_bias="0.909" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/activity_update_product_btn_delete_product"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="185dp"
+        android:layout_height="60dp"
         android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/btn1_bg"
+        android:fontFamily="@font/be_vietnam_semibold"
         android:text="Xóa khỏi thực đơn"
-        app:layout_constraintBottom_toTopOf="@+id/activity_update_product_btn_save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="#F2789F"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_update_product_et_product_description"
+        app:layout_constraintVertical_bias="0.909" />
 </androidx.constraintlayout.widget.ConstraintLayout>
