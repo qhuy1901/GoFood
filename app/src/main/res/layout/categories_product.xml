@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="4dp"
+    android:layout_marginRight="8dp"
+    android:background="@drawable/recycler_bg2">
+
+
+    <ImageView
+        android:id="@+id/catprod_image"
+        android:layout_width="86dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+    <TextView
+        android:id="@+id/catprod_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/catprod_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/catprod_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/catprod_name"
+        app:layout_constraintTop_toBottomOf="@+id/catprod_name" />
+
+    <TextView
+        android:id="@+id/catprod_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="281dp"
+        android:text="3.9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/catprod_note" />
+
+    <TextView
+        android:id="@+id/catprod_delivery_time"
+        android:layout_width="40dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/time_bg"
+        android:gravity="center"
+        android:text="45 mins"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/catprod_rating"
+        app:layout_constraintStart_toEndOf="@+id/catprod_rating"
+        app:layout_constraintTop_toTopOf="@+id/catprod_rating" />
+
+    <TextView
+        android:id="@+id/catprod_delivery_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Free Delivery"
+        app:layout_constraintBottom_toBottomOf="@+id/catprod_delivery_time"
+        app:layout_constraintStart_toEndOf="@+id/catprod_delivery_time"
+        app:layout_constraintTop_toTopOf="@+id/catprod_delivery_time" />
+
+    <TextView
+        android:id="@+id/catprod_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/be_vietnam_bold"
+        android:text="166"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.589" />
+</androidx.constraintlayout.widget.ConstraintLayout>
