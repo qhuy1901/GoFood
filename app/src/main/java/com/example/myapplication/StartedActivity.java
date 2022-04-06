@@ -40,7 +40,7 @@ public class StartedActivity extends AppCompatActivity {
         image.setAnimation(topAnim);
         slogan.setAnimation(topAnim);
         img.setAnimation(fadeAnim);
-
+        btnGetStarted.setAnimation(botAnim);
         btnGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
