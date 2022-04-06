@@ -1,4 +1,4 @@
-package com.example.myapplication.ui_store_detail.MenuManagement;
+package com.example.myapplication.ui_store_management.MenuManagement;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -1,16 +1,16 @@
-package com.example.myapplication.ui_store_detail.MenuManagement;
+package com.example.myapplication.ui_store_management.Report;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class MenuManagementViewModel extends ViewModel {
+public class ReportViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public MenuManagementViewModel() {
+    public ReportViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("This is notifications fragment");
     }
 
     public LiveData<String> getText() {

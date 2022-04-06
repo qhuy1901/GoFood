@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +14,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.StoreDetailActivity;
+import com.example.myapplication.StoreManagementActivity;
 import com.example.myapplication.models.Store;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,7 +29,6 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.List;
 
 public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHolder>{
@@ -72,10 +70,10 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
 
     private void onClickGoToDetail(Store store)
     {
+//        Intent switchActivityIntent = new Intent(this.context, StoreManagementActivity.class);
+//        context.startActivity(switchActivityIntent);
         Intent switchActivityIntent = new Intent(this.context, StoreDetailActivity.class);
-//        Bundle bundle = new Bundle();
-//        bundle.putSerializable("StoreDetail", store);
-//        switchActivityIntent.putExtras(bundle);
+        switchActivityIntent.putExtra("store", store);
         context.startActivity(switchActivityIntent);
     }
 
