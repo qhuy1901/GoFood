@@ -8,9 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.myapplication.adapter.Home_AllCateAdapter;
 import com.example.myapplication.adapter.Home_CategoriesOrderAdapter;
 import com.example.myapplication.adapter.Home_RecommendedAdapter;
 import com.example.myapplication.models.Home_CategoriesOrderModel;
+import com.example.myapplication.models.Home_MenuCategoriesModel;
 import com.example.myapplication.models.Home_RecommendedOrderModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -41,6 +43,10 @@ public class HomeActivity extends AppCompatActivity {
     Home_RecommendedAdapter recommended_order_Adapter;
     List<Home_RecommendedOrderModel> recommended_order_ModelList;
 
+    RecyclerView allcate_menu_RecyclerView;
+    Home_AllCateAdapter allcate_menu_Adapter;
+    List<Home_MenuCategoriesModel> allcate_menu_ModelList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +63,8 @@ public class HomeActivity extends AppCompatActivity {
             // categories order
             getCategoriesOrder();
 
-            // category - food
+            // category - allcate
+            getAllCateMenu();
         }else{
             tvLocation.setText("MERCHANT LOGIN");
         }
@@ -103,6 +110,29 @@ public class HomeActivity extends AppCompatActivity {
                                 Home_RecommendedOrderModel recommended_order = document.toObject(Home_RecommendedOrderModel.class);
                                 recommended_order_ModelList.add(recommended_order);
                                 recommended_order_Adapter.notifyDataSetChanged();
+                            }
+                        }
+                    }
+                });
+    }
+
+    private void getAllCateMenu(){
+        allcate_menu_RecyclerView = findViewById(R.id.menucate_rec);
+        allcate_menu_RecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        allcate_menu_ModelList = new ArrayList<>();
+        allcate_menu_Adapter = new Home_AllCateAdapter(this, allcate_menu_ModelList);
+        allcate_menu_RecyclerView.setAdapter(allcate_menu_Adapter);
+
+        fire_store.collection("AllCate_Menu")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            for (QueryDocumentSnapshot document: task.getResult()){
+                                Home_MenuCategoriesModel allcate = document.toObject(Home_MenuCategoriesModel.class);
+                                allcate_menu_ModelList.add(allcate);
+                                allcate_menu_Adapter.notifyDataSetChanged();
                             }
                         }
                     }
