@@ -2,7 +2,10 @@ package com.example.myapplication.models;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.util.Log;
+
+import androidx.annotation.RequiresApi;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -10,6 +13,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class CartSession
 {
@@ -97,12 +101,28 @@ public class CartSession
 
     public void updateQuantity(String productId, int newQuantity)
     {
-        List<CartItem> cart = getCart();
-        int index = isExit(productId);
-        if(index != -1)
+        if(newQuantity == 0)
         {
-            cart.get(index).quantity = newQuantity;
-            saveCart(cart);
+            removeItem(productId);
         }
+        else
+        {
+            List<CartItem> cart = getCart();
+            int index = isExit(productId);
+            if(index != -1)
+            {
+                cart.get(index).quantity = newQuantity;
+                saveCart(cart);
+            }
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public int getTotal()
+    {
+        if(getCart() == null)
+            return 0;
+        int sum =  getCart().stream().mapToInt(o -> o.product.getPrice() * o.quantity).sum();
+        return  sum;
     }
 }
