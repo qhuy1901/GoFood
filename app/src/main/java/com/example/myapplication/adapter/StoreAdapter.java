@@ -70,11 +70,11 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
 
     private void onClickGoToDetail(Store store)
     {
-//        Intent switchActivityIntent = new Intent(this.context, StoreManagementActivity.class);
-//        context.startActivity(switchActivityIntent);
-        Intent switchActivityIntent = new Intent(this.context, StoreDetailActivity.class);
-        switchActivityIntent.putExtra("store", store);
+        Intent switchActivityIntent = new Intent(this.context, StoreManagementActivity.class);
         context.startActivity(switchActivityIntent);
+//        Intent switchActivityIntent = new Intent(this.context, StoreDetailActivity.class);
+//        switchActivityIntent.putExtra("store", store);
+//        context.startActivity(switchActivityIntent);
     }
 
     public void loadAvatarFromFirebaseStorage(@NonNull StoreViewHolder holder, String avatarFileName)

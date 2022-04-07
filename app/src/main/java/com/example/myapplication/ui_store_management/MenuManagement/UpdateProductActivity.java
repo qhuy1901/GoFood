@@ -1,6 +1,7 @@
 package com.example.myapplication.ui_store_management.MenuManagement;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.SwitchCompat;
 
 import android.content.Intent;
@@ -25,6 +26,7 @@ public class UpdateProductActivity extends AppCompatActivity {
     private GoFoodDatabase goFoodDatabase;
     private Product productInfo;
     private ImageView ivProductImage;
+    private AppCompatImageButton ibBack;
 
     private void initUi()
     {
@@ -35,7 +37,7 @@ public class UpdateProductActivity extends AppCompatActivity {
         swIsAvailable = (SwitchCompat) findViewById(R.id.activity_update_product_sw_is_available);
         btnDeleteProduct = (Button) findViewById(R.id.activity_update_product_btn_delete_product);
         ivProductImage =(ImageView) findViewById(R.id.activity_update_product_iv_product_image);
-
+        ibBack = (AppCompatImageButton) findViewById(R.id.activity_update_product_ib_back);
     }
 
     private void receiveProductInfo()
@@ -111,6 +113,13 @@ public class UpdateProductActivity extends AppCompatActivity {
                     isAvailable = 1;
                 Product product= new Product(productInfo.getProductId(), productName, price, description, storeId, isAvailable, productInfo.getProductImage());
                 goFoodDatabase.updateProduct(product);
+                finish();
+            }
+        });
+
+        ibBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 finish();
             }
         });
