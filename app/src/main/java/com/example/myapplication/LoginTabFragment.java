@@ -26,7 +26,7 @@ public class LoginTabFragment extends Fragment {
     private Button btnLogin;
     private EditText edtEmail;
     private EditText edtPassword;
-    private TextView forgetPass;
+    private TextView forgetPass, logIn;
     float v=0;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     public static String UID = null;
@@ -39,19 +39,23 @@ public class LoginTabFragment extends Fragment {
         edtEmail = root.findViewById(R.id.edtEmail);
         edtPassword = root.findViewById(R.id.edtPassword);
         forgetPass = root.findViewById(R.id.fg_pass);
+        logIn = root.findViewById(R.id.login);
+        logIn.setTranslationX(500);
+        logIn.setAlpha(v);
+       logIn. animate().translationX(0).alpha(1).setDuration(500).setStartDelay(700).start();
 
-        edtEmail.setTranslationX(800);
-        edtPassword.setTranslationX(800);
-        forgetPass.setTranslationX(800);
-        btnLogin.setTranslationX(800);
+        edtEmail.setTranslationX(500);
+        edtPassword.setTranslationX(500);
+        forgetPass.setTranslationX(500);
+        btnLogin.setTranslationX(500);
         edtEmail.setAlpha(v);
         edtPassword.setAlpha(v);
         forgetPass.setAlpha(v);
         btnLogin.setAlpha(v);
-        edtEmail.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
-        edtPassword.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
-        forgetPass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
-        btnLogin. animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
+        edtEmail.animate().translationX(0).alpha(1).setDuration(500).setStartDelay(300).start();
+        edtPassword.animate().translationX(0).alpha(1).setDuration(500).setStartDelay(500).start();
+        forgetPass.animate().translationX(0).alpha(1).setDuration(500).setStartDelay(500).start();
+        btnLogin. animate().translationX(0).alpha(1).setDuration(500).setStartDelay(700).start();
 
         ProgressDialog progressDialog = new ProgressDialog(getActivity());
 

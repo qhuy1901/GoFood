@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/register"
+        android:id="@+id/login"
         android:layout_width="205dp"
         android:layout_height="56dp"
         android:layout_centerHorizontal="true"
@@ -86,7 +86,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
         android:fontFamily="@font/be_vietnam_medium"
-        android:text="Quên mật khẩu"
+        android:text="Quên mật khẩu?"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/edtPassword"
