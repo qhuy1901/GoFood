@@ -58,12 +58,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         String priceAfterFormat = currencyVN.format(product.getPrice());
         holder.tvPrice.setText(priceAfterFormat);
+        holder.tvDescription.setText(product.getProductDescription());
+        if(product.getProductDescription().isEmpty())
+            holder.tvDescription.setVisibility(View.GONE);
         holder.clProductItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onClickGoToDetail(product);
             }
         });
+
         if(!product.getProductImage().isEmpty())
         {
             goFoodDatabase.loadImageToImageView(holder.ivProductImage, "product_image" ,product.getProductImage());
@@ -78,7 +82,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
     public class ProductViewHolder  extends RecyclerView.ViewHolder{
-        private TextView tvProductName, tvPrice;
+        private TextView tvProductName, tvPrice, tvDescription;
         private ImageView ivProductImage;
         private ConstraintLayout clProductItem;
 
@@ -88,6 +92,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             tvPrice = itemView.findViewById(R.id.item_product_tv_price);
             ivProductImage = itemView.findViewById(R.id.item_product_iv_product_image);
             clProductItem = itemView.findViewById(R.id.item_product_cl_product_item);
+            tvDescription = itemView.findViewById(R.id.item_product_tv_description);
         }
     }
 }

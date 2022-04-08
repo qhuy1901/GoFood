@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.SwitchCompat;
 
 import android.app.Activity;
@@ -28,6 +29,7 @@ public class AddProductActivity extends AppCompatActivity {
     private Button btnAddProduct;
     private GoFoodDatabase goFoodDatabase;
     private ImageView ivProductAvatar;
+    private AppCompatImageButton ibBack;
 
     private void initUi()
     {
@@ -37,6 +39,7 @@ public class AddProductActivity extends AppCompatActivity {
         btnAddProduct = (Button) findViewById(R.id.btn_add_product);
         swIsAvailable = (SwitchCompat) findViewById(R.id.sw_is_available);
         ivProductAvatar = (ImageView) findViewById(R.id.iv_product_avatar);
+        ibBack = (AppCompatImageButton) findViewById(R.id.activity_add_product_ib_back);
     }
 
     private ActivityResultLauncher<Intent> checkPermission = registerForActivityResult(
@@ -95,6 +98,13 @@ public class AddProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 choosePicture();
+            }
+        });
+
+        ibBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

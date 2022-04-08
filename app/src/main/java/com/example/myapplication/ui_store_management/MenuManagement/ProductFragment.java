@@ -43,8 +43,6 @@ public class ProductFragment extends Fragment {
         rcvProduct = binding.rcvProductList;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         rcvProduct.setLayoutManager(linearLayoutManager);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
-        rcvProduct.addItemDecoration(dividerItemDecoration);
 
         productList = new ArrayList<>();
         productAdapter = new ProductAdapter(productList, getContext());
