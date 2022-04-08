@@ -1,6 +1,7 @@
 package com.example.myapplication.adapter;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +10,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.CartActivity;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
+import com.example.myapplication.StoreDetailActivity;
 import com.example.myapplication.models.CartItem;
 import com.example.myapplication.models.CartSession;
 import com.example.myapplication.models.Product;
@@ -63,25 +66,33 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
             goFoodDatabase.loadImageToImageView(holder.ivProductImage, "product_image" , cartItem.product.getProductImage());
         }
         holder.btnPlus.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 int newQuantity = cartItem.quantity++;
                 cartSession.updateQuantity(cartItem.product.getProductId(), newQuantity);
-                holder.tvQuantity.setText(newQuantity + "");
+                if(newQuantity != 0)
+                    holder.tvQuantity.setText(newQuantity + "");
+                if (context instanceof CartActivity) {
+                    ((CartActivity)context).updateTotalPrice();
+                }
             }
         });
         holder.btnSubtract.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 int newQuantity = cartItem.quantity--;
+                cartSession.updateQuantity(cartItem.product.getProductId(), newQuantity);
                 if(newQuantity == 0)
                 {
                     if (context instanceof CartActivity) {
                         ((CartActivity)context).checkEmptyCartImageView();
+                        ((CartActivity)context).updateTotalPrice();
                     }
                 }
-                cartSession.updateQuantity(cartItem.product.getProductId(), newQuantity);
-                holder.tvQuantity.setText(newQuantity + "");
+                else
+                    holder.tvQuantity.setText(newQuantity + "");
             }
         });
     }
