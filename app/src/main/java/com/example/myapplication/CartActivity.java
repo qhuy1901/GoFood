@@ -1,10 +1,12 @@
 package com.example.myapplication;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +19,9 @@ import com.example.myapplication.models.CartSession;
 import com.example.myapplication.models.CartItem;
 import com.example.myapplication.ui_store_management.MenuManagement.UpdateProductActivity;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -26,7 +30,7 @@ public class CartActivity extends AppCompatActivity {
     private CartItemAdapter cartItemAdapter;
     private List<CartItem> cart;
     private CartSession cartSession;
-    private TextView tvDeleteAllItem;
+    private TextView tvDeleteAllItem, tvTotal;
     private ImageView ivEmptyCart;
 
     private void initUi()
@@ -34,7 +38,7 @@ public class CartActivity extends AppCompatActivity {
         rcvCart = (RecyclerView) findViewById(R.id.rcv_cart);
         tvDeleteAllItem = (TextView) findViewById(R.id.tv_delete_all_cart_item);
         ivEmptyCart = (ImageView) findViewById(R.id.iv_empty_cart);
-
+        tvTotal = (TextView) findViewById(R.id.tv_total) ;
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(CartActivity.this);
         rcvCart.setLayoutManager(linearLayoutManager);
@@ -63,11 +67,22 @@ public class CartActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void updateTotalPrice()
+    {
+        Locale localeVN = new Locale("vi", "VN");
+        NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
+        String total = currencyVN.format(cartSession.getTotal());
+        tvTotal.setText(total);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
         initUi();
+        updateTotalPrice();
         tvDeleteAllItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

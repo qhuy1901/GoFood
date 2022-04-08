@@ -127,4 +127,11 @@ public class StoreDetailActivity extends AppCompatActivity {
         });
 
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    protected void onStart() {
+        super.onStart();
+        updateTotalPrice();
+    }
 }
