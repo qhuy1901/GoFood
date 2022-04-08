@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,7 @@ public class CartActivity extends AppCompatActivity {
     private CartSession cartSession;
     private TextView tvDeleteAllItem, tvTotal;
     private ImageView ivEmptyCart;
+    private Button btnDelivery;
 
     private void initUi()
     {
@@ -39,6 +41,7 @@ public class CartActivity extends AppCompatActivity {
         tvDeleteAllItem = (TextView) findViewById(R.id.tv_delete_all_cart_item);
         ivEmptyCart = (ImageView) findViewById(R.id.iv_empty_cart);
         tvTotal = (TextView) findViewById(R.id.tv_total) ;
+        btnDelivery = (Button) findViewById(R.id.btn_delivery) ;
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(CartActivity.this);
         rcvCart.setLayoutManager(linearLayoutManager);
@@ -106,6 +109,13 @@ public class CartActivity extends AppCompatActivity {
                             }
                         })
                         .show();
+            }
+        });
+        btnDelivery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent switchActivityIntent = new Intent(CartActivity.this, OrderConfirmationActivity.class);
+                startActivity(switchActivityIntent);
             }
         });
     }
