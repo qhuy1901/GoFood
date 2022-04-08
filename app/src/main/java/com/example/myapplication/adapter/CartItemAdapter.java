@@ -54,6 +54,9 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         String priceAfterFormat = currencyVN.format(cartItem.product.getPrice());
         holder.tvPrice.setText(priceAfterFormat);
+        holder.tvDescription.setText(cartItem.product.getProductDescription());
+        if(cartItem.product.getProductDescription().isEmpty())
+            holder.tvDescription.setVisibility(View.GONE);
 
         if(!cartItem.product.getProductImage().isEmpty())
         {
@@ -91,7 +94,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
     }
 
     public class CartItemViewHolder  extends RecyclerView.ViewHolder{
-        private TextView tvProductName, tvPrice, tvQuantity;
+        private TextView tvProductName, tvPrice, tvQuantity, tvDescription;
         private ImageView ivProductImage;
         private ConstraintLayout clProductItem;
         private Button btnPlus, btnSubtract;
@@ -105,6 +108,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
             btnPlus = itemView.findViewById(R.id.item_cart_item_plus);
             btnSubtract= itemView.findViewById(R.id.item_cart_item_subtract);
             tvQuantity = itemView.findViewById(R.id.item_cart_item_quantity);
+            tvDescription = itemView.findViewById(R.id.item_cart_item_tv_description);
         }
     }
 }
