@@ -6,19 +6,31 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.example.myapplication.adapter.Home_AllCateAdapter;
 import com.example.myapplication.adapter.Home_CategoriesOrderAdapter;
 import com.example.myapplication.adapter.Home_RecommendedAdapter;
+import com.example.myapplication.customer.home.CateHomeFragment;
+import com.example.myapplication.customer.home.CateOrderFragment;
 import com.example.myapplication.adapter.StoreForHomeAdapter;
+
 import com.example.myapplication.models.Home_CategoriesOrderModel;
 import com.example.myapplication.models.Home_MenuCategoriesModel;
 import com.example.myapplication.models.Home_RecommendedOrderModel;
 import com.example.myapplication.models.Store;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,22 +45,7 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private TextView tvLocation;
-
-    DatabaseReference realtimedbRef;
-    FirebaseFirestore fire_store = FirebaseFirestore.getInstance();;
-
-    RecyclerView categories_order_RecyclerView;
-    Home_CategoriesOrderAdapter categories_order_Adapter;
-    List<Home_CategoriesOrderModel> categories_order_ModelList;
-
-    RecyclerView recommended_order_RecyclerView;
-    Home_RecommendedAdapter recommended_order_Adapter;
-    List<Home_RecommendedOrderModel> recommended_order_ModelList;
-
-    RecyclerView allcate_menu_RecyclerView;
-    Home_AllCateAdapter allcate_menu_Adapter;
-    List<Home_MenuCategoriesModel> allcate_menu_ModelList;
+    BottomNavigationView btnBottom_Nav_HomeID;
 
 
     private RecyclerView rcvStoreListByCategory;
@@ -72,6 +69,11 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        btnBottom_Nav_HomeID = findViewById(R.id.bottom_nav_home);
+        setFragment(new CateHomeFragment());
+        btnBottom_Nav_HomeID.setSelectedItemId(R.id.nav_home);
+
         initUi();
 
         if(WelcomeActivity.type_usr == 1) {
@@ -198,34 +200,25 @@ public class HomeActivity extends AppCompatActivity {
         allcate_menu_Adapter = new Home_AllCateAdapter(this, allcate_menu_ModelList);
         allcate_menu_RecyclerView.setAdapter(allcate_menu_Adapter);
 
-        fire_store.collection("AllCate_Menu")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            for (QueryDocumentSnapshot document: task.getResult()){
-                                Home_MenuCategoriesModel allcate = document.toObject(Home_MenuCategoriesModel.class);
-                                allcate_menu_ModelList.add(allcate);
-                                allcate_menu_Adapter.notifyDataSetChanged();
-                            }
-                        }
-                    }
-                });
-    }
 
-    private void getLocation(){
-        realtimedbRef = FirebaseDatabase.getInstance().getReference("Users");
-        realtimedbRef.child(LoginTabFragment.UID).child("cur_location").addValueEventListener(new ValueEventListener() {
+        btnBottom_Nav_HomeID.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String cur_location = snapshot.getValue(String.class);
-                tvLocation.setText(cur_location);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.nav_home:
+                        setFragment(new CateHomeFragment());
+                        return true;
+                    case R.id.nav_my_ords:
+                        setFragment(new CateOrderFragment());
+                        return true;
+                }
+                return false;
             }
         });
+    }
+    private void setFragment(Fragment fragment){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.home_framelayout, fragment);
+        fragmentTransaction.commit();
     }
 }
