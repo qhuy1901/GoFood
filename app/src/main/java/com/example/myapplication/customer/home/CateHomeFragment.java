@@ -1,27 +1,26 @@
 package com.example.myapplication.customer.home;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
 import com.example.myapplication.LoginTabFragment;
 import com.example.myapplication.R;
 import com.example.myapplication.WelcomeActivity;
 import com.example.myapplication.adapter.Home_AllCateAdapter;
-import com.example.myapplication.adapter.Home_CategoriesOrderAdapter;
 import com.example.myapplication.adapter.Home_RecommendedAdapter;
 import com.example.myapplication.models.Home_CategoriesOrderModel;
 import com.example.myapplication.models.Home_MenuCategoriesModel;
 import com.example.myapplication.models.Home_RecommendedOrderModel;
+import com.example.myapplication.models.Store;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -38,10 +37,9 @@ import java.util.List;
 
 public class CateHomeFragment extends Fragment {
 
-
     private TextView tvLocation;
     DatabaseReference realtimedbRef;
-    FirebaseFirestore fire_store = FirebaseFirestore.getInstance();;
+    FirebaseFirestore fire_store = FirebaseFirestore.getInstance();
 
     RecyclerView categories_order_RecyclerView;
     Home_CategoriesOrderAdapter categories_order_Adapter;
@@ -55,11 +53,28 @@ public class CateHomeFragment extends Fragment {
     Home_AllCateAdapter allcate_menu_Adapter;
     List<Home_MenuCategoriesModel> allcate_menu_ModelList;
 
+    private RecyclerView rcvStoreListByCategory;
+    private List<Store> storeListByCategory;
+    private  StoreForHomeAdapter storeForHomeAdapter;
+
+    private void initUi(ViewGroup root)
+    {
+        tvLocation = (TextView) root.findViewById(R.id.tvLocation);
+
+        rcvStoreListByCategory = (RecyclerView) root.findViewById(R.id.rcv_store_list_by_category);
+
+        storeListByCategory = new ArrayList<>();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager( getContext());
+        rcvStoreListByCategory.setLayoutManager(linearLayoutManager);
+        storeForHomeAdapter = new StoreForHomeAdapter( storeListByCategory, getContext());
+        rcvStoreListByCategory.setAdapter(storeForHomeAdapter);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_catehome, container, false);
-        tvLocation = (TextView) root.findViewById(R.id.tvLocation);
+        initUi(root);
+
         if(WelcomeActivity.type_usr == 1) {
 
             // get location
@@ -72,18 +87,70 @@ public class CateHomeFragment extends Fragment {
             getCategoriesOrder(root);
 
             // category - allcate
-            getAllCateMenu(root);
+//            getAllCateMenu(root);
+
+            getStoreListByCategoryFromRealtimeDatabase();
         }else{
             tvLocation.setText("MERCHANT LOGIN");
         }
         // Inflate the layout for this fragment
         return root;
     }
+
+    public void getStoreListByCategoryFromRealtimeDatabase()
+    {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference().child("stores");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                storeListByCategory.clear();
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Store store = postSnapshot.getValue(Store.class);
+                    storeListByCategory.add(store);
+                }
+                storeForHomeAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getContext(), "Không lấy được danh sách món", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void getStoreListByCategoryFromRealtimeDatabase(String category)
+    {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference().child("stores");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                storeListByCategory.clear();
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Store store = postSnapshot.getValue(Store.class);
+                    if(store.getStoreCategory().contains(category))
+                    {
+                        storeListByCategory.add(store);
+                    }
+                }
+                storeForHomeAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getContext(), "Không lấy được danh sách món", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void getCategoriesOrder(ViewGroup view){
         categories_order_RecyclerView = view.findViewById(R.id.categories_order_rec);
         categories_order_RecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         categories_order_ModelList = new ArrayList<>();
-        categories_order_Adapter = new Home_CategoriesOrderAdapter(getActivity(), categories_order_ModelList);
+        categories_order_Adapter = new Home_CategoriesOrderAdapter(getActivity(), categories_order_ModelList, this);
         categories_order_RecyclerView.setAdapter(categories_order_Adapter);
 
         fire_store.collection("Categories_Order")

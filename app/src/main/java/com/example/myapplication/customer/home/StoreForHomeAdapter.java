@@ -1,4 +1,4 @@
-package com.example.myapplication.adapter;
+package com.example.myapplication.customer.home;
 
 import android.content.Context;
 import android.content.Intent;
