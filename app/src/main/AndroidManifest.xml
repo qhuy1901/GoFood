@@ -17,29 +17,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".OrderConfirmationActivity"
+            android:name=".customer.order_confirmation.OrderConfirmationActivity"
             android:exported="false" />
         <activity
-            android:name=".CartActivity"
+            android:name=".customer.cart.CartActivity"
             android:exported="false" />
         <activity
-            android:name=".StoreDetailActivity"
+            android:name=".customer.store_detail.StoreDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui_store_management.MenuManagement.UpdateProductActivity"
+            android:name=".merchant.store_management.MenuManagement.UpdateProductActivity"
             android:exported="false" />
         <activity
-            android:name=".ui_store_management.MenuManagement.AddProductActivity"
+            android:name=".merchant.store_management.MenuManagement.AddProductActivity"
             android:exported="false" />
         <activity
-            android:name=".StoreManagementActivity"
+            android:name=".merchant.store_management.StoreManagementActivity"
             android:exported="false"
             android:label="@string/title_activity_store_detail" />
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".ChooseStoreActivity"
+            android:name=".merchant.choose_store.ChooseStoreActivity"
             android:exported="false"
             android:label="@string/title_activity_choose_store"
             android:theme="@style/Theme.MyApplication.NoActionBar" />

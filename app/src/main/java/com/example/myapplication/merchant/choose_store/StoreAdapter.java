@@ -1,4 +1,4 @@
-package com.example.myapplication.adapter;
+package com.example.myapplication.merchant.choose_store;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -18,8 +18,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.StoreDetailActivity;
-import com.example.myapplication.StoreManagementActivity;
+import com.example.myapplication.customer.store_detail.StoreDetailActivity;
 import com.example.myapplication.models.Store;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

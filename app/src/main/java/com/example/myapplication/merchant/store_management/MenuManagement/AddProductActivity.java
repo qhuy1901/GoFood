@@ -1,4 +1,4 @@
-package com.example.myapplication.ui_store_management.MenuManagement;
+package com.example.myapplication.merchant.store_management.MenuManagement;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;

@@ -1,4 +1,4 @@
-package com.example.myapplication.adapter;
+package com.example.myapplication.customer.cart;
 
 import android.content.Context;
 import android.os.Build;
@@ -14,13 +14,10 @@ import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.CartActivity;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
-import com.example.myapplication.StoreDetailActivity;
 import com.example.myapplication.models.CartItem;
 import com.example.myapplication.models.CartSession;
-import com.example.myapplication.models.Product;
 
 import java.text.NumberFormat;
 import java.util.List;

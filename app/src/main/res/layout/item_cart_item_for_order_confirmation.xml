@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_cart_item_for_order_confirmation_cl_product_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/item_cart_item_for_order_confirmation_iv_product_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_product_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    
+    <TextView
+        android:id="@+id/item_cart_item_for_order_confirmation_tv_product_name"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Cơm cuộn Hàn Quốc Bibimbap Cơm cuộn Hàn Quốc Bibimbap Cơm cuộn Hàn Quốc Bibimbap"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintStart_toEndOf="@+id/item_cart_item_for_order_confirmation_iv_product_image"
+        app:layout_constraintTop_toTopOf="@+id/item_cart_item_for_order_confirmation_iv_product_image" />
+
+    <TextView
+        android:id="@+id/item_cart_item_for_order_confirmation_tv_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="SL: x 0"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/item_cart_item_for_order_confirmation_iv_product_image"
+        app:layout_constraintTop_toBottomOf="@+id/item_cart_item_for_order_confirmation_tv_product_name" />
+
+    <TextView
+        android:id="@+id/item_cart_item_for_order_confirmation_tv_unit_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="0 đ"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/item_cart_item_for_order_confirmation_tv_product_name"
+        app:layout_constraintTop_toBottomOf="@+id/item_cart_item_for_order_confirmation_tv_product_name" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,11 @@
-package com.example.myapplication;
+package com.example.myapplication.merchant.choose_store;
 
 import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
+import com.example.myapplication.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.View;
 import android.view.WindowManager;
 
 import androidx.navigation.NavController;

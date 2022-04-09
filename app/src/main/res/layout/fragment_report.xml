@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui_store_management.Report.ReportFragment">
+    tools:context=".merchant.store_management.Report.ReportFragment">
 
     <TextView
         android:id="@+id/text_notifications"
