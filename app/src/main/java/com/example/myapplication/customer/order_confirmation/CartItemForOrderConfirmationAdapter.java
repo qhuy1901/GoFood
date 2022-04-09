@@ -11,8 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
-import com.example.myapplication.customer.cart.CartItemAdapter;
 import com.example.myapplication.models.CartItem;
 import com.example.myapplication.models.CartSession;
 
@@ -25,6 +25,7 @@ public class CartItemForOrderConfirmationAdapter extends RecyclerView.Adapter<Ca
     private final List<CartItem> cart;
     private CartSession cartSession;
     private Context context;
+    private GoFoodDatabase goFoodDatabase = new GoFoodDatabase();;
 
     public CartItemForOrderConfirmationAdapter(List<CartItem> cart, Context context) {
         this.cart = cart;
@@ -48,8 +49,12 @@ public class CartItemForOrderConfirmationAdapter extends RecyclerView.Adapter<Ca
         holder.tvQuantity.setText("SL: x "+ cartItem.quantity);
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
-        String priceAfterFormat = currencyVN.format(cartItem.product.getPrice());
+        String priceAfterFormat = currencyVN.format(cartItem.product.getPrice()).replace("₫", "")+ " ₫";
         holder.tvPrice.setText(priceAfterFormat);
+        if(!cartItem.product.getProductImage().isEmpty())
+        {
+            goFoodDatabase.loadImageToImageView(holder.ivProductImage, "product_image" , cartItem.product.getProductImage());
+        }
     }
 
     @Override

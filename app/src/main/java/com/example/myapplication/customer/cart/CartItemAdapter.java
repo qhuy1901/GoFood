@@ -52,7 +52,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
         holder.tvQuantity.setText(cartItem.quantity+"");
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
-        String priceAfterFormat = currencyVN.format(cartItem.product.getPrice());
+        String priceAfterFormat = currencyVN.format(cartItem.product.getPrice()).replace("₫", "")+ " ₫";
         holder.tvPrice.setText(priceAfterFormat);
         holder.tvDescription.setText(cartItem.product.getProductDescription());
         if(cartItem.product.getProductDescription().isEmpty())
