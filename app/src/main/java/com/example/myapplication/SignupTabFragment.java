@@ -16,19 +16,22 @@ public class SignupTabFragment extends Fragment {
     private EditText edtEmail;
     private EditText edtPassword;
     private EditText edtConfirmPassword;
+    private TextView register;
     float v=0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.signup_tab_fragment, container, false);
-
+        register= root.findViewById(R.id.register);
         edtFullName = root.findViewById(R.id.edtFullName);
         edtNM = root.findViewById(R.id.edtNM);
         edtEmail = root.findViewById(R.id.edtEmail);
         edtPassword = root.findViewById(R.id.edtPassword);
         edtConfirmPassword = root.findViewById(R.id.edtConfirmPassword);
         btnRegister = root.findViewById(R.id.btnRegister);
-
+        register.setTranslationX(500);
+        register.setAlpha(v);
+        register. animate().translationX(0).alpha(1).setDuration(500).setStartDelay(700).start();
         edtFullName.setTranslationX(800);
         edtNM.setTranslationX(800);
         edtEmail.setTranslationX(800);
