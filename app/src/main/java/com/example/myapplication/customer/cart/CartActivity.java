@@ -113,8 +113,18 @@ public class CartActivity extends AppCompatActivity {
         btnDelivery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent switchActivityIntent = new Intent(CartActivity.this, OrderConfirmationActivity.class);
-                startActivity(switchActivityIntent);
+                if(cartSession.count() > 0)
+                {
+                    Intent switchActivityIntent = new Intent(CartActivity.this, OrderConfirmationActivity.class);
+                    startActivity(switchActivityIntent);
+                }
+                else
+                {
+                    new SweetAlertDialog(CartActivity.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                            .setContentText("Chưa có sản phẩm nào trong giỏ hàng")
+                            .setCustomImage(R.drawable.empty_cart_icon)
+                            .show();
+                }
             }
         });
     }

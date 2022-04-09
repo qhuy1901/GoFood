@@ -39,7 +39,9 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:paddingBottom="10dp"
+                android:textSize="18dp"
                 android:text="Địa chỉ giao hàng"
+                android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -48,6 +50,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:paddingBottom="10dp"
+                android:textSize="16dp"
                 android:text="Quang Huy - 0365990290"
                 app:layout_constraintTop_toBottomOf="@+id/activity_order_confirmation_textView10" />
 
@@ -58,6 +61,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="25dp"
                 android:paddingBottom="10dp"
+                android:textSize="16dp"
                 android:text="Hẻm 2 Đoàn Văn Cự, P. Tam Hiệp, TP. Biên Hòa, Đồng Nai, Việt Nam"
                 app:layout_constraintTop_toBottomOf="@+id/activity_order_confirmation_textView12" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -73,8 +77,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hẹn giao - 09:40 - Ngày mai 09/04"
+            android:textSize="18dp"
             android:paddingLeft="20dp"
-            android:paddingRight="25dp"
+            android:paddingRight="20dp"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:background="@color/white"
@@ -84,6 +89,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             app:layout_constraintTop_toBottomOf="@+id/activity_order_confirmation_tv_delivery_time"/>
         <RelativeLayout
             android:id="@+id/activity_order_confirmation_rl_sum"
@@ -100,10 +109,11 @@
                 android:paddingTop="10dp"
                 android:paddingRight="25dp"
                 android:paddingBottom="10dp"
+                android:textSize="18dp"
                 android:text="Tổng (2 phần)" />
 
             <TextView
-                android:id="@+id/activity_order_confirmation_total"
+                android:id="@+id/activity_order_confirmation_tv_sum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -111,7 +121,8 @@
                 android:paddingTop="10dp"
                 android:paddingRight="25dp"
                 android:paddingBottom="10dp"
-                android:text="0 đ" />
+                android:text="0 đ"
+                android:textSize="18dp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -128,6 +139,7 @@
                 android:paddingTop="10dp"
                 android:paddingRight="25dp"
                 android:paddingBottom="10dp"
+                android:textSize="18dp"
                 android:text="Phí giao hàng (2.4 km)" />
 
             <TextView
@@ -139,7 +151,8 @@
                 android:paddingTop="10dp"
                 android:paddingRight="25dp"
                 android:paddingBottom="10dp"
-                android:text="0 đ" />
+                android:text="0 đ"
+                android:textSize="18dp" />
             <View
                 android:id="@+id/activity_order_confirmation_line3"
                 android:layout_width="match_parent"
@@ -163,6 +176,7 @@
                 android:paddingTop="10dp"
                 android:paddingRight="25dp"
                 android:paddingBottom="10dp"
+                android:textSize="18dp"
                 android:text="Phí áp dụng" />
 
             <TextView
@@ -174,7 +188,8 @@
                 android:paddingTop="10dp"
                 android:paddingRight="25dp"
                 android:paddingBottom="10dp"
-                android:text="0 đ" />
+                android:text="0 đ"
+                android:textSize="18dp" />
             <View
                 android:id="@+id/activity_order_confirmation_line4"
                 android:layout_width="match_parent"
@@ -199,7 +214,7 @@
                 android:paddingBottom="10dp"
                 android:text="Tổng cộng"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -212,9 +227,9 @@
                 android:paddingRight="25dp"
                 android:paddingBottom="10dp"
                 android:text="0 đ"
-                android:textStyle="bold"
                 android:textColor="@color/red"
-                android:textSize="18dp" />
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -250,6 +265,7 @@
                 android:paddingRight="25dp"
                 android:paddingBottom="10dp"
                 android:text="Giao tận cửa"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -259,12 +275,12 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:checked="false"
-                android:text="[5.000 đ]"
-                android:textColor="@color/gray"
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
                 android:paddingRight="25dp"
-                android:paddingBottom="10dp" />
+                android:paddingBottom="10dp"
+                android:text="[5.000 đ]"
+                android:textColor="@color/gray" />
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/activity_order_confirmation_rl_take_eating_utensils"
@@ -281,6 +297,7 @@
                 android:paddingTop="10dp"
                 android:paddingRight="25dp"
                 android:paddingBottom="10dp"
+                android:textSize="18dp"
                 android:text="Lấy dụng cụ ăn uống"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
@@ -296,7 +313,7 @@
                 android:text="Dụng cụ ăn uống sẽ được cung cấp. Hãy chung tay bảo vệ môi trường vào lần sau nhé!" />
 
             <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/activity_order_confirmation_tv_take_eating_utensils"
+                android:id="@+id/activity_order_confirmation_sc_take_eating_utensils"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -328,6 +345,7 @@
                 android:paddingRight="25dp"
                 android:paddingBottom="10dp"
                 android:text="Ghi chú"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -366,6 +384,7 @@
                 android:paddingRight="25dp"
                 android:paddingBottom="10dp"
                 android:text="Chọn hình thức thanh toán"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
             <View
@@ -376,17 +395,20 @@
                 android:layout_height="1dp"
                 android:background="@color/background_color1" />
             <RadioGroup
+                android:id="@+id/activity_order_confirmation_rg_payment_method"
                 android:layout_width="match_parent"
                 android:layout_below="@+id/activity_order_confirmation_text3"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <RadioButton
+                    android:id="@+id/activity_order_confirmation_rb_online_payment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
                     android:layout_margin="16dp"
                     android:text="Thanh toán online"/>
                 <RadioButton
+                    android:id="@+id/activity_order_confirmation_rb_cash"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
@@ -395,11 +417,13 @@
             </RadioGroup>
         </RelativeLayout>
         <Button
+            android:id="@+id/activity_order_confirmation_btn_confirm"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Đặt đơn - 0đ"
+            android:layout_height="60dp"
+            android:text="ĐẶT ĐƠN - 0đ"
             android:textAllCaps="false"
-            android:textSize="20dp"
+            android:textSize="22dp"
+            android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/activity_order_confirmation_rl_delivery_method"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"

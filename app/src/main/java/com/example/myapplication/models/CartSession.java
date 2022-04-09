@@ -3,7 +3,6 @@ package com.example.myapplication.models;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
-import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -13,7 +12,6 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class CartSession
 {
@@ -123,6 +121,15 @@ public class CartSession
         if(getCart() == null)
             return 0;
         int sum =  getCart().stream().mapToInt(o -> o.product.getPrice() * o.quantity).sum();
+        return  sum;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public int count()
+    {
+        if(getCart() == null)
+            return 0;
+        int sum = (int) getCart().stream().mapToInt(o -> o.quantity).sum();
         return  sum;
     }
 }

@@ -1,22 +1,24 @@
 package com.example.myapplication.customer.store_detail;
 
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.customer.cart.CartActivity;
+import com.example.myapplication.customer.order_confirmation.OrderConfirmationActivity;
 import com.example.myapplication.models.CartSession;
 import com.example.myapplication.models.Product;
 import com.example.myapplication.models.Store;
@@ -31,6 +33,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class StoreDetailActivity extends AppCompatActivity {
 
     private ImageView ivStoreAvatar, ivShowCart;
@@ -39,8 +43,9 @@ public class StoreDetailActivity extends AppCompatActivity {
     private GoFoodDatabase goFoodDatabase;
     private List<Product> productList;
     private RecyclerView rcvProduct;
-    private CartSession cart;
+    private CartSession cartSession;
     private ProductForStoreDetailAdapter productForStoreDetailAdapter;
+    private Button btnDelivery;
 
     private void initUi()
     {
@@ -49,13 +54,14 @@ public class StoreDetailActivity extends AppCompatActivity {
         rcvProduct = (RecyclerView) findViewById(R.id.rcv_product_list);
         ivShowCart = (ImageView) findViewById(R.id.iv_show_cart);
         tvTotal = (TextView) findViewById(R.id.tv_total);
+        btnDelivery = (Button) findViewById(R.id.btn_delivery) ;
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rcvProduct.setLayoutManager(linearLayoutManager);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,DividerItemDecoration.VERTICAL);
         rcvProduct.addItemDecoration(dividerItemDecoration);
 
-        cart = new CartSession(StoreDetailActivity.this);
+        cartSession = new CartSession(StoreDetailActivity.this);
         productList = new ArrayList<>();
         productForStoreDetailAdapter = new ProductForStoreDetailAdapter(productList, this);
         rcvProduct.setAdapter(productForStoreDetailAdapter);
@@ -72,7 +78,7 @@ public class StoreDetailActivity extends AppCompatActivity {
     {
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
-        String total = currencyVN.format(cart.getTotal());
+        String total = currencyVN.format(cartSession.getTotal());
         tvTotal.setText(total);
     }
 
@@ -95,6 +101,23 @@ public class StoreDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent switchActivityIntent = new Intent(StoreDetailActivity.this, CartActivity.class);
                 startActivity(switchActivityIntent);
+            }
+        });
+        btnDelivery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(cartSession.count() > 0)
+                {
+                    Intent switchActivityIntent = new Intent(StoreDetailActivity.this, OrderConfirmationActivity.class);
+                    startActivity(switchActivityIntent);
+                }
+                else
+                {
+                    new SweetAlertDialog(StoreDetailActivity.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                            .setContentText("Chưa có sản phẩm nào trong giỏ hàng")
+                            .setCustomImage(R.drawable.empty_cart_icon)
+                            .show();
+                }
             }
         });
 
