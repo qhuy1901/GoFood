@@ -31,3 +31,86 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:drawableLeft="@drawable/ic_baseline_location_on_24"
+            android:drawablePadding="9dp"
+            android:fontFamily="@font/be_vietnam_bold"
+            android:padding="10dp"
+            android:text="Your Location"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tvRecommended"
+            android:layout_width="215dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:text="RECOMMENDED FOR YOU"
+            android:textColor="#333333"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLocation" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recommended_rec"
+            android:layout_width="410dp"
+            android:layout_height="109dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRecommended" />
+
+        <TextView
+            android:id="@+id/tvCategories"
+            android:layout_width="208dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="203dp"
+            android:drawablePadding="9dp"
+            android:fontFamily="@font/be_vietnam_bold"
+            android:padding="10dp"
+            android:text="CATEGORIES"
+            android:textColor="#333333"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recommended_rec" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/categories_order_rec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCategories"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_store_list_by_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/categories_order_rec" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/menucate_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/categories_order_rec" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+

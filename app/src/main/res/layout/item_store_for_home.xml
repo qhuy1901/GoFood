@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_store_for_home_cl_store_parent"
+    android:layout_width="match_parent"
+    android:layout_margin="10dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/item_store_for_home_iv_store_avatar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_store"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_store_for_home_tv_store_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="ABC Bakery - 134 Phạm Văn Thuận"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/item_store_for_home_iv_store_avatar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/star"
+        app:layout_constraintStart_toEndOf="@+id/item_store_for_home_iv_store_avatar"
+        app:layout_constraintTop_toBottomOf="@+id/item_store_for_home_tv_store_name" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:text="5.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView8"
+        app:layout_constraintTop_toBottomOf="@+id/item_store_for_home_tv_store_name" />
+
+    <View
+        android:id="@+id/item_store_for_home_line2"
+        android:layout_width="1dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/background_color1"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/imageView9"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/item_store_for_home_tv_store_name" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/location_icon"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/item_store_for_home_tv_store_name" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:text="1.2km"
+        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintTop_toBottomOf="@+id/item_store_for_home_tv_store_name" />
+
+    <View
+        android:id="@+id/item_store_for_home_line1"
+        android:layout_width="1dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/background_color1"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/item_store_for_home_tv_store_name" />
+
+    <ImageView
+        android:id="@+id/imageView20"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/clock_icon"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/item_store_for_home_tv_store_name" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="19min"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView20"
+        app:layout_constraintTop_toBottomOf="@+id/item_store_for_home_tv_store_name" />
+</androidx.constraintlayout.widget.ConstraintLayout>

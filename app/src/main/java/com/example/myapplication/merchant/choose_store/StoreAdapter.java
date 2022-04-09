@@ -18,7 +18,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.customer.store_detail.StoreDetailActivity;
+import com.example.myapplication.merchant.store_management.StoreManagementActivity;
 import com.example.myapplication.models.Store;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -69,10 +69,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
 
     private void onClickGoToDetail(Store store)
     {
-//        Intent switchActivityIntent = new Intent(this.context, StoreManagementActivity.class);
-//        context.startActivity(switchActivityIntent);
-        Intent switchActivityIntent = new Intent(this.context, StoreDetailActivity.class);
-        switchActivityIntent.putExtra("store", store);
+        Intent switchActivityIntent = new Intent(this.context, StoreManagementActivity.class);
         context.startActivity(switchActivityIntent);
     }
 

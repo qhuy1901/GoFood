@@ -148,7 +148,6 @@ public class StoreDetailActivity extends AppCompatActivity {
                 Toast.makeText(StoreDetailActivity.this, "Không lấy được danh sách món", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
