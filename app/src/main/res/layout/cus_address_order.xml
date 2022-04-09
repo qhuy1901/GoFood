@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchAddress"
+        android:layout_width="360dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/search_view_bg"
+        app:iconifiedByDefault="false"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDiaChi"
+        app:layout_constraintVertical_bias="0.726"
+        app:queryHint="Nhập địa chỉ" />
+
+    <TextView
+        android:id="@+id/txtDiaChi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/be_vietnam_bold"
+        android:text="Địa chỉ"
+        android:textColor="@color/color_primary"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
+
+    <ImageView
+        android:id="@+id/iconBack"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ei_arrowleft" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listAddress"
+        android:layout_width="391dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchAddress" />
+
+    <TextView
+        android:id="@+id/txtSaved"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/be_vietnam_bold"
+        android:text="Đã lưu"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listAddress" />
+
+    <ImageView
+        android:id="@+id/imgHomeIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="@+id/txtSaved"
+        app:layout_constraintTop_toBottomOf="@+id/txtSaved"
+        app:srcCompat="@drawable/home_icon" />
+
+    <TextView
+        android:id="@+id/txtAddHomeAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="2dp"
+        android:text="Thêm địa chỉ nhà"
+        app:layout_constraintStart_toEndOf="@+id/imgHomeIcon"
+        app:layout_constraintTop_toTopOf="@+id/imgHomeIcon" />
+
+    <TextView
+        android:id="@+id/txtAddHomeAddress2"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="2dp"
+        android:text="Thêm địa chỉ công ty"
+        app:layout_constraintStart_toEndOf="@+id/imgHomeIcon2"
+        app:layout_constraintTop_toTopOf="@+id/imgHomeIcon2" />
+
+    <ImageView
+        android:id="@+id/imgHomeIcon2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@+id/imgHomeIcon"
+        app:layout_constraintTop_toBottomOf="@+id/imgHomeIcon"
+        app:srcCompat="@drawable/company_icon" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgHomeIcon"
+        app:srcCompat="@drawable/continue_arrow" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtAddHomeAddress2"
+        app:srcCompat="@drawable/continue_arrow" />
+
+    <Button
+        android:id="@+id/btnAddAdress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        android:text="Thêm địa chỉ mới"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
