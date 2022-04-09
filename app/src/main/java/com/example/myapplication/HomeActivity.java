@@ -1,19 +1,22 @@
 package com.example.myapplication;
 
+import android.os.Bundle;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.widget.TextView;
-
 import com.example.myapplication.adapter.Home_AllCateAdapter;
 import com.example.myapplication.adapter.Home_CategoriesOrderAdapter;
 import com.example.myapplication.adapter.Home_RecommendedAdapter;
+import com.example.myapplication.adapter.StoreForHomeAdapter;
 import com.example.myapplication.models.Home_CategoriesOrderModel;
 import com.example.myapplication.models.Home_MenuCategoriesModel;
 import com.example.myapplication.models.Home_RecommendedOrderModel;
+import com.example.myapplication.models.Store;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -47,13 +50,31 @@ public class HomeActivity extends AppCompatActivity {
     Home_AllCateAdapter allcate_menu_Adapter;
     List<Home_MenuCategoriesModel> allcate_menu_ModelList;
 
+
+    private RecyclerView rcvStoreListByCategory;
+    private List<Store> storeListByCategory;
+    private  StoreForHomeAdapter storeForHomeAdapter;
+
+    private void initUi()
+    {
+        tvLocation = (TextView) findViewById(R.id.tvLocation);
+
+        rcvStoreListByCategory = (RecyclerView) findViewById(R.id.rcv_store_list_by_category);
+
+        storeListByCategory = new ArrayList<>();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        rcvStoreListByCategory.setLayoutManager(linearLayoutManager);
+        storeForHomeAdapter = new StoreForHomeAdapter( storeListByCategory, HomeActivity.this);
+        rcvStoreListByCategory.setAdapter(storeForHomeAdapter);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        tvLocation = (TextView) findViewById(R.id.tvLocation);
-        if(WelcomeActivity.type_usr == 1) {
+        initUi();
 
+        if(WelcomeActivity.type_usr == 1) {
             // get location
             getLocation();
 
@@ -64,11 +85,65 @@ public class HomeActivity extends AppCompatActivity {
             getCategoriesOrder();
 
             // category - allcate
-            getAllCateMenu();
+//            getAllCateMenu();
+
+            //
+            getStoreListByCategoryFromRealtimeDatabase();
         }else{
             tvLocation.setText("MERCHANT LOGIN");
         }
     }
+
+    public void getStoreListByCategoryFromRealtimeDatabase()
+    {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference().child("stores");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                storeListByCategory.clear();
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Store store = postSnapshot.getValue(Store.class);
+                    storeListByCategory.add(store);
+                }
+                storeForHomeAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(HomeActivity.this, "Không lấy được danh sách món", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void getStoreListByCategoryFromRealtimeDatabase(String category)
+    {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference().child("stores");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                storeListByCategory.clear();
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Store store = postSnapshot.getValue(Store.class);
+                    if(store.getStoreCategory().contains(category))
+                    {
+                        storeListByCategory.add(store);
+                    }
+                }
+                storeForHomeAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(HomeActivity.this, "Không lấy được danh sách món", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
 
     private void getCategoriesOrder(){
         categories_order_RecyclerView = findViewById(R.id.categories_order_rec);

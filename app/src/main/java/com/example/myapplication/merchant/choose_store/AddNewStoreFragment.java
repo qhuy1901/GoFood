@@ -1,6 +1,8 @@
 package com.example.myapplication.merchant.choose_store;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -10,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -33,7 +34,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AddNewStoreFragment extends Fragment implements AdapterView.OnItemSelectedListener {
@@ -41,6 +45,9 @@ public class AddNewStoreFragment extends Fragment implements AdapterView.OnItemS
     private FragmentAddNewStoreBinding binding;
     private DatabaseReference mDatabase;
     private FirebaseStorage storage = FirebaseStorage.getInstance();
+    private String[] storeCategories = {"Đồ ăn", "Đồ uống", "Đồ chay", "Bánh kem"};
+    private boolean[] selected;
+    private List<Integer> selectedList = new ArrayList<>();
 
     private ActivityResultLauncher<Intent> checkPermission = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -86,17 +93,78 @@ public class AddNewStoreFragment extends Fragment implements AdapterView.OnItemS
             }
         });
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.store_category, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.spnStoreCategory.setAdapter(adapter);
-        //binding.spnStoreCategory.setOnItemClickListener(this);
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.store_category, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        binding.spnStoreCategory.setAdapter(adapter);
+
+        selected = new boolean[storeCategories.length];
+        binding.tvChooseCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Chọn loại cửa hàng");
+                builder.setCancelable(false);
+                builder.setMultiChoiceItems(storeCategories, selected, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                        // Check condition
+                        if(b){
+                            // When checkbox selected
+                            // Add position in day list
+                            selectedList.add(i);
+                            Collections.sort(selectedList);
+                        }
+                        else{
+                            selectedList.remove(i);
+                        }
+                    }
+                });
+                builder.setPositiveButton("Xong", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        StringBuilder stringBuilder = new StringBuilder();
+                        for(int j = 0; j < selectedList.size(); j++)
+                        {
+                            // Concat array value
+                            stringBuilder.append(storeCategories[selectedList.get(j)]);
+
+                            if(j != selectedList.size() -1)
+                            {
+                                stringBuilder.append(", ");
+                            }
+                        }
+                        // Set text for spinner
+                        binding.tvChooseCategory.setText(stringBuilder.toString());
+                    }
+                });
+
+                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setNeutralButton("Clear All", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        for(int j = 0; j < selected.length; j++)
+                        {
+                            selected[j] = false;
+                            selectedList.clear();
+                        }
+                        binding.tvChooseCategory.setText("");
+                    }
+                });
+                builder.show();
+            }
+        });
 
 
         binding.btnAddStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String storeName = binding.etStoreName.getText().toString();
-                String storeCategory = binding.spnStoreCategory.getSelectedItem().toString();
+                String storeCategory = binding.tvChooseCategory.getText().toString();
                 String description = binding.etDescription.getText().toString();
 
                 writeNewStore(storeName, storeCategory, description);

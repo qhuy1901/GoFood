@@ -1,7 +1,6 @@
 package com.example.myapplication.customer.store_detail;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
-import com.example.myapplication.models.CartSession;
 import com.example.myapplication.models.CartItem;
+import com.example.myapplication.models.CartSession;
 import com.example.myapplication.models.Product;
-import com.example.myapplication.merchant.store_management.MenuManagement.UpdateProductActivity;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -56,12 +54,6 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         String priceAfterFormat = currencyVN.format(product.getPrice());
         holder.tvPrice.setText(priceAfterFormat);
-        holder.clProductItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onClickGoToDetail(product);
-            }
-        });
         if(!product.getProductImage().isEmpty())
         {
             goFoodDatabase.loadImageToImageView(holder.ivProductImage, "product_image" ,product.getProductImage());
@@ -84,13 +76,6 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
                                         .show();
             }
         });
-    }
-
-    private void onClickGoToDetail(Product product)
-    {
-        Intent switchActivityIntent = new Intent(this.context, UpdateProductActivity.class);
-        switchActivityIntent.putExtra("product", product);
-        context.startActivity(switchActivityIntent);
     }
 
     @Override

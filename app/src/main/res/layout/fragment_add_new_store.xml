@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".merchant.choose_store.AddNewStoreFragment">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
@@ -157,39 +159,53 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#0A191E"
         android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/spnStoreCategory"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_choose_category"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etDescription"
         app:layout_constraintVertical_bias="0.538" />
 
-    <Spinner
-        android:id="@+id/spnStoreCategory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="140dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="20dp"
-        android:layout_weight="1"
-        android:background="@drawable/spinner_bg"
-        android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Cate"
-        app:layout_constraintTop_toBottomOf="@+id/etDescription" />
+<!--    <Spinner-->
+<!--        android:id="@+id/tv_choose_category"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="140dp"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        android:layout_weight="1"-->
+<!--        android:background="@drawable/spinner_bg"-->
+<!--        android:spinnerMode="dropdown"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/Cate"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/etDescription" />-->
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:fontFamily="@font/be_vietnam_bold"
-        android:text="Thêm ảnh đại diện của quán"
-        android:textColor="#333333"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/spnStoreCategory"
-        tools:layout_editor_absoluteX="20dp" />
+        <TextView
+            android:id="@+id/tv_choose_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Chọn loại quán"
+            android:textSize="16dp"
+            android:layout_marginLeft="110dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/spinner_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Cate"
+            app:layout_constraintTop_toBottomOf="@+id/etDescription" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:fontFamily="@font/be_vietnam_bold"
+            android:text="Thêm ảnh đại diện của quán"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_choose_category"
+            tools:layout_editor_absoluteX="20dp" />
 
 
-    <!--    </ScrollView>-->
+        <!--    </ScrollView>-->
 
     <ImageView
         android:id="@+id/ivStoreAvatar"
@@ -216,8 +232,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivStoreAvatar" />
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
