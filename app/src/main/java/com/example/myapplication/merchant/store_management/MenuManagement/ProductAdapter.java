@@ -1,4 +1,4 @@
-package com.example.myapplication.adapter;
+package com.example.myapplication.merchant.store_management.MenuManagement;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.models.Product;
-import com.example.myapplication.ui_store_management.MenuManagement.UpdateProductActivity;
 
 import java.text.NumberFormat;
 import java.util.List;

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color1"
-    tools:context=".StoreDetailActivity">
+    tools:context=".customer.store_detail.StoreDetailActivity">
 
     <ImageView
         android:id="@+id/iv_store_avatar"

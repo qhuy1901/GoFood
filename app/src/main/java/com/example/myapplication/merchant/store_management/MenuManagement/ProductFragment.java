@@ -1,4 +1,4 @@
-package com.example.myapplication.ui_store_management.MenuManagement;
+package com.example.myapplication.merchant.store_management.MenuManagement;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -13,11 +13,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.adapter.ProductAdapter;
 import com.example.myapplication.databinding.FragmentProductBinding;
 import com.example.myapplication.models.Product;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

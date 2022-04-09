@@ -1,11 +1,6 @@
-package com.example.myapplication;
+package com.example.myapplication.merchant.store_management;
 
 import android.os.Bundle;
-import android.widget.TextView;
-
-import com.example.myapplication.databinding.ActivityStoreManagementBinding;
-import com.example.myapplication.models.Store;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -13,7 +8,10 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.myapplication.databinding.ActivityStoreDetailBinding;
+import com.example.myapplication.R;
+import com.example.myapplication.databinding.ActivityStoreManagementBinding;
+import com.example.myapplication.models.Store;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class StoreManagementActivity extends AppCompatActivity {
 

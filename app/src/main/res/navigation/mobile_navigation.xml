@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.myapplication.ui_store_management.MerchantOrder.MerchantOrderFragment"
+        android:name="com.example.myapplication.merchant.store_management.MerchantOrder.MerchantOrderFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_merchant_order" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.myapplication.ui_store_management.MenuManagement.MenuManagementFragment"
+        android:name="com.example.myapplication.merchant.store_management.MenuManagement.MenuManagementFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_menu_management" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.myapplication.ui_store_management.Report.ReportFragment"
+        android:name="com.example.myapplication.merchant.store_management.Report.ReportFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_report" />
 </navigation>

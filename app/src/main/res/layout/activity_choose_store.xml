@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:theme="@style/Theme.MyApplication.NoActionBar"
-    tools:context=".ChooseStoreActivity">
+    tools:context=".merchant.choose_store.ChooseStoreActivity">
 
     <ImageView
         android:id="@+id/imageView2"

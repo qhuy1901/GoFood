@@ -1,10 +1,4 @@
-package com.example.myapplication;
-
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+package com.example.myapplication.customer.cart;
 
 import android.content.Intent;
 import android.os.Build;
@@ -13,12 +7,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.myapplication.adapter.CartItemAdapter;
-import com.example.myapplication.models.CartSession;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myapplication.R;
+import com.example.myapplication.customer.order_confirmation.OrderConfirmationActivity;
 import com.example.myapplication.models.CartItem;
-import com.example.myapplication.ui_store_management.MenuManagement.UpdateProductActivity;
+import com.example.myapplication.models.CartSession;
 
 import java.text.NumberFormat;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.customer.store_detail;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -15,8 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.adapter.ProductAdapter;
-import com.example.myapplication.adapter.ProductForStoreDetailAdapter;
+import com.example.myapplication.GoFoodDatabase;
+import com.example.myapplication.R;
+import com.example.myapplication.customer.cart.CartActivity;
 import com.example.myapplication.models.CartSession;
 import com.example.myapplication.models.Product;
 import com.example.myapplication.models.Store;

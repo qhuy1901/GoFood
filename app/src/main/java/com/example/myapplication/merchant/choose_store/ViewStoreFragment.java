@@ -1,7 +1,6 @@
-package com.example.myapplication;
+package com.example.myapplication.merchant.choose_store;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +14,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.adapter.StoreAdapter;
+import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentViewStoreBinding;
 import com.example.myapplication.models.Store;
 import com.google.firebase.database.DataSnapshot;
@@ -24,7 +23,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
