@@ -8,14 +8,17 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
-        android:largeHeap="true"
-        android:hardwareAccelerated="false"
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@drawable/gofooddesignlogo"
         android:label="GoFood"
         android:roundIcon="@drawable/gofooddesignlogo"
+        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+        <activity
+            android:name=".OrderConfirmationActivity"
+            android:exported="false" />
         <activity
             android:name=".CartActivity"
             android:exported="false" />
