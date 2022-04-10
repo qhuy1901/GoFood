@@ -5,7 +5,7 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -90,7 +90,7 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
         private TextView tvProductName, tvPrice;
         private ImageView ivProductImage;
         private ConstraintLayout clProductItem;
-        private Button btnAddToCart;
+        private ImageButton btnAddToCart;
 
         public ProductForStoreDetailViewHolder(@NonNull View itemView) {
             super(itemView);

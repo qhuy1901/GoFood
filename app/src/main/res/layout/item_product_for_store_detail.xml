@@ -54,7 +54,7 @@
     <android.widget.ImageButton
         android:layout_width="40dp"
         android:layout_height="40dp"
-android:id="@+id/item_product_for_store_detail_btn_add_to_cart"
+        android:id="@+id/item_product_for_store_detail_btn_add_to_cart"
         android:layout_marginRight="10dp"
         android:background="@drawable/plus_icon"
         android:src="@drawable/plus1"

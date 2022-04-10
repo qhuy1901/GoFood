@@ -5,7 +5,7 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -105,7 +105,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
         private TextView tvProductName, tvPrice, tvQuantity, tvDescription;
         private ImageView ivProductImage;
         private ConstraintLayout clProductItem;
-        private Button btnPlus, btnSubtract;
+        private ImageButton btnPlus, btnSubtract;
 
         public CartItemViewHolder(@NonNull View itemView) {
             super(itemView);
