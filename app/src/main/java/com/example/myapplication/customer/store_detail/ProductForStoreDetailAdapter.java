@@ -14,6 +14,7 @@ import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.models.CartItem;
@@ -56,7 +57,7 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
         holder.tvPrice.setText(priceAfterFormat);
         if(!product.getProductImage().isEmpty())
         {
-            goFoodDatabase.loadImageToImageView(holder.ivProductImage, "product_image" ,product.getProductImage());
+            Glide.with(context).load(product.getProductImage()).into(holder.ivProductImage);
         }
         holder.btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)

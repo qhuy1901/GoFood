@@ -45,8 +45,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
             return ;
         holder.tvStoreName.setText(store.getStoreName());
         holder.tvStoreCategory.setText(store.getStoreCategory());
-
-        Glide.with(context).load("https://firebasestorage.googleapis.com/v0/b/gofooddatabase.appspot.com/o/system_image%2Fdefault_store.png?alt=media&token=89b07997-d877-40ad-bc63-4b9b6b591819").into(holder.ivAvatar);
+        holder.ivAvatar.setImageResource(R.drawable.default_store);
         if(!store.getAvatar().isEmpty())
             Glide.with(context).load(store.getAvatar()).into(holder.ivAvatar);
 

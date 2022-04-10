@@ -36,18 +36,51 @@ public class GoFoodDatabase {
     public void insertProduct(Product product, ImageView ivProductImage) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         String key = mDatabase.child("stores").child(product.getStoreId()).child("Menu").push().getKey();
-
-        // Lưu thông tin product vào realtime database
-        String avatarFileName = "product_image/product_avatar_" + key + ".png";
-        product.setProductImage(avatarFileName);
         product.setProductId(key);
-        Map<String, Object> productValues = product.toMap();
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/stores/"+ product.getStoreId() + "/menu/products/" + key, productValues);
-        mDatabase.updateChildren(childUpdates);
 
-        // Lưu ảnh avatar vào firebase storage
-        addImageToStorageFirebase(avatarFileName, ivProductImage);
+        /* Xử lý thêm ảnh vô firebase */
+        StorageReference storageRef = storage.getReference( "product_image/product_avatar_" + key + ".png");
+        // Get the data from an ImageView as bytes
+        ivProductImage.setDrawingCacheEnabled(true);
+        ivProductImage.buildDrawingCache();
+        Bitmap bitmap = ((BitmapDrawable) ivProductImage.getDrawable()).getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] data = baos.toByteArray();
+
+        UploadTask uploadTask = storageRef.putBytes(data);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                /* Thêm dữ liệu vô Realtime database */
+                Map<String, Object> productValues = product.toMap();
+                Map<String, Object> childUpdates = new HashMap<>();
+                childUpdates.put("/stores/"+ product.getStoreId() + "/menu/products/" + key, productValues);
+                mDatabase.updateChildren(childUpdates);
+
+                /* Lấy url sau khi upload ảnh thành công */
+                storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        product.setProductImage(uri.toString());
+                        /* Thêm dữ liệu vô Realtime database */
+                        mDatabase.child("stores").child(product.getStoreId()).child("menu").child("products").child(key).child("productImage").setValue(uri.toString());
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle any errors
+                    }
+                });
+            }
+        });
+
+
     }
 
     public void deleteProduct(Product product, Context context)
