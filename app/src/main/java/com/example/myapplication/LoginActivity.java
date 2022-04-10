@@ -1,29 +1,13 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
+import android.os.Bundle;
+import android.view.WindowManager;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -59,13 +43,6 @@ public class LoginActivity extends AppCompatActivity {
         tablayout.setTranslationY(300);
         tablayout.setAlpha(v);
         tablayout.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(100).start();
-
-
-        // Reset Session
-//        SharedPreferences settings = this.getSharedPreferences("cart", Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = settings.edit();
-//        editor.clear();
-//        editor.commit();
     }
 
 }

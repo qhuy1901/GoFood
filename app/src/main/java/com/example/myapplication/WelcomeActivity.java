@@ -1,9 +1,5 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -14,10 +10,18 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.example.myapplication.merchant.choose_store.ChooseStoreActivity;
+import com.example.myapplication.models.User;
+import com.example.myapplication.models.UserSession;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +37,8 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
     FusedLocationProviderClient fusedLocationProviderClient;
     private Button btnCustomer;
     private Button btnMerchant;
+    private TextView tvUsername;
+    private UserSession userSession;
     public static int type_usr = 1;
 
     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Users");
@@ -41,13 +47,35 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
     {
         btnCustomer = (Button) findViewById(R.id.btnCustomer);
         btnMerchant = (Button) findViewById(R.id.btnMerchant);
+        tvUsername = (TextView) findViewById(R.id.txt_username);
+    }
+
+    private void loadCurrentUserName()
+    {
+        User currentUser = userSession.getUser();
+        Log.e("User", currentUser.getFullName() + " Hihi");
+        tvUsername.setText(currentUser.getFullName());
+//        myRef = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUserId());
+//        myRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                User userInfo = snapshot.getValue(User.class);
+//                tvUsername.setText(userInfo.getFullName());
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        userSession = new UserSession(WelcomeActivity.this);
         initUi();
+        loadCurrentUserName();
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
