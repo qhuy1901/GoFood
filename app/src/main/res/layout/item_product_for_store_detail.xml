@@ -51,13 +51,13 @@
         app:layout_constraintStart_toEndOf="@+id/item_product_for_store_detail_iv_product_image"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <Button
+    <android.widget.ImageButton
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:text="+"
 android:id="@+id/item_product_for_store_detail_btn_add_to_cart"
         android:layout_marginRight="10dp"
-        android:textColor="@color/white"
+        android:background="@drawable/plus_icon"
+        android:src="@drawable/plus1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
