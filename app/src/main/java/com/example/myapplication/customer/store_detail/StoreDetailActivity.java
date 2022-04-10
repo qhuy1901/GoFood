@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.customer.cart.CartActivity;
@@ -93,8 +94,7 @@ public class StoreDetailActivity extends AppCompatActivity {
         updateTotalPrice();
 
         goFoodDatabase = new GoFoodDatabase();
-
-        goFoodDatabase.loadImageToImageView(ivStoreAvatar, storeInfo.getAvatar());
+        Glide.with(StoreDetailActivity.this).load(storeInfo.getAvatar()).into(ivStoreAvatar);
         tvStoreName.setText(storeInfo.getStoreName());
         ivShowCart.setOnClickListener(new View.OnClickListener() {
             @Override

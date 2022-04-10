@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.customer.store_detail.StoreDetailActivity;
@@ -42,10 +43,15 @@ public class StoreForHomeAdapter extends RecyclerView.Adapter<StoreForHomeAdapte
         if(store == null)
             return ;
         holder.tvStoreName.setText(store.getStoreName());
+        Glide.with(context).load("https://firebasestorage.googleapis.com/v0/b/gofooddatabase.appspot.com/o/system_image%2Fdefault_store.png?alt=media&token=89b07997-d877-40ad-bc63-4b9b6b591819").into(holder.ivStoreAvatar);
         if(!store.getAvatar().isEmpty())
         {
-            goFoodDatabase.loadImageToImageView(holder.ivStoreAvatar, store.getAvatar());
+            Glide.with(context).load(store.getAvatar()).into(holder.ivStoreAvatar);
         }
+//        if(!store.getAvatar().isEmpty())
+//        {
+//            goFoodDatabase.loadImageToImageView(holder.ivStoreAvatar, store.getAvatar());
+//        }
         holder.clStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
