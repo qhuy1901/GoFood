@@ -17,6 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0" />
+
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/activity_update_product_ib_back"
         android:layout_width="37dp"
@@ -25,10 +26,10 @@
         android:src="@drawable/ei_arrowleft"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toStartOf="@+id/addnewfood"
-        app:layout_constraintHorizontal_bias="0.338"
+        app:layout_constraintHorizontal_bias="0.136"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.586">
+        app:layout_constraintVertical_bias="0.818">
 
     </androidx.appcompat.widget.AppCompatImageButton>
 
@@ -49,7 +50,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.421" />
+        app:layout_constraintVertical_bias="0.869" />
 
     <LinearLayout
         android:id="@+id/activity_update_product_ln_product_image"

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui_store_detail.MenuManagement.AddProductActivity">
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
@@ -14,9 +15,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".27"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0" />
+        app:layout_constraintVertical_bias="0." />
 
     <androidx.appcompat.widget.AppCompatImageButton
 
@@ -28,10 +30,10 @@
         android:src="@drawable/ei_arrowleft"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toStartOf="@+id/addnewfood"
-        app:layout_constraintHorizontal_bias="0.338"
+        app:layout_constraintHorizontal_bias="0.206"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.586">
+        app:layout_constraintVertical_bias="0.871">
 
     </androidx.appcompat.widget.AppCompatImageButton>
 
@@ -43,16 +45,16 @@
         android:layout_centerVertical="true"
         android:fontFamily="@font/be_vietnam_bold"
         android:gravity="top"
-            android:text="Thêm món mới"
+        android:text="Thêm món mới"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#F2789F"
-        android:textSize="28dp"
+        android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.421" />
+        app:layout_constraintVertical_bias="0.969" />
+
     <LinearLayout
         android:id="@+id/ln_product_image"
         android:layout_width="match_parent"

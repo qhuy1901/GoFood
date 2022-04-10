@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/item_cart_item_cl_product_item"
-    android:padding="10dp">
+    android:padding="10dp"
+    >
 
-    <ImageView
+    <android.widget.ImageView
         android:id="@+id/item_cart_item_iv_product_image"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_margin="10dp"
         android:scaleType="centerCrop"
+        android:background="@drawable/item_bg"
         android:src="@drawable/default_product_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_margin="10dp"
+        android:fontFamily="@font/be_vietnam_bold"
         android:text="Tên món"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -34,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/be_vietnam_medium"
         android:text="Mô tả ..."
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@+id/item_cart_item_iv_product_image"
@@ -44,10 +48,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:fontFamily="@font/be_vietnam_medium"
         android:text="Ghi chú cho quán"
         android:textSize="13dp"
-        app:layout_constraintBottom_toTopOf="@+id/item_cart_item_tv_price"
 
+        app:layout_constraintBottom_toTopOf="@+id/item_cart_item_tv_price"
         app:layout_constraintStart_toEndOf="@+id/item_cart_item_iv_product_image"
         app:layout_constraintTop_toBottomOf="@+id/item_cart_item_tv_description" />
 
@@ -64,13 +69,13 @@
         app:layout_constraintStart_toEndOf="@+id/item_cart_item_iv_product_image"
         app:layout_constraintTop_toBottomOf="@+id/item_cart_item_tv_description" />
 
-    <Button
+    <android.widget.ImageButton
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:text="+"
         android:id="@+id/item_cart_item_plus"
         android:layout_marginRight="10dp"
-        android:textColor="@color/white"
+        android:background="@drawable/plus_icon"
+        android:src="@drawable/plus1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -78,19 +83,20 @@
         android:id="@+id/item_cart_item_quantity"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/be_vietnam_bold"
         android:padding="5dp"
-        android:textAlignment="center"
         android:text="1"
+        android:textAlignment="center"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/item_cart_item_plus" />
 
-    <Button
+    <android.widget.ImageButton
         android:id="@+id/item_cart_item_subtract"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:text="-"
-        android:textColor="@color/white"
+        android:background="@drawable/minus_icon"
+        android:src="@drawable/remove"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/item_cart_item_quantity" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,33 @@
       <map>
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_add_product.xml" value="0.2" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_update_product.xml" value="0.2" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/drawable/border_layout.xml" value="0.1745" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/drawable/btn1_bg.xml" value="0.1835" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/drawable/btn2_bg.xml" value="0.1835" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/drawable/btn_bg.xml" value="0.1835" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/drawable/edit_text_bg.xml" value="0.1835" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/drawable/img_bg.xml" value="0.1835" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/drawable/item_bg.xml" value="0.1835" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/drawable/minus_icon.xml" value="0.1835" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/drawable/plus_icon.xml" value="0.1835" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/drawable/store_bg.xml" value="0.1835" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/layout/activity_add_product.xml" value="0.264" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/layout/activity_choose_store.xml" value="0.176" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/layout/activity_order_confirmation.xml" value="0.264" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/layout/activity_update_product.xml" value="0.4" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/layout/content_choose_store.xml" value="0.1453804347826087" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/layout/fragment_merchant_order.xml" value="0.1453804347826087" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/layout/fragment_new_order.xml" value="0.2" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/layout/fragment_product.xml" value="0.1" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/layout/fragment_report.xml" value="0.25" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/layout/fragment_view_store.xml" value="0.1453804347826087" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/layout/item_cart_item.xml" value="0.176" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/layout/item_product.xml" value="0.6" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/layout/item_product_for_store_detail.xml" value="0.2" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/layout/item_store.xml" value="0.264" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/layout/item_store_for_store_detail.xml" value="0.25" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/layout/login_tab_fragment.xml" value="0.1453804347826087" />
+        <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
       </map>
     </option>
   </component>
