@@ -1,13 +1,11 @@
 package com.example.myapplication;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.media.Image;
+import android.net.Uri;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,10 +26,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
 public class GoFoodDatabase {
@@ -41,18 +36,51 @@ public class GoFoodDatabase {
     public void insertProduct(Product product, ImageView ivProductImage) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         String key = mDatabase.child("stores").child(product.getStoreId()).child("Menu").push().getKey();
-
-        // Lưu thông tin product vào realtime database
-        String avatarFileName = "product_image/product_avatar_" + key + ".png";
-        product.setProductImage(avatarFileName);
         product.setProductId(key);
-        Map<String, Object> productValues = product.toMap();
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/stores/"+ product.getStoreId() + "/menu/products/" + key, productValues);
-        mDatabase.updateChildren(childUpdates);
 
-        // Lưu ảnh avatar vào firebase storage
-        addImageToStorageFirebase(avatarFileName, ivProductImage);
+        /* Xử lý thêm ảnh vô firebase */
+        StorageReference storageRef = storage.getReference( "product_image/product_avatar_" + key + ".png");
+        // Get the data from an ImageView as bytes
+        ivProductImage.setDrawingCacheEnabled(true);
+        ivProductImage.buildDrawingCache();
+        Bitmap bitmap = ((BitmapDrawable) ivProductImage.getDrawable()).getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] data = baos.toByteArray();
+
+        UploadTask uploadTask = storageRef.putBytes(data);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                /* Thêm dữ liệu vô Realtime database */
+                Map<String, Object> productValues = product.toMap();
+                Map<String, Object> childUpdates = new HashMap<>();
+                childUpdates.put("/stores/"+ product.getStoreId() + "/menu/products/" + key, productValues);
+                mDatabase.updateChildren(childUpdates);
+
+                /* Lấy url sau khi upload ảnh thành công */
+                storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        product.setProductImage(uri.toString());
+                        /* Thêm dữ liệu vô Realtime database */
+                        mDatabase.child("stores").child(product.getStoreId()).child("menu").child("products").child(key).child("productImage").setValue(uri.toString());
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle any errors
+                    }
+                });
+            }
+        });
+
+
     }
 
     public void deleteProduct(Product product, Context context)
@@ -163,5 +191,53 @@ public class GoFoodDatabase {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void insertStore(Store store, ImageView imageView) {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        String key = mDatabase.child("stores").push().getKey();
+        store.setStoreId(key);
+
+        /* Xử lý thêm ảnh vô firebase */
+        StorageReference storageRef = storage.getReference( "store_image/store-avatar" + key + ".png");
+        // Get the data from an ImageView as bytes
+        imageView.setDrawingCacheEnabled(true);
+        imageView.buildDrawingCache();
+        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] data = baos.toByteArray();
+
+        UploadTask uploadTask = storageRef.putBytes(data);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                /* Thêm dữ liệu vô Realtime database */
+                Map<String, Object> storeValues = store.toMap();
+                Map<String, Object> childUpdates = new HashMap<>();
+                childUpdates.put("/stores/" + key, storeValues);
+                mDatabase.updateChildren(childUpdates);
+
+                /* Lấy url sau khi upload ảnh thành công */
+                storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        store.setAvatar(uri.toString());
+                        /* Thêm dữ liệu vô Realtime database */
+                        mDatabase.child("stores").child(key).child("avatar").setValue(uri.toString());
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle any errors
+                    }
+                });
+            }
+        });
     }
 }

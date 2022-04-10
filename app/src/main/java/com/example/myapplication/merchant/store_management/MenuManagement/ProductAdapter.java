@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.models.Product;
@@ -66,11 +67,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 onClickGoToDetail(product);
             }
         });
-
-        if(!product.getProductImage().isEmpty())
-        {
-            goFoodDatabase.loadImageToImageView(holder.ivProductImage, "product_image" ,product.getProductImage());
-        }
+        Glide.with(context).load(product.getProductImage()).into(holder.ivProductImage);
+//        if(!product.getProductImage().isEmpty())
+//        {
+////            Glide.with(context).load(product.getProductImage()).into(holder.ivProductImage);
+////            goFoodDatabase.loadImageToImageView(holder.ivProductImage, "product_image" ,product.getProductImage());
+//        }
     }
 
     @Override

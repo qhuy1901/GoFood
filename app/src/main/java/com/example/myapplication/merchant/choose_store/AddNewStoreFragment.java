@@ -22,13 +22,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentAddNewStoreBinding;
 import com.example.myapplication.models.Store;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -36,9 +36,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class AddNewStoreFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
@@ -48,6 +46,7 @@ public class AddNewStoreFragment extends Fragment implements AdapterView.OnItemS
     private String[] storeCategories = {"Đồ ăn", "Đồ uống", "Đồ chay", "Bánh kem"};
     private boolean[] selected;
     private List<Integer> selectedList = new ArrayList<>();
+    private GoFoodDatabase goFoodDatabase = new GoFoodDatabase();
 
     private ActivityResultLauncher<Intent> checkPermission = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -167,7 +166,17 @@ public class AddNewStoreFragment extends Fragment implements AdapterView.OnItemS
                 String storeCategory = binding.tvChooseCategory.getText().toString();
                 String description = binding.etDescription.getText().toString();
 
-                writeNewStore(storeName, storeCategory, description);
+                // Lấy mã user trong Session
+                SharedPreferences preferences = getContext().getSharedPreferences("Session", getContext().MODE_PRIVATE);
+                String owner = preferences.getString("UserId", "default value");
+
+                // Lưu thông tin store vào realtime database
+                Store store = new Store();;
+                store.setStoreName(storeName);
+                store.setStoreCategory(storeCategory);
+                store.setDescription(description);
+                store.setOwner(owner);
+                goFoodDatabase.insertStore(store, binding.ivStoreAvatar);
                 Toast.makeText(getActivity(), "Thêm cửa hàng mới thành công",Toast.LENGTH_SHORT).show();
 
                 NavHostFragment.findNavController(AddNewStoreFragment.this)
@@ -176,28 +185,6 @@ public class AddNewStoreFragment extends Fragment implements AdapterView.OnItemS
         });
     }
 
-
-    private void writeNewStore(String storeName, String storeCategory, String description) {
-        // Create new post at /user-posts/$userid/$postid and at
-        // /posts/$postid simultaneously
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        String key = mDatabase.child("stores").push().getKey();
-
-        // Lấy mã user trong Session
-        SharedPreferences preferences = this.getActivity().getSharedPreferences("Session", this.getActivity().MODE_PRIVATE);
-        String owner = preferences.getString("UserId", "default value");
-
-        // Lưu thông tin store vào realtime database
-        String avatarFileName = "avatar" + key + ".png";
-        Store post = new Store(key, storeName, storeCategory, description, owner, avatarFileName);
-        Map<String, Object> postValues = post.toMap();
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/stores/" + key, postValues);
-        mDatabase.updateChildren(childUpdates);
-
-        // Lưu ảnh avatar vào firebase storage
-        addAvatarImageToFirebase(avatarFileName);
-    }
 
     public void choosePicture()
     {

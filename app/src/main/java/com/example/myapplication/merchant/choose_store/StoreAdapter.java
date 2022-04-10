@@ -5,8 +5,6 @@ import static android.content.Context.MODE_PRIVATE;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,17 +15,11 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 import com.example.myapplication.merchant.store_management.StoreManagementActivity;
 import com.example.myapplication.models.Store;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHolder>{
@@ -53,7 +45,10 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
             return ;
         holder.tvStoreName.setText(store.getStoreName());
         holder.tvStoreCategory.setText(store.getStoreCategory());
-        loadAvatarFromFirebaseStorage(holder, store.getAvatar());
+        holder.ivAvatar.setImageResource(R.drawable.default_store);
+        if(!store.getAvatar().isEmpty())
+            Glide.with(context).load(store.getAvatar()).into(holder.ivAvatar);
+
         holder.clStoreItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,27 +68,6 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
         context.startActivity(switchActivityIntent);
     }
 
-    public void loadAvatarFromFirebaseStorage(@NonNull StoreViewHolder holder, String avatarFileName)
-    {
-        StorageReference firebaseStorage = FirebaseStorage.getInstance().getReference(avatarFileName);
-        try{
-            final File localFile = File.createTempFile(avatarFileName.replace(".png",""),"png");
-            firebaseStorage.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                    holder.ivAvatar.setImageBitmap(bitmap);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public int getItemCount() {
