@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#EFEFEF"
     android:theme="@style/Theme.MyApplication.NoActionBar"
     tools:context=".merchant.choose_store.ChooseStoreActivity">
 
