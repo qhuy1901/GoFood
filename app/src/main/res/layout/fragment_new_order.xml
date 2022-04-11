@@ -23,6 +23,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="fill_parent"
+        android:layout_height="0.7dp"
+        android:layout_margin="15dp"
+        android:background="#c0c0c0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
@@ -55,14 +64,42 @@
         android:layout_marginStart="16dp"
         android:fontFamily="@font/be_vietnam_medium"
         android:text="Cách 2.7km"
-        android:textColor="#D1D9D9"
+        android:textColor="#BBBBBB"
         android:textSize="11sp"
         android:textStyle="italic"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
+    <View
+        android:id="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="0.6dp"
+        android:layout_margin="15dp"
+        android:background="#c0c0c0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <android.widget.Button
+        android:id="@+id/activity_update_product_btn_delete_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/img_bg"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:text="Trì hoãn"
+        android:textAllCaps="false"
+        android:textColor="#333333"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/view1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.852"
+        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:layout_constraintVertical_bias="0.5" />
+
     <TextView
+        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" phút (12:10) "
@@ -81,7 +118,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/be_vietnam_bold"
         android:text="Lần đầu đặt"
-        android:textColor="#D1D9D9"
+        android:textColor="#BBBBBB"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.047"
@@ -124,22 +161,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.047">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcvOrder"
             android:layout_width="370dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="15.42dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="15.42dp"
-            android:layout_marginBottom="75dp" />
+            android:layout_marginBottom="5dp" />
 
     </ScrollView>
 
@@ -213,8 +252,10 @@
             android:layout_height="60dp"
             android:layout_margin="20dp"
             android:layout_marginStart="20dp"
+            android:textAllCaps="false"
             android:background="@drawable/btn1_bg"
-            android:fontFamily="@font/be_vietnam_semibold"
+            android:fontFamily="@font/be_vietnam_bold"
+            android:textSize="20dp"
             android:text="Từ chối"
             android:textColor="#F2789F"
             app:layout_constraintBottom_toBottomOf="parent"

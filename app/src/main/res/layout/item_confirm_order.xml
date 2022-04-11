@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/item_cart_item_cl_product_item"
+    android:padding="10dp">
+
+
+    <TextView
+        android:id="@+id/item_cart_item_tv_product_name"
+        android:layout_width="51dp"
+        android:layout_height="44dp"
+        android:layout_margin="10dp"
+        android:background="#F999B7"
+        android:fontFamily="@font/be_vietnam_bold"
+        android:text="99"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_cart_item_tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="#1811"
+        android:textColor="#F2789F"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/item_cart_item_tv_product_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/item_cart_item_tv_product_name" />
+
+    <TextView
+        android:id="@+id/item_cart_item_tv_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:text="Giao hàng lúc 12:10 trong 33 phút"
+
+        android:textColor="#707070"
+        android:textSize="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_cart_item_tv_product_name" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_weight="1"
+        android:text="Khách hàng A"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_cart_item_tv_note" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="fill_parent"
+        android:layout_height="0.6dp"
+        android:layout_margin="10dp"
+        android:background="#c0c0c0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:text="Trạng thái: "
+
+        android:textColor="#707070"
+        android:textSize="13dp"
+        app:layout_constraintBottom_toTopOf="@+id/view1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <TextView
+        android:id="@+id/statusname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="Tài xế đang đến"
+        android:textColor="#F999B7"
+        android:textSize="13dp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@+id/status"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="0.6dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="8dp"
+        android:background="#c0c0c0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statusname" />
+
+    <TextView
+        android:id="@+id/amountfood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+
+        android:fontFamily="@font/be_vietnam_medium"
+        android:text="2 món "
+        android:textColor="#707070"
+        android:textSize="13dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view1" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="13dp"
+        android:layout_height="13dp"
+        android:src="@drawable/wallet"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.752"
+        app:layout_constraintStart_toEndOf="@+id/amountfood"
+        app:layout_constraintTop_toBottomOf="@+id/view1"
+        app:layout_constraintVertical_bias="0.187" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="5dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="857,858 đ"
+        android:textColor="#707070"
+        android:textSize="13dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/view1"
+        app:layout_constraintVertical_bias="0.4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
