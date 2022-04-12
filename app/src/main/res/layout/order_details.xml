@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color1"
+    android:contentDescription=""
+    tools:context=""
+    tools:ignore="SpeakableTextPresentCheck">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="8dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="8dp">
+
+        <ImageView
+            android:id="@+id/iconBackToOrder"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="4dp"
+            android:cropToPadding="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ei_arrowleft"
+            tools:ignore="ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/txtOderDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/be_vietnam_bold"
+            android:text="Thông tin đơn hàng"
+            android:textColor="@color/color_primary"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/txtShop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/be_vietnam_medium"
+            android:text="Tiệm bánh YUM Sài Gòn - Bánh Ngọt và Sữa hạt"
+            android:textColor="@color/color_primary_dark"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtOderDetails" />
+
+        <TextView
+            android:id="@+id/txtDetailOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/be_vietnam_medium"
+            android:text="100,000đ - 3 mặt hàng"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/txtShop"
+            app:layout_constraintTop_toBottomOf="@+id/txtShop" />
+
+        <TextView
+            android:id="@+id/txtDetailCus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/be_vietnam_medium"
+            android:text="Thúy Nga - 09xxxxxxxx"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/txtDetailOrder"
+            app:layout_constraintTop_toBottomOf="@+id/txtDetailOrder" />
+
+        <View
+            android:id="@+id/order_detail_line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDetailCus" />
+
+        <TextView
+            android:id="@+id/txtGiaoDen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/be_vietnam_medium"
+            android:text="Giao đến"
+            android:textColor="@color/color_primary_dark"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/txtDetailCus"
+            app:layout_constraintTop_toBottomOf="@+id/order_detail_line1" />
+
+        <TextView
+            android:id="@+id/txtOrderAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/be_vietnam_medium"
+            android:text="KTX khu A - Phường Đông Hòa, Thị Xã Dĩ An, Tỉnh Bình Dương, Việt Nam"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/txtGiaoDen"
+            app:layout_constraintTop_toBottomOf="@+id/txtGiaoDen" />
+
+        <TextView
+            android:id="@+id/txtThoiGianHoanTat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/be_vietnam_medium"
+            android:text="Thời gian hoàn tất:"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/txtOrderAddress"
+            app:layout_constraintTop_toBottomOf="@+id/txtOrderAddress" />
+
+        <TextView
+            android:id="@+id/txtCompletedTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/be_vietnam_medium"
+            android:text="18:00 12/04/2022"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/txtThoiGianHoanTat"
+            app:layout_constraintTop_toTopOf="@+id/txtThoiGianHoanTat" />
+
+        <View
+            android:id="@+id/order_detail_line2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/gray"
+            app:layout_constraintBottom_toTopOf="@+id/Shop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtCompletedTime" />
+
+        <RelativeLayout
+            android:id="@+id/Shop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/order_detail_line2">
+
+            <ImageView
+                android:id="@+id/img_continue"
+                android:layout_width="16dp"
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="false"
+                android:layout_marginStart="12dp"
+                android:layout_toEndOf="@+id/txtTenShop"
+                android:src="@drawable/continue_arrow"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/txtTenShop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:fontFamily="@font/be_vietnam_bold"
+                android:text="Tiệm bánh YUM Sài Gòn - Bánh Ngọt và Sữa hạt"
+                android:textColor="@color/color_primary_dark"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/oder_details_items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Shop">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <View
+            android:id="@+id/order_detail_line3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/oder_details_items" />
+
+        <RelativeLayout
+            android:id="@+id/PhiApDung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_color1"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/Oder_Ship"
+            tools:layout_editor_absoluteX="12dp">
+
+            <TextView
+                android:id="@+id/txtPhiApDung"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/be_vietnam_medium"
+                android:paddingLeft="0dp"
+                android:paddingTop="4dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="4dp"
+                android:text="Phí áp dụng"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtApDung"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/be_vietnam_medium"
+                android:paddingLeft="0dp"
+                android:paddingTop="4dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="4dp"
+                android:text="0 đ"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/Order_Detail_TongTatCa"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PhiApDung">
+
+            <TextView
+                android:id="@+id/txtDaThanhToan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_toStartOf="@+id/txtTongTienHang2"
+                android:fontFamily="@font/be_vietnam_medium"
+                android:paddingLeft="0dp"
+                android:paddingTop="4dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="4dp"
+                android:text="Đã thanh toán"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/txtTongTienHang2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/be_vietnam_medium"
+                android:paddingLeft="0dp"
+                android:paddingTop="4dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="4dp"
+                android:text="0 đ"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/Order_Detail_Tong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@color/background_color1"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/order_detail_line3">
+
+            <TextView
+                android:id="@+id/txtTongSoPhan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/be_vietnam_medium"
+                android:paddingLeft="0dp"
+                android:paddingTop="4dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="4dp"
+                android:text="Tổng (x phần)"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtTongTienHang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/be_vietnam_medium"
+                android:paddingLeft="0dp"
+                android:paddingTop="4dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="4dp"
+                android:text="0 đ"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/Oder_Ship"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_color1"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/Order_Detail_Tong"
+            tools:layout_editor_absoluteX="8dp">
+
+            <TextView
+                android:id="@+id/txtShip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/be_vietnam_medium"
+                android:paddingLeft="0dp"
+                android:paddingTop="4dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="4dp"
+                android:text="Phí giao hàng (2.4 km)"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtShip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/be_vietnam_medium"
+                android:paddingLeft="0dp"
+                android:paddingTop="4dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="4dp"
+                android:text="0 đ"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/order_detail_line4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Order_Detail_TongTatCa" />
+
+        <TextView
+            android:id="@+id/txtChiTietDon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/be_vietnam_medium"
+            android:text="Chi Tiết Đơn Hàng"
+            android:textColor="@color/color_primary_dark"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/order_detail_line4"
+            app:layout_constraintTop_toBottomOf="@+id/order_detail_line4" />
+
+        <TextView
+            android:id="@+id/txtMa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/be_vietnam_medium"
+            android:text="Mã đơn hàng"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/txtChiTietDon"
+            app:layout_constraintTop_toBottomOf="@+id/txtChiTietDon" />
+
+        <TextView
+            android:id="@+id/txtMaDonHang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/be_vietnam_medium"
+            android:text="DH010101"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtMa"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/txtThoiGianDat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/be_vietnam_medium"
+            android:text="Thời gian đặt"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/txtChiTietDon"
+            app:layout_constraintTop_toBottomOf="@+id/txtMa" />
+
+        <TextView
+            android:id="@+id/txtThoiGian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/be_vietnam_medium"
+            android:text="17:30 12/04/2022"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtThoiGianDat"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TextView01"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtThoiGianDat">
+
+            <Button
+                android:id="@+id/btnDanhGia"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1.0"
+                android:text="Đánh giá"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnDatLai"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1.0"
+                android:text="Đặt lại"
+                android:textAllCaps="false" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
