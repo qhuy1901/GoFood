@@ -1,11 +1,15 @@
 package com.example.myapplication.customer.order_confirmation;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,9 +17,12 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.GoFoodDatabase;
+import com.example.myapplication.HomeActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.models.CartItem;
 import com.example.myapplication.models.CartSession;
+import com.example.myapplication.models.Order;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -85,6 +92,30 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         btnCofirm.setText("Đặt đơn - " + totalString);
     }
 
+    private Order getOrderInfoFromForm()
+    {
+        Order order = new Order();
+        order.setDeliveryFee(deliveryFee);
+        order.setApplyFee(applyFee);
+        if(rbOnlinePayment.isChecked())
+            order.setPaymentMethod("Thanh toán online");
+        else
+            order.setPaymentMethod("Tiền mặt");
+        order.setOrderDetail(cart);
+        order.setStoreId(cart.get(0).product.getStoreId());
+
+        // Lấy mã cửa hàng
+        SharedPreferences prefs = this.getSharedPreferences("Session", MODE_PRIVATE);
+        String userId = prefs.getString("userId", "No name defined");
+        order.setUserId(userId);
+
+        if(scDoorDelivery.isChecked())
+            order.setDoorDelivery(1);
+        else
+            order.setDoorDelivery(0);
+        return order;
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,5 +123,17 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_confirmation);
         initUi();
         loadInfoToForm();
+        btnCofirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Order order = getOrderInfoFromForm();
+                GoFoodDatabase goFoodDatabase = new GoFoodDatabase();
+                goFoodDatabase.insertOrder(order);
+
+                Toast.makeText(OrderConfirmationActivity.this, "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
+                Intent switchActivityIntent = new Intent(OrderConfirmationActivity.this, HomeActivity.class);
+                startActivity(switchActivityIntent);
+            }
+        });
     }
 }

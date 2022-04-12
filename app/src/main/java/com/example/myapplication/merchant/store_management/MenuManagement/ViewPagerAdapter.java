@@ -5,29 +5,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.myapplication.merchant.store_management.MenuManagement.ProductFragment;
-import com.example.myapplication.merchant.store_management.MenuManagement.ToppingFragment;
-
 public class ViewPagerAdapter extends FragmentStateAdapter {
     public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
 
-
-//    @Nullable
-//    @Override
-//    public CharSequence getPageTitle(int position) {
-//        String title = "";
-//        switch (position){
-//            case 1:
-//                title = "Topping";
-//                break;
-//            default:
-//                title = "Món ăn";
-//                break;
-//        }
-//        return title;
-//    }
 
     @NonNull
     @Override
