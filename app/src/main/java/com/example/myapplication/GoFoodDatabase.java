@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.myapplication.models.Order;
 import com.example.myapplication.models.Product;
 import com.example.myapplication.models.Store;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -239,5 +240,16 @@ public class GoFoodDatabase {
                 });
             }
         });
+    }
+
+    public void insertOrder(Order order) {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        String key = mDatabase.child("orders").push().getKey();
+        order.setStoreId(key);
+
+        Map<String, Object> orderValues = order.toMap();
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/orders/" + key, orderValues);
+        mDatabase.updateChildren(childUpdates);
     }
 }

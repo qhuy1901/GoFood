@@ -1,9 +1,11 @@
 package com.example.myapplication;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,7 +92,9 @@ public class LoginTabFragment extends Fragment {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                             User userInfo = snapshot.getValue(User.class);
-                                            Log.e("Hihi", userInfo.getUserId() + userInfo.getFullName());
+                                            SharedPreferences.Editor editor = getContext().getSharedPreferences("Session", MODE_PRIVATE).edit();
+                                            editor.putString("userId", userInfo.getUserId());
+                                            editor.apply();
                                             userSession.saveUser(userInfo);
                                         }
                                         @Override
