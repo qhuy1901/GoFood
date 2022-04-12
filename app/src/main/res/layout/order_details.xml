@@ -247,7 +247,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                android:layout_toStartOf="@+id/txtTongTienHang2"
+                android:layout_toStartOf="@+id/txtTongTien"
                 android:fontFamily="@font/be_vietnam_medium"
                 android:paddingLeft="0dp"
                 android:paddingTop="4dp"
@@ -259,7 +259,7 @@
                 android:textSize="14dp" />
 
             <TextView
-                android:id="@+id/txtTongTienHang2"
+                android:id="@+id/txtTongTien"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -325,7 +325,7 @@
             tools:layout_editor_absoluteX="8dp">
 
             <TextView
-                android:id="@+id/txtShip"
+                android:id="@+id/txtPhiGiaoHang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/be_vietnam_medium"
