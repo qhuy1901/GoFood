@@ -9,30 +9,33 @@
 
     <TextView
         android:id="@+id/register"
-        android:layout_width="205dp"
-        android:layout_height="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:fontFamily="@font/be_vietnam_bold"
         android:gravity="top"
         android:text="Đăng ký"
+
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#F2789F"
         android:textSize="36dp"
         app:layout_constraintBottom_toTopOf="@+id/edtFullName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.199"
+        app:layout_constraintHorizontal_bias="0.074"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.885" />
+        app:layout_constraintVertical_bias="0.828" />
 
     <EditText
         android:id="@+id/edtFullName"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_bg"
         android:fontFamily="@font/be_vietnam_medium"
         android:hint="Họ Tên"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -45,11 +48,13 @@
 
     <EditText
         android:id="@+id/edtEmail"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/edit_text_bg"
         android:fontFamily="@font/be_vietnam_medium"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:hint="Email"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -63,9 +68,11 @@
 
     <EditText
         android:id="@+id/edtNM"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/edit_text_bg"
         android:fontFamily="@font/be_vietnam_medium"
         android:hint="Số điện thoại"
@@ -81,9 +88,11 @@
 
     <EditText
         android:id="@+id/edtPassword"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/edit_text_bg"
         android:fontFamily="@font/be_vietnam_medium"
         android:hint="Mật khẩu"
@@ -99,9 +108,11 @@
 
     <EditText
         android:id="@+id/edtConfirmPassword"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/edit_text_bg"
         android:fontFamily="@font/be_vietnam_medium"
         android:hint="Xác nhận mật khẩu"
@@ -117,8 +128,10 @@
 
     <android.widget.Button
         android:id="@+id/btnRegister"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/btn_bg"
         android:fontFamily="@font/be_vietnam_semibold"
         android:text="Đăng ký"
@@ -126,6 +139,8 @@
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textAllCaps="false"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

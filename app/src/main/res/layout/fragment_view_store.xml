@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".merchant.choose_store.ViewStoreFragment"
-    android:layout_marginTop="25dp">
+    android:layout_marginTop="35dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -20,11 +20,11 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcvStore"
-            android:layout_width="370dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="15.42dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginRight="15.42dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_marginBottom="75dp" />
 
     </LinearLayout>
@@ -37,8 +37,10 @@
         android:background="@drawable/btn_themquan_bg"
         android:fontFamily="@font/be_vietnam_semibold"
         android:text="Thêm quán"
+        android:textAllCaps="false"
+
         android:textColor="#FFFF"
-        android:textSize="18sp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.481"

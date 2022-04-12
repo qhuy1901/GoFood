@@ -5,9 +5,20 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_product_cl_product_item"
-    android:background="@drawable/item_bg">
+    android:background="@drawable/item_bg"
+    android:layout_margin="10dp"
+    >
 
 
+    android: id-"id/bluetextureinage"
+    android:layout_vidth-"natch_parent"
+    android: layout_height-"wrap_content"
+    android: adjustvienBounds-"true"
+    android:scaleType-"fitCenter"
+    android:layout_nargin-"sdp"
+    android:layout_centerInParent-"true"
+    android:src-"edravable/bluetexture"
+    app: shapeappearanceoverlay-"estyle/roundinageviev"
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout"
         android:layout_width="wrap_content"
@@ -24,31 +35,28 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/be_vietnam_semibold"
         android:text="99"
         android:textColor="#8E8E8E"
         android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.37"
-        app:layout_constraintStart_toEndOf="@+id/item_product_tv_product_name"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toEndOf="@+id/item_product_iv_product_image"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="8dp"
+
         android:fontFamily="@font/be_vietnam_semibold"
         android:text="9"
         android:textColor="#8E8E8E"
         android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView6"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -91,7 +99,7 @@
         app:layout_constraintStart_toStartOf="@+id/item_product_tv_description"
         app:layout_constraintTop_toBottomOf="@+id/item_product_tv_description" />
 
-    <android.widget.ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/item_product_iv_product_image"
         android:layout_width="114dp"
         android:layout_height="156dp"
@@ -102,7 +110,8 @@
         app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.51" />
+        app:layout_constraintVertical_bias="0.51"
+    app:shapeAppearanceOverlay="@style/roundimageview" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -119,24 +128,24 @@
         android:id="@+id/imageView6"
         android:layout_width="15dp"
         android:layout_height="15dp"
+
         android:layout_marginStart="4dp"
-        android:layout_marginBottom="12dp"
         android:src="@drawable/vectorlike"
-        app:layout_constraintBottom_toTopOf="@+id/item_product_tv_product_name"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
         app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.826" />
+        app:layout_constraintTop_toTopOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.666" />
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="15dp"
         android:layout_height="15dp"
-        android:layout_marginEnd="40dp"
         android:layout_marginStart="4dp"
         android:src="@drawable/vector2"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView8" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView8"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toTopOf="@+id/textView8"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView6"
