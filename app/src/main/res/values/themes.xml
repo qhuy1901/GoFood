@@ -24,7 +24,7 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
     </style>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme2" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="buttonStyle">@style/MyButton</item>
     </style>
     <style name="MyButton" parent="Widget.AppCompat.Button">
