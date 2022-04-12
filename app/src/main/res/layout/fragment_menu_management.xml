@@ -7,19 +7,60 @@
     android:id="@+id/menuManagementLayout"
     tools:context=".merchant.store_management.MenuManagement.MenuManagementFragment">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"/>
 
-    <androidx.viewpager2.widget.ViewPager2
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.098" />
+
+        <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
-<!--    <TextView-->
+
+        <TextView
+            android:id="@+id/addnewfood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/be_vietnam_bold"
+            android:gravity="top"
+            android:text="Quản lý Menu"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#F2789F"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/tab_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+
+        android:id="@+id/activity_add_product_ib_back"
+        android:layout_width="37dp"
+        android:layout_height="20dp"
+
+        android:layout_marginStart="16dp"
+        android:background="#FFFFFF"
+        android:src="@drawable/ei_arrowleft"
+        app:layout_constraintBottom_toBottomOf="@+id/addnewfood"
+        app:layout_constraintEnd_toStartOf="@+id/addnewfood"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/addnewfood"
+        app:layout_constraintVertical_bias="1.0">
+
+    </androidx.appcompat.widget.AppCompatImageButton>
+    <!--    <TextView-->
 <!--        android:id="@+id/text_dashboard"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->

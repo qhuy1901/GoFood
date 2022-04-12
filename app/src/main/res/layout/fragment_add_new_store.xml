@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".merchant.choose_store.AddNewStoreFragment">
+    tools:context=".merchant.choose_store.AddNewStoreFragment"
+    android:background="@color/white">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
@@ -227,10 +225,12 @@
         android:fontFamily="@font/be_vietnam_bold"
         android:text="Thêm quán"
         android:textColor="#F2789F"
-        android:textSize="18dp"
+        android:textAllCaps="false"
+
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivStoreAvatar" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+        app:layout_constraintTop_toBottomOf="@+id/ivStoreAvatar"
+        app:layout_constraintVertical_bias="0.818" />
+</androidx.constraintlayout.widget.ConstraintLayout>
