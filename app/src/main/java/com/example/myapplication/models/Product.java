@@ -85,7 +85,6 @@ public class Product implements Serializable {
     }
 
 
-
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
