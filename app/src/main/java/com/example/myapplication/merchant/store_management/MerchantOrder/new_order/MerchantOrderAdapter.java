@@ -1,6 +1,7 @@
 package com.example.myapplication.merchant.store_management.MerchantOrder.new_order;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
+import com.example.myapplication.merchant.order_detail.MerchantOrderDetailActivity;
 import com.example.myapplication.models.Order;
 
 import java.text.DateFormat;
@@ -56,6 +58,19 @@ public class MerchantOrderAdapter  extends RecyclerView.Adapter<MerchantOrderAda
         GoFoodDatabase goFoodDatabase = new GoFoodDatabase();
         goFoodDatabase.loadUserFullnameToTextView(order.getUserId(), holder.tvFullName);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToOrderDetail(order);
+            }
+        });
+    }
+
+    private void goToOrderDetail(Order order)
+    {
+        Intent switchActivityIntent = new Intent(this.context, MerchantOrderDetailActivity.class);
+        switchActivityIntent.putExtra("order", order);
+        context.startActivity(switchActivityIntent);
     }
 
     @Override

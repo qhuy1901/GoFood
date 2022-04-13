@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -22,12 +22,12 @@ public class ChooseStoreActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityChooseStoreBinding binding;
-    private AppCompatImageButton backButton;
+    private ImageView backButton;
     private TextView tvLogout;
 
     private void initUi()
     {
-        backButton = (AppCompatImageButton) findViewById(R.id.activity_add_product_ib_back);
+        backButton = (ImageView) findViewById(R.id.activity_add_product_ib_back);
         tvLogout = (TextView) findViewById(R.id.tv_logout);
     }
 
