@@ -2,16 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="220dp"
-    android:layout_height="300dp"
-    android:layout_marginLeft="16dp"
-    android:background="@drawable/recycler_bg">
+    android:layout_width="140dp"
+    android:layout_height="260sp"
+    android:layout_marginRight="12dp"
+    android:background="@color/background_color1">
 
 
     <ImageView
         android:id="@+id/recommended_image"
-        android:layout_width="0dp"
-        android:layout_height="210dp"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
         android:adjustViewBounds="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,14 +19,16 @@
 
     <TextView
         android:id="@+id/recommended_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/be_vietnam_bold"
-        android:text="Rendang"
+        android:text="Bún mọc tô lớn"
         android:textColor="#333333"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recommended_image" />
 
@@ -34,39 +36,52 @@
         android:id="@+id/recommended_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/be_vietnam_bold"
-        android:text="160"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:text="78,000đ"
+        android:textColor="@color/color_primary"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/recommended_name"
+        app:layout_constraintTop_toBottomOf="@+id/recommended_delivery_type" />
 
     <TextView
         android:id="@+id/recommended_delivery_time"
-        android:layout_width="39dp"
-        android:layout_height="14dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="16sp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/time_bg"
+        android:fontFamily="@font/be_vietnam_medium"
         android:gravity="center"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:text="45 mins"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:textSize="8sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recommended_name"
-        app:layout_constraintVertical_bias="0.84" />
+        app:layout_constraintStart_toStartOf="@+id/recommended_name"
+        app:layout_constraintTop_toBottomOf="@+id/recommended_name" />
 
     <TextView
         android:id="@+id/recommended_delivery_type"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:text="Free Delivery"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/recommended_delivery_time"
-        app:layout_constraintStart_toEndOf="@+id/recommended_delivery_time"
-        app:layout_constraintTop_toTopOf="@+id/recommended_delivery_time" />
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/recommended_name"
+        app:layout_constraintTop_toBottomOf="@+id/recommended_delivery_time" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/recommended_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recommended_price"
+        app:srcCompat="@drawable/plus" />
 </androidx.constraintlayout.widget.ConstraintLayout>
