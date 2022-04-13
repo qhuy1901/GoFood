@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".merchant.store_management.MerchantOrder.ConfirmOrderFragment"
+    tools:context=".merchant.store_management.MerchantOrder.confirm_order.ConfirmOrderFragment"
     android:background="#EFEFEF">
 
     <ScrollView

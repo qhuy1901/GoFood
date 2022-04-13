@@ -1,4 +1,4 @@
-package com.example.myapplication.merchant.store_management.MenuManagement;
+package com.example.myapplication.merchant.store_management.MenuManagement.topping;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

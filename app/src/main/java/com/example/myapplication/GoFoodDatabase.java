@@ -5,7 +5,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,8 +15,12 @@ import androidx.annotation.Nullable;
 import com.example.myapplication.models.Order;
 import com.example.myapplication.models.Product;
 import com.example.myapplication.models.Store;
+import com.example.myapplication.models.User;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -245,11 +251,28 @@ public class GoFoodDatabase {
     public void insertOrder(Order order) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         String key = mDatabase.child("orders").push().getKey();
-        order.setStoreId(key);
+        order.setOrderId(key);
 
         Map<String, Object> orderValues = order.toMap();
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("/orders/" + key, orderValues);
         mDatabase.updateChildren(childUpdates);
+    }
+
+    public void loadUserFullnameToTextView(String userId, TextView tv)
+    {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("Users").child(userId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    User user = task.getResult().getValue(User.class);
+                    tv.setText(user.getFullName());
+                }
+            }
+        });
     }
 }

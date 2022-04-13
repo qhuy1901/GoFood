@@ -12,10 +12,13 @@
         android:hardwareAccelerated="false"
         android:icon="@drawable/gofooddesignlogo"
         android:label="GoFood"
-        android:roundIcon="@drawable/gofooddesignlogo"
         android:largeHeap="true"
+        android:roundIcon="@drawable/gofooddesignlogo"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+        <activity
+            android:name=".merchant.order_detail.MerchantOrderDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".customer.order_confirmation.OrderConfirmationActivity"
             android:exported="false" />
@@ -26,10 +29,10 @@
             android:name=".customer.store_detail.StorePageDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".merchant.store_management.MenuManagement.UpdateProductActivity"
+            android:name=".merchant.store_management.MenuManagement.product.UpdateProductActivity"
             android:exported="false" />
         <activity
-            android:name=".merchant.store_management.MenuManagement.AddProductActivity"
+            android:name=".merchant.store_management.MenuManagement.product.AddProductActivity"
             android:exported="false" />
         <activity
             android:name=".merchant.store_management.StoreManagementActivity"
@@ -37,6 +40,7 @@
             android:label="@string/title_activity_store_detail" />
         <activity
             android:name=".HomeActivity"
+            android:parentActivityName=".WelcomeActivity"
             android:exported="false" />
         <activity
             android:name=".merchant.choose_store.ChooseStoreActivity"
@@ -49,6 +53,7 @@
             android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".WelcomeActivity"
+            android:parentActivityName=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
