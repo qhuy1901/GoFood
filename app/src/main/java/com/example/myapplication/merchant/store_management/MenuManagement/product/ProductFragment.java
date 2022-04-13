@@ -1,4 +1,4 @@
-package com.example.myapplication.merchant.store_management.MenuManagement;
+package com.example.myapplication.merchant.store_management.MenuManagement.product;
 
 import static android.content.Context.MODE_PRIVATE;
 

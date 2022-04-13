@@ -2,6 +2,7 @@ package com.example.myapplication.models;
 
 import com.google.firebase.firestore.Exclude;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,11 +17,13 @@ public class Order {
     private int doorDelivery;
     private String paymentMethod;
     private int total;
+    private String orderStatus;
+    private Date orderDate;
 
     public Order() {
     }
 
-    public Order(String orderId, String userId, String storeId, List<CartItem> orderDetail, int applyFee, int deliveryFee, int doorDelivery, String paymentMethod, int total) {
+    public Order(String orderId, String userId, String storeId, List<CartItem> orderDetail, int applyFee, int deliveryFee, int doorDelivery, String paymentMethod, int total, String orderStatus, Date orderDate) {
         this.orderId = orderId;
         this.userId = userId;
         this.storeId = storeId;
@@ -30,6 +33,24 @@ public class Order {
         this.doorDelivery = doorDelivery;
         this.paymentMethod = paymentMethod;
         this.total = total;
+        this.orderStatus = orderStatus;
+        this.orderDate = orderDate;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
     public String getPaymentMethod() {
@@ -104,8 +125,6 @@ public class Order {
         this.doorDelivery = doorDelivery;
     }
 
-
-
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
@@ -118,6 +137,8 @@ public class Order {
         result.put("doorDelivery", doorDelivery);
         result.put("paymentMethod", paymentMethod);
         result.put("total", total);
+        result.put("orderStatus", orderStatus);
+        result.put("orderDate", orderDate);
         return result;
     }
 }

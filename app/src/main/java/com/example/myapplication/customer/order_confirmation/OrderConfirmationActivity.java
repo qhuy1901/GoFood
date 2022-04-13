@@ -25,6 +25,7 @@ import com.example.myapplication.models.CartSession;
 import com.example.myapplication.models.Order;
 
 import java.text.NumberFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -38,7 +39,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
     private Button btnCofirm;
     private RadioGroup rgPaymentMethod;
     private RadioButton rbCash, rbOnlinePayment;
-    private int sum = 0, deliveryFee = 0, applyFee = 0;
+    private int sum = 0, deliveryFee = 0, applyFee = 0, total = 0;
 
     private void initUi()
     {
@@ -85,7 +86,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         tvDeliveryFee.setText(deliveryFeeString);
 
         // Load total fee
-        int total = sum + applyFee + deliveryFee;
+        total = sum + applyFee + deliveryFee;
         String totalString = currencyVN.format(total).replace("₫", "")+ " ₫";
         tvTotal.setText(totalString);
 
@@ -95,6 +96,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
     private Order getOrderInfoFromForm()
     {
         Order order = new Order();
+        order.setTotal(total);
         order.setDeliveryFee(deliveryFee);
         order.setApplyFee(applyFee);
         if(rbOnlinePayment.isChecked())
@@ -113,6 +115,8 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             order.setDoorDelivery(1);
         else
             order.setDoorDelivery(0);
+        order.setOrderStatus("Đặt hàng thành công");
+        order.setOrderDate(new Date());
         return order;
     }
 
@@ -129,6 +133,8 @@ public class OrderConfirmationActivity extends AppCompatActivity {
                 Order order = getOrderInfoFromForm();
                 GoFoodDatabase goFoodDatabase = new GoFoodDatabase();
                 goFoodDatabase.insertOrder(order);
+
+                cartSession.removeAllItem();
 
                 Toast.makeText(OrderConfirmationActivity.this, "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
                 Intent switchActivityIntent = new Intent(OrderConfirmationActivity.this, HomeActivity.class);

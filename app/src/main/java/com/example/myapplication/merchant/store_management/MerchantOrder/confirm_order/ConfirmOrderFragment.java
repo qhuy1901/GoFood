@@ -1,4 +1,4 @@
-package com.example.myapplication.merchant.store_management.MerchantOrder;
+package com.example.myapplication.merchant.store_management.MerchantOrder.confirm_order;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

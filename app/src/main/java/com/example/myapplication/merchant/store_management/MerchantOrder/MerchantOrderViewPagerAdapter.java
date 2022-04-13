@@ -5,8 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.myapplication.merchant.store_management.MenuManagement.ProductFragment;
-import com.example.myapplication.merchant.store_management.MenuManagement.ToppingFragment;
+import com.example.myapplication.merchant.store_management.MerchantOrder.confirm_order.ConfirmOrderFragment;
+import com.example.myapplication.merchant.store_management.MerchantOrder.history_order.HistoryOrderFragment;
+import com.example.myapplication.merchant.store_management.MerchantOrder.new_order.NewOrderFragment;
 
 public class MerchantOrderViewPagerAdapter extends FragmentStateAdapter
 {

@@ -1,8 +1,4 @@
-package com.example.myapplication.merchant.store_management.MenuManagement;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatImageButton;
-import androidx.appcompat.widget.SwitchCompat;
+package com.example.myapplication.merchant.store_management.MenuManagement.product;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
