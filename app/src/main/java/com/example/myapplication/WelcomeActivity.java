@@ -74,6 +74,7 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         userSession = new UserSession(WelcomeActivity.this);
+        WelcomeActivity.type_usr = 1;
         initUi();
         loadCurrentUserName();
 

@@ -68,8 +68,8 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
                 CartItem cartItem = new CartItem(product, 1);
                 cart.addToCart(cartItem);
 
-                if (context instanceof StoreDetailActivity) {
-                    ((StoreDetailActivity)context).updateTotalPrice();
+                if (context instanceof StorePageDetailActivity) {
+                    ((StorePageDetailActivity)context).updateTotalPrice();
                 }
                 new SweetAlertDialog(context, SweetAlertDialog.SUCCESS_TYPE)
                                         .setTitleText("Thành công")

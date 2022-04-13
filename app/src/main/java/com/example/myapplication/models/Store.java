@@ -19,18 +19,23 @@ public class Store implements Serializable
     private String description;
     private String owner;
     private String avatar;
+    private Integer rating;
+    private String deliveryTime;
+
 
     public Store() {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
     }
 
-    public Store(String storeId, String storeName, String storeCategory, String description, String owner, String avatar) {
+    public Store(String storeId, String storeName, String storeCategory, String description, String owner, String avatar, Integer rating, String deliveryTime) {
         this.storeId = storeId;
         this.storeName = storeName;
         this.storeCategory = storeCategory;
         this.description = description;
         this.owner = owner;
         this.avatar = avatar;
+        this.rating = rating;
+        this.deliveryTime = deliveryTime;
     }
 
     public String getAvatar() {
@@ -82,6 +87,22 @@ public class Store implements Serializable
         this.avatar = avatar;
     }
 
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
+    public String getDeliveryTime() {
+        return deliveryTime;
+    }
+
+    public void setDeliveryTime(String deliveryTime) {
+        this.deliveryTime = deliveryTime;
+    }
+
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
@@ -91,6 +112,8 @@ public class Store implements Serializable
         result.put("description", description);
         result.put("owner", owner);
         result.put("avatar", avatar);
+        result.put("rating", rating);
+        result.put("deliveryTime", deliveryTime);
         return result;
     }
 }

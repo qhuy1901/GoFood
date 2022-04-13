@@ -23,7 +23,7 @@
             android:name=".customer.cart.CartActivity"
             android:exported="false" />
         <activity
-            android:name=".customer.store_detail.StoreDetailActivity"
+            android:name=".customer.store_detail.StorePageDetailActivity"
             android:exported="false" />
         <activity
             android:name=".merchant.store_management.MenuManagement.UpdateProductActivity"

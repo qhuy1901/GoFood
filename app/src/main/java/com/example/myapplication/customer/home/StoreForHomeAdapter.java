@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
-import com.example.myapplication.customer.store_detail.StoreDetailActivity;
+import com.example.myapplication.customer.store_detail.StorePageDetailActivity;
 import com.example.myapplication.models.Store;
 
 import java.util.List;
@@ -55,7 +55,7 @@ public class StoreForHomeAdapter extends RecyclerView.Adapter<StoreForHomeAdapte
         holder.clStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent switchActivityIntent = new Intent(context, StoreDetailActivity.class);
+                Intent switchActivityIntent = new Intent(context, StorePageDetailActivity.class);
                 switchActivityIntent.putExtra("store", store);
                 context.startActivity(switchActivityIntent);
             }
