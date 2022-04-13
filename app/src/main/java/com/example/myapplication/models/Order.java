@@ -2,12 +2,13 @@ package com.example.myapplication.models;
 
 import com.google.firebase.firestore.Exclude;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Order {
+public class Order implements Serializable {
     private String orderId;
     private String userId;
     private String storeId;
