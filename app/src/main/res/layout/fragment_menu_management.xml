@@ -7,76 +7,53 @@
     android:id="@+id/menuManagementLayout"
     tools:context=".merchant.store_management.MenuManagement.MenuManagementFragment">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        app:layout_constraintTop_toTopOf="parent">
 
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/addnewfood"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/be_vietnam_bold"
+            android:gravity="top"
+            android:text="Menu"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/black"
+            android:textSize="22dp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.098" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.viewpager2.widget.ViewPager2
+<!--        <ImageView-->
+<!--            android:id="@+id/activity_add_product_ib_back"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:background="#FFFFFF"-->
+<!--            android:src="@drawable/back_button"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+    <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
 
-        <TextView
-            android:id="@+id/addnewfood"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:fontFamily="@font/be_vietnam_bold"
-            android:gravity="top"
-            android:text="Quản lý Menu"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="#F2789F"
-            android:textSize="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/tab_layout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
 
-        android:id="@+id/activity_add_product_ib_back"
-        android:layout_width="37dp"
-        android:layout_height="20dp"
-
-        android:layout_marginStart="16dp"
-        android:background="#FFFFFF"
-        android:src="@drawable/ei_arrowleft"
-        app:layout_constraintBottom_toBottomOf="@+id/addnewfood"
-        app:layout_constraintEnd_toStartOf="@+id/addnewfood"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/addnewfood"
-        app:layout_constraintVertical_bias="1.0">
-
-    </androidx.appcompat.widget.AppCompatImageButton>
-    <!--    <TextView-->
-<!--        android:id="@+id/text_dashboard"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textSize="30sp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:text="Quản lý Menu"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/tab_layout" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/btnAddProduct"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Thêm mới"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/text_dashboard" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

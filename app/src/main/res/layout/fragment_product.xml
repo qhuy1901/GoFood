@@ -16,7 +16,7 @@
         android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_dialog_email"/>
+        app:srcCompat="@drawable/plus_icon_for_add_product"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_product_list"

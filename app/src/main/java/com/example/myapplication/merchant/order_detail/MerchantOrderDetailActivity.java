@@ -196,13 +196,18 @@ public class MerchantOrderDetailActivity extends AppCompatActivity {
                 builder.setPositiveButton("Xong", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        order.setOrderStatus(orderStatus[selectedList.get(0)]);
+                        String newOrderStatus = orderStatus[selectedList.get(0)];
+                        order.setOrderStatus(newOrderStatus);
                         goFoodDatabase.updateOrder(order);
-                        tvChangeOrderStatus.setText(orderStatus[selectedList.get(0)]);
+                        tvChangeOrderStatus.setText(newOrderStatus);
                         new SweetAlertDialog(MerchantOrderDetailActivity.this, SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Thành công")
                                 .setContentText("Đã thay đổi trạng thái đơn hàng!")
                                 .show();
+                        if(newOrderStatus.equals("Giao hàng thành công"))
+                        {
+                            tvChangeOrderStatus.setVisibility(View.GONE);
+                        }
                     }
                 });
                 builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
