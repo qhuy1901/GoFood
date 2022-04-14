@@ -35,7 +35,7 @@ public class NewOrderFragment extends Fragment {
     private FragmentNewOrderBinding binding;
     private RecyclerView rcvOrder;
 
-    private MerchantOrderAdapter adapter;
+    private NewAndConfirmOrderAdapter adapter;
     private List<Order> orders;
 
     private void initUi()
@@ -46,7 +46,7 @@ public class NewOrderFragment extends Fragment {
         rcvOrder .setLayoutManager(linearLayoutManager);
 
         orders = new ArrayList<>();
-        adapter = new MerchantOrderAdapter(orders, getContext());
+        adapter = new NewAndConfirmOrderAdapter(orders, getContext());
         rcvOrder.setAdapter(adapter);
     }
 
@@ -86,7 +86,7 @@ public class NewOrderFragment extends Fragment {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Order order = snapshot.getValue(Order.class);
-                if(order != null){
+                if(order != null && order.getOrderStatus().equals("Đặt hàng thành công")){
                     orders.add(order);
                 }
                 adapter.notifyDataSetChanged();
@@ -94,8 +94,9 @@ public class NewOrderFragment extends Fragment {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                orders.clear();
                 Order order = snapshot.getValue(Order.class);
-                if(order != null){
+                if(order != null && order.getOrderStatus().equals("Đặt hàng thành công")){
                     orders.add(order);
                 }
                 adapter.notifyDataSetChanged();
@@ -104,20 +105,11 @@ public class NewOrderFragment extends Fragment {
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
 
-                Order order = snapshot.getValue(Order.class);
-                if(order != null){
-                    orders.add(order);
-                }
-                adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Order order = snapshot.getValue(Order.class);
-                if(order != null){
-                    orders.add(order);
-                }
-                adapter.notifyDataSetChanged();
+
             }
 
             @Override

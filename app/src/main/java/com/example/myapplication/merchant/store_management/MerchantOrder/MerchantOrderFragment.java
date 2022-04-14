@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,11 +20,13 @@ public class MerchantOrderFragment extends Fragment {
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
     private MerchantOrderViewPagerAdapter viewPagerAdapter;
+    private ImageView ivBtnback;
 
     private void initUi()
     {
         tabLayout = binding.fragmentMerchantOrderTabLayout;
         viewPager = binding.fragmentMerchantOrderViewPager;
+        ivBtnback = binding.fragementMerchantOrderIvBtnBack;
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -57,6 +60,13 @@ public class MerchantOrderFragment extends Fragment {
                     break;
             }
         }).attach();
+
+        ivBtnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().finish();
+            }
+        });
     }
 
     @Override

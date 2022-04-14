@@ -4,7 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_add_product.xml" value="0.2" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_cart.xml" value="0.128125" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_choose_store.xml" value="0.128125" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_merchant_order_detail.xml" value="0.264" />
         <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/activity_update_product.xml" value="0.2" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_confirm_order.xml" value="0.12708333333333333" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_history_order.xml" value="0.2" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_menu_management.xml" value="0.15520833333333334" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_merchant_order.xml" value="0.15520833333333334" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_new_order.xml" value="0.12708333333333333" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/fragment_product.xml" value="0.12708333333333333" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/item_history_order.xml" value="0.264" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/item_merchant_order.xml" value="0.4" />
+        <entry key="..\:/CODE_MOBILE/JavaProject/app/src/main/res/layout/item_new_order.xml" value="0.4" />
         <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/drawable/border_layout.xml" value="0.1745" />
         <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/drawable/btn1_bg.xml" value="0.1835" />
         <entry key="..\:/MyUIT/Year03/02_PHATTRIENUDDIDONG/GoFood/app/src/main/res/drawable/btn2_bg.xml" value="0.1835" />

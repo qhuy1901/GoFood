@@ -5,6 +5,7 @@ import static android.content.Context.MODE_PRIVATE;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -77,8 +78,13 @@ public class LoginTabFragment extends Fragment {
             public void onClick(View v) {
                 String email = edtEmail.getText().toString();
                 String password = edtPassword.getText().toString();
-                progressDialog.setMessage("Đang đăng nhập...");
-                progressDialog.show();
+                SweetAlertDialog pDialog = new SweetAlertDialog(getContext(), SweetAlertDialog.PROGRESS_TYPE);
+                pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+                pDialog.setTitleText("Đang đăng nhập...");
+                pDialog.setCancelable(false);
+                pDialog.show();
+//                progressDialog.setMessage("Đang đăng nhập...");
+//                progressDialog.show();
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                             @Override
@@ -111,7 +117,7 @@ public class LoginTabFragment extends Fragment {
                                             .setTitleText("Vui lòng thử lại")
                                             .setContentText("Tên đăng nhập hoặc mật khẩu không đúng.")
                                             .show();
-                                    progressDialog.dismiss();
+                                    pDialog.dismiss();
                                 }
                             }
                         });

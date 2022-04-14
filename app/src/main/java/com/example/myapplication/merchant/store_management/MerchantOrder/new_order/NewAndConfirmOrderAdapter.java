@@ -22,11 +22,11 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
-public class MerchantOrderAdapter  extends RecyclerView.Adapter<MerchantOrderAdapter.MerchantOrderViewHolder>{
+public class NewAndConfirmOrderAdapter extends RecyclerView.Adapter<NewAndConfirmOrderAdapter.MerchantOrderViewHolder>{
     private final List<Order> orders;
     private Context context;
 
-    public MerchantOrderAdapter(List<Order> orders, Context context) {
+    public NewAndConfirmOrderAdapter(List<Order> orders, Context context) {
         this.orders = orders;
         this.context = context;
     }
@@ -34,8 +34,8 @@ public class MerchantOrderAdapter  extends RecyclerView.Adapter<MerchantOrderAda
     @NonNull
     @Override
     public MerchantOrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_merchant_order,parent,false);
-        return new MerchantOrderAdapter.MerchantOrderViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_new_and_confirm_order,parent,false);
+        return new NewAndConfirmOrderAdapter.MerchantOrderViewHolder(view);
     }
 
     @Override
@@ -43,6 +43,7 @@ public class MerchantOrderAdapter  extends RecyclerView.Adapter<MerchantOrderAda
         Order order = orders.get(position);
         if(order == null)
             return ;
+        holder.tvOrder.setText((position+1) + "");
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         String total = currencyVN.format(order.getTotal()).replace("₫", "")+ " ₫";
@@ -81,18 +82,19 @@ public class MerchantOrderAdapter  extends RecyclerView.Adapter<MerchantOrderAda
     }
 
     public class MerchantOrderViewHolder extends RecyclerView.ViewHolder{
-        private TextView tvOrderDate, tvOrderStatus, tvFullName, tvTotal, tvCountProduct, tvOrderId;
+        private TextView tvOrderDate, tvOrderStatus, tvFullName, tvTotal, tvCountProduct, tvOrderId, tvOrder;
         private ConstraintLayout clParent;
 
         public MerchantOrderViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvOrderDate = itemView.findViewById(R.id.item_merchant_order_tv_order_date);
-            tvOrderStatus = itemView.findViewById(R.id.item_merchant_order_tv_order_status);
-            tvFullName = itemView.findViewById(R.id.item_merchant_order_tv_full_name);
-            tvTotal = itemView.findViewById(R.id.item_merchant_order_tv_total);
-            tvCountProduct = itemView.findViewById(R.id.item_merchant_order_tv_count_product);
-            tvOrderId = itemView.findViewById(R.id.item_merchant_order_tv_order_id);
-            clParent = itemView.findViewById(R.id.item_merchant_order_cl_parent);
+            tvOrderDate = itemView.findViewById(R.id.item_new_and_confirm_order_tv_order_date);
+            tvOrderStatus = itemView.findViewById(R.id.item_new_and_confirm_order_tv_order_status);
+            tvFullName = itemView.findViewById(R.id.item_new_and_confirm_order_tv_full_name);
+            tvTotal = itemView.findViewById(R.id.item_new_and_confirm_order_tv_total);
+            tvCountProduct = itemView.findViewById(R.id.item_new_and_confirm_order_tv_count_product);
+            tvOrderId = itemView.findViewById(R.id.item_new_and_confirm_order_tv_order_id);
+            clParent = itemView.findViewById(R.id.item_new_and_confirm_order_cl_parent);
+            tvOrder = itemView.findViewById(R.id.item_new_and_confirm_order_tv_order);
         }
     }
 }
