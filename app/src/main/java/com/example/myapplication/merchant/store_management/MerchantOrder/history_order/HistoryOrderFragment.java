@@ -65,7 +65,7 @@ public class HistoryOrderFragment extends Fragment {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Order order = snapshot.getValue(Order.class);
-                if(order != null && (order.getOrderStatus().contains("Đã hủy") || order.getOrderStatus().equals("Đặt hàng thành công"))){
+                if(order != null && (order.getOrderStatus().contains("Đã hủy") || order.getOrderStatus().equals("Giao hàng thành công"))){
                     orders.add(order);
                 }
                 adapter.notifyDataSetChanged();
@@ -75,7 +75,7 @@ public class HistoryOrderFragment extends Fragment {
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 orders.clear();
                 Order order = snapshot.getValue(Order.class);
-                if(order != null && (order.getOrderStatus().contains("Đã hủy") || order.getOrderStatus().equals("Đặt hàng thành công"))){
+                if(order != null && (order.getOrderStatus().contains("Đã hủy") || order.getOrderStatus().equals("Giao hàng thành công"))){
                     orders.add(order);
                 }
                 adapter.notifyDataSetChanged();

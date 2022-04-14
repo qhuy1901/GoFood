@@ -1,65 +1,112 @@
 package com.example.myapplication.merchant.store_management.MerchantOrder.confirm_order;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.R;
+import com.example.myapplication.databinding.FragmentConfirmOrderBinding;
+import com.example.myapplication.merchant.store_management.MerchantOrder.new_order.NewAndConfirmOrderAdapter;
+import com.example.myapplication.models.Order;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ConfirmOrderFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class ConfirmOrderFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private FragmentConfirmOrderBinding binding;
+    private RecyclerView rcvOrder;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private NewAndConfirmOrderAdapter adapter;
+    private List<Order> orders;
 
-    public ConfirmOrderFragment() {
-        // Required empty public constructor
+    private void initUi()
+    {
+        rcvOrder = binding.fragmentConfirmOrderRcvOrder;
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        rcvOrder .setLayoutManager(linearLayoutManager);
+
+        orders = new ArrayList<>();
+        adapter = new NewAndConfirmOrderAdapter(orders, getContext());
+        rcvOrder.setAdapter(adapter);
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SentOrderFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ConfirmOrderFragment newInstance(String param1, String param2) {
-        ConfirmOrderFragment fragment = new ConfirmOrderFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+    }
+
+    private void getOrderFromRealtimeDatabase()
+    {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference().child("orders");
+
+        SharedPreferences prefs = getActivity().getSharedPreferences("Session", MODE_PRIVATE);
+        String storeId = prefs.getString("storeId", "No name defined");
+
+        Query query = myRef.orderByChild("storeId").equalTo(storeId);
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Order order = snapshot.getValue(Order.class);
+                if(order != null && (order.getOrderStatus().equals("Đã tiếp nhận đơn hàng") || order.getOrderStatus().equals("Đang vận chuyển"))){
+                    orders.add(order);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                orders.clear();
+                Order order = snapshot.getValue(Order.class);
+                if(order != null && (order.getOrderStatus().equals("Đã tiếp nhận đơn hàng") || order.getOrderStatus().equals("Đang vận chuyển"))){
+                    orders.add(order);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_confirm_order, container, false);
+        binding = FragmentConfirmOrderBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+        initUi();
+        getOrderFromRealtimeDatabase();
+        return root;
     }
 }

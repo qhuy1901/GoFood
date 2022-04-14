@@ -105,6 +105,19 @@
             android:src="@drawable/bubble_chat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/activity_merchant_order_detail_tv_change_order_status"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/spinner_bg"
+            android:text="Đã tiếp nhận đơn hàng"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_merchant_order_detail_tv_order_id" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -112,7 +125,7 @@
         android:id="@+id/activity_merchant_order_detail_cl_shipping_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:background="@color/white"
@@ -136,7 +149,6 @@
             android:text=" 29 "
             android:textColor="#F2789F"
             android:textSize="20dp"
-            android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="@+id/activity_merchant_order_detail_textView14"
             app:layout_constraintStart_toEndOf="@+id/activity_merchant_order_detail_textView14"
             app:layout_constraintTop_toTopOf="@+id/activity_merchant_order_detail_textView14"
@@ -152,8 +164,6 @@
             android:textColor="#BBBBBB"
             android:layout_marginTop="5dp"
             android:textSize="14sp"
-            android:textStyle="italic"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activity_merchant_order_detail_textView14" />
         <TextView
@@ -171,40 +181,12 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-
-<!--    <android.widget.Button-->
-<!--        android:id="@+id/activity_merchant_order_detail_activity_update_product_btn_delete_product"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="30dp"-->
-<!--        android:layout_marginRight="20dp"-->
-<!--        android:background="@drawable/img_bg"-->
-<!--        android:fontFamily="@font/be_vietnam_medium"-->
-<!--        android:text="Trì hoãn"-->
-<!--        android:textAllCaps="false"-->
-<!--        android:textColor="#333333"-->
-<!--        android:textSize="14dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/activity_merchant_order_detail_textView12" />-->
-
-<!--    <ScrollView-->
-<!--        android:id="@+id/activity_merchant_order_detail_scrollView2"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/activity_merchant_order_detail_constraintLayout2"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/activity_merchant_order_detail_textView2"-->
-<!--        app:layout_constraintVertical_bias="0.047">-->
-<!--    </ScrollView>-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/activity_merchant_order_detail_rcvOrder"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/white"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@+id/activity_merchant_order_detail_constraintLayout2"
         app:layout_constraintTop_toBottomOf="@+id/activity_merchant_order_detail_cl_shipping_info" />
 
@@ -283,6 +265,8 @@
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

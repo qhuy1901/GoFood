@@ -22,11 +22,11 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
-public class NewOrderAdapter extends RecyclerView.Adapter<NewOrderAdapter.MerchantOrderViewHolder>{
+public class NewAndConfirmOrderAdapter extends RecyclerView.Adapter<NewAndConfirmOrderAdapter.MerchantOrderViewHolder>{
     private final List<Order> orders;
     private Context context;
 
-    public NewOrderAdapter(List<Order> orders, Context context) {
+    public NewAndConfirmOrderAdapter(List<Order> orders, Context context) {
         this.orders = orders;
         this.context = context;
     }
@@ -34,8 +34,8 @@ public class NewOrderAdapter extends RecyclerView.Adapter<NewOrderAdapter.Mercha
     @NonNull
     @Override
     public MerchantOrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_new_order,parent,false);
-        return new NewOrderAdapter.MerchantOrderViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_new_and_confirm_order,parent,false);
+        return new NewAndConfirmOrderAdapter.MerchantOrderViewHolder(view);
     }
 
     @Override
@@ -87,14 +87,14 @@ public class NewOrderAdapter extends RecyclerView.Adapter<NewOrderAdapter.Mercha
 
         public MerchantOrderViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvOrderDate = itemView.findViewById(R.id.item_merchant_order_tv_order_date);
-            tvOrderStatus = itemView.findViewById(R.id.item_merchant_order_tv_order_status);
-            tvFullName = itemView.findViewById(R.id.item_merchant_order_tv_full_name);
-            tvTotal = itemView.findViewById(R.id.item_merchant_order_tv_total);
-            tvCountProduct = itemView.findViewById(R.id.item_merchant_order_tv_count_product);
-            tvOrderId = itemView.findViewById(R.id.item_merchant_order_tv_order_id);
-            clParent = itemView.findViewById(R.id.item_merchant_order_cl_parent);
-            tvOrder = itemView.findViewById(R.id.item_merchant_order_tv_order);
+            tvOrderDate = itemView.findViewById(R.id.item_new_and_confirm_order_tv_order_date);
+            tvOrderStatus = itemView.findViewById(R.id.item_new_and_confirm_order_tv_order_status);
+            tvFullName = itemView.findViewById(R.id.item_new_and_confirm_order_tv_full_name);
+            tvTotal = itemView.findViewById(R.id.item_new_and_confirm_order_tv_total);
+            tvCountProduct = itemView.findViewById(R.id.item_new_and_confirm_order_tv_count_product);
+            tvOrderId = itemView.findViewById(R.id.item_new_and_confirm_order_tv_order_id);
+            clParent = itemView.findViewById(R.id.item_new_and_confirm_order_cl_parent);
+            tvOrder = itemView.findViewById(R.id.item_new_and_confirm_order_tv_order);
         }
     }
 }

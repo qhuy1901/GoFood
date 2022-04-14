@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/item_merchant_order_cl_parent"
+    android:id="@+id/item_new_and_confirm_order_cl_parent"
     android:layout_margin="10dp"
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/item_merchant_order_tv_order_date"
+        android:id="@+id/item_new_and_confirm_order_tv_order_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/item_merchant_order_tv_order_status"
+        android:id="@+id/item_new_and_confirm_order_tv_order_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -29,17 +29,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/item_merchant_order_item_merchant_order_tv_order"
+        android:id="@+id/item_new_and_confirm_order_item_new_and_confirm_order_tv_order"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="@color/background_color1"
-        app:layout_constraintTop_toBottomOf="@+id/item_merchant_order_tv_order_date" />
+        app:layout_constraintTop_toBottomOf="@+id/item_new_and_confirm_order_tv_order_date" />
 
     <TextView
-        android:id="@+id/item_merchant_order_tv_order"
+        android:id="@+id/item_new_and_confirm_order_tv_order"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
@@ -53,10 +53,10 @@
         android:background="@color/colorAccent"
         android:fontFamily="@font/be_vietnam_semibold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_merchant_order_item_merchant_order_tv_order" />
+        app:layout_constraintTop_toBottomOf="@+id/item_new_and_confirm_order_item_new_and_confirm_order_tv_order" />
 
     <TextView
-        android:id="@+id/item_merchant_order_tv_full_name"
+        android:id="@+id/item_new_and_confirm_order_tv_full_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -65,22 +65,22 @@
         android:textSize="16dp"
         android:textStyle="bold"
         android:fontFamily="@font/be_vietnam_semibold"
-        app:layout_constraintStart_toEndOf="@+id/item_merchant_order_tv_order"
-        app:layout_constraintTop_toBottomOf="@+id/item_merchant_order_item_merchant_order_tv_order" />
+        app:layout_constraintStart_toEndOf="@+id/item_new_and_confirm_order_tv_order"
+        app:layout_constraintTop_toBottomOf="@+id/item_new_and_confirm_order_item_new_and_confirm_order_tv_order" />
 
     <TextView
-        android:id="@+id/item_merchant_order_tv_order_id"
+        android:id="@+id/item_new_and_confirm_order_tv_order_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
         android:text="-N-TPKrh_ZWyrdqS4218"
         android:fontFamily="@font/be_vietnam_semibold"
-        app:layout_constraintStart_toEndOf="@+id/item_merchant_order_tv_order"
-        app:layout_constraintTop_toBottomOf="@+id/item_merchant_order_tv_full_name" />
+        app:layout_constraintStart_toEndOf="@+id/item_new_and_confirm_order_tv_order"
+        app:layout_constraintTop_toBottomOf="@+id/item_new_and_confirm_order_tv_full_name" />
 
     <TextView
-        android:id="@+id/item_merchant_order_textitem_merchant_order_tv_order2"
+        android:id="@+id/item_new_and_confirm_order_textitem_new_and_confirm_order_tv_order2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -88,10 +88,10 @@
         android:text="Lấy đơn"
         android:fontFamily="@font/be_vietnam_semibold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_merchant_order_tv_order_id" />
+        app:layout_constraintTop_toBottomOf="@+id/item_new_and_confirm_order_tv_order_id" />
 
     <TextView
-        android:id="@+id/item_merchant_order_textitem_merchant_order_tv_order3"
+        android:id="@+id/item_new_and_confirm_order_textitem_new_and_confirm_order_tv_order3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -100,10 +100,10 @@
         android:fontFamily="@font/be_vietnam_semibold"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_merchant_order_textitem_merchant_order_tv_order2" />
+        app:layout_constraintTop_toBottomOf="@+id/item_new_and_confirm_order_textitem_new_and_confirm_order_tv_order2" />
 
     <TextView
-        android:id="@+id/item_merchant_order_textitem_merchant_order_tv_order5"
+        android:id="@+id/item_new_and_confirm_order_textitem_new_and_confirm_order_tv_order5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -111,10 +111,10 @@
         android:text="Món"
         android:fontFamily="@font/be_vietnam_semibold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_merchant_order_tv_order_id" />
+        app:layout_constraintTop_toBottomOf="@+id/item_new_and_confirm_order_tv_order_id" />
 
     <TextView
-        android:id="@+id/item_merchant_order_tv_count_product"
+        android:id="@+id/item_new_and_confirm_order_tv_count_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="11"
@@ -122,9 +122,9 @@
         android:textColor="@color/red"
         android:fontFamily="@font/be_vietnam_semibold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_merchant_order_textitem_merchant_order_tv_order5" />
+        app:layout_constraintTop_toBottomOf="@+id/item_new_and_confirm_order_textitem_new_and_confirm_order_tv_order5" />
     <TextView
-        android:id="@+id/item_merchant_order_textitem_merchant_order_tv_order8"
+        android:id="@+id/item_new_and_confirm_order_textitem_new_and_confirm_order_tv_order8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -132,9 +132,9 @@
         android:text="Khoảng cách"
         android:fontFamily="@font/be_vietnam_semibold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_merchant_order_tv_order_id" />
+        app:layout_constraintTop_toBottomOf="@+id/item_new_and_confirm_order_tv_order_id" />
     <TextView
-        android:id="@+id/item_merchant_order_textitem_merchant_order_tv_order6"
+        android:id="@+id/item_new_and_confirm_order_textitem_new_and_confirm_order_tv_order6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="7.7km"
@@ -142,10 +142,10 @@
         android:textColor="@color/black"
         android:fontFamily="@font/be_vietnam_semibold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_merchant_order_textitem_merchant_order_tv_order5" />
+        app:layout_constraintTop_toBottomOf="@+id/item_new_and_confirm_order_textitem_new_and_confirm_order_tv_order5" />
 
     <TextView
-        android:id="@+id/item_merchant_order_tv_total"
+        android:id="@+id/item_new_and_confirm_order_tv_total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
@@ -159,6 +159,6 @@
         android:paddingTop="5dp"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_merchant_order_textitem_merchant_order_tv_order6" />
+        app:layout_constraintTop_toBottomOf="@+id/item_new_and_confirm_order_textitem_new_and_confirm_order_tv_order6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

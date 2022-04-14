@@ -24,10 +24,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class MerchantOrderDetailActivity extends AppCompatActivity {
 
     private Order order;
-    private TextView tvCustomerName, tvTotal, tvCountProduct, tvOrderId;
+    private TextView tvCustomerName, tvTotal, tvCountProduct, tvOrderId, tvChangeOrderStatus;
     private ImageView ivBtnBack;
     private Button btnAccept, btnReject;
     private RecyclerView rcvProductList;
@@ -35,6 +37,7 @@ public class MerchantOrderDetailActivity extends AppCompatActivity {
     private boolean[] selectedReason;
     private List<Integer> selectedList = new ArrayList<>();
     private String[] cancelReason = {"Quán hết món", "Quán tạm nghỉ, không nhận đơn hàng này", "Tài xế từ chối vận chuyển đơn hàng"};
+    private String[] orderStatus ={"Đã tiếp nhận đơn hàng", "Đang vận chuyển", "Giao hàng thành công"};
     private GoFoodDatabase goFoodDatabase;
     private void initUi()
     {
@@ -46,11 +49,19 @@ public class MerchantOrderDetailActivity extends AppCompatActivity {
         ivBtnBack = (ImageView) findViewById(R.id.activity_merchant_order_detail_iv_btn_back);
         btnAccept = (Button)findViewById(R.id.activity_merchant_order_detail_btn_accept) ;
         btnReject  = (Button) findViewById(R.id.activity_merchant_order_detail_btn_reject);
+        tvChangeOrderStatus = (TextView) findViewById(R.id.activity_merchant_order_detail_tv_change_order_status);
 
-        if(order.getOrderStatus().equals("Đặt hàng thành công") || order.getOrderStatus().contains("Đã hủy"))
+        tvChangeOrderStatus.setText(order.getOrderStatus());
+
+        if(!order.getOrderStatus().equals("Đặt hàng thành công"))
         {
             btnAccept.setVisibility(View.GONE);
             btnReject.setVisibility(View.GONE);
+        }
+
+        if(!order.getOrderStatus().equals("Đã tiếp nhận đơn hàng") && !order.getOrderStatus().equals("Đang vận chuyển"))
+        {
+            tvChangeOrderStatus.setVisibility(View.GONE);
         }
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MerchantOrderDetailActivity.this);
@@ -97,7 +108,14 @@ public class MerchantOrderDetailActivity extends AppCompatActivity {
         btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                order.setOrderStatus("Đã tiếp nhận đơn hàng");
+                goFoodDatabase.updateOrder(order);
+                new SweetAlertDialog(MerchantOrderDetailActivity.this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("Thành công")
+                        .setContentText("Đã tiếp nhận đơn hàng!")
+                        .show();
+                btnAccept.setVisibility(View.GONE);
+                btnReject.setVisibility(View.GONE);
             }
         });
 
@@ -105,7 +123,7 @@ public class MerchantOrderDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MerchantOrderDetailActivity.this);
-                builder.setTitle("Chọn nguyên nhân hủy đơn hàng");
+                builder.setTitle("Chọn nguyên nhân từ chối đơn hàng");
                 builder.setCancelable(false);
                 builder.setMultiChoiceItems(cancelReason, selectedReason, new DialogInterface.OnMultiChoiceClickListener() {
                     @Override
@@ -150,6 +168,49 @@ public class MerchantOrderDetailActivity extends AppCompatActivity {
                     }
                 });
                 builder.show();
+            }
+        });
+        tvChangeOrderStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int checkedItemIndex = 0;
+                for(int i = 0; i < orderStatus.length; i++)
+                {
+                    if(orderStatus[i].equals(order.getOrderStatus()))
+                    {
+                        checkedItemIndex = i;
+                        break;
+                    }
+                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(MerchantOrderDetailActivity.this);
+                builder.setTitle("Chọn trạng thái mới cho đơn hàng");
+                builder.setCancelable(false);
+                builder.setSingleChoiceItems(orderStatus, checkedItemIndex, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        selectedList.add(i);
+                        Collections.sort(selectedList);
+                    }
+                });
+
+                builder.setPositiveButton("Xong", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        order.setOrderStatus(orderStatus[selectedList.get(0)]);
+                        goFoodDatabase.updateOrder(order);
+                        tvChangeOrderStatus.setText(orderStatus[selectedList.get(0)]);
+                        new SweetAlertDialog(MerchantOrderDetailActivity.this, SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText("Thành công")
+                                .setContentText("Đã thay đổi trạng thái đơn hàng!")
+                                .show();
+                    }
+                });
+                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                }).show();
             }
         });
     }
