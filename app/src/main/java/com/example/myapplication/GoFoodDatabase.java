@@ -275,4 +275,13 @@ public class GoFoodDatabase {
             }
         });
     }
+
+    public void updateOrder(Order order) {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        Map<String, Object> values = order.toMap();
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/orders/"+ order.getOrderId(),values);
+        mDatabase.updateChildren(childUpdates);
+    }
 }

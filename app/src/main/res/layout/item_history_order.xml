@@ -4,207 +4,173 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/item_cart_item_cl_product_item"
-    android:padding="10dp"
-    android:background="@drawable/border_layout">
+    android:id="@+id/item_history_order_cl_parent"
+    android:layout_margin="10dp"
+    android:background="@color/white">
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/item_history_order_tv_order_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/be_vietnam_medium"
-        android:text="11/04/2022"
-        android:textColor="#707070"
-        android:textSize="18dp"
+        android:layout_margin="10dp"
+        android:text="13/04/2021"
+        android:fontFamily="@font/be_vietnam_semibold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/view3"
-        android:layout_width="fill_parent"
-        android:layout_height="0.6dp"
+    <TextView
+        android:id="@+id/item_history_order_tv_order_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_marginStart="20dp"
-        android:background="#c0c0c0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        android:text="Đã hủy"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/item_history_order_item_history_order_tv_order"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/background_color1"
+        app:layout_constraintTop_toBottomOf="@+id/item_history_order_tv_order_date" />
 
     <TextView
-        android:id="@+id/item_cart_item_tv_product_name"
-        android:layout_width="51dp"
-        android:layout_height="44dp"
-        android:layout_margin="10dp"
-        android:layout_marginStart="16dp"
-        android:background="#F999B7"
-        android:fontFamily="@font/be_vietnam_bold"
-        android:text="99"
-        android:textAlignment="center"
+        android:id="@+id/item_history_order_tv_order"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="1"
+        android:textSize="20dp"
         android:textColor="@color/white"
-        android:textSize="26dp"
         android:textStyle="bold"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:background="@color/colorAccent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view3" />
+        app:layout_constraintTop_toBottomOf="@+id/item_history_order_item_history_order_tv_order" />
 
     <TextView
-        android:id="@+id/item_cart_item_tv_note"
+        android:id="@+id/item_history_order_tv_full_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_marginStart="16dp"
-
-        android:fontFamily="@font/be_vietnam_medium"
-        android:text="Đã hoàn thành"
-        android:textColor="#707070"
-        android:textSize="13dp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="118dp" />
-
-    <TextView
-        android:id="@+id/time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:text="Khách hàng A"
         android:fontFamily="@font/be_vietnam_semibold"
-android:textStyle="bold"
-        android:text="13:28"
-        android:textColor="#707070"
-        android:textSize="13dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_cart_item_tv_note" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_marginTop="5dp"
-        android:text="#3000-0209"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="@+id/item_cart_item_tv_description"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/item_cart_item_tv_description"
-        app:layout_constraintTop_toBottomOf="@+id/item_cart_item_tv_description" />
-
-    <TextView
-        android:id="@+id/status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="70dp"
-        android:fontFamily="@font/be_vietnam_medium"
-        android:text="Món"
-        android:textColor="#707070"
-        android:textSize="13dp"
-        app:layout_constraintBottom_toBottomOf="@+id/item_cart_item_tv_note"
-        app:layout_constraintStart_toEndOf="@+id/item_cart_item_tv_note"
-        app:layout_constraintTop_toTopOf="@+id/item_cart_item_tv_note"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/amountf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-    android:textStyle="bold"
-        android:fontFamily="@font/be_vietnam_semibold"
-        android:text="3"
-        android:textColor="#707070"
-        android:textSize="13dp"
-        app:layout_constraintEnd_toEndOf="@+id/status"
-        app:layout_constraintStart_toStartOf="@+id/status"
-        app:layout_constraintTop_toBottomOf="@+id/status" />
-
-    <TextView
-        android:id="@+id/distance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-
-        android:fontFamily="@font/be_vietnam_medium"
-        android:text="Khoảng cách"
-        android:textColor="#707070"
-        android:textSize="13dp"
-        app:layout_constraintBottom_toBottomOf="@+id/status"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/status"
-        app:layout_constraintTop_toTopOf="@+id/status" />
-
-    <TextView
-        android:id="@+id/distance1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:fontFamily="@font/be_vietnam_semibold"
-        android:text="0.7km"
-        android:textColor="#707070"
-        android:textSize="13dp"
-        app:layout_constraintEnd_toEndOf="@+id/distance"
-        app:layout_constraintStart_toStartOf="@+id/distance"
-        app:layout_constraintTop_toBottomOf="@+id/distance" />
-
-    <TextView
-        android:id="@+id/statusname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="5dp"
-        android:fontFamily="@font/be_vietnam_semibold"
-        android:text="Đã hoàn thành"
-        android:textColor="#F999B7"
-        android:textSize="18dp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="@+id/textView16"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.975"
-        app:layout_constraintStart_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toTopOf="@+id/textView16"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <View
-        android:id="@+id/view1"
-        android:layout_width="fill_parent"
-        android:layout_height="0.6dp"
-        android:layout_margin="10dp"
-        android:layout_marginStart="16dp"
-        android:background="#c0c0c0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amountf" />
-
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/be_vietnam_semibold"
-        android:text="857,858 đ"
-        android:textColor="#707070"
-        android:textSize="13dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view1" />
-
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:fontFamily="@font/be_vietnam_semibold"
-        android:text="Đã giao"
-        android:textColor="#707070"
-        android:textSize="13dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view1" />
-
-    <TextView
-        android:id="@+id/item_cart_item_tv_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/be_vietnam_semibold"
-        android:text="quanghuy123"
-        android:textColor="#707070"
+        android:textColor="@color/black"
         android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/item_history_order_tv_order"
+        app:layout_constraintTop_toBottomOf="@+id/item_history_order_item_history_order_tv_order" />
+
+    <TextView
+        android:id="@+id/item_history_order_tv_order_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:layout_marginLeft="10dp"
+        android:text="-N-TPKrh_ZWyrdqS4218"
+        app:layout_constraintStart_toEndOf="@+id/item_history_order_tv_order"
+        app:layout_constraintTop_toBottomOf="@+id/item_history_order_tv_full_name" />
+
+    <TextView
+        android:id="@+id/item_history_order_tv_finish_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:layout_marginTop="20dp"
+        android:text="Đã hủy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_history_order_tv_order_id" />
+
+
+    <TextView
+        android:id="@+id/item_history_order_tv_finish_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="11:30"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_history_order_tv_finish_name" />
+
+    <TextView
+        android:id="@+id/item_history_order_tv_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="Hủy bởi khách"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_history_order_tv_finish_time" />
+    <TextView
+        android:id="@+id/item_history_order_tv_order5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="120dp"
+        android:text="Món"
+        android:fontFamily="@font/be_vietnam_semibold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_history_order_tv_order_id" />
+
+    <TextView
+        android:id="@+id/item_history_order_tv_count_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11"
+        android:layout_marginLeft="123dp"
+        android:textColor="@color/red"
+        android:fontFamily="@font/be_vietnam_semibold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_history_order_tv_order5" />
+    <TextView
+        android:id="@+id/item_history_order_tv_order8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="220dp"
+        android:text="Khoảng cách"
+        android:fontFamily="@font/be_vietnam_semibold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_history_order_tv_order_id" />
+    <TextView
+        android:id="@+id/item_history_order_tv_order6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="7.7km"
+        android:layout_marginLeft="220dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/be_vietnam_semibold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_history_order_tv_order5" />
+
+    <TextView
+        android:id="@+id/item_history_order_tv_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="220.000đ"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.056"
-        app:layout_constraintStart_toEndOf="@+id/item_cart_item_tv_product_name"
-        app:layout_constraintTop_toTopOf="@+id/item_cart_item_tv_product_name" />
+        app:layout_constraintTop_toBottomOf="@+id/item_history_order_tv_order6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

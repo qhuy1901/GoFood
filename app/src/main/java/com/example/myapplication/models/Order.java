@@ -20,6 +20,9 @@ public class Order implements Serializable {
     private int total;
     private String orderStatus;
     private Date orderDate;
+    private String cancelReason;
+    private Date finishTime;
+
 
     public Order() {
     }
@@ -38,6 +41,21 @@ public class Order implements Serializable {
         this.orderDate = orderDate;
     }
 
+    public Date getFinishTime() {
+        return finishTime;
+    }
+
+    public void setFinishTime(Date finishTime) {
+        this.finishTime = finishTime;
+    }
+
+    public String getCancelReason() {
+        return cancelReason;
+    }
+
+    public void setCancelReason(String cancelReason) {
+        this.cancelReason = cancelReason;
+    }
     public String getOrderStatus() {
         return orderStatus;
     }
@@ -140,6 +158,8 @@ public class Order implements Serializable {
         result.put("total", total);
         result.put("orderStatus", orderStatus);
         result.put("orderDate", orderDate);
+        result.put("cancelReason", cancelReason);
+        result.put("finishTime", finishTime);
         return result;
     }
 }
