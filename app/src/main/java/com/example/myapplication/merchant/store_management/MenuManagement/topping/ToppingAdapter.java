@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.models.Product;
+import com.example.myapplication.models.Topping;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -18,10 +18,10 @@ import java.util.Locale;
 
 public class ToppingAdapter extends RecyclerView.Adapter< ToppingAdapter. ToppingViewHolder>
 {
-    private final List<Product> toppingList;
+    private final List<Topping> toppingList;
     private Context context;
 
-    public ToppingAdapter(List<Product> toppingList, Context context) {
+    public ToppingAdapter(List<Topping> toppingList, Context context) {
         this.toppingList = toppingList;
         this.context = context;
     }
@@ -35,14 +35,14 @@ public class ToppingAdapter extends RecyclerView.Adapter< ToppingAdapter. Toppin
 
     @Override
     public void onBindViewHolder(@NonNull ToppingViewHolder holder, int position) {
-        Product topping = toppingList.get(position);
+        Topping topping = toppingList.get(position);
         if(topping == null)
             return ;
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
-        String price = currencyVN.format(topping.getPrice()).replace("₫", "")+ " ₫";
+        String price = currencyVN.format(topping.getToppingPrice()).replace("₫", "")+ " ₫";
         holder.tvPrice.setText(price);
-        holder.tvToppingName.setText(topping.getProductName());
+        holder.tvToppingName.setText(topping.getToppingName());
     }
 
     @Override
@@ -59,7 +59,7 @@ public class ToppingAdapter extends RecyclerView.Adapter< ToppingAdapter. Toppin
         public ToppingViewHolder(@NonNull View itemView) {
             super(itemView);
             tvToppingName = itemView.findViewById(R.id.item_topping_tv_topping_name);
-            tvPrice = itemView.findViewById(R.id.item_topping_tv_topping_name);
+            tvPrice = itemView.findViewById(R.id.item_topping_tv_price);
         }
     }
 }
