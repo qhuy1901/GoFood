@@ -53,7 +53,7 @@ public class NewAndConfirmOrderAdapter extends RecyclerView.Adapter<NewAndConfir
         holder.tvCountProduct.setText(order.getOrderDetail().size()+"");
         holder.tvOrderId.setText(order.getOrderId());
 
-        DateFormat dateFormat = new SimpleDateFormat("hh:mm dd-mm-yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("hh:mm dd-MM-yyyy");
         holder.tvOrderDate.setText(dateFormat.format(order.getOrderDate()));
 
         GoFoodDatabase goFoodDatabase = new GoFoodDatabase();

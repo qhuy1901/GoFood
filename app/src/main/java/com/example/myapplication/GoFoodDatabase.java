@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import com.example.myapplication.models.Order;
 import com.example.myapplication.models.Product;
 import com.example.myapplication.models.Store;
+import com.example.myapplication.models.Topping;
 import com.example.myapplication.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -42,7 +43,7 @@ public class GoFoodDatabase {
 
     public void insertProduct(Product product, ImageView ivProductImage) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        String key = mDatabase.child("stores").child(product.getStoreId()).child("Menu").push().getKey();
+        String key = mDatabase.child("stores").child(product.getStoreId()).child("menu").push().getKey();
         product.setProductId(key);
 
         /* Xử lý thêm ảnh vô firebase */
@@ -256,6 +257,19 @@ public class GoFoodDatabase {
         Map<String, Object> orderValues = order.toMap();
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("/orders/" + key, orderValues);
+        mDatabase.updateChildren(childUpdates);
+    }
+
+    public void insertTopping(Topping topping, String storeId) {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        String key = mDatabase.child("stores").child(storeId).child("menu").child("topping").push().getKey();
+        topping.setToppingId(key);
+
+        Map<String, Object> orderValues = topping.toMap();
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/stores/" + storeId + "/menu/topping/"+ key, orderValues);
         mDatabase.updateChildren(childUpdates);
     }
 
