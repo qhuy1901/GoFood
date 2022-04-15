@@ -34,6 +34,8 @@ public class StorePageDetailActivity extends AppCompatActivity {
     private Button btnDelivery;
     private TabLayout tablayout;
     private ViewPager2 viewPager;
+    private ToppingBottomSheetDialog toppingBottomSheetDialog;
+
 
     private Store storeInfo;
     private GoFoodDatabase goFoodDatabase;
@@ -72,6 +74,14 @@ public class StorePageDetailActivity extends AppCompatActivity {
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         String total = currencyVN.format(cartSession.getTotal());
         tvTotal.setText(total);
+    }
+
+    public void setToppingBottomSheetDialog(ToppingBottomSheetDialog toppingBottomSheetDialog) {
+        this.toppingBottomSheetDialog = toppingBottomSheetDialog;
+    }
+
+    public ToppingBottomSheetDialog getToppingBottomSheetDialog() {
+        return toppingBottomSheetDialog;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)

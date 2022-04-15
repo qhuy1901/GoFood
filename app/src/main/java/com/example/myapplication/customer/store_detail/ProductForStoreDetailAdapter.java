@@ -63,6 +63,10 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
                 ToppingBottomSheetDialog toppingBottomSheetDialog = new ToppingBottomSheetDialog(context, product);
                 toppingBottomSheetDialog.show(((AppCompatActivity)context).getSupportFragmentManager(), "chooseTopping");
 
+                if (context instanceof StorePageDetailActivity) {
+                    ((StorePageDetailActivity)context).setToppingBottomSheetDialog(toppingBottomSheetDialog);
+                }
+
                 // Lưu mã cửa hàng vào Session
 //                CartSession cart = new CartSession(context);
 //                CartItem cartItem = new CartItem(product, 1);

@@ -40,7 +40,7 @@ public class LoginTabFragment extends Fragment {
     private TextView forgetPass, logIn;
     float v=0;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    public static String UID = null;
+    public static String UID = "66CwgtA9lrZAlkLuKiFzYR9GgHF3";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -148,7 +148,7 @@
         android:textAllCaps="false"
         android:layout_margin="10dp"
         android:textSize="18dp"
-        android:background="@color/colorAccent"
+        android:background="@color/red"
         android:text="Thêm vào giỏ hàng - 39.000 đ"
         app:layout_constraintTop_toBottomOf="@+id/dialog_topping_bottom_sheeet_textView14" />
 </androidx.constraintlayout.widget.ConstraintLayout>
