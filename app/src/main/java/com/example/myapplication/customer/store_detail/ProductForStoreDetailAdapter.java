@@ -11,21 +11,18 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
-import com.example.myapplication.models.CartItem;
-import com.example.myapplication.models.CartSession;
 import com.example.myapplication.models.Product;
 
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
-
-import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductForStoreDetailAdapter.ProductForStoreDetailViewHolder>{
     private final List<Product> productList;
@@ -63,18 +60,21 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
-                // Lưu mã cửa hàng vào Session
-                CartSession cart = new CartSession(context);
-                CartItem cartItem = new CartItem(product, 1);
-                cart.addToCart(cartItem);
+                ToppingBottomSheetDialog toppingBottomSheetDialog = new ToppingBottomSheetDialog(context, product);
+                toppingBottomSheetDialog.show(((AppCompatActivity)context).getSupportFragmentManager(), "chooseTopping");
 
-                if (context instanceof StorePageDetailActivity) {
-                    ((StorePageDetailActivity)context).updateTotalPrice();
-                }
-                new SweetAlertDialog(context, SweetAlertDialog.SUCCESS_TYPE)
-                                        .setTitleText("Thành công")
-                                        .setContentText("Đã thêm món vào giỏ hàng!")
-                                        .show();
+                // Lưu mã cửa hàng vào Session
+//                CartSession cart = new CartSession(context);
+//                CartItem cartItem = new CartItem(product, 1);
+//                cart.addToCart(cartItem);
+//
+//                if (context instanceof StorePageDetailActivity) {
+//                    ((StorePageDetailActivity)context).updateTotalPrice();
+//                }
+//                new SweetAlertDialog(context, SweetAlertDialog.SUCCESS_TYPE)
+//                                        .setTitleText("Thành công")
+//                                        .setContentText("Đã thêm món vào giỏ hàng!")
+//                                        .show();
             }
         });
     }
