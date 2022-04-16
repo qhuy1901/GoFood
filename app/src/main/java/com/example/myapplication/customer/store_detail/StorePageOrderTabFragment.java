@@ -1,6 +1,5 @@
 package com.example.myapplication.customer.store_detail;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,13 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
-import com.example.myapplication.customer.home.StoreForHomeAdapter;
-import com.example.myapplication.databinding.FragmentProductBinding;
 import com.example.myapplication.models.Product;
 import com.example.myapplication.models.Store;
 import com.google.firebase.database.DataSnapshot;

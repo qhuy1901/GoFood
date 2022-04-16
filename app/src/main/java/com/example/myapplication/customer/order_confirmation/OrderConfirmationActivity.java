@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.GoFoodDatabase;
-import com.example.myapplication.HomeActivity;
+import com.example.myapplication.customer.home.HomeActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.models.CartItem;
 import com.example.myapplication.models.CartSession;

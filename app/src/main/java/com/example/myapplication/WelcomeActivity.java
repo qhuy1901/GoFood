@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.myapplication.customer.home.HomeActivity;
 import com.example.myapplication.merchant.choose_store.ChooseStoreActivity;
 import com.example.myapplication.models.User;
 import com.example.myapplication.models.UserSession;

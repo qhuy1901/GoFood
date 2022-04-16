@@ -1,4 +1,4 @@
-package com.example.myapplication.merchant.order_detail;
+package com.example.myapplication.customer.home.myorderpage.order_detail;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -16,24 +16,24 @@ import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
-public class ProductForMerchantOrderDetailAdapter extends RecyclerView.Adapter<ProductForMerchantOrderDetailAdapter.ProductForMerchantOrderDetailViewHolder>{
+
+public class ProductForCustomerOrderDetailAdapter extends RecyclerView.Adapter<ProductForCustomerOrderDetailAdapter.ProductForCustomerOrderDetailViewHolder> {
     private final List<CartItem> cart;
     private Context context;
 
-    public ProductForMerchantOrderDetailAdapter(List<CartItem> cart, Context context) {
+    public ProductForCustomerOrderDetailAdapter(List<CartItem> cart, Context context) {
         this.cart = cart;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public ProductForMerchantOrderDetailViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product_for_order_detail,parent,false);
-        return new ProductForMerchantOrderDetailAdapter.ProductForMerchantOrderDetailViewHolder(view);
+    public ProductForCustomerOrderDetailAdapter.ProductForCustomerOrderDetailViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new ProductForCustomerOrderDetailAdapter.ProductForCustomerOrderDetailViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product_for_order_detail, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductForMerchantOrderDetailViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductForCustomerOrderDetailAdapter.ProductForCustomerOrderDetailViewHolder holder, int position) {
         CartItem item= cart.get(position);
         if(item == null)
             return ;
@@ -43,15 +43,6 @@ public class ProductForMerchantOrderDetailAdapter extends RecyclerView.Adapter<P
         String price = currencyVN.format(item.product.getPrice()).replace("₫", "")+ " ₫";
         holder.tvPrice.setText(price);
         holder.tvQuantity.setText("x"+item.quantity);
-        String topping = item.getTopping();
-        if(topping.equals(""))
-        {
-            holder.tvTopping.setVisibility(View.GONE);
-        }
-        else
-        {
-            holder.tvTopping.setText("+Topping: " + topping);
-        }
     }
 
     @Override
@@ -61,15 +52,13 @@ public class ProductForMerchantOrderDetailAdapter extends RecyclerView.Adapter<P
         return 0;
     }
 
-    public class ProductForMerchantOrderDetailViewHolder extends RecyclerView.ViewHolder{
-        private TextView tvProductName, tvQuantity, tvPrice, tvTopping;
-
-        public ProductForMerchantOrderDetailViewHolder(@NonNull View itemView) {
+    public class ProductForCustomerOrderDetailViewHolder extends RecyclerView.ViewHolder {
+        private TextView tvProductName, tvQuantity, tvPrice;
+        public ProductForCustomerOrderDetailViewHolder(@NonNull View itemView) {
             super(itemView);
             tvProductName = itemView.findViewById(R.id.item_product_for_merchant_order_detail_tv_product_name);
             tvQuantity = itemView.findViewById(R.id.item_product_for_merchant_order_detail_tv_quantity);
             tvPrice = itemView.findViewById(R.id.item_product_for_merchant_order_detail_tv_unit_price);
-            tvTopping = itemView.findViewById(R.id.item_product_for_merchant_order_detail_tv_topping);
         }
     }
 }

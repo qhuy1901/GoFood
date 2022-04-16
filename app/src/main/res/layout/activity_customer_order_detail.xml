@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color1"
+    tools:context=".customer.home.myorderpage.order_detail.CustomerOrderDetailActivity">
+
+    <RelativeLayout
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/customer_order_detail_btn_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/back_button" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/customer_order_detail_btn_back"
+            android:text="Chi tiết đơn hàng"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="22dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/activity_merchant_order_detail_cl_shipping_info2"
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:background="#c0c0c0"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_customer_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/activity_merchant_order_detail_cl_shipping_info2">
+        <TextView
+            android:id="@+id/customer_order_detail_order_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/be_vietnam_bold"
+            android:text="Order ID"
+            android:textColor="#BBBBBB"
+            android:textSize="14sp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent" />
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/customer_order_detail_appCompatImageButton"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/white"
+            android:scaleType="centerCrop"
+            android:src="@drawable/telephone"
+            app:layout_constraintEnd_toStartOf="@+id/customer_order_detail_appCompatImageButton2"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/customer_order_detail_appCompatImageButton2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/white"
+            android:scaleType="centerCrop"
+            android:src="@drawable/print"
+            app:layout_constraintEnd_toStartOf="@+id/customer_order_detail_appCompatImageButton3"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/customer_order_detail_appCompatImageButton3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/white"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bubble_chat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/customer_order_detail_cl_shipping_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/cl_customer_info">
+
+        <TextView
+            android:id="@+id/activity_merchant_order_detail_textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Lấy đơn trong "
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/activity_merchant_order_detail_textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/be_vietnam_bold"
+            android:text=" 29 "
+            android:textColor="#F2789F"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_merchant_order_detail_textView14"
+            app:layout_constraintStart_toEndOf="@+id/activity_merchant_order_detail_textView14"
+            app:layout_constraintTop_toTopOf="@+id/activity_merchant_order_detail_textView14"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/activity_merchant_order_detail_textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/be_vietnam_medium"
+            android:text="Cách 2.7km"
+            android:textColor="#BBBBBB"
+            android:layout_marginTop="5dp"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_merchant_order_detail_textView14" />
+        <TextView
+            android:id="@+id/activity_merchant_order_detail_textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" phút (12:10) "
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_merchant_order_detail_textView15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/activity_merchant_order_detail_textView15"
+            app:layout_constraintTop_toTopOf="@+id/activity_merchant_order_detail_textView15"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/customer_order_detail_rcv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/customer_order_detail_cl_shipping_info"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="-7dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_merchant_order_detail_constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/customer_order_detail_rcv"
+        tools:layout_editor_absoluteX="-22dp">
+
+        <TextView
+            android:id="@+id/customer_order_detail_num_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/be_vietnam_semibold"
+            android:paddingTop="10dp"
+            android:text="10 Món"
+            android:textColor="#333333"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/activity_merchant_order_detail_imageView4"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/wallet"
+            app:layout_constraintEnd_toStartOf="@+id/customer_order_detail_total"
+            app:layout_constraintHorizontal_bias="0.923"
+            app:layout_constraintStart_toEndOf="@+id/customer_order_detail_num_product"
+            tools:layout_editor_absoluteY="12dp" />
+
+        <TextView
+            android:id="@+id/customer_order_detail_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/be_vietnam_semibold"
+            android:paddingTop="12dp"
+            android:text="857,858 đ"
+            android:textColor="#F2789F"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="0dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

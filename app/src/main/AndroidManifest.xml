@@ -23,6 +23,9 @@
             android:name=".merchant.order_detail.MerchantOrderDetailActivity"
             android:exported="false" />
         <activity
+            android:name=".customer.home.myorderpage.order_detail.CustomerOrderDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".customer.order_confirmation.OrderConfirmationActivity"
             android:exported="false" />
         <activity
@@ -42,9 +45,9 @@
             android:exported="false"
             android:label="@string/title_activity_store_detail" />
         <activity
-            android:name=".HomeActivity"
             android:exported="false"
-            android:parentActivityName=".WelcomeActivity" />
+            android:parentActivityName=".WelcomeActivity"
+            android:name=".customer.home.HomeActivity" />
         <activity
             android:name=".merchant.choose_store.ChooseStoreActivity"
             android:exported="false"
