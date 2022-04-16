@@ -189,6 +189,7 @@ public class CateHomeFragment extends Fragment {
                             }
                         }
                     }
+
                 });
     }
 
@@ -226,7 +227,9 @@ public class CateHomeFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+
             }
+
         });
     }
 }

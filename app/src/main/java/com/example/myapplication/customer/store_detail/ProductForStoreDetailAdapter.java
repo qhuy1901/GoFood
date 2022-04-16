@@ -21,6 +21,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.models.Product;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -61,6 +62,7 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
+                List <String> toppingStringList = new ArrayList<>();
                 ToppingBottomSheetDialog toppingBottomSheetDialog = new ToppingBottomSheetDialog(context, product);
                 toppingBottomSheetDialog.show(((AppCompatActivity)context).getSupportFragmentManager(), "chooseTopping");
 
