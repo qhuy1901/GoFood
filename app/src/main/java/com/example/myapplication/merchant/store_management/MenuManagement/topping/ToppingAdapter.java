@@ -16,7 +16,7 @@ import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
-public class ToppingAdapter extends RecyclerView.Adapter< ToppingAdapter. ToppingViewHolder>
+public class ToppingAdapter extends RecyclerView.Adapter<ToppingAdapter. ToppingViewHolder>
 {
     private final List<Topping> toppingList;
     private Context context;

@@ -13,4 +13,6 @@ public class CartItem implements Serializable {
 
     public Product product;
     public int quantity;
+    public String note;
+    public String topping;
 }

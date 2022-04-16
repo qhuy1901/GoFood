@@ -98,7 +98,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/dialog_topping_bottom_sheeet_textView20"
+        android:id="@+id/dialog_topping_bottom_sheeet_tv_add_topping"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
@@ -114,7 +114,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/dialog_topping_bottom_sheeet_textView20">
+        app:layout_constraintTop_toBottomOf="@+id/dialog_topping_bottom_sheeet_tv_add_topping">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dialog_topping_bottom_sheeet_rcv_topping"
@@ -148,7 +148,7 @@
         android:textAllCaps="false"
         android:layout_margin="10dp"
         android:textSize="18dp"
-        android:background="@color/colorAccent"
+        android:background="@color/red"
         android:text="Thêm vào giỏ hàng - 39.000 đ"
         app:layout_constraintTop_toBottomOf="@+id/dialog_topping_bottom_sheeet_textView14" />
 </androidx.constraintlayout.widget.ConstraintLayout>
