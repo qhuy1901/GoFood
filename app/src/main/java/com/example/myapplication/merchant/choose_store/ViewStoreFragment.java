@@ -1,6 +1,7 @@
 package com.example.myapplication.merchant.choose_store;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,7 +53,11 @@ public class ViewStoreFragment extends Fragment{
     {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference().child("stores");
-        Query query = myRef.orderByChild("description");
+
+        SharedPreferences preferences = getContext().getSharedPreferences("Session", getContext().MODE_PRIVATE);
+        String owner = preferences.getString("userId", "default value");
+
+        Query query = myRef.orderByChild("owner").equalTo(owner);
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -75,20 +80,10 @@ public class ViewStoreFragment extends Fragment{
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                Store store = snapshot.getValue(Store.class);
-                if(store != null){
-                    storeList.add(store);
-                }
-                storeAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Store store = snapshot.getValue(Store.class);
-                if(store != null){
-                    storeList.add(store);
-                }
-                storeAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -96,25 +91,6 @@ public class ViewStoreFragment extends Fragment{
 
             }
         });
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference().child("stores");
-//
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                storeList.clear();
-//                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-//                    Store store = postSnapshot.getValue(Store.class);
-//                    storeList.add(store);
-//                }
-//                storeAdapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                Toast.makeText(getContext(), "Không lấy được danh sách cửa hàng", Toast.LENGTH_SHORT).show();
-//            }
-//        });
     }
 
 

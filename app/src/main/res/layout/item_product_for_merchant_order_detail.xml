@@ -35,6 +35,19 @@
         app:layout_constraintTop_toTopOf="@+id/item_product_for_merchant_order_detail_tv_quantity" />
 
     <TextView
+        android:id="@+id/item_product_for_merchant_order_detail_tv_topping"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:text="+Topping: Thạch râu câu"
+        android:textColor="#707070"
+        android:layout_marginTop="3dp"
+        android:textSize="14dp"
+        app:layout_constraintStart_toEndOf="@+id/item_product_for_merchant_order_detail_tv_quantity"
+        app:layout_constraintTop_toBottomOf="@+id/item_product_for_merchant_order_detail_tv_product_name" />
+
+    <TextView
         android:id="@+id/item_product_for_merchant_order_detail_tv_unit_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

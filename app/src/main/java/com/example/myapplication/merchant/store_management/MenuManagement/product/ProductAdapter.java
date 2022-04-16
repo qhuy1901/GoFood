@@ -56,8 +56,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
-        String priceAfterFormat = currencyVN.format(product.getPrice());
+        String priceAfterFormat = currencyVN.format(product.getPrice()).replace("₫", "")+ " ₫";
         holder.tvPrice.setText(priceAfterFormat);
+
         holder.tvDescription.setText(product.getProductDescription());
         if(product.getProductDescription().isEmpty())
             holder.tvDescription.setVisibility(View.GONE);
