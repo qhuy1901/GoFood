@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -40,6 +41,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
     private RadioGroup rgPaymentMethod;
     private RadioButton rbCash, rbOnlinePayment;
     private int sum = 0, deliveryFee = 0, applyFee = 0, total = 0;
+    private ImageView  ivBtnBack;
 
     private void initUi()
     {
@@ -54,6 +56,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         rgPaymentMethod = (RadioGroup)findViewById(R.id.activity_order_confirmation_rg_payment_method);
         rbCash = (RadioButton)  findViewById(R.id.activity_order_confirmation_rb_cash);
         rbOnlinePayment = (RadioButton)findViewById(R.id.activity_order_confirmation_rb_online_payment);
+        ivBtnBack = (ImageView) findViewById(R.id.activity_order_confirmation_ib_back);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rcvProduct.setLayoutManager(linearLayoutManager);
@@ -139,6 +142,12 @@ public class OrderConfirmationActivity extends AppCompatActivity {
                 Toast.makeText(OrderConfirmationActivity.this, "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
                 Intent switchActivityIntent = new Intent(OrderConfirmationActivity.this, HomeActivity.class);
                 startActivity(switchActivityIntent);
+            }
+        });
+        ivBtnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

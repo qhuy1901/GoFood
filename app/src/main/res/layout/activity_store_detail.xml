@@ -14,16 +14,29 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ImageView
-                android:id="@+id/store_img"
+            <RelativeLayout
+                android:id="@+id/rl"
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
-                android:src="@drawable/shop_photo"
-                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:background="@color/black"
+                    android:id="@+id/store_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/shop_photo" />
 
+                <ImageView
+                    android:id="@+id/activity_store_detail_iv_btn_back"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/btn_back_white" />
+            </RelativeLayout>
             <TextView
                 android:id="@+id/store_name"
                 android:layout_width="wrap_content"
@@ -35,7 +48,7 @@
                 android:textColor="#000000"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/store_img" />
+                app:layout_constraintTop_toBottomOf="@+id/rl" />
 
             <RatingBar
                 android:id="@+id/store_ratingbar"
