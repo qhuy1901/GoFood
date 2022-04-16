@@ -7,22 +7,22 @@
         app:showAsAction="always"
         android:icon="@drawable/ic_baseline_home_24"/>
     <item android:id="@+id/nav_my_ords"
-        android:title="My Orders"
+        android:title="Đơn hàng"
         android:enabled="true"
         app:showAsAction="always"
         android:icon="@drawable/ic_baseline_fastfood_24"/>
     <item android:id="@+id/nav_likes"
-        android:title="Likes"
+        android:title="Yêu thích"
         app:showAsAction="always"
         android:icon="@drawable/ic_baseline_star_24"/>
     <item android:id="@+id/nav_notifications"
-        android:title="Notifications"
+        android:title="Thông báo"
         android:enabled="true"
         app:showAsAction="always"
         android:icon="@drawable/ic_baseline_notifications_active_24"/>
     <item android:id="@+id/nav_me"
-        android:title="Me"
+        android:title="Tôi"
         android:enabled="true"
         app:showAsAction="always"
-        android:icon="@drawable/ic_baseline_settings_24"/>
+        android:icon="@drawable/ic_setting_black_24dp"/>
 </menu>
