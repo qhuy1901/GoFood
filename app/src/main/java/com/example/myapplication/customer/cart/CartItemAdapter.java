@@ -55,10 +55,18 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         String priceAfterFormat = currencyVN.format(cartItem.product.getPrice()).replace("₫", "")+ " ₫";
         holder.tvPrice.setText(priceAfterFormat);
-        holder.tvDescription.setText(cartItem.product.getProductDescription());
-        if(cartItem.product.getProductDescription().isEmpty())
-            holder.tvDescription.setVisibility(View.GONE);
-
+//        holder.tvDescription.setText(cartItem.product.getProductDescription());
+//        if(cartItem.product.getProductDescription().isEmpty())
+//            holder.tvDescription.setVisibility(View.GONE);
+        String topping = cartItem.getTopping();
+        if(topping.equals(""))
+        {
+            holder.tvTopping.setVisibility(View.GONE);
+        }
+        else
+        {
+            holder.tvTopping.setText("+Topping: "+ topping);
+        }
         if(!cartItem.product.getProductImage().isEmpty())
         {
             Glide.with(context).load(cartItem.product.getProductImage()).into(holder.ivProductImage);
@@ -104,7 +112,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
     }
 
     public class CartItemViewHolder  extends RecyclerView.ViewHolder{
-        private TextView tvProductName, tvPrice, tvQuantity, tvDescription;
+        private TextView tvProductName, tvPrice, tvQuantity, tvTopping;
         private ImageView ivProductImage;
         private ConstraintLayout clProductItem;
         private ImageButton btnPlus, btnSubtract;
@@ -118,7 +126,8 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
             btnPlus = itemView.findViewById(R.id.item_cart_item_plus);
             btnSubtract= itemView.findViewById(R.id.item_cart_item_subtract);
             tvQuantity = itemView.findViewById(R.id.item_cart_item_quantity);
-            tvDescription = itemView.findViewById(R.id.item_cart_item_tv_description);
+            tvTopping = itemView.findViewById(R.id.item_cart_item_tv_topping);
+//            tvDescription = itemView.findViewById(R.id.item_cart_item_tv_description);
         }
     }
 }
