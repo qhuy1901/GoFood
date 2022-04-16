@@ -34,7 +34,7 @@ public class CartSession
         }
         else
         {
-            int index = isExit(cartItem.product.getProductId());
+            int index = isExit(cartItem.product);
 //            Log.d("Huy", index + " - index");
             if(index == -1)
             {
@@ -67,10 +67,10 @@ public class CartSession
         return arrayItems;
     }
 
-    public void removeItem(String productId)
+    public void removeItem(Product product)
     {
         List<CartItem> cart = getCart();
-        int index = isExit(productId);
+        int index = isExit(product);
         if(index != -1)
         {
             cart.remove(index);
@@ -85,28 +85,28 @@ public class CartSession
         saveCart(cart);
     }
 
-    private int isExit(String productId)
+    private int isExit(Product product)
     {
         List<CartItem> cart = getCart();
         for(int i = 0; i < cart.size(); i++)
         {
 //            Log.d("Huy", cart.get(i).product.getProductId() + " -##- " + productId);
-            if(cart.get(i).product.getProductId().equals(productId))
+            if(cart.get(i).product.getProductId().equals(product.getProductId()) && cart.get(i).product.getPrice() == product.getPrice())
                 return i;
         }
         return -1;
     }
 
-    public void updateQuantity(String productId, int newQuantity)
+    public void updateQuantity(Product product, int newQuantity)
     {
         if(newQuantity == 0)
         {
-            removeItem(productId);
+            removeItem(product);
         }
         else
         {
             List<CartItem> cart = getCart();
-            int index = isExit(productId);
+            int index = isExit(product);
             if(index != -1)
             {
                 cart.get(index).quantity = newQuantity;

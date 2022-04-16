@@ -69,7 +69,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
             @Override
             public void onClick(View view) {
                 int newQuantity = cartItem.quantity++;
-                cartSession.updateQuantity(cartItem.product.getProductId(), newQuantity);
+                cartSession.updateQuantity(cartItem.product, newQuantity);
                 if(newQuantity != 0)
                     holder.tvQuantity.setText(newQuantity + "");
                 if (context instanceof CartActivity) {
@@ -82,7 +82,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
             @Override
             public void onClick(View view) {
                 int newQuantity = cartItem.quantity--;
-                cartSession.updateQuantity(cartItem.product.getProductId(), newQuantity);
+                cartSession.updateQuantity(cartItem.product, newQuantity);
                 if(newQuantity == 0)
                 {
                     if (context instanceof CartActivity) {

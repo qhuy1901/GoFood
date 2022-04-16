@@ -1,6 +1,7 @@
 package com.example.myapplication.customer.store_detail;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +12,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
+import com.example.myapplication.models.CartItem;
+import com.example.myapplication.models.CartSession;
 import com.example.myapplication.models.Product;
 import com.example.myapplication.models.Topping;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -32,11 +36,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class ToppingBottomSheetDialog extends BottomSheetDialogFragment {
     public Context context;
     private Product product;
     private Button btnAddToCart;
-    private TextView tvProductName, tvPrice;
+    private TextView tvProductName, tvPrice, tvAddTopping;
     private ImageView ivProductImage, ivBtnDismiss;
     private RecyclerView rcvTopping;
     private List<Topping> toppingList;
@@ -44,6 +50,7 @@ public class ToppingBottomSheetDialog extends BottomSheetDialogFragment {
     private  Locale localeVN;
     private NumberFormat currencyVN;
     private int currentProductPrice = 0;
+    private List<String> toppingStringList;
 
     public ToppingBottomSheetDialog(Context context, Product product) {
         this.context = context;
@@ -58,7 +65,9 @@ public class ToppingBottomSheetDialog extends BottomSheetDialogFragment {
         ivProductImage = (ImageView) view.findViewById(R.id.dialog_topping_bottom_sheeet_iv_product_image);
         ivBtnDismiss = (ImageView) view.findViewById(R.id.dialog_topping_bottom_sheeet_iv_btn_dismiss);
         rcvTopping = (RecyclerView) view.findViewById(R.id.dialog_topping_bottom_sheeet_rcv_topping);
+        tvAddTopping = (TextView) view.findViewById(R.id.dialog_topping_bottom_sheeet_tv_add_topping);
 
+        tvAddTopping.setVisibility(View.GONE);
         tvProductName.setText(product.getProductName());
         localeVN = new Locale("vi", "VN");
         currencyVN = NumberFormat.getCurrencyInstance(localeVN);
@@ -75,6 +84,7 @@ public class ToppingBottomSheetDialog extends BottomSheetDialogFragment {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
         rcvTopping.addItemDecoration(dividerItemDecoration);
 
+        toppingStringList = new ArrayList<>();
         toppingList = new ArrayList<>();
         adapter  = new ToppingBottomSheetDialogAdapter(toppingList, context);
         rcvTopping.setAdapter(adapter);
@@ -92,7 +102,9 @@ public class ToppingBottomSheetDialog extends BottomSheetDialogFragment {
                 Topping topping = snapshot.getValue(Topping.class);
                 if (topping != null) {
                     if (topping.getProductApplyList().contains(product.getProductName()))
+                    {
                         toppingList.add(topping);
+                    }
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -103,7 +115,9 @@ public class ToppingBottomSheetDialog extends BottomSheetDialogFragment {
                 if(topping != null)
                 {
                     if(topping.getProductApplyList().contains(product.getProductName()))
+                    {
                         toppingList.add(topping);
+                    }
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -125,6 +139,7 @@ public class ToppingBottomSheetDialog extends BottomSheetDialogFragment {
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -134,9 +149,32 @@ public class ToppingBottomSheetDialog extends BottomSheetDialogFragment {
                 dismiss();
             }
         });
+        btnAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CartSession cart = new CartSession(context);
+                product.setPrice(currentProductPrice);
+                CartItem cartItem = new CartItem(product, 1);
+                if(toppingStringList.size() > 0)
+                {
+                    String topping = toppingStringList.get(0);
+                    for(int i = 1; i< toppingStringList.size(); i++)
+                        topping = topping + ", " + toppingStringList.get(i);
+                    cartItem.topping = topping;
+                }
+                cart.addToCart(cartItem);
 
+                if (context instanceof StorePageDetailActivity) {
+                    ((StorePageDetailActivity)context).updateTotalPrice();
+                }
+                dismiss();
+                new SweetAlertDialog(context, SweetAlertDialog.SUCCESS_TYPE)
+                            .setTitleText("Thành công")
+                            .setContentText("Đã thêm món vào giỏ hàng!")
+                            .show();
+            }
+        });
     }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -153,5 +191,20 @@ public class ToppingBottomSheetDialog extends BottomSheetDialogFragment {
         String priceString = currencyVN.format(currentProductPrice).replace("₫", "")+ " ₫";
         tvPrice.setText(priceString);
         btnAddToCart.setText("Thêm giỏ hàng - " + priceString);
+    }
+
+    public void addToppingString(String toppingName)
+    {
+        toppingStringList.add(toppingName);
+    }
+
+    public void removeToppingString(String toppingName)
+    {
+        toppingStringList.remove(toppingName);
+    }
+
+    public void visibleTvAddTopping()
+    {
+        tvAddTopping.setVisibility(View.VISIBLE);
     }
 }

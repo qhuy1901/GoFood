@@ -28,6 +28,7 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
     private final List<Product> productList;
     private Context context;
     private GoFoodDatabase goFoodDatabase = new GoFoodDatabase();
+    private boolean isProductHaveTopping = false;
 
     public ProductForStoreDetailAdapter(List<Product> productList, Context context) {
         this.productList = productList;
@@ -67,21 +68,31 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
                     ((StorePageDetailActivity)context).setToppingBottomSheetDialog(toppingBottomSheetDialog);
                 }
 
-                // Lưu mã cửa hàng vào Session
-//                CartSession cart = new CartSession(context);
-//                CartItem cartItem = new CartItem(product, 1);
-//                cart.addToCart(cartItem);
-//
-//                if (context instanceof StorePageDetailActivity) {
-//                    ((StorePageDetailActivity)context).updateTotalPrice();
-//                }
-//                new SweetAlertDialog(context, SweetAlertDialog.SUCCESS_TYPE)
-//                                        .setTitleText("Thành công")
-//                                        .setContentText("Đã thêm món vào giỏ hàng!")
-//                                        .show();
             }
         });
     }
+
+//    private void goToAddToCart(Product product)
+//    {
+//        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+//        mDatabase.child("stores").child(product.getStoreId()).child("menu").child("topping").orderByKey().get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                if (!task.isSuccessful()) {
+//                    Log.e("firebase", "Error getting data", task.getException());
+//                }
+//                else {
+//                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+//                    if(String.valueOf(task.getResult().getValue()).contains(product.getProductName()))
+//                    {
+//
+//                        isProductHaveTopping = true;
+//                        return;
+//                    }
+//                }
+//            }
+//        });
+//    }
 
     @Override
     public int getItemCount() {

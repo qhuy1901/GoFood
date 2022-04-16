@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class ToppingBottomSheetDialogAdapter extends RecyclerView.Adapter<ToppingBottomSheetDialogAdapter.ToppingBottomSheetDialogViewHolder>{
-    private final List<Topping> list;
+    public final List<Topping> list;
     private Context context;
 
     public ToppingBottomSheetDialogAdapter(List<Topping> list, Context context) {
@@ -43,14 +43,21 @@ public class ToppingBottomSheetDialogAdapter extends RecyclerView.Adapter<Toppin
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         String price = currencyVN.format(topping.getToppingPrice()).replace("₫", "")+ " ₫";
         holder.tvPrice.setText(price);
+        if (context instanceof StorePageDetailActivity) {
+            ((StorePageDetailActivity)context).getToppingBottomSheetDialog().visibleTvAddTopping();
+        }
         holder.ckb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (context instanceof StorePageDetailActivity) {
                     if(holder.ckb.isChecked())
+                    {
                         ((StorePageDetailActivity)context).getToppingBottomSheetDialog().updatePriceWhenAddTopping(topping.getToppingPrice());
+                        ((StorePageDetailActivity)context).getToppingBottomSheetDialog().addToppingString(topping.getToppingName());
+                    }
                     else
                         ((StorePageDetailActivity)context).getToppingBottomSheetDialog().updatePriceWhenAddTopping(topping.getToppingPrice() * -1);
+                        ((StorePageDetailActivity)context).getToppingBottomSheetDialog().removeToppingString(topping.getToppingName());
                 }
             }
         });
