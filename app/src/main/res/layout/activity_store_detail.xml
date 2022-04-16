@@ -5,110 +5,110 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".customer.store_detail.StorePageDetailActivity">
-
-
-    <ImageView
-        android:id="@+id/store_img"
-        android:layout_width="wrap_content"
-        android:layout_height="220dp"
-        android:src="@drawable/shop_photo"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ImageContrastCheck" />
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/store_img"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:src="@drawable/shop_photo"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
-    <TextView
-        android:id="@+id/store_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/be_vietnam_bold"
-        android:text="Tiệm bánh ABC"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/store_img" />
+            <TextView
+                android:id="@+id/store_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/be_vietnam_bold"
+                android:text="Tiệm bánh ABC"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/store_img" />
 
-    <RatingBar
-        android:id="@+id/store_ratingbar"
-        style="@style/CustomRatingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:isIndicator="false"
-        android:rating="4.3"
-        android:stepSize="0.01"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/store_name" />
+            <RatingBar
+                android:id="@+id/store_ratingbar"
+                style="@style/CustomRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:isIndicator="false"
+                android:rating="4.3"
+                android:stepSize="0.01"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/store_name" />
 
-    <TextView
-        android:id="@+id/store_rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:layout_weight="1"
-        android:fontFamily="@font/be_vietnam_bold"
-        android:text="4.3"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/store_ratingbar"
-        app:layout_constraintTop_toBottomOf="@+id/store_name" />
+            <TextView
+                android:id="@+id/store_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/be_vietnam_bold"
+                android:text="4.3"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/store_ratingbar"
+                app:layout_constraintTop_toBottomOf="@+id/store_name" />
 
-    <TextView
-        android:id="@+id/store_delivery_time"
-        android:layout_width="48dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="166dp"
-        android:layout_marginTop="264dp"
-        android:layout_marginEnd="197dp"
-        android:background="@drawable/time_bg"
-        android:gravity="center"
-        android:text="45 mins"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="8sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/store_rating"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/store_delivery_time"
+                android:layout_width="48dp"
+                android:layout_height="22dp"
+                android:background="@drawable/time_bg"
+                android:gravity="center"
+                android:text="45 mins"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/store_rating"
+                app:layout_constraintTop_toBottomOf="@+id/store_name" />
 
-    <ImageView
-        android:id="@+id/store_wishlist"
-        android:layout_width="12dp"
-        android:layout_height="11dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="24dp"
-        android:src="@drawable/love_empty"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/store_name" />
+            <ImageView
+                android:id="@+id/store_wishlist"
+                android:layout_width="22dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:src="@drawable/love_empty"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/store_name" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/store_vp"
-        android:layout_width="wrap_content"
-        android:layout_height="340dp"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent=".9"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/store_tbl"
-        app:layout_constraintVertical_bias="0.0" />
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/store_vp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/relativeLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/store_tbl" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/store_tbl"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/store_ratingbar">
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/store_tbl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/store_ratingbar">
 
-    </com.google.android.material.tabs.TabLayout>
-
+            </com.google.android.material.tabs.TabLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
     <RelativeLayout
         android:id="@+id/store_relativelayout2"
         android:layout_width="match_parent"
@@ -145,5 +145,4 @@
             android:layout_alignParentEnd="true"
             android:text="Giao hàng" />
     </RelativeLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
