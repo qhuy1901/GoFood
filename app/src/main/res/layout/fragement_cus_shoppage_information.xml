@@ -1,6 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="">
 
-</LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    <ImageView
+        android:id="@+id/img_fragement_cus_shoppage_information_vi_tri"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/company_icon"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/txt_fragement_cus_shoppage_information_diachi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:text="Đường số 12, Khu A, Linh Trung, Thủ Đức"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/fragement_cus_shoppage_information_icon_location"
+        app:layout_constraintTop_toTopOf="@+id/fragement_cus_shoppage_information_icon_location" />
+
+    <View
+        android:id="@+id/fragement_cus_shoppage_information_line1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/background_color1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_fragement_cus_shoppage_information_diachi" />
+
+    <TextView
+        android:id="@+id/txt_fragement_cus_shoppage_information_danh_muc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:text="Danh mục: Đồ ăn nhanh"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_fragement_cus_shoppage_information_diachi"
+        app:layout_constraintStart_toStartOf="@+id/txt_fragement_cus_shoppage_information_diachi"
+        app:layout_constraintTop_toTopOf="@+id/imageView15" />
+
+    <View
+        android:id="@+id/fragement_cus_shoppage_information_line2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/background_color1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_fragement_cus_shoppage_information_danh_muc" />
+
+    <TextView
+        android:id="@+id/txt_fragement_cus_shoppage_information_gia_trung_binh"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:text="Giá trung bình: 23,000đ "
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_fragement_cus_shoppage_information_danh_muc"
+        app:layout_constraintStart_toStartOf="@+id/txt_fragement_cus_shoppage_information_danh_muc"
+        app:layout_constraintTop_toTopOf="@+id/imageView14" />
+
+    <View
+        android:id="@+id/fragement_cus_shoppage_information_line3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/background_color1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_fragement_cus_shoppage_information_gia_trung_binh" />
+
+    <TextView
+        android:id="@+id/txt_fragement_cus_shoppage_information_gio_mo_cua"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:text="Giờ hoạt động: 8:00 - 23:00"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_fragement_cus_shoppage_information_gia_trung_binh"
+        app:layout_constraintStart_toStartOf="@+id/txt_fragement_cus_shoppage_information_gia_trung_binh"
+        app:layout_constraintTop_toTopOf="@+id/fragement_cus_shoppage_information_icon_clock" />
+
+        <ImageView
+            android:id="@+id/fragement_cus_shoppage_information_icon_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_fragement_cus_shoppage_information_vi_tri"
+            app:srcCompat="@drawable/ic_baseline_location_on_24"
+            tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/fragement_cus_shoppage_information_icon_clock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_clock"
+        app:layout_constraintStart_toStartOf="@+id/fragement_cus_shoppage_information_icon_location"
+        app:layout_constraintTop_toBottomOf="@+id/fragement_cus_shoppage_information_line3" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_outline_monetization_on_24"
+        app:layout_constraintStart_toStartOf="@+id/fragement_cus_shoppage_information_icon_location"
+        app:layout_constraintTop_toBottomOf="@+id/fragement_cus_shoppage_information_line2" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_category"
+        app:layout_constraintStart_toStartOf="@+id/fragement_cus_shoppage_information_icon_location"
+        app:layout_constraintTop_toBottomOf="@+id/fragement_cus_shoppage_information_line1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
