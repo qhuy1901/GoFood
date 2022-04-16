@@ -3,6 +3,7 @@ package com.example.myapplication.customer.store_detail;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,15 +43,14 @@ public class ToppingBottomSheetDialog extends BottomSheetDialogFragment {
     public Context context;
     private Product product;
     private Button btnAddToCart;
-    private TextView tvProductName, tvPrice, tvAddTopping;
+    private TextView tvProductName, tvPrice, tvAddTopping, tvHide;
     private ImageView ivProductImage, ivBtnDismiss;
     private RecyclerView rcvTopping;
     private List<Topping> toppingList;
     private ToppingBottomSheetDialogAdapter adapter;
-    private  Locale localeVN;
+    private Locale localeVN;
     private NumberFormat currencyVN;
     private int currentProductPrice = 0;
-    private List<String> toppingStringList;
 
     public ToppingBottomSheetDialog(Context context, Product product) {
         this.context = context;
@@ -66,6 +66,7 @@ public class ToppingBottomSheetDialog extends BottomSheetDialogFragment {
         ivBtnDismiss = (ImageView) view.findViewById(R.id.dialog_topping_bottom_sheeet_iv_btn_dismiss);
         rcvTopping = (RecyclerView) view.findViewById(R.id.dialog_topping_bottom_sheeet_rcv_topping);
         tvAddTopping = (TextView) view.findViewById(R.id.dialog_topping_bottom_sheeet_tv_add_topping);
+        tvHide = (TextView) view.findViewById(R.id.tv_hint);
 
         tvAddTopping.setVisibility(View.GONE);
         tvProductName.setText(product.getProductName());
@@ -84,7 +85,6 @@ public class ToppingBottomSheetDialog extends BottomSheetDialogFragment {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
         rcvTopping.addItemDecoration(dividerItemDecoration);
 
-        toppingStringList = new ArrayList<>();
         toppingList = new ArrayList<>();
         adapter  = new ToppingBottomSheetDialogAdapter(toppingList, context);
         rcvTopping.setAdapter(adapter);
@@ -139,7 +139,6 @@ public class ToppingBottomSheetDialog extends BottomSheetDialogFragment {
         });
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -150,18 +149,22 @@ public class ToppingBottomSheetDialog extends BottomSheetDialogFragment {
             }
         });
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
+                String topping = tvHide.getText().toString();
+                Log.e("Hi", topping);
                 CartSession cart = new CartSession(context);
-                product.setPrice(currentProductPrice);
-                CartItem cartItem = new CartItem(product, 1);
-                if(toppingStringList.size() > 0)
+                Product productCart = product;
+                productCart.setPrice(currentProductPrice);
+                CartItem cartItem = null;
+                if(!topping.isEmpty())
                 {
-                    String topping = toppingStringList.get(0);
-                    for(int i = 1; i< toppingStringList.size(); i++)
-                        topping = topping + ", " + toppingStringList.get(i);
-                    cartItem.topping = topping;
+                    cartItem = new CartItem(productCart, 1, topping);
                 }
+                else
+                    cartItem = new CartItem(productCart, 1);
+
                 cart.addToCart(cartItem);
 
                 if (context instanceof StorePageDetailActivity) {
@@ -169,12 +172,13 @@ public class ToppingBottomSheetDialog extends BottomSheetDialogFragment {
                 }
                 dismiss();
                 new SweetAlertDialog(context, SweetAlertDialog.SUCCESS_TYPE)
-                            .setTitleText("Thành công")
-                            .setContentText("Đã thêm món vào giỏ hàng!")
-                            .show();
+                        .setTitleText("Thành công")
+                        .setContentText("Đã thêm món vào giỏ hàng!")
+                        .show();
             }
         });
     }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -192,19 +196,27 @@ public class ToppingBottomSheetDialog extends BottomSheetDialogFragment {
         tvPrice.setText(priceString);
         btnAddToCart.setText("Thêm giỏ hàng - " + priceString);
     }
-
+    public void visibleTvAddTopping()
+    {
+        tvAddTopping.setVisibility(View.VISIBLE);
+    }
     public void addToppingString(String toppingName)
     {
-        toppingStringList.add(toppingName);
+        String topping = tvHide.getText().toString();
+        if(topping.isEmpty())
+        {
+            tvHide.setText(toppingName);
+        }
+        else
+        {
+            tvHide.setText(topping + ", " + toppingName);
+        }
     }
 
     public void removeToppingString(String toppingName)
     {
-        toppingStringList.remove(toppingName);
-    }
-
-    public void visibleTvAddTopping()
-    {
-        tvAddTopping.setVisibility(View.VISIBLE);
+        String topping = tvHide.getText().toString();
+        String newString = topping.replace(", " + toppingName, "").replace(toppingName, "");
+        tvHide.setText(newString);
     }
 }

@@ -67,7 +67,7 @@ public class CartItemForOrderConfirmationAdapter extends RecyclerView.Adapter<Ca
     }
 
     public class CartItemForOrderConfirmationViewHolder  extends RecyclerView.ViewHolder{
-        private TextView tvProductName, tvPrice, tvQuantity;
+        private TextView tvProductName, tvPrice, tvQuantity, tvTopping;
         private ImageView ivProductImage;
         private ConstraintLayout clProductItem;
 
@@ -78,6 +78,7 @@ public class CartItemForOrderConfirmationAdapter extends RecyclerView.Adapter<Ca
             ivProductImage = itemView.findViewById(R.id.item_cart_item_for_order_confirmation_iv_product_image);
             clProductItem = itemView.findViewById(R.id.item_cart_item_for_order_confirmation_cl_product_item);
             tvQuantity = itemView.findViewById(R.id.item_cart_item_for_order_confirmation_tv_quantity);
+            tvTopping =  itemView.findViewById(R.id.item_cart_item_for_order_confirmation_tv_topping);
         }
     }
 }

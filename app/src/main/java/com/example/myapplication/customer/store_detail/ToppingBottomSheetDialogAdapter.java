@@ -54,15 +54,44 @@ public class ToppingBottomSheetDialogAdapter extends RecyclerView.Adapter<Toppin
                     {
                         ((StorePageDetailActivity)context).getToppingBottomSheetDialog().updatePriceWhenAddTopping(topping.getToppingPrice());
                         ((StorePageDetailActivity)context).getToppingBottomSheetDialog().addToppingString(topping.getToppingName());
+
                     }
                     else
+                    {
                         ((StorePageDetailActivity)context).getToppingBottomSheetDialog().updatePriceWhenAddTopping(topping.getToppingPrice() * -1);
                         ((StorePageDetailActivity)context).getToppingBottomSheetDialog().removeToppingString(topping.getToppingName());
+                    }
                 }
             }
         });
     }
-
+//    public void addToppingString(String toppingName)
+//    {
+//        SharedPreferences prefs = context.getSharedPreferences("Session", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = context.getSharedPreferences("Session", MODE_PRIVATE).edit();
+//        String topping = prefs.getString("topping", "No name defined");
+//        if(topping.isEmpty() || topping.equals("No name defined"))
+//        {
+//            Log.e("1", "emty" + toppingName);
+//            editor.putString("topping", toppingName);
+//        }
+//        else
+//        {
+//            Log.e("2", "notemty" + toppingName);
+//            editor.putString("topping", topping + ", " + toppingName);
+//        }
+//        editor.apply();
+//    }
+//
+//    public void removeToppingString(String toppingName)
+//    {
+//        SharedPreferences prefs = context.getSharedPreferences("Session", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = context.getSharedPreferences("Session", MODE_PRIVATE).edit();
+//        String topping = prefs.getString("topping", "No name defined");
+//        String newString = topping.replace(", " + toppingName, "").replace(toppingName, "");
+//        editor.putString("topping", newString);
+//        editor.apply();
+//    }
     @Override
     public int getItemCount() {
         if(list != null)

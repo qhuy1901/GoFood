@@ -35,7 +35,6 @@ public class CartSession
         else
         {
             int index = isExit(cartItem.product);
-//            Log.d("Huy", index + " - index");
             if(index == -1)
             {
                 cart.add(cartItem);
