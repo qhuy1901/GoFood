@@ -163,8 +163,9 @@ public class ToppingBottomSheetDialog extends BottomSheetDialogFragment {
                     cartItem = new CartItem(productCart, 1, topping);
                 }
                 else
-                    cartItem = new CartItem(productCart, 1);
-
+                {
+                    cartItem = new CartItem(productCart, 1, "");
+                }
                 cart.addToCart(cartItem);
 
                 if (context instanceof StorePageDetailActivity) {

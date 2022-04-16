@@ -52,6 +52,15 @@ public class CartItemForOrderConfirmationAdapter extends RecyclerView.Adapter<Ca
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         String priceAfterFormat = currencyVN.format(cartItem.product.getPrice()).replace("₫", "")+ " ₫";
         holder.tvPrice.setText(priceAfterFormat);
+        String topping = cartItem.getTopping();
+        if(topping.equals(""))
+        {
+            holder.tvTopping.setVisibility(View.GONE);
+        }
+        else
+        {
+            holder.tvTopping.setText(topping);
+        }
         if(!cartItem.product.getProductImage().isEmpty())
         {
             Glide.with(context).load(cartItem.product.getProductImage()).into(holder.ivProductImage);

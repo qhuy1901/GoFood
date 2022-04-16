@@ -15,7 +15,6 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.myapplication.GoFoodDatabase;
@@ -29,7 +28,7 @@ public class AddProductActivity extends AppCompatActivity {
     private Button btnAddProduct;
     private GoFoodDatabase goFoodDatabase;
     private ImageView ivProductAvatar;
-    private AppCompatImageButton ibBack;
+    private ImageView ibBack;
 
     private void initUi()
     {
@@ -39,7 +38,7 @@ public class AddProductActivity extends AppCompatActivity {
         btnAddProduct = (Button) findViewById(R.id.btn_add_product);
         swIsAvailable = (SwitchCompat) findViewById(R.id.sw_is_available);
         ivProductAvatar = (ImageView) findViewById(R.id.iv_product_avatar);
-        ibBack = (AppCompatImageButton) findViewById(R.id.activity_add_product_ib_back);
+        ibBack = (ImageView) findViewById(R.id.activity_add_product_ib_back);
     }
 
     private ActivityResultLauncher<Intent> checkPermission = registerForActivityResult(
@@ -85,7 +84,10 @@ public class AddProductActivity extends AppCompatActivity {
                 Product product= new Product();
                 product.setProductName(productName);
                 product.setPrice(price);
-                product.setProductDescription(description);
+                if(!description.isEmpty())
+                    product.setProductDescription("");
+                else
+                    product.setProductDescription(description);
                 product.setStoreId(storeId);
                 product.setAvailable(isAvailable);
                 goFoodDatabase.insertProduct(product, ivProductAvatar);

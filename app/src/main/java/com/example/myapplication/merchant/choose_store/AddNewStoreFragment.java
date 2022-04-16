@@ -168,7 +168,7 @@ public class AddNewStoreFragment extends Fragment implements AdapterView.OnItemS
 
                 // Lấy mã user trong Session
                 SharedPreferences preferences = getContext().getSharedPreferences("Session", getContext().MODE_PRIVATE);
-                String owner = preferences.getString("UserId", "default value");
+                String owner = preferences.getString("userId", "default value");
 
                 // Lưu thông tin store vào realtime database
                 Store store = new Store();;
