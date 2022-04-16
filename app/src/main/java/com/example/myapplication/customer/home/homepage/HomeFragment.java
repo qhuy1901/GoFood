@@ -1,25 +1,23 @@
-package com.example.myapplication.customer.home;
+package com.example.myapplication.customer.home.homepage;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.myapplication.LoginTabFragment;
 import com.example.myapplication.R;
 import com.example.myapplication.WelcomeActivity;
-import com.example.myapplication.adapter.Home_AllCateAdapter;
-import com.example.myapplication.adapter.Home_RecommendedAdapter;
-import com.example.myapplication.models.Home_CategoriesOrderModel;
-import com.example.myapplication.models.Home_MenuCategoriesModel;
-import com.example.myapplication.models.Home_RecommendedOrderModel;
+import com.example.myapplication.models.Home_CategoriesItemModel;
+import com.example.myapplication.models.Home_RecommendedModel;
 import com.example.myapplication.models.Store;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -35,27 +33,24 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CateHomeFragment extends Fragment {
 
+public class HomeFragment extends Fragment {
     private TextView tvLocation;
     DatabaseReference realtimedbRef;
     FirebaseFirestore fire_store = FirebaseFirestore.getInstance();
 
     RecyclerView categories_order_RecyclerView;
-    Home_CategoriesOrderAdapter categories_order_Adapter;
-    List<Home_CategoriesOrderModel> categories_order_ModelList;
+    CategoriesItemAdapter categories_order_Adapter;
+    List<Home_CategoriesItemModel> categories_order_ModelList;
 
     RecyclerView recommended_order_RecyclerView;
-    Home_RecommendedAdapter recommended_order_Adapter;
-    List<Home_RecommendedOrderModel> recommended_order_ModelList;
+    RecommendedAdapter recommended_order_Adapter;
+    List<Home_RecommendedModel> recommended_order_ModelList;
 
-    RecyclerView allcate_menu_RecyclerView;
-    Home_AllCateAdapter allcate_menu_Adapter;
-    List<Home_MenuCategoriesModel> allcate_menu_ModelList;
 
     private RecyclerView rcvStoreListByCategory;
     private List<Store> storeListByCategory;
-    private  StoreForHomeAdapter storeForHomeAdapter;
+    private ListStoreAdapter listStoreAdapter;
 
     private void initUi(ViewGroup root)
     {
@@ -66,8 +61,8 @@ public class CateHomeFragment extends Fragment {
         storeListByCategory = new ArrayList<>();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager( getContext());
         rcvStoreListByCategory.setLayoutManager(linearLayoutManager);
-        storeForHomeAdapter = new StoreForHomeAdapter( storeListByCategory, getContext());
-        rcvStoreListByCategory.setAdapter(storeForHomeAdapter);
+        listStoreAdapter = new ListStoreAdapter( storeListByCategory, getContext());
+        rcvStoreListByCategory.setAdapter(listStoreAdapter);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -86,8 +81,6 @@ public class CateHomeFragment extends Fragment {
             // categories order
             getCategoriesOrder(root);
 
-            // category - allcate
-//            getAllCateMenu(root);
 
             getStoreListByCategoryFromRealtimeDatabase();
         }else{
@@ -110,7 +103,7 @@ public class CateHomeFragment extends Fragment {
                     Store store = postSnapshot.getValue(Store.class);
                     storeListByCategory.add(store);
                 }
-                storeForHomeAdapter.notifyDataSetChanged();
+                listStoreAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -136,7 +129,7 @@ public class CateHomeFragment extends Fragment {
                         storeListByCategory.add(store);
                     }
                 }
-                storeForHomeAdapter.notifyDataSetChanged();
+                listStoreAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -150,7 +143,7 @@ public class CateHomeFragment extends Fragment {
         categories_order_RecyclerView = view.findViewById(R.id.categories_order_rec);
         categories_order_RecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         categories_order_ModelList = new ArrayList<>();
-        categories_order_Adapter = new Home_CategoriesOrderAdapter(getActivity(), categories_order_ModelList, this);
+        categories_order_Adapter = new CategoriesItemAdapter(getActivity(), categories_order_ModelList, this);
         categories_order_RecyclerView.setAdapter(categories_order_Adapter);
 
         fire_store.collection("Categories_Order")
@@ -160,7 +153,7 @@ public class CateHomeFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
                             for (QueryDocumentSnapshot document: task.getResult()){
-                                Home_CategoriesOrderModel categories_order = document.toObject(Home_CategoriesOrderModel.class);
+                                Home_CategoriesItemModel categories_order = document.toObject(Home_CategoriesItemModel.class);
                                 categories_order_ModelList.add(categories_order);
                                 categories_order_Adapter.notifyDataSetChanged();
                             }
@@ -173,7 +166,7 @@ public class CateHomeFragment extends Fragment {
         recommended_order_RecyclerView = view.findViewById(R.id.recommended_rec);
         recommended_order_RecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         recommended_order_ModelList = new ArrayList<>();
-        recommended_order_Adapter = new Home_RecommendedAdapter(getActivity(), recommended_order_ModelList);
+        recommended_order_Adapter = new RecommendedAdapter(getActivity(), recommended_order_ModelList);
         recommended_order_RecyclerView.setAdapter(recommended_order_Adapter);
 
         fire_store.collection("Recommended_Order")
@@ -183,7 +176,7 @@ public class CateHomeFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
                             for (QueryDocumentSnapshot document: task.getResult()){
-                                Home_RecommendedOrderModel recommended_order = document.toObject(Home_RecommendedOrderModel.class);
+                                Home_RecommendedModel recommended_order = document.toObject(Home_RecommendedModel.class);
                                 recommended_order_ModelList.add(recommended_order);
                                 recommended_order_Adapter.notifyDataSetChanged();
                             }
@@ -193,28 +186,6 @@ public class CateHomeFragment extends Fragment {
                 });
     }
 
-    private void getAllCateMenu(ViewGroup view){
-        allcate_menu_RecyclerView = view.findViewById(R.id.menucate_rec);
-        allcate_menu_RecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
-        allcate_menu_ModelList = new ArrayList<>();
-        allcate_menu_Adapter = new Home_AllCateAdapter(getActivity(), allcate_menu_ModelList);
-        allcate_menu_RecyclerView.setAdapter(allcate_menu_Adapter);
-
-        fire_store.collection("AllCate_Menu")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            for (QueryDocumentSnapshot document: task.getResult()){
-                                Home_MenuCategoriesModel allcate = document.toObject(Home_MenuCategoriesModel.class);
-                                allcate_menu_ModelList.add(allcate);
-                                allcate_menu_Adapter.notifyDataSetChanged();
-                            }
-                        }
-                    }
-                });
-    }
 
     private void getLocation(){
         realtimedbRef = FirebaseDatabase.getInstance().getReference("Users");

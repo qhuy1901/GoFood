@@ -1,7 +1,6 @@
-package com.example.myapplication.adapter;
+package com.example.myapplication.customer.home.homepage;
 
 import android.content.Context;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,21 +8,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
-import com.example.myapplication.models.Home_RecommendedOrderModel;
+import com.example.myapplication.models.Home_RecommendedModel;
 
 import java.util.List;
 
-public class Home_RecommendedAdapter extends RecyclerView.Adapter<Home_RecommendedAdapter.RecommendedViewHolder> {
+public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.RecommendedViewHolder> {
 
     private Context context;
-    private List<Home_RecommendedOrderModel> recommendedList;
+    private List<Home_RecommendedModel> recommendedList;
 
-    public Home_RecommendedAdapter(Context context, List<Home_RecommendedOrderModel> recommendedList){
+    public RecommendedAdapter(Context context, List<Home_RecommendedModel> recommendedList){
         this.context = context;
         this.recommendedList = recommendedList;
     }

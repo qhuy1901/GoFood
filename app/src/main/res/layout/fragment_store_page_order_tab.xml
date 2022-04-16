@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
-    tools:context=".merchant.store_management.MenuManagement.ProductFragment">
+    tools:context=".customer.store_detail.StorePageDetailActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_store_product_list"

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.customer.home;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -8,8 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.myapplication.customer.home.CateHomeFragment;
-import com.example.myapplication.customer.home.CateOrderFragment;
+import com.example.myapplication.R;
+import com.example.myapplication.customer.home.homepage.HomeFragment;
+import com.example.myapplication.customer.home.myorderpage.MyOrderFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -22,7 +23,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         btnBottom_Nav_HomeID = findViewById(R.id.bottom_nav_home);
-        setFragment(new CateHomeFragment());
+        setFragment(new HomeFragment());
         btnBottom_Nav_HomeID.setSelectedItemId(R.id.nav_home);
 
         btnBottom_Nav_HomeID.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -30,10 +31,10 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.nav_home:
-                        setFragment(new CateHomeFragment());
+                        setFragment(new HomeFragment());
                         return true;
                     case R.id.nav_my_ords:
-                        setFragment(new CateOrderFragment());
+                        setFragment(new MyOrderFragment());
                         return true;
                 }
                 return false;

@@ -1,4 +1,4 @@
-package com.example.myapplication.customer.home;
+package com.example.myapplication.customer.home.homepage;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,12 +20,12 @@ import com.example.myapplication.models.Store;
 
 import java.util.List;
 
-public class StoreForHomeAdapter extends RecyclerView.Adapter<StoreForHomeAdapter.StoreForHomeViewHolder>{
+public class ListStoreAdapter extends RecyclerView.Adapter<ListStoreAdapter.StoreForHomeViewHolder>{
     private final List<Store> storeList;
     private Context context;
     private GoFoodDatabase goFoodDatabase = new GoFoodDatabase();
 
-    public StoreForHomeAdapter(List<Store> storeList, Context context) {
+    public ListStoreAdapter(List<Store> storeList, Context context) {
         this.storeList = storeList;
         this.context = context;
     }
@@ -34,7 +34,7 @@ public class StoreForHomeAdapter extends RecyclerView.Adapter<StoreForHomeAdapte
     @Override
     public StoreForHomeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_store_for_home, parent,false);
-        return new StoreForHomeAdapter.StoreForHomeViewHolder(view);
+        return new ListStoreAdapter.StoreForHomeViewHolder(view);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.example.myapplication.customer.home;
+package com.example.myapplication.customer.home.homepage;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,20 +13,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
-import com.example.myapplication.models.Home_CategoriesOrderModel;
+import com.example.myapplication.models.Home_CategoriesItemModel;
 
 import java.util.List;
 
-public class Home_CategoriesOrderAdapter extends RecyclerView.Adapter<Home_CategoriesOrderAdapter.HomeCategoriesViewHolder>{
+public class CategoriesItemAdapter extends RecyclerView.Adapter<CategoriesItemAdapter.HomeCategoriesViewHolder>{
 
     private Context context;
-    private List<Home_CategoriesOrderModel> li_popular_prods;
-    private CateHomeFragment cateHomeFragment;
+    private List<Home_CategoriesItemModel> li_popular_prods;
+    private HomeFragment homeFragment;
 
-    public Home_CategoriesOrderAdapter(Context context, List<Home_CategoriesOrderModel> li_popular_prods, CateHomeFragment cateHomeFragment){
+    public CategoriesItemAdapter(Context context, List<Home_CategoriesItemModel> li_popular_prods, HomeFragment homeFragment){
         this.context = context;
         this.li_popular_prods = li_popular_prods;
-        this.cateHomeFragment = cateHomeFragment;
+        this.homeFragment = homeFragment;
     }
 
     @NonNull
@@ -45,17 +45,17 @@ public class Home_CategoriesOrderAdapter extends RecyclerView.Adapter<Home_Categ
             public void onClick(View view) {
                 if(categoryName.equals("Tất cả"))
                 {
-//                    if (context instanceof CateHomeFragment) {
-//                        ((CateHomeFragment)context).getStoreListByCategoryFromRealtimeDatabase();
+//                    if (context instanceof HomeFragment) {
+//                        ((HomeFragment)context).getStoreListByCategoryFromRealtimeDatabase();
 //                    }
-                    cateHomeFragment.getStoreListByCategoryFromRealtimeDatabase();
+                    homeFragment.getStoreListByCategoryFromRealtimeDatabase();
                 }
                 else
                 {
-//                    if (context instanceof CateHomeFragment) {
-//                        ((CateHomeFragment)context).getStoreListByCategoryFromRealtimeDatabase(categoryName);
+//                    if (context instanceof HomeFragment) {
+//                        ((HomeFragment)context).getStoreListByCategoryFromRealtimeDatabase(categoryName);
 //                    }
-                    cateHomeFragment.getStoreListByCategoryFromRealtimeDatabase(categoryName);
+                    homeFragment.getStoreListByCategoryFromRealtimeDatabase(categoryName);
                 }
             }
         });

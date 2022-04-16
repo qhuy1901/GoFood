@@ -1,14 +1,14 @@
 package com.example.myapplication.models;
 
-public class Home_RecommendedOrderModel {
+public class Home_RecommendedModel {
     String img_url;
     String name;
     String deliveryTime;
     String deliveryType;
     String price;
 
-    public Home_RecommendedOrderModel() { }
-    public Home_RecommendedOrderModel(String img_url, String name, String deliveryTime, String deliveryType, String price){
+    public Home_RecommendedModel() { }
+    public Home_RecommendedModel(String img_url, String name, String deliveryTime, String deliveryType, String price){
         this.img_url = img_url;
         this.name = name;
         this.deliveryTime = deliveryTime;
