@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/item_product_for_store_detail_iv_product_image"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         android:layout_margin="10dp"
         android:scaleType="centerCrop"
         android:src="@drawable/default_product_image"
@@ -19,41 +19,66 @@
 
     <TextView
         android:id="@+id/item_product_for_store_detail_tv_product_name"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_margin="10dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:text="Tên món"
-        android:textSize="20dp"
+        android:layout_marginRight="10dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textSize="18dp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/item_product_for_store_detail_iv_product_image"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_product_for_store_detail_tv_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:maxLines="1"
+        android:text="(Đậm vị trà) "
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/item_product_for_store_detail_iv_product_image"
+        app:layout_constraintTop_toBottomOf="@+id/item_product_for_store_detail_tv_product_name" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Đã bán 0, Thích 0, Không thích 0"
-        android:textSize="14dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="999+ đã bán | 100+ thích"
+        android:textSize="13dp"
         app:layout_constraintStart_toEndOf="@+id/item_product_for_store_detail_iv_product_image"
-        app:layout_constraintTop_toBottomOf="@+id/item_product_for_store_detail_tv_product_name" />
+        app:layout_constraintTop_toBottomOf="@+id/item_product_for_store_detail_tv_description" />
+
+
 
     <TextView
         android:id="@+id/item_product_for_store_detail_tv_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="5dp"
         android:text="30.000đ"
-        android:textSize="20dp"
-        android:textStyle="bold"
+        android:textSize="18dp"
         android:textColor="@color/red"
         app:layout_constraintStart_toEndOf="@+id/item_product_for_store_detail_iv_product_image"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <android.widget.ImageButton
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:id="@+id/item_product_for_store_detail_btn_add_to_cart"
         android:layout_marginRight="10dp"
         android:background="@drawable/plus_icon"

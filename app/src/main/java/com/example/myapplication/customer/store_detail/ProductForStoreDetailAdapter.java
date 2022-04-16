@@ -52,8 +52,11 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
 
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
-        String priceAfterFormat = currencyVN.format(product.getPrice());
+        String priceAfterFormat = currencyVN.format(product.getPrice()).replace("₫", "")+ " ₫";
         holder.tvPrice.setText(priceAfterFormat);
+        holder.tvDescription.setText(product.getProductDescription());
+        if(product.getProductDescription().isEmpty())
+            holder.tvDescription.setVisibility(View.GONE);
         if(!product.getProductImage().isEmpty())
         {
             Glide.with(context).load(product.getProductImage()).into(holder.ivProductImage);
@@ -74,28 +77,6 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
         });
     }
 
-//    private void goToAddToCart(Product product)
-//    {
-//        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-//        mDatabase.child("stores").child(product.getStoreId()).child("menu").child("topping").orderByKey().get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DataSnapshot> task) {
-//                if (!task.isSuccessful()) {
-//                    Log.e("firebase", "Error getting data", task.getException());
-//                }
-//                else {
-//                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-//                    if(String.valueOf(task.getResult().getValue()).contains(product.getProductName()))
-//                    {
-//
-//                        isProductHaveTopping = true;
-//                        return;
-//                    }
-//                }
-//            }
-//        });
-//    }
-
     @Override
     public int getItemCount() {
         if(productList != null)
@@ -104,7 +85,7 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
     }
 
     public class ProductForStoreDetailViewHolder  extends RecyclerView.ViewHolder{
-        private TextView tvProductName, tvPrice;
+        private TextView tvProductName, tvPrice, tvDescription;
         private ImageView ivProductImage;
         private ConstraintLayout clProductItem;
         private ImageButton btnAddToCart;
@@ -116,6 +97,7 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
             ivProductImage = itemView.findViewById(R.id.item_product_for_store_detail_iv_product_image);
             clProductItem = itemView.findViewById(R.id.item_product_for_store_detail_cl_product_item);
             btnAddToCart = itemView.findViewById(R.id.item_product_for_store_detail_btn_add_to_cart);
+            tvDescription = itemView.findViewById(R.id.item_product_for_store_detail_tv_description);
         }
     }
 }

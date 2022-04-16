@@ -78,7 +78,7 @@
 
     <TextView
         android:id="@+id/item_product_tv_description"
-        android:layout_width="280dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:ellipsize="end"
@@ -87,6 +87,7 @@
         android:text="3 miếng gà không cay, 1 Coca 3 miếng gà không cay, 1 Coca..."
         android:textColor="#8E8E8E"
         android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
