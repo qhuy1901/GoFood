@@ -72,7 +72,7 @@ public class StorePageDetailActivity extends AppCompatActivity {
     {
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
-        String total = currencyVN.format(cartSession.getTotal());
+        String total = currencyVN.format(cartSession.getTotal()).replace("₫", "")+ " ₫";
         tvTotal.setText(total);
     }
 
