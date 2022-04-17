@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/be_vietnam_bold"
             android:gravity="top"
-            android:text="Quản lý Menu"
+            android:text="Menu"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/black"
             android:textSize="22dp"
