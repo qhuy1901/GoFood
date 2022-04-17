@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.example.myapplication.customer.store_detail.review_tab.StorePageReviewTabFragment;
 import com.example.myapplication.models.Store;
 
 public class StorePageViewPagerAdapter extends FragmentStateAdapter {
