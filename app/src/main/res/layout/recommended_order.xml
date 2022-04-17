@@ -2,17 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="140dp"
-    android:layout_height="260sp"
+    android:layout_width="130dp"
+    android:layout_height="230sp"
     android:layout_marginRight="12dp"
     android:background="@color/background_color1">
-
 
     <ImageView
         android:id="@+id/recommended_image"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="120dp"
         android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,9 +40,21 @@
         android:fontFamily="@font/be_vietnam_bold"
         android:text="78,000đ"
         android:textColor="@color/color_primary"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/recommended_name"
         app:layout_constraintTop_toBottomOf="@+id/recommended_delivery_type" />
+
+    <TextView
+        android:id="@+id/recommended_price2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/be_vietnam_bold"
+        android:text="78,000đ"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/color_primary"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/recommended_name"
+        app:layout_constraintTop_toBottomOf="@+id/recommended_price" />
 
     <TextView
         android:id="@+id/recommended_delivery_time"
@@ -63,25 +75,24 @@
 
     <TextView
         android:id="@+id/recommended_delivery_type"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/be_vietnam_medium"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:text="Free Delivery"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/recommended_name"
-        app:layout_constraintTop_toBottomOf="@+id/recommended_delivery_time" />
+        app:layout_constraintStart_toEndOf="@+id/recommended_delivery_time"
+        app:layout_constraintTop_toTopOf="@+id/recommended_delivery_time" />
 
     <ImageView
         android:id="@+id/imageView12"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginEnd="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/recommended_price"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/recommended_price"
+        app:layout_constraintTop_toBottomOf="@+id/recommended_price"
         app:srcCompat="@drawable/plus" />
 </androidx.constraintlayout.widget.ConstraintLayout>
