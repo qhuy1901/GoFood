@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,6 +43,7 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
     private TextView tvUsername;
     private UserSession userSession;
     public static int type_usr = 1;
+    private int REQUEST_CODE_LOCATION_PERMISSION = 44;
 
     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Users");
 
@@ -91,12 +93,12 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
                         && ActivityCompat.checkSelfPermission(WelcomeActivity.this,
                         Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     getlocation();
+                    Intent switchActivityIntent = new Intent(WelcomeActivity.this, HomeActivity.class);
+                    startActivity(switchActivityIntent);
                 }else{
                     ActivityCompat.requestPermissions(WelcomeActivity.this,
-                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
+                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE_LOCATION_PERMISSION);
                 }
-                Intent switchActivityIntent = new Intent(WelcomeActivity.this, HomeActivity.class);
-                startActivity(switchActivityIntent);
 
             }
         });
@@ -111,13 +113,29 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
         });
     }
 
+
+
     @SuppressLint("MissingPermission")
     private void getlocation(){
         try{
             locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5, (LocationListener) WelcomeActivity.this);
+            Intent switchActivityIntent = new Intent(WelcomeActivity.this, HomeActivity.class);
+            startActivity(switchActivityIntent);
         }catch(Exception e){
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == REQUEST_CODE_LOCATION_PERMISSION && grantResults.length > 0){
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                getlocation();
+            }else{
+                Toast.makeText(this, "Permission for location denied", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -131,19 +149,5 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
         }catch (Exception e){
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-    }
-    @Override
-    public void onProviderEnabled(@NonNull String provider) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(@NonNull String provider) {
-
     }
 }
