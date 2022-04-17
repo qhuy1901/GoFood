@@ -17,8 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".customer.product_detail.ProductDetailActivity"/>
+            android:name=".customer.address.CustomerAddressActivity"
             android:exported="false" />
+        <activity android:name=".customer.product_detail.ProductDetailActivity" />
         <activity
             android:name=".merchant.store_management.MenuManagement.topping.AddToppingActivity"
             android:exported="false" />
