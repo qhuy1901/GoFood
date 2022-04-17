@@ -17,9 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".merchant.store_management.Me.MerchantShopDetailActivity"
-            android:exported="false" />
-        <activity
             android:name=".customer.product_detail.ProductDetailActivity"/>
             android:exported="false" />
         <activity
