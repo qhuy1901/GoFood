@@ -175,10 +175,10 @@
                 android:fontFamily="@font/be_vietnam_medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/view4"
-                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+                app:layout_constraintTop_toBottomOf="@+id/textView141" />
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/textView141"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -281,7 +281,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView85">
 
             <ImageView
-                android:id="@+id/imageView13"
+                android:id="@+id/imageView131"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -289,7 +289,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/textView211"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -300,7 +300,7 @@
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView13" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView131" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -313,7 +313,7 @@
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+                app:layout_constraintTop_toBottomOf="@+id/textView211" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".customer.product_detail.ProductDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".MerchantShopDetailActivity"
             android:exported="false" />
         <activity
@@ -48,9 +51,9 @@
             android:exported="false"
             android:label="@string/title_activity_store_detail" />
         <activity
+            android:name=".customer.home.HomeActivity"
             android:exported="false"
-            android:parentActivityName=".WelcomeActivity"
-            android:name=".customer.home.HomeActivity" />
+            android:parentActivityName=".WelcomeActivity" />
         <activity
             android:name=".merchant.choose_store.ChooseStoreActivity"
             android:exported="false"

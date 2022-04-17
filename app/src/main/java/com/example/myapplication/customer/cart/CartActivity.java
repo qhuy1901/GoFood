@@ -31,7 +31,7 @@ public class CartActivity extends AppCompatActivity {
     private List<CartItem> cart;
     private CartSession cartSession;
     private TextView tvDeleteAllItem, tvTotal;
-    private ImageView ivEmptyCart;
+    private ImageView ivEmptyCart, ivBtnBack;
     private Button btnDelivery;
 
     private void initUi()
@@ -41,6 +41,7 @@ public class CartActivity extends AppCompatActivity {
         ivEmptyCart = (ImageView) findViewById(R.id.iv_empty_cart);
         tvTotal = (TextView) findViewById(R.id.tv_total) ;
         btnDelivery = (Button) findViewById(R.id.btn_delivery) ;
+        ivBtnBack = (ImageView) findViewById(R.id.activity_cart_iv_tbn_back);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(CartActivity.this);
         rcvCart.setLayoutManager(linearLayoutManager);
@@ -126,6 +127,12 @@ public class CartActivity extends AppCompatActivity {
                             .setCustomImage(R.drawable.empty_cart_icon)
                             .show();
                 }
+            }
+        });
+        ivBtnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }
