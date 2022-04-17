@@ -1,15 +1,15 @@
 package com.example.myapplication.customer.home.myorderpage;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.myapplication.R;
 import com.example.myapplication.models.Order;
@@ -41,6 +41,9 @@ public class MyOrderHistoryTabFragment extends Fragment {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference().child("orders");
 
+        SharedPreferences preferences = getContext().getSharedPreferences("Session", getContext().MODE_PRIVATE);
+        String userId = preferences.getString("userId", "default value");
+
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -48,7 +51,7 @@ public class MyOrderHistoryTabFragment extends Fragment {
                 for (DataSnapshot querysnapshot: snapshot.getChildren()) {
                     Order order = querysnapshot.getValue(Order.class);
                     if (order != null) {
-                        if (!order.getOrderStatus().equals("Đặt hàng thành công") && !order.getOrderStatus().equals("Đang vận chuyển")) {
+                        if ((order.getOrderStatus().contains("Đã hủy") || order.getOrderStatus().equals("Giao hàng thành công")) && order.getUserId().equals(userId)) {
                             orders.add(order);
                         }
                     }
