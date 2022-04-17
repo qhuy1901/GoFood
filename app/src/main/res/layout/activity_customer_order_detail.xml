@@ -50,16 +50,27 @@
         android:background="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/activity_merchant_order_detail_cl_shipping_info2">
         <TextView
-            android:id="@+id/customer_order_detail_order_id"
+            android:id="@+id/customer_order_detail_order_id2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/be_vietnam_bold"
-            android:text="Order ID"
-            android:textColor="#BBBBBB"
+            android:text="Đơn hàng "
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:textSize="14sp"
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/customer_order_detail_order_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/be_vietnam_bold"
+            android:text="Order ID"
+            android:textColor="#BBBBBB"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/customer_order_detail_order_id2" />
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/customer_order_detail_appCompatImageButton"
             android:layout_width="20dp"
@@ -159,9 +170,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/customer_order_detail_rcv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/activity_merchant_order_detail_constraintLayout2"
         app:layout_constraintTop_toBottomOf="@+id/customer_order_detail_cl_shipping_info"
         app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="-7dp" />
@@ -171,8 +183,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/customer_order_detail_rcv"
-        tools:layout_editor_absoluteX="-22dp">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
             android:id="@+id/customer_order_detail_num_product"
@@ -191,27 +202,38 @@
             android:id="@+id/activity_merchant_order_detail_imageView4"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="10dp"
             android:src="@drawable/wallet"
             app:layout_constraintEnd_toStartOf="@+id/customer_order_detail_total"
-            app:layout_constraintHorizontal_bias="0.923"
-            app:layout_constraintStart_toEndOf="@+id/customer_order_detail_num_product"
-            tools:layout_editor_absoluteY="12dp" />
+            app:layout_constraintTop_toTopOf="@+id/customer_order_detail_total" />
 
         <TextView
             android:id="@+id/customer_order_detail_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/be_vietnam_semibold"
-            android:paddingTop="12dp"
             android:text="857,858 đ"
             android:textColor="#F2789F"
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:layout_editor_absoluteY="0dp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-
+        <android.widget.Button
+            android:id="@+id/customer_order_detail_btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/btn1_bg"
+            android:fontFamily="@font/be_vietnam_bold"
+            android:text="Hủy đơn hàng"
+            android:textAllCaps="false"
+            android:textColor="#F2789F"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/customer_order_detail_num_product" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

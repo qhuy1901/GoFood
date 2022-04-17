@@ -1,6 +1,7 @@
 package com.example.myapplication.customer.home.myorderpage;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
+import com.example.myapplication.customer.home.myorderpage.order_detail.CustomerOrderDetailActivity;
 import com.example.myapplication.models.Order;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -61,6 +63,13 @@ public class MyOrderHistoryTabAdapter extends RecyclerView.Adapter<MyOrderHistor
         DateFormat dateFormat = new SimpleDateFormat("hh:mm dd-MM-yyyy");
         holder.tvOrderDate.setText(dateFormat.format(order.getOrderDate()));
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToOrderDetail(order);
+            }
+        });
+
         String storeID = order.getStoreId();
         Database = FirebaseDatabase.getInstance().getReference();
 
@@ -87,6 +96,12 @@ public class MyOrderHistoryTabAdapter extends RecyclerView.Adapter<MyOrderHistor
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+    }
+    private void goToOrderDetail(Order order)
+    {
+        Intent switchActivityIntent = new Intent(this.context, CustomerOrderDetailActivity.class);
+        switchActivityIntent.putExtra("order", order);
+        context.startActivity(switchActivityIntent);
     }
 
     @Override

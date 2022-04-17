@@ -3,6 +3,7 @@ package com.example.myapplication.customer.home.myorderpage.order_detail;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,8 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.merchant.order_detail.MerchantOrderDetailActivity;
-import com.example.myapplication.merchant.order_detail.ProductForMerchantOrderDetailAdapter;
 import com.example.myapplication.models.Order;
 
 import java.text.NumberFormat;
@@ -24,12 +23,18 @@ public class CustomerOrderDetailActivity extends AppCompatActivity {
     private ImageView ivBtnBack;
     private RecyclerView rcvProductList;
     private ProductForCustomerOrderDetailAdapter adapter;
+    private Button btnCancel;
     private void initUI(){
         tvTotal = (TextView) findViewById(R.id.customer_order_detail_total);
         tvNumProduct = (TextView) findViewById(R.id.customer_order_detail_num_product);
         tvOrderId = (TextView) findViewById(R.id.customer_order_detail_order_id);
         ivBtnBack = (ImageView) findViewById(R.id.customer_order_detail_btn_back);
         rcvProductList = (RecyclerView) findViewById(R.id.customer_order_detail_rcv);
+        btnCancel = (Button)  findViewById(R.id.customer_order_detail_btn_cancel);
+
+        btnCancel.setVisibility(View.GONE);
+        if(order.getOrderStatus().equals("Đặt hàng thành công"))
+            btnCancel.setVisibility(View.VISIBLE);
 
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);

@@ -1,21 +1,21 @@
 package com.example.myapplication.customer.home.homepage;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.myapplication.LoginTabFragment;
 import com.example.myapplication.R;
 import com.example.myapplication.WelcomeActivity;
+import com.example.myapplication.models.CartSession;
 import com.example.myapplication.models.Home_CategoriesItemModel;
 import com.example.myapplication.models.Home_RecommendedModel;
 import com.example.myapplication.models.Store;
@@ -54,6 +54,10 @@ public class HomeFragment extends Fragment {
 
     private void initUi(ViewGroup root)
     {
+
+        CartSession cartSession = new CartSession(getActivity());
+        cartSession.removeAllItem();
+
         tvLocation = (TextView) root.findViewById(R.id.tvLocation);
 
         rcvStoreListByCategory = (RecyclerView) root.findViewById(R.id.rcv_store_list_by_category);
