@@ -58,11 +58,12 @@ public class MyOrderHistoryTabAdapter extends RecyclerView.Adapter<MyOrderHistor
         holder.tvNumProduct.setText("(" + order.getOrderDetail().size()+" sản phẩm)");
         holder.tvOrderId.setText(order.getOrderId());
 
-        DateFormat dateFormat = new SimpleDateFormat("hh:mm dd-mm-yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("hh:mm dd-MM-yyyy");
         holder.tvOrderDate.setText(dateFormat.format(order.getOrderDate()));
 
         String storeID = order.getStoreId();
         Database = FirebaseDatabase.getInstance().getReference();
+
 
         Database.child("stores").child(storeID).child("storeName").addValueEventListener(new ValueEventListener() {
             @Override

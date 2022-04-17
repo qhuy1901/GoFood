@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 import com.example.myapplication.customer.home.myorderpage.order_detail.CustomerOrderDetailActivity;
-import com.example.myapplication.merchant.order_detail.MerchantOrderDetailActivity;
 import com.example.myapplication.models.Order;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -61,11 +60,15 @@ public class MyOrderOngoingTabAdapter extends RecyclerView.Adapter<MyOrderOngoin
         holder.tvNumProduct.setText("(" + order.getOrderDetail().size()+" sản phẩm)");
         holder.tvOrderId.setText(order.getOrderId());
 
-        DateFormat dateFormat = new SimpleDateFormat("hh:mm dd-mm-yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("hh:mm dd-MM-yyyy");
         holder.tvOrderDate.setText(dateFormat.format(order.getOrderDate()));
 
         String storeID = order.getStoreId();
         Database = FirebaseDatabase.getInstance().getReference();
+
+        holder.btnReorder.setVisibility(View.GONE);
+        holder.btnCheckReview.setVisibility(View.GONE);
+
 
         Database.child("stores").child(storeID).child("storeName").addValueEventListener(new ValueEventListener() {
             @Override

@@ -3,19 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
+    android:layout_height="210dp"
+    android:layout_marginTop="10dp"
     android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tv_ma_don_hang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:text="Đơn hàng "
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_myorder_ongoing_orderid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:fontFamily="@font/be_vietnam_medium"
         android:text="#284-23978"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="14sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_ma_don_hang"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -25,7 +39,7 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/be_vietnam_medium"
         android:text="15/04/2022"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_myorder_ongoing_orderid" />
 
@@ -33,8 +47,8 @@
         android:id="@+id/img_myorder_ongoing_storeimg"
         android:layout_width="88dp"
         android:layout_height="88dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="@+id/tv_myorder_ongoing_orderid"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_ma_don_hang"
         app:layout_constraintTop_toBottomOf="@+id/tv_myorder_ongoing_orderid"
         app:srcCompat="@drawable/default_store" />
 
@@ -48,7 +62,8 @@
         android:fontFamily="@font/be_vietnam_bold"
         android:text="Tiệm bánh Yum Sài Gòn"
         android:textColor="@color/black"
-        android:textSize="14sp"
+        android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/img_myorder_ongoing_storeimg"
         app:layout_constraintTop_toTopOf="@+id/img_myorder_ongoing_storeimg" />
@@ -75,7 +90,7 @@
         android:fontFamily="@font/be_vietnam_bold"
         android:text="52,300đ"
         android:textColor="@color/black"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/myorder_ongoing_storeaddress"
         app:layout_constraintTop_toBottomOf="@+id/myorder_ongoing_storeaddress" />
 
@@ -87,7 +102,7 @@
         android:fontFamily="@font/be_vietnam_medium"
         android:text="(1 sản phẩm)"
         android:textColor="@color/gray"
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/myorder_ongoing_total"
         app:layout_constraintStart_toEndOf="@+id/myorder_ongoing_total" />
 
@@ -95,12 +110,12 @@
         android:id="@+id/myorder_ongoing_orderstt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/be_vietnam_medium"
         android:text="Chưa hoàn thành"
-        android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/img_myorder_ongoing_storeimg"
         app:layout_constraintTop_toBottomOf="@+id/img_myorder_ongoing_storeimg" />
 
     <androidx.appcompat.widget.AppCompatButton
