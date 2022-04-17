@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
             switch (position){
                 case 0:
                     tab.setText("Đăng nhập");
+
                     break;
                 case 1:
                     tab.setText("Đăng ký");

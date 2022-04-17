@@ -17,6 +17,10 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/myorder_tbl"
+        app:tabTextAppearance="@style/MyCustomTextAppearance"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        app:tabIndicatorFullWidth="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"

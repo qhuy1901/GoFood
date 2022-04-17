@@ -30,10 +30,10 @@ public class MyOrderFragment extends Fragment {
         new TabLayoutMediator(tablayout, viewPager, (tab, position) -> {
             switch (position){
                 case 0:
-                    tab.setText("Ongoing");
+                    tab.setText("Đang đến");
                     break;
                 case 1:
-                    tab.setText("History");
+                    tab.setText("Lịch sử");
                     break;
             }
         }).attach();

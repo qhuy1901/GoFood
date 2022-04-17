@@ -29,15 +29,15 @@ public class SignupTabFragment extends Fragment {
         edtPassword = root.findViewById(R.id.edtPassword);
         edtConfirmPassword = root.findViewById(R.id.edtConfirmPassword);
         btnRegister = root.findViewById(R.id.btnRegister);
-        register.setTranslationX(500);
+        register.setTranslationX(300);
         register.setAlpha(v);
-        register. animate().translationX(0).alpha(1).setDuration(500).setStartDelay(700).start();
-        edtFullName.setTranslationX(800);
-        edtNM.setTranslationX(800);
-        edtEmail.setTranslationX(800);
-        edtPassword.setTranslationX(800);
-        edtConfirmPassword.setTranslationX(800);
-        btnRegister.setTranslationX(800);
+        register. animate().translationX(0).alpha(1).setDuration(300).setStartDelay(300).start();
+        edtFullName.setTranslationX(300);
+        edtNM.setTranslationX(300);
+        edtEmail.setTranslationX(300);
+        edtPassword.setTranslationX(300);
+        edtConfirmPassword.setTranslationX(300);
+        btnRegister.setTranslationX(300);
 
         edtFullName.setAlpha(v);
         edtNM.setAlpha(v);
@@ -47,12 +47,12 @@ public class SignupTabFragment extends Fragment {
         edtEmail.setAlpha(v);
 
 
-        edtFullName.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
-        edtNM.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
-        edtEmail.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
-        edtPassword.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
-        edtConfirmPassword.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
-        btnRegister. animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
+        edtFullName.animate().translationX(0).alpha(1).setDuration(300).setStartDelay(300).start();
+        edtNM.animate().translationX(0).alpha(1).setDuration(300).setStartDelay(300).start();
+        edtEmail.animate().translationX(0).alpha(1).setDuration(300).setStartDelay(300).start();
+        edtPassword.animate().translationX(0).alpha(1).setDuration(300).setStartDelay(300).start();
+        edtConfirmPassword.animate().translationX(0).alpha(1).setDuration(300).setStartDelay(300).start();
+        btnRegister. animate().translationX(0).alpha(1).setDuration(300).setStartDelay(300).start();
 
 
         return root;
