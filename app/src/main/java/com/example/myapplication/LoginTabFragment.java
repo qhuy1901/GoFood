@@ -52,22 +52,22 @@ public class LoginTabFragment extends Fragment {
         edtPassword = root.findViewById(R.id.edtPassword);
         forgetPass = root.findViewById(R.id.fg_pass);
         logIn = root.findViewById(R.id.login);
-        logIn.setTranslationX(500);
+        logIn.setTranslationX(300);
         logIn.setAlpha(v);
-        logIn. animate().translationX(0).alpha(1).setDuration(500).setStartDelay(700).start();
+        logIn. animate().translationX(0).alpha(1).setDuration(300).setStartDelay(300).start();
 
-        edtEmail.setTranslationX(500);
-        edtPassword.setTranslationX(500);
-        forgetPass.setTranslationX(500);
-        btnLogin.setTranslationX(500);
+        edtEmail.setTranslationX(300);
+        edtPassword.setTranslationX(300);
+        forgetPass.setTranslationX(300);
+        btnLogin.setTranslationX(300);
         edtEmail.setAlpha(v);
         edtPassword.setAlpha(v);
         forgetPass.setAlpha(v);
         btnLogin.setAlpha(v);
-        edtEmail.animate().translationX(0).alpha(1).setDuration(500).setStartDelay(300).start();
-        edtPassword.animate().translationX(0).alpha(1).setDuration(500).setStartDelay(500).start();
-        forgetPass.animate().translationX(0).alpha(1).setDuration(500).setStartDelay(500).start();
-        btnLogin. animate().translationX(0).alpha(1).setDuration(500).setStartDelay(700).start();
+        edtEmail.animate().translationX(0).alpha(1).setDuration(300).setStartDelay(300).start();
+        edtPassword.animate().translationX(0).alpha(1).setDuration(300).setStartDelay(300).start();
+        forgetPass.animate().translationX(0).alpha(1).setDuration(300).setStartDelay(300).start();
+        btnLogin. animate().translationX(0).alpha(1).setDuration(300).setStartDelay(300).start();
 
         ProgressDialog progressDialog = new ProgressDialog(getActivity());
 
