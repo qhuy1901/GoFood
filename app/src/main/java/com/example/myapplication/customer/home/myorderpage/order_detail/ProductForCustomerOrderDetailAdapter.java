@@ -43,15 +43,15 @@ public class ProductForCustomerOrderDetailAdapter extends RecyclerView.Adapter<P
         String price = currencyVN.format(item.product.getPrice()).replace("₫", "")+ " ₫";
         holder.tvPrice.setText(price);
         holder.tvQuantity.setText("x"+item.quantity);
-//        String topping = item.getTopping();
-//        if(topping.equals(""))
-//        {
-//            holder.tvTopping.setVisibility(View.GONE);
-//        }
-//        else
-//        {
-//            holder.tvTopping.setText("+Topping: " + topping);
-//        }
+        String topping = item.getTopping();
+        if(topping.equals(""))
+        {
+            holder.tvTopping.setVisibility(View.GONE);
+        }
+        else
+        {
+            holder.tvTopping.setText("+Topping: " + topping);
+        }
     }
 
     @Override
@@ -68,7 +68,7 @@ public class ProductForCustomerOrderDetailAdapter extends RecyclerView.Adapter<P
             tvProductName = itemView.findViewById(R.id.item_product_for_merchant_order_detail_tv_product_name);
             tvQuantity = itemView.findViewById(R.id.item_product_for_merchant_order_detail_tv_quantity);
             tvPrice = itemView.findViewById(R.id.item_product_for_merchant_order_detail_tv_unit_price);
-//            tvTopping = itemView.findViewById(R.id.item_product_for_merchant_order_detail_tv_topping);
+            tvTopping = itemView.findViewById(R.id.item_product_for_merchant_order_detail_tv_topping);
         }
     }
 }
