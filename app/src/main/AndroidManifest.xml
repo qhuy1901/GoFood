@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".MerchantShopDetailActivity"
+            android:name=".merchant.store_management.Me.MerchantShopDetailActivity"
             android:exported="false" />
         <activity
             android:name=".merchant.store_management.MenuManagement.topping.AddToppingActivity"
