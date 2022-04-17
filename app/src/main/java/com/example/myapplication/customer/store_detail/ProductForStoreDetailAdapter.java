@@ -1,6 +1,7 @@
 package com.example.myapplication.customer.store_detail;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
+import com.example.myapplication.customer.product_detail.ProductDetailActivity;
 import com.example.myapplication.models.Product;
 
 import java.text.NumberFormat;
@@ -75,6 +77,19 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
 
             }
         });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickGoToDetail(product);
+            }
+        });
+    }
+
+    private void onClickGoToDetail(Product product)
+    {
+        Intent switchActivityIntent = new Intent(this.context, ProductDetailActivity.class);
+        switchActivityIntent.putExtra("product", product);
+        context.startActivity(switchActivityIntent);
     }
 
     @Override

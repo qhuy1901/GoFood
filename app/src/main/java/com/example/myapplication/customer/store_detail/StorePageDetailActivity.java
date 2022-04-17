@@ -29,7 +29,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class StorePageDetailActivity extends AppCompatActivity {
 
-    private ImageView ivStoreAvatar, ivShowCart;
+    private ImageView ivStoreAvatar, ivShowCart, ivButtonBack;
     private TextView tvStoreName, tvTotal, tvRating, tvDeliveryTime;
     private Button btnDelivery;
     private TabLayout tablayout;
@@ -56,6 +56,7 @@ public class StorePageDetailActivity extends AppCompatActivity {
         tvDeliveryTime = (TextView) findViewById(R.id.store_delivery_time);
         tablayout = findViewById(R.id.store_tbl);
         viewPager = findViewById(R.id.store_vp);
+        ivButtonBack = (ImageView) findViewById(R.id.activity_store_detail_iv_btn_back) ;
 
 
         cartSession = new CartSession(StorePageDetailActivity.this);
@@ -97,13 +98,13 @@ public class StorePageDetailActivity extends AppCompatActivity {
         new TabLayoutMediator(tablayout, viewPager, (tab, position) -> {
             switch (position){
                 case 0:
-                    tab.setText("Order");
+                    tab.setText("Đặt đơn");
                     break;
                 case 1:
-                    tab.setText("Review");
+                    tab.setText("Bình luận");
                     break;
                 case 2:
-                    tab.setText("Information");
+                    tab.setText("Thông tin");
                     break;
             }
         }).attach();
@@ -139,6 +140,12 @@ public class StorePageDetailActivity extends AppCompatActivity {
                             .setCustomImage(R.drawable.empty_cart_icon)
                             .show();
                 }
+            }
+        });
+        ivButtonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 
