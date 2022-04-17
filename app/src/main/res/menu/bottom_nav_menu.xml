@@ -27,5 +27,5 @@
         android:enabled="true"
         app:showAsAction="always"
         android:icon="@drawable/ic_setting_black_24dp"
-        android:title="Thống kê" />
+        android:title="Tôi" />
 </menu>

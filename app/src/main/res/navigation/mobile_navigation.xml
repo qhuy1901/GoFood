@@ -18,8 +18,13 @@
         tools:layout="@layout/fragment_menu_management" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_statistic"
         android:name="com.example.myapplication.merchant.store_management.Report.ReportFragment"
-        android:label="@string/title_notifications"
+        android:label="Thống kê"
         tools:layout="@layout/fragment_report" />
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.example.myapplication.merchant.store_management.Me.Merchant_Shop_Detail_Fragment"
+        android:label="Tôi"
+        tools:layout="@layout/fragment_merchant__shop__detail_" />
 </navigation>
