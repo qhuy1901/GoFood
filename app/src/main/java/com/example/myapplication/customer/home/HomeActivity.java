@@ -11,6 +11,9 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.myapplication.R;
 import com.example.myapplication.customer.home.homepage.HomeFragment;
 import com.example.myapplication.customer.home.myorderpage.MyOrderFragment;
+import com.example.myapplication.customer.home.notification.CustomerNotificationFragment;
+import com.example.myapplication.customer.like.CustomerLikeFragment;
+import com.example.myapplication.customer.me.CustomerMeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -35,6 +38,15 @@ public class HomeActivity extends AppCompatActivity {
                         return true;
                     case R.id.nav_my_ords:
                         setFragment(new MyOrderFragment());
+                        return true;
+                    case R.id.nav_likes:
+                        setFragment(new CustomerLikeFragment());
+                        return true;
+                    case R.id.nav_me:
+                        setFragment(new CustomerMeFragment());
+                        return true;
+                    case R.id.nav_notifications:
+                        setFragment(new CustomerNotificationFragment());
                         return true;
                 }
                 return false;
