@@ -1,4 +1,4 @@
-package com.example.myapplication.customer.order_confirmation;
+package com.example.myapplication.customer.home.myorderpage.order_confirmation;
 
 import android.content.Intent;
 import android.content.SharedPreferences;

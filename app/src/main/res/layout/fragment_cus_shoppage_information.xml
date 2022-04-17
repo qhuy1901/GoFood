@@ -3,21 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    <ImageView
-        android:id="@+id/img_fragement_cus_shoppage_information_vi_tri"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/company_icon"
-        tools:ignore="ImageContrastCheck" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp">
 
     <TextView
         android:id="@+id/txt_fragement_cus_shoppage_information_diachi"
@@ -32,7 +23,8 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/fragement_cus_shoppage_information_icon_location"
-        app:layout_constraintTop_toTopOf="@+id/fragement_cus_shoppage_information_icon_location" />
+        app:layout_constraintTop_toTopOf="@+id/fragement_cus_shoppage_information_icon_location"
+        app:layout_constraintTop_toBottomOf="@+id/fragement_cus_line"/>
 
     <View
         android:id="@+id/fragement_cus_shoppage_information_line1"
@@ -110,7 +102,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_fragement_cus_shoppage_information_vi_tri"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_cus_shoppage_information_shopimg"
             app:srcCompat="@drawable/ic_baseline_location_on_24"
             tools:ignore="ImageContrastCheck" />
 

@@ -48,7 +48,7 @@ public class MyOrderHistoryTabFragment extends Fragment {
                 for (DataSnapshot querysnapshot: snapshot.getChildren()) {
                     Order order = querysnapshot.getValue(Order.class);
                     if (order != null) {
-                        if (!order.getOrderStatus().equals("Đặt hàng thành công")) {
+                        if (!order.getOrderStatus().equals("Đặt hàng thành công") && !order.getOrderStatus().equals("Đang vận chuyển")) {
                             orders.add(order);
                         }
                     }
