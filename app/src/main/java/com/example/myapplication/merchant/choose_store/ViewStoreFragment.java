@@ -41,8 +41,6 @@ public class ViewStoreFragment extends Fragment{
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         rcvStores.setLayoutManager(linearLayoutManager);
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
-        rcvStores.addItemDecoration(dividerItemDecoration);
 
         storeList = new ArrayList<>();
         storeAdapter = new StoreAdapter(getContext(),storeList);
