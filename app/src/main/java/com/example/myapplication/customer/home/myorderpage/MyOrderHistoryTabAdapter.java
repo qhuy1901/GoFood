@@ -42,7 +42,7 @@ public class MyOrderHistoryTabAdapter extends RecyclerView.Adapter<MyOrderHistor
     @NonNull
     @Override
     public MyOrderHistoryTabAdapter.MyOrderHistoryTabViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyOrderHistoryTabAdapter.MyOrderHistoryTabViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_myorder, parent, false));
+        return new MyOrderHistoryTabAdapter.MyOrderHistoryTabViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_myorder_history, parent, false));
     }
 
     @Override
@@ -118,16 +118,16 @@ public class MyOrderHistoryTabAdapter extends RecyclerView.Adapter<MyOrderHistor
 
         public MyOrderHistoryTabViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvOrderId = (TextView) itemView.findViewById(R.id.tv_myorder_ongoing_orderid);
-            tvOrderDate = (TextView) itemView.findViewById(R.id.tv_myorder_ongoing_orderdate);
-            tvStoreName = (TextView) itemView.findViewById(R.id.myorder_ongoing_storename);
-            tvStoreAddress = (TextView) itemView.findViewById(R.id.myorder_ongoing_storeaddress);
-            tvTotal = (TextView) itemView.findViewById(R.id.myorder_ongoing_total);
-            tvNumProduct = (TextView) itemView.findViewById(R.id.myorder_ongoing_numproduct);
-            tvOrderStatus = (TextView) itemView.findViewById(R.id.myorder_ongoing_orderstt);
-            imgStore = (ImageView) itemView.findViewById(R.id.img_myorder_ongoing_storeimg);
-            btnReorder = itemView.findViewById(R.id.myorder_ongoing_reorder_btn);
-            btnCheckReview = itemView.findViewById(R.id.myorder_ongoing_checkstorereview_btn);
+            tvOrderId = (TextView) itemView.findViewById(R.id.tv_myorder_history_orderid);
+            tvOrderDate = (TextView) itemView.findViewById(R.id.tv_myorder_history_orderdate);
+            tvStoreName = (TextView) itemView.findViewById(R.id.myorder_history_storename);
+            tvStoreAddress = (TextView) itemView.findViewById(R.id.myorder_history_storeaddress);
+            tvTotal = (TextView) itemView.findViewById(R.id.myorder_history_total);
+            tvNumProduct = (TextView) itemView.findViewById(R.id.myorder_history_numproduct);
+            tvOrderStatus = (TextView) itemView.findViewById(R.id.myorder_history_orderstt);
+            imgStore = (ImageView) itemView.findViewById(R.id.img_myorder_history_storeimg);
+            btnReorder = itemView.findViewById(R.id.myorder_history_reorder_btn);
+            btnCheckReview = itemView.findViewById(R.id.myorder_history_checkstorereview_btn);
         }
     }
 }

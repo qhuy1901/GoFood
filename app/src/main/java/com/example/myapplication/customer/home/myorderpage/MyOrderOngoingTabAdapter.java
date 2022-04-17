@@ -42,7 +42,7 @@ public class MyOrderOngoingTabAdapter extends RecyclerView.Adapter<MyOrderOngoin
     @NonNull
     @Override
     public MyOrderOngoingTabViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyOrderOngoingTabAdapter.MyOrderOngoingTabViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_myorder, parent, false));
+        return new MyOrderOngoingTabAdapter.MyOrderOngoingTabViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_myorder_ongoing, parent, false));
     }
 
     @Override
@@ -66,8 +66,6 @@ public class MyOrderOngoingTabAdapter extends RecyclerView.Adapter<MyOrderOngoin
         String storeID = order.getStoreId();
         Database = FirebaseDatabase.getInstance().getReference();
 
-        holder.btnReorder.setVisibility(View.GONE);
-        holder.btnCheckReview.setVisibility(View.GONE);
 
 
         Database.child("stores").child(storeID).child("storeName").addValueEventListener(new ValueEventListener() {
@@ -116,7 +114,6 @@ public class MyOrderOngoingTabAdapter extends RecyclerView.Adapter<MyOrderOngoin
     public class MyOrderOngoingTabViewHolder extends RecyclerView.ViewHolder {
         private TextView tvOrderId, tvOrderDate, tvStoreName, tvStoreAddress, tvTotal, tvNumProduct, tvOrderStatus;
         private ImageView imgStore;
-        private Button btnReorder, btnCheckReview;
 
         public MyOrderOngoingTabViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -128,8 +125,6 @@ public class MyOrderOngoingTabAdapter extends RecyclerView.Adapter<MyOrderOngoin
             tvNumProduct = (TextView) itemView.findViewById(R.id.myorder_ongoing_numproduct);
             tvOrderStatus = (TextView) itemView.findViewById(R.id.myorder_ongoing_orderstt);
             imgStore = (ImageView) itemView.findViewById(R.id.img_myorder_ongoing_storeimg);
-            btnReorder = itemView.findViewById(R.id.myorder_ongoing_reorder_btn);
-            btnCheckReview = itemView.findViewById(R.id.myorder_ongoing_checkstorereview_btn);
         }
     }
 }
