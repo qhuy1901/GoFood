@@ -9,10 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
-import com.example.myapplication.customer.store_detail.ProductForStoreDetailAdapter;
-import com.example.myapplication.models.Product;
 import com.example.myapplication.models.Review;
 
 import java.util.List;

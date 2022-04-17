@@ -1,4 +1,4 @@
-package com.example.myapplication.customer.store_detail;
+package com.example.myapplication.customer.store_detail.order_tab;
 
 import android.os.Bundle;
 

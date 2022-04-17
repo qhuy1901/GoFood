@@ -1,4 +1,4 @@
-package com.example.myapplication.customer.store_detail;
+package com.example.myapplication.customer.store_detail.order_tab;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +20,8 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.customer.product_detail.ProductDetailActivity;
+import com.example.myapplication.customer.store_detail.StorePageDetailActivity;
+import com.example.myapplication.customer.store_detail.ToppingBottomSheetDialog;
 import com.example.myapplication.models.Product;
 
 import java.text.NumberFormat;

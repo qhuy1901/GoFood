@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
     <ImageView
-        android:id="@+id/img_fragement_cus_shoppage_information_vi_tri"
+        android:id="@+id/fragment_cus_shoppage_information_shopimg"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -109,7 +109,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_fragement_cus_shoppage_information_vi_tri"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_cus_shoppage_information_shopimg"
             app:srcCompat="@drawable/ic_baseline_location_on_24"
             tools:ignore="ImageContrastCheck" />
 
