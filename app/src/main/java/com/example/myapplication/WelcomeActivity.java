@@ -120,8 +120,6 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
         try{
             locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5, (LocationListener) WelcomeActivity.this);
-            Intent switchActivityIntent = new Intent(WelcomeActivity.this, HomeActivity.class);
-            startActivity(switchActivityIntent);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -133,6 +131,8 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
         if(requestCode == REQUEST_CODE_LOCATION_PERMISSION && grantResults.length > 0){
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 getlocation();
+                Intent switchActivityIntent = new Intent(WelcomeActivity.this, HomeActivity.class);
+                startActivity(switchActivityIntent);
             }else{
                 Toast.makeText(this, "Permission for location denied", Toast.LENGTH_SHORT).show();
             }
