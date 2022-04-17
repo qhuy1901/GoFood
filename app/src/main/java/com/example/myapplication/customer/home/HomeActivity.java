@@ -13,7 +13,7 @@ import com.example.myapplication.customer.home.homepage.HomeFragment;
 import com.example.myapplication.customer.home.myorderpage.MyOrderFragment;
 import com.example.myapplication.customer.home.notification.CustomerNotificationFragment;
 import com.example.myapplication.customer.like.CustomerLikeFragment;
-import com.example.myapplication.customer.me.CustomerMeFragment;
+import com.example.myapplication.customer.home.me.CustomerMeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 

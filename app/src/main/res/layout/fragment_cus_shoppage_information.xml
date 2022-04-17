@@ -7,16 +7,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    <ImageView
-        android:id="@+id/fragment_cus_shoppage_information_shopimg"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/company_icon"
-        tools:ignore="ImageContrastCheck" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp">
 
     <TextView
         android:id="@+id/txt_fragement_cus_shoppage_information_diachi"
@@ -31,7 +23,8 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/fragement_cus_shoppage_information_icon_location"
-        app:layout_constraintTop_toTopOf="@+id/fragement_cus_shoppage_information_icon_location" />
+        app:layout_constraintTop_toTopOf="@+id/fragement_cus_shoppage_information_icon_location"
+        app:layout_constraintTop_toBottomOf="@+id/fragement_cus_line"/>
 
     <View
         android:id="@+id/fragement_cus_shoppage_information_line1"

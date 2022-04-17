@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color1"
-    tools:context=".customer.order_confirmation.OrderConfirmationActivity">
+    tools:context=".customer.home.myorderpage.order_confirmation.OrderConfirmationActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

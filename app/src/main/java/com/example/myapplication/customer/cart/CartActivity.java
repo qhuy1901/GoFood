@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.customer.order_confirmation.OrderConfirmationActivity;
+import com.example.myapplication.customer.home.myorderpage.order_confirmation.OrderConfirmationActivity;
 import com.example.myapplication.models.CartItem;
 import com.example.myapplication.models.CartSession;
 

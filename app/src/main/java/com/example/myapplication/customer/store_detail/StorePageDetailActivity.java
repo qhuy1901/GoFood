@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.customer.cart.CartActivity;
-import com.example.myapplication.customer.order_confirmation.OrderConfirmationActivity;
+import com.example.myapplication.customer.home.myorderpage.order_confirmation.OrderConfirmationActivity;
 import com.example.myapplication.models.CartSession;
 import com.example.myapplication.models.Store;
 import com.google.android.material.tabs.TabLayout;
