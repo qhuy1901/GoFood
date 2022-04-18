@@ -15,10 +15,12 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.GoFoodDatabase;
+import com.example.myapplication.customer.address.CustomerAddressActivity;
 import com.example.myapplication.customer.home.HomeActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.models.CartItem;
@@ -42,6 +44,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
     private RadioButton rbCash, rbOnlinePayment;
     private int sum = 0, deliveryFee = 0, applyFee = 0, total = 0;
     private ImageView  ivBtnBack;
+    private ConstraintLayout clAddress;
 
     private void initUi()
     {
@@ -57,6 +60,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         rbCash = (RadioButton)  findViewById(R.id.activity_order_confirmation_rb_cash);
         rbOnlinePayment = (RadioButton)findViewById(R.id.activity_order_confirmation_rb_online_payment);
         ivBtnBack = (ImageView) findViewById(R.id.activity_order_confirmation_ib_back);
+        clAddress = (ConstraintLayout)  findViewById(R.id.activity_order_confirmation_cl_address);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rcvProduct.setLayoutManager(linearLayoutManager);
@@ -148,6 +152,13 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+        clAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent switchActivityIntent = new Intent(OrderConfirmationActivity.this, CustomerAddressActivity.class);
+                startActivity(switchActivityIntent);
             }
         });
     }

@@ -49,7 +49,7 @@
             app:layout_constraintTop_toBottomOf="@+id/bar" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/activity_order_confirmation_cl2"
+            android:id="@+id/activity_order_confirmation_cl_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -96,7 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="1.5dp"
             android:background="@color/background_color1"
-            app:layout_constraintTop_toBottomOf="@+id/activity_order_confirmation_cl2" />
+            app:layout_constraintTop_toBottomOf="@+id/activity_order_confirmation_cl_address" />
         <TextView
             android:id="@+id/activity_order_confirmation_tv_delivery_time"
             android:layout_width="match_parent"
