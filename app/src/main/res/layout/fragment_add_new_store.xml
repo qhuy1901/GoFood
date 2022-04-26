@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".merchant.choose_store.AddNewStoreFragment"
-    android:background="@color/white">
+    android:background="@color/background_color1">
 
     <!--    <EditText-->
     <!--        android:id="@+id/etStoreCategory"-->
@@ -44,47 +44,46 @@
         android:gravity="top"
         android:text="Thêm cửa hàng mới"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#F2789F"
-        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.857" />
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
     <ImageView
         android:id="@+id/button_second"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="64dp"
         android:background="#FFFFFF"
         android:src="@drawable/back_button"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@+id/imageView3">
 
     </ImageView>
 
-    <TextView
-        android:id="@+id/in4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="20dp"
-        android:fontFamily="@font/be_vietnam_bold"
-        android:gravity="top"
-        android:text="Thông tin quán"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#0A191E"
-        android:textSize="36dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.031" />
+<!--    <TextView-->
+<!--        android:id="@+id/in4"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:fontFamily="@font/be_vietnam_bold"-->
+<!--        android:gravity="top"-->
+<!--        android:text="Thông tin quán"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+<!--        android:textColor="#0A191E"-->
+<!--        android:textSize="36dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/imageView3"-->
+<!--        app:layout_constraintVertical_bias="0.031" />-->
 
     <EditText
         android:id="@+id/etStoreName"
@@ -95,9 +94,12 @@
         android:layout_marginRight="20dp"
         android:fontFamily="@font/be_vietnam_medium"
         android:hint="Tên quán"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/in4"
-        app:layout_constraintTop_toBottomOf="@+id/in4" />
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <EditText
         android:id="@+id/etAddress"
@@ -108,7 +110,10 @@
         android:layout_marginRight="20dp"
         android:fontFamily="@font/be_vietnam_medium"
         android:hint="Địa chỉ quán"
-        android:textSize="14sp"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/etStoreName"
         app:layout_constraintStart_toStartOf="@+id/etStoreName"
         app:layout_constraintTop_toBottomOf="@+id/etStoreName" />
@@ -122,7 +127,10 @@
         android:layout_marginRight="20dp"
         android:fontFamily="@font/be_vietnam_medium"
         android:hint="Số điện thoại"
-        android:textSize="14sp"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/etAddress"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/etAddress"
@@ -136,10 +144,12 @@
         android:layout_marginTop="15dp"
         android:layout_marginRight="20dp"
         android:fontFamily="@font/be_vietnam_medium"
-        android:hint="Miêu tả về quán"
-        android:textSize="14sp"
+        android:hint="Mô tả về quán"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/etPhoneNumber"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etPhoneNumber"
         app:layout_constraintTop_toBottomOf="@+id/etPhoneNumber" />
 
@@ -152,7 +162,8 @@
         android:layout_marginStart="20dp"
         android:fontFamily="@font/be_vietnam_bold"
         android:gravity="top"
-        android:text="Danh mục"
+        android:text="Loại quán"
+        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#0A191E"
         android:textSize="16dp"
@@ -198,6 +209,7 @@
             android:text="Thêm ảnh đại diện của quán"
             android:textColor="#333333"
             android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/tv_choose_category"
             tools:layout_editor_absoluteX="20dp" />
 
@@ -206,8 +218,8 @@
 
     <ImageView
         android:id="@+id/ivStoreAvatar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="150dp"
         android:src="@drawable/avt"
         android:layout_margin="20dp"
         app:layout_constraintEnd_toEndOf="@+id/textView4"

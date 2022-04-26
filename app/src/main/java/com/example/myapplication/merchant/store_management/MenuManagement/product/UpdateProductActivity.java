@@ -10,9 +10,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.SwitchCompat;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.models.Product;
@@ -25,8 +25,7 @@ public class UpdateProductActivity extends AppCompatActivity {
     private Button btnSave, btnDeleteProduct;
     private GoFoodDatabase goFoodDatabase;
     private Product productInfo;
-    private ImageView ivProductImage;
-    private AppCompatImageButton ibBack;
+    private ImageView ivProductImage, ibBack;
 
     private void initUi()
     {
@@ -37,7 +36,7 @@ public class UpdateProductActivity extends AppCompatActivity {
         swIsAvailable = (SwitchCompat) findViewById(R.id.activity_update_product_sw_is_available);
         btnDeleteProduct = (Button) findViewById(R.id.activity_update_product_btn_delete_product);
         ivProductImage =(ImageView) findViewById(R.id.activity_update_product_iv_product_image);
-        ibBack = (AppCompatImageButton) findViewById(R.id.activity_update_product_ib_back);
+        ibBack = (ImageView) findViewById(R.id.activity_update_product_ib_back);
     }
 
     private void receiveProductInfo()
@@ -50,7 +49,9 @@ public class UpdateProductActivity extends AppCompatActivity {
     {
         etPrice.setText(Integer.toString(productInfo.getPrice()));
         etProductName.setText(productInfo.getProductName());
-        etDescription.setText(productInfo.getProductDescription());
+        Glide.with(this).load(productInfo.getProductImage()).into(ivProductImage);
+        if(!productInfo.getProductDescription().equals("") || productInfo.getProductDescription().isEmpty())
+            etDescription.setText(productInfo.getProductDescription());
         if(productInfo.getAvailable() == 0)
         {
             swIsAvailable.setChecked(false);
