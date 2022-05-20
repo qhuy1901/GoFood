@@ -1,4 +1,4 @@
-package com.example.myapplication.merchant.store_management.MerchantOrder;
+package com.example.myapplication.shipper.ui.shipper_order;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,27 +11,30 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.myapplication.databinding.FragmentMerchantOrderBinding;
+import com.example.myapplication.databinding.FragmentShipperOrderBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-public class MerchantOrderFragment extends Fragment {
-    private FragmentMerchantOrderBinding binding;
+public class ShipperOrderFragment extends Fragment {
+
+    private FragmentShipperOrderBinding binding;
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
-    private MerchantOrderViewPagerAdapter viewPagerAdapter;
-    private ImageView ivBtnback;
+    private ShipperOrderViewPagerAdapter viewPagerAdapter;
+    private ImageView ivBtnBack;
 
     private void initUi()
     {
-        tabLayout = binding.fragmentMerchantOrderTabLayout;
-        viewPager = binding.fragmentMerchantOrderViewPager;
-        ivBtnback = binding.fragementMerchantOrderIvBtnBack;
+        tabLayout = binding.tabLayout;
+        viewPager = binding.viewPager;
+        ivBtnBack = binding.fragementShipperOrderIbBack;
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentMerchantOrderBinding.inflate(inflater, container, false);
+
+
+        binding = FragmentShipperOrderBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         initUi();
         return root;
@@ -40,26 +43,24 @@ public class MerchantOrderFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        viewPagerAdapter = new MerchantOrderViewPagerAdapter(this.getActivity());
+        viewPagerAdapter = new ShipperOrderViewPagerAdapter(this.getActivity());
         viewPager.setAdapter(viewPagerAdapter);
 
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             switch (position)
             {
                 case 1:
-                    tab.setText("Đã nhận");
+                    tab.setText("Đang làm");
                     break;
                 case 2:
-                    tab.setText("Lịch sử");
+                    tab.setText("Đã xong");
                     break;
                 default:
-                    tab.setText("Mới");
+                    tab.setText("Nhận đơn");
                     break;
             }
         }).attach();
-
-        ivBtnback.setOnClickListener(new View.OnClickListener() {
+        ivBtnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getActivity().finish();

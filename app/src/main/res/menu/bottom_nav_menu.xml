@@ -5,27 +5,27 @@
     <item
         android:id="@+id/navigation_home"
         android:enabled="true"
-        app:showAsAction="always"
         android:icon="@drawable/ic_orders_black_24dp"
-        android:title="@string/title_order" />
+        android:title="@string/title_order"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/navigation_dashboard"
         android:enabled="true"
-        app:showAsAction="always"
         android:icon="@drawable/ic_menu_black_24dp"
-        android:title="@string/title_menu" />
+        android:title="@string/title_menu"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/navigation_statistic"
         android:enabled="true"
-        app:showAsAction="always"
         android:icon="@drawable/ic_statistic_black_24dp"
-        android:title="Thống kê" />
+        android:title="Thống kê"
+        app:showAsAction="always" />
     <item
         android:id="@+id/navigation_setting"
         android:enabled="true"
-        app:showAsAction="always"
         android:icon="@drawable/ic_setting_black_24dp"
-        android:title="Tôi" />
+        android:title="Tôi"
+        app:showAsAction="always" />
 </menu>

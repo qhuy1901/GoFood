@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="10dp"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/item_order_for_shipper_order_tv_order_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="20/5/2022"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_order_for_shipper_order_tv_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="6.8km"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_order_for_shipper_order_tv_ship_fee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="2dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="48.000 đ"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/item_order_for_shipper_order_item_order_for_shipper_order_tv_order"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/background_color1"
+        app:layout_constraintTop_toBottomOf="@+id/item_order_for_shipper_order_tv_ship_fee" />
+
+    <TextView
+        android:id="@+id/item_order_for_shipper_order_tv_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="10dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="Tổng trả: "
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_order_for_shipper_order_tv_ship_fee" />
+
+    <TextView
+        android:id="@+id/item_order_for_shipper_order_tv_total_payable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:textColor="@color/red"
+        android:textStyle="bold"
+        android:textSize="14dp"
+        android:text="68.000 đ"
+        app:layout_constraintStart_toEndOf="@+id/item_order_for_shipper_order_tv_1"
+        app:layout_constraintTop_toBottomOf="@+id/item_order_for_shipper_order_tv_ship_fee" />
+
+    <TextView
+        android:id="@+id/item_order_for_shipper_order_tv_total_received"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginRight="10dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="68.000 đ"
+        android:textSize="14dp"
+        android:textColor="@color/purple_200"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_order_for_shipper_order_tv_ship_fee" />
+
+    <TextView
+        android:id="@+id/item_order_for_shipper_order_tv_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="Tổng thu: "
+        android:textSize="14dp"
+        app:layout_constraintEnd_toStartOf="@+id/item_order_for_shipper_order_tv_total_received"
+        app:layout_constraintTop_toBottomOf="@+id/item_order_for_shipper_order_tv_ship_fee" />
+
+    <View
+        android:id="@+id/item_order_for_shipper_order_view2"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="1dp"
+        android:background="@color/background_color1"
+        app:layout_constraintTop_toBottomOf="@+id/item_order_for_shipper_order_tv_1" />
+
+    <View
+        android:id="@+id/item_order_for_shipper_order_view_point1"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="14dp"
+        android:background="@color/red"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_order_for_shipper_order_view2" />
+
+    <TextView
+        android:id="@+id/item_order_for_shipper_order_tv_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="Điểm bắt đầu: "
+        android:textSize="13dp"
+        app:layout_constraintStart_toEndOf="@+id/item_order_for_shipper_order_view_point1"
+        app:layout_constraintTop_toBottomOf="@+id/item_order_for_shipper_order_view2" />
+
+    <TextView
+        android:id="@+id/item_order_for_shipper_order_tv_store_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="Cơm gà xối mỡ Tư Kiều 5"
+        android:textSize="13dp"
+        app:layout_constraintStart_toEndOf="@+id/item_order_for_shipper_order_tv_4"
+        app:layout_constraintTop_toBottomOf="@+id/item_order_for_shipper_order_view2" />
+
+    <TextView
+        android:id="@+id/item_order_for_shipper_order_tv_start_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="59/1 Phạm Văn Thuận, P. Bình Đa. Tp. Biên Hòa"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        app:layout_constraintStart_toEndOf="@+id/item_order_for_shipper_order_view_point1"
+        app:layout_constraintTop_toBottomOf="@+id/item_order_for_shipper_order_tv_4" />
+
+    <View
+        android:id="@+id/item_order_for_shipper_order_view_point2"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/purple_200"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_order_for_shipper_order_tv_start_address" />
+
+    <TextView
+        android:id="@+id/item_order_for_shipper_order_tv_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="Điểm kết thúc: "
+        android:textSize="13dp"
+        app:layout_constraintStart_toEndOf="@+id/item_order_for_shipper_order_view_point1"
+        app:layout_constraintTop_toBottomOf="@+id/item_order_for_shipper_order_tv_start_address" />
+
+    <TextView
+        android:id="@+id/item_order_for_shipper_order_tv_customer_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="Hồng Cúc"
+        android:textSize="13dp"
+        app:layout_constraintStart_toEndOf="@+id/item_order_for_shipper_order_tv_6"
+        app:layout_constraintTop_toBottomOf="@+id/item_order_for_shipper_order_tv_start_address" />
+
+    <TextView
+        android:id="@+id/item_order_for_shipper_order_tv_end_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:text="59/1 Phạm Văn Thuận, P. Bình Đa. Tp. Biên Hòa"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        app:layout_constraintStart_toEndOf="@+id/item_order_for_shipper_order_view_point1"
+        app:layout_constraintTop_toBottomOf="@+id/item_order_for_shipper_order_tv_6" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/item_order_for_shipper_order_btn_accept"
+        android:layout_width="170dp"
+        android:layout_height="35dp"
+        android:background="@drawable/btn2_bg"
+        android:fontFamily="@font/be_vietnam_bold"
+        android:text="Nhận đơn"
+        android:layout_margin="15dp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_order_for_shipper_order_tv_end_address" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/item_order_for_shipper_order_skip"
+        android:layout_width="170dp"
+        android:layout_height="35dp"
+        android:background="@drawable/btn1_bg"
+        android:fontFamily="@font/be_vietnam_bold"
+        android:layout_margin="15dp"
+        android:text="Bỏ qua"
+        android:textAllCaps="false"
+        android:textColor="@color/color_primary"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/item_order_for_shipper_order_btn_accept"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/item_order_for_shipper_order_tv_blank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/be_vietnam_semibold"
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        app:layout_constraintStart_toEndOf="@+id/item_order_for_shipper_order_view_point1"
+        app:layout_constraintTop_toBottomOf="@+id/item_order_for_shipper_order_btn_accept" />
+</androidx.constraintlayout.widget.ConstraintLayout>

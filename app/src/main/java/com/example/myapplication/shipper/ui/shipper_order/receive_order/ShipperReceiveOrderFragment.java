@@ -1,4 +1,4 @@
-package com.example.myapplication.merchant.store_management.MerchantOrder.new_order;
+package com.example.myapplication.shipper.ui.shipper_order.receive_order;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.databinding.FragmentNewOrderBinding;
+import com.example.myapplication.databinding.FragmentShipperReceiveOrderBinding;
 import com.example.myapplication.models.Order;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,29 +26,23 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewOrderFragment extends Fragment {
+public class ShipperReceiveOrderFragment extends Fragment {
 
-    private FragmentNewOrderBinding binding;
+    private FragmentShipperReceiveOrderBinding binding;
     private RecyclerView rcvOrder;
 
-    private NewAndConfirmOrderAdapter adapter;
+    private ShipperReceiveOrderAdapter adapter;
     private List<Order> orders;
-
     private void initUi()
     {
-        rcvOrder = binding.fragmentNewOrderRcvOrder;
+        rcvOrder = binding.fragmentShipperReceiveOrderRcvOrder;
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         rcvOrder .setLayoutManager(linearLayoutManager);
 
         orders = new ArrayList<>();
-        adapter = new NewAndConfirmOrderAdapter(orders, getContext());
+        adapter = new ShipperReceiveOrderAdapter(orders, getContext());
         rcvOrder.setAdapter(adapter);
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     private void getOrderFromRealtimeDatabase()
@@ -65,7 +59,7 @@ public class NewOrderFragment extends Fragment {
                 orders.clear();
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     Order order = postSnapshot.getValue(Order.class);
-                    if(order != null && order.getOrderStatus().equals("Đặt hàng thành công")){
+                    if(order != null && order.getOrderStatus().equals("Đã tiếp nhận đơn hàng")){
                         orders.add(order);
                     }
                 }
@@ -79,13 +73,9 @@ public class NewOrderFragment extends Fragment {
         });
     }
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = FragmentNewOrderBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-        initUi();
-        getOrderFromRealtimeDatabase();
-        return root;
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -93,5 +83,13 @@ public class NewOrderFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
-
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = FragmentShipperReceiveOrderBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+        initUi();
+        getOrderFromRealtimeDatabase();
+        return root;
+    }
 }
