@@ -23,6 +23,8 @@ public class Order implements Serializable{
     private String cancelReason;
     private Date finishTime;
     private ShippingAddress shippingAddress;
+    private float distance;
+    private int takeEatingUtensils;
 
     public Order() {
     }
@@ -155,6 +157,22 @@ public class Order implements Serializable{
         this.shippingAddress = shippingAddress;
     }
 
+    public float getDistance() {
+        return distance;
+    }
+
+    public void setDistance(float distance) {
+        this.distance = distance;
+    }
+
+    public int getTakeEatingUtensils() {
+        return takeEatingUtensils;
+    }
+
+    public void setTakeEatingUtensils(int takeEatingUtensils) {
+        this.takeEatingUtensils = takeEatingUtensils;
+    }
+
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
@@ -172,6 +190,8 @@ public class Order implements Serializable{
         result.put("cancelReason", cancelReason);
         result.put("finishTime", finishTime);
         result.put("shippingAddress", shippingAddress);
+        result.put("distance", distance);
+        result.put("takeEatingUtensils", takeEatingUtensils);
         return result;
     }
 }

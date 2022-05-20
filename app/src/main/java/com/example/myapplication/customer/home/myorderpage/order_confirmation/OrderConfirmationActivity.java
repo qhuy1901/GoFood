@@ -106,12 +106,12 @@ public class OrderConfirmationActivity extends AppCompatActivity {
 
         // Load delivery fee
 
-        distance = (float) ((storeInfo.getStoreAddress().length() + tvShippingAddress.getText().toString().length() + tvCustomerName.getText().toString().length()) / 20 + 0.3);
+        distance = (float) ((storeInfo.getStoreAddress().length() + tvShippingAddress.getText().toString().length() + tvCustomerName.getText().toString().length()) / 32 + 0.7);
         tvDistance.setText("(" + distance + " km)");
-        if(distance > 3)
-            deliveryFee = 15000 + (int)distance * 1000 ;
+        if(distance <= 3)
+            deliveryFee = 10000 + (int)distance * 1000 ;
         else
-            deliveryFee = 15000 + (int)distance * 5000;
+            deliveryFee = 10000 + (int)distance * 3000;
         String deliveryFeeString = currencyVN.format(deliveryFee).replace("₫", "")+ " ₫";
         tvDeliveryFee.setText(deliveryFeeString);
 
@@ -150,6 +150,10 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             order.setDoorDelivery(1);
         else
             order.setDoorDelivery(0);
+        if(scTakeEatingUtensils.isChecked())
+            order.setTakeEatingUtensils(1);
+        else
+            order.setTakeEatingUtensils(0);
         order.setOrderStatus("Đặt hàng thành công");
         order.setOrderDate(new Date());
 
@@ -158,6 +162,8 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         shippingAddress.setPhone(tvCustomerPhone.getText().toString());
         shippingAddress.setReceiver(tvCustomerName.getText().toString());
         order.setShippingAddress(shippingAddress);
+
+        order.setDistance(distance);
         return order;
     }
 
@@ -194,6 +200,27 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent switchActivityIntent = new Intent(OrderConfirmationActivity.this, CustomerAddressActivity.class);
                 startActivity(switchActivityIntent);
+            }
+        });
+        scDoorDelivery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(scDoorDelivery.isChecked())
+                {
+                    deliveryFee += 5000;
+                }
+                else
+                {
+                    deliveryFee -= 5000;
+                }
+                Locale localeVN = new Locale("vi", "VN");
+                NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
+                String deliveryFeeString = currencyVN.format(deliveryFee).replace("₫", "")+ " ₫";
+                tvDeliveryFee.setText(deliveryFeeString);
+                total = sum + applyFee + deliveryFee;
+                String totalString = currencyVN.format(total).replace("₫", "")+ " ₫";
+                tvTotal.setText(totalString);
+                btnCofirm.setText("Đặt đơn - " + totalString);
             }
         });
     }

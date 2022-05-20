@@ -55,7 +55,7 @@ public class ShipperReceiveOrderAdapter extends RecyclerView.Adapter<ShipperRece
         GoFoodDatabase goFoodDatabase = new GoFoodDatabase();
         goFoodDatabase.loadShippingAddressToTextViewByOrderId(order.getOrderId(), holder.tvCustomerName, holder.tvCustomerAddress);
         goFoodDatabase.loadStoreNameAndAddressToTextView(order.getStoreId(), holder.tvStoreName, holder.tvStoreAddress);
-
+        holder.tvDistance.setText(order.getDistance() +" km");
     }
 
     @Override
@@ -66,7 +66,7 @@ public class ShipperReceiveOrderAdapter extends RecyclerView.Adapter<ShipperRece
     }
 
     public class ShipperReceiveOrderViewHolder extends RecyclerView.ViewHolder{
-        private TextView tvShipFee, tvTotalPayable, tvTotalReceived, tvStoreName, tvCustomerName, tvOrderDate, tvStoreAddress, tvCustomerAddress;
+        private TextView tvShipFee, tvTotalPayable, tvTotalReceived, tvStoreName, tvCustomerName, tvOrderDate, tvStoreAddress, tvCustomerAddress, tvDistance;
         private Button btnAccept, btnSkip;
         //private ConstraintLayout clParent;
 
@@ -82,6 +82,7 @@ public class ShipperReceiveOrderAdapter extends RecyclerView.Adapter<ShipperRece
             tvOrderDate = itemView.findViewById(R.id.item_order_for_shipper_order_tv_order_date);
             tvStoreAddress = itemView.findViewById(R.id.item_order_for_shipper_order_tv_start_address);
             tvCustomerAddress = itemView.findViewById(R.id.item_order_for_shipper_order_tv_end_address);
+            tvDistance = itemView.findViewById(R.id.item_order_for_shipper_order_tv_distance);
         }
     }
 }
