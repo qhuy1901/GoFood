@@ -290,7 +290,7 @@ public class GoFoodDatabase {
         });
     }
 
-    public void loadUserStoreNameToTextView(String storeId, TextView tv)
+    public void loadStoreNameAndAddressToTextView(String storeId, TextView tvName, TextView tvAddress)
     {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("stores").child(storeId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -301,11 +301,51 @@ public class GoFoodDatabase {
                 }
                 else {
                     Store store = task.getResult().getValue(Store.class);
-                    tv.setText(store.getStoreName());
+                    tvName.setText(store.getStoreName());
+                    tvAddress.setText(store.getStoreAddress());
                 }
             }
         });
     }
+
+    public void loadCustomerShippingAddressToTextView(String userId, TextView tvName, TextView tvPhone ,TextView tvAddress)
+    {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("Users").child(userId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    User user = task.getResult().getValue(User.class);
+                    tvName.setText(user.getFullName());
+                    tvAddress.setText(user.getCur_location().replace(", Vietnam", "").replace(", Việt Nam", ""));
+                    tvPhone.setText(user.getPhoneNumber());
+                }
+            }
+        });
+    }
+
+    public void loadShippingAddressToTextViewByOrderId(String orderId, TextView tvName, TextView tvAddress)
+    {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("orders").child(orderId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    Order order = task.getResult().getValue(Order.class);
+                    tvName.setText(order.getShippingAddress().getReceiver());
+                    tvAddress.setText(order.getShippingAddress().getAddress().replace(", Vietnam", "").replace(", Việt Nam", ""));
+                }
+            }
+        });
+    }
+
+
 
     public void updateOrder(Order order) {
         mDatabase = FirebaseDatabase.getInstance().getReference();

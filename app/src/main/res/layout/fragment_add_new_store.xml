@@ -137,14 +137,14 @@
         app:layout_constraintTop_toBottomOf="@+id/etAddress" />
 
     <EditText
-        android:id="@+id/etDescription"
+        android:id="@+id/etStoreAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="20dp"
         android:fontFamily="@font/be_vietnam_medium"
-        android:hint="Mô tả về quán"
+        android:hint="Địa chỉ quán"
         android:textSize="16dp"
         android:padding="10dp"
         android:textColor="@color/black"
@@ -169,7 +169,7 @@
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_choose_category"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDescription"
+        app:layout_constraintTop_toBottomOf="@+id/etStoreAddress"
         app:layout_constraintVertical_bias="0.538" />
 
 <!--    <Spinner-->
@@ -184,7 +184,7 @@
 <!--        android:spinnerMode="dropdown"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintStart_toEndOf="@+id/Cate"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/etDescription" />-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/etStoreAddress" />-->
 
         <TextView
             android:id="@+id/tv_choose_category"
@@ -198,7 +198,7 @@
             android:background="@drawable/spinner_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/Cate"
-            app:layout_constraintTop_toBottomOf="@+id/etDescription" />
+            app:layout_constraintTop_toBottomOf="@+id/etStoreAddress" />
 
         <TextView
             android:id="@+id/textView4"

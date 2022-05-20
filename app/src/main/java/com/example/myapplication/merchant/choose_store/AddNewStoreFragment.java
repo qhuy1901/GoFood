@@ -92,10 +92,6 @@ public class AddNewStoreFragment extends Fragment implements AdapterView.OnItemS
             }
         });
 
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.store_category, android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        binding.spnStoreCategory.setAdapter(adapter);
-
         selected = new boolean[storeCategories.length];
         binding.tvChooseCategory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,7 +160,7 @@ public class AddNewStoreFragment extends Fragment implements AdapterView.OnItemS
             public void onClick(View view) {
                 String storeName = binding.etStoreName.getText().toString();
                 String storeCategory = binding.tvChooseCategory.getText().toString();
-                String description = binding.etDescription.getText().toString();
+                String storeAddress = binding.etStoreAddress.getText().toString();
 
                 // Lấy mã user trong Session
                 SharedPreferences preferences = getContext().getSharedPreferences("Session", getContext().MODE_PRIVATE);
@@ -174,7 +170,7 @@ public class AddNewStoreFragment extends Fragment implements AdapterView.OnItemS
                 Store store = new Store();;
                 store.setStoreName(storeName);
                 store.setStoreCategory(storeCategory);
-                store.setDescription(description);
+                store.setStoreAddress(storeAddress);
                 store.setOwner(owner);
                 goFoodDatabase.insertStore(store, binding.ivStoreAvatar);
                 Toast.makeText(getActivity(), "Thêm cửa hàng mới thành công",Toast.LENGTH_SHORT).show();

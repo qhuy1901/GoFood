@@ -53,8 +53,9 @@ public class ShipperReceiveOrderAdapter extends RecyclerView.Adapter<ShipperRece
         DateFormat dateFormat = new SimpleDateFormat("hh:mm dd-MM-yyyy");
         holder.tvOrderDate.setText(dateFormat.format(order.getOrderDate()));
         GoFoodDatabase goFoodDatabase = new GoFoodDatabase();
-        goFoodDatabase.loadUserFullnameToTextView(order.getUserId(), holder.tvCustomerName);
-        goFoodDatabase.loadUserStoreNameToTextView(order.getStoreId(), holder.tvStoreName);
+        goFoodDatabase.loadShippingAddressToTextViewByOrderId(order.getOrderId(), holder.tvCustomerName, holder.tvCustomerAddress);
+        goFoodDatabase.loadStoreNameAndAddressToTextView(order.getStoreId(), holder.tvStoreName, holder.tvStoreAddress);
+
     }
 
     @Override
@@ -65,7 +66,7 @@ public class ShipperReceiveOrderAdapter extends RecyclerView.Adapter<ShipperRece
     }
 
     public class ShipperReceiveOrderViewHolder extends RecyclerView.ViewHolder{
-        private TextView tvShipFee, tvTotalPayable, tvTotalReceived, tvStoreName, tvCustomerName, tvOrderDate;
+        private TextView tvShipFee, tvTotalPayable, tvTotalReceived, tvStoreName, tvCustomerName, tvOrderDate, tvStoreAddress, tvCustomerAddress;
         private Button btnAccept, btnSkip;
         //private ConstraintLayout clParent;
 
@@ -79,6 +80,8 @@ public class ShipperReceiveOrderAdapter extends RecyclerView.Adapter<ShipperRece
             btnAccept = itemView.findViewById(R.id.item_order_for_shipper_order_btn_accept);
             btnSkip = itemView.findViewById(R.id.item_order_for_shipper_order_skip);
             tvOrderDate = itemView.findViewById(R.id.item_order_for_shipper_order_tv_order_date);
+            tvStoreAddress = itemView.findViewById(R.id.item_order_for_shipper_order_tv_start_address);
+            tvCustomerAddress = itemView.findViewById(R.id.item_order_for_shipper_order_tv_end_address);
         }
     }
 }

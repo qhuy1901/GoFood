@@ -1,8 +1,5 @@
 package com.example.myapplication.shipper.ui.shipper_order.receive_order;
 
-import static android.content.Context.MODE_PRIVATE;
-
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,13 +44,10 @@ public class ShipperReceiveOrderFragment extends Fragment {
 
     private void getOrderFromRealtimeDatabase()
     {
-        SharedPreferences prefs = getActivity().getSharedPreferences("Session", MODE_PRIVATE);
-        String storeId = prefs.getString("storeId", "No name defined");
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference().child("orders");
 
-        myRef.orderByChild("storeId").equalTo(storeId).addValueEventListener(new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 orders.clear();

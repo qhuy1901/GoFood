@@ -20,24 +20,26 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.GoFoodDatabase;
+import com.example.myapplication.R;
 import com.example.myapplication.customer.address.CustomerAddressActivity;
 import com.example.myapplication.customer.home.HomeActivity;
-import com.example.myapplication.R;
 import com.example.myapplication.models.CartItem;
 import com.example.myapplication.models.CartSession;
 import com.example.myapplication.models.Order;
+import com.example.myapplication.models.ShippingAddress;
 
 import java.text.NumberFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 public class OrderConfirmationActivity extends AppCompatActivity {
     private RecyclerView rcvProduct;
     private CartSession cartSession;
     private List<CartItem> cart;
     private CartItemForOrderConfirmationAdapter adapter;
-    private TextView tvTotal, tvApplyFee, tvDeliveryFee, tvSum;
+    private TextView tvTotal, tvApplyFee, tvDeliveryFee, tvSum, tvShippingAddress, tvCustomerPhone, tvCustomerName;
     private SwitchCompat scDoorDelivery, scTakeEatingUtensils;
     private Button btnCofirm;
     private RadioGroup rgPaymentMethod;
@@ -45,6 +47,8 @@ public class OrderConfirmationActivity extends AppCompatActivity {
     private int sum = 0, deliveryFee = 0, applyFee = 0, total = 0;
     private ImageView  ivBtnBack;
     private ConstraintLayout clAddress;
+    private GoFoodDatabase goFoodDatabase;
+    private String userId;
 
     private void initUi()
     {
@@ -61,6 +65,9 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         rbOnlinePayment = (RadioButton)findViewById(R.id.activity_order_confirmation_rb_online_payment);
         ivBtnBack = (ImageView) findViewById(R.id.activity_order_confirmation_ib_back);
         clAddress = (ConstraintLayout)  findViewById(R.id.activity_order_confirmation_cl_address);
+        tvShippingAddress = (TextView) findViewById(R.id.activity_order_confirmation_shipping_address);
+        tvCustomerPhone = (TextView) findViewById(R.id.activity_order_confirmation_customer_phone);
+        tvCustomerName = (TextView) findViewById(R.id.activity_order_confirmation_customer_name);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rcvProduct.setLayoutManager(linearLayoutManager);
@@ -69,6 +76,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         cart = cartSession.getCart();
         adapter = new CartItemForOrderConfirmationAdapter( cart, this);
         rcvProduct.setAdapter(adapter);
+        goFoodDatabase = new GoFoodDatabase();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -88,7 +96,9 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         tvApplyFee.setText(applyFeeString);
 
         // Load delivery fee
-        deliveryFee = 0;
+        Random rand = new Random();
+        int ranNum = rand.nextInt(10) * 1000;
+        deliveryFee = 12000 + ranNum;
         String deliveryFeeString = currencyVN.format(deliveryFee).replace("₫", "")+ " ₫";
         tvDeliveryFee.setText(deliveryFeeString);
 
@@ -98,6 +108,15 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         tvTotal.setText(totalString);
 
         btnCofirm.setText("Đặt đơn - " + totalString);
+
+        // Load Shipping Address
+        goFoodDatabase.loadCustomerShippingAddressToTextView(userId, tvCustomerName, tvCustomerPhone, tvShippingAddress);
+    }
+
+    private void getUserInfo()
+    {
+        SharedPreferences prefs = this.getSharedPreferences("Session", MODE_PRIVATE);
+        userId = prefs.getString("userId", "No name defined");
     }
 
     private Order getOrderInfoFromForm()
@@ -112,10 +131,6 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             order.setPaymentMethod("Tiền mặt");
         order.setOrderDetail(cart);
         order.setStoreId(cart.get(0).product.getStoreId());
-
-        // Lấy mã cửa hàng
-        SharedPreferences prefs = this.getSharedPreferences("Session", MODE_PRIVATE);
-        String userId = prefs.getString("userId", "No name defined");
         order.setUserId(userId);
 
         if(scDoorDelivery.isChecked())
@@ -124,6 +139,12 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             order.setDoorDelivery(0);
         order.setOrderStatus("Đặt hàng thành công");
         order.setOrderDate(new Date());
+
+        ShippingAddress shippingAddress = new ShippingAddress();
+        shippingAddress.setAddress(tvShippingAddress.getText().toString());
+        shippingAddress.setPhone(tvCustomerPhone.getText().toString());
+        shippingAddress.setReceiver(tvCustomerName.getText().toString());
+        order.setShippingAddress(shippingAddress);
         return order;
     }
 
@@ -133,12 +154,12 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_confirmation);
         initUi();
+        getUserInfo();
         loadInfoToForm();
         btnCofirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Order order = getOrderInfoFromForm();
-                GoFoodDatabase goFoodDatabase = new GoFoodDatabase();
                 goFoodDatabase.insertOrder(order);
 
                 cartSession.removeAllItem();

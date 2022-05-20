@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -10,7 +11,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -23,8 +23,6 @@ import androidx.core.app.ActivityCompat;
 
 import com.example.myapplication.customer.home.HomeActivity;
 import com.example.myapplication.merchant.choose_store.ChooseStoreActivity;
-import com.example.myapplication.models.User;
-import com.example.myapplication.models.UserSession;
 import com.example.myapplication.shipper.ShipperActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -42,7 +40,6 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
     private Button btnCustomer, btnShipper;
     private Button btnMerchant;
     private TextView tvUsername;
-    private UserSession userSession;
     public static int type_usr = 1;
     private int REQUEST_CODE_LOCATION_PERMISSION = 44;
 
@@ -58,21 +55,10 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
 
     private void loadCurrentUserName()
     {
-        User currentUser = userSession.getUser();
-        Log.e("User", currentUser.getFullName() + " Hihi");
-        tvUsername.setText(currentUser.getFullName());
-//        myRef = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUserId());
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                User userInfo = snapshot.getValue(User.class);
-//                tvUsername.setText(userInfo.getFullName());
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+        SharedPreferences prefs = this.getSharedPreferences("Session", MODE_PRIVATE);
+        String userId = prefs.getString("userId", "No name defined");
+        GoFoodDatabase goFoodDatabase = new GoFoodDatabase();
+        goFoodDatabase.loadUserFullnameToTextView(userId, tvUsername);
     }
 
     @Override
@@ -80,7 +66,6 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_welcome);
-        userSession = new UserSession(WelcomeActivity.this);
         WelcomeActivity.type_usr = 1;
         initUi();
         loadCurrentUserName();
@@ -108,7 +93,7 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
         btnMerchant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WelcomeActivity.type_usr = 0;
+                WelcomeActivity.type_usr = 1;
                 Intent switchActivityIntent = new Intent(WelcomeActivity.this, ChooseStoreActivity.class);
                 startActivity(switchActivityIntent);
             }
@@ -117,7 +102,7 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
         btnShipper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WelcomeActivity.type_usr = 0;
+                WelcomeActivity.type_usr = 1;
                 Intent switchActivityIntent = new Intent(WelcomeActivity.this, ShipperActivity.class);
                 startActivity(switchActivityIntent);
             }
