@@ -122,6 +122,7 @@ public class StorePageDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent switchActivityIntent = new Intent(StorePageDetailActivity.this, CartActivity.class);
+                switchActivityIntent.putExtra("store", storeInfo);
                 startActivity(switchActivityIntent);
             }
         });
@@ -131,6 +132,7 @@ public class StorePageDetailActivity extends AppCompatActivity {
                 if(cartSession.count() > 0)
                 {
                     Intent switchActivityIntent = new Intent(StorePageDetailActivity.this, OrderConfirmationActivity.class);
+                    switchActivityIntent.putExtra("store", storeInfo);
                     startActivity(switchActivityIntent);
                 }
                 else
