@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,7 +25,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -287,6 +285,23 @@ public class GoFoodDatabase {
                 else {
                     User user = task.getResult().getValue(User.class);
                     tv.setText(user.getFullName());
+                }
+            }
+        });
+    }
+
+    public void loadUserStoreNameToTextView(String storeId, TextView tv)
+    {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("stores").child(storeId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    Store store = task.getResult().getValue(Store.class);
+                    tv.setText(store.getStoreName());
                 }
             }
         });

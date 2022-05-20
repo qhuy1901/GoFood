@@ -69,7 +69,7 @@
         android:id="@+id/btnCustomer"
         android:layout_width="320dp"
         android:layout_height="58dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/welcome_bg_btn_role_radius50"
         android:backgroundTint="@color/white"
         android:drawableStart="@drawable/user4"
@@ -88,7 +88,7 @@
         android:id="@+id/btnMerchant"
         android:layout_width="320dp"
         android:layout_height="58dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/welcome_bg_btn_role_radius50"
         android:backgroundTint="@color/white"
         android:drawableStart="@drawable/merchant_icon"
@@ -102,5 +102,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnCustomer" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnShipper"
+        android:layout_width="320dp"
+        android:layout_height="58dp"
+        android:background="@drawable/welcome_bg_btn_role_radius50"
+        android:backgroundTint="@color/white"
+        android:drawableStart="@drawable/merchant_icon"
+        android:fontFamily="@font/be_vietnam_bold"
+        android:paddingStart="60dp"
+        android:paddingEnd="60dp"
+        android:layout_marginTop="20dp"
+        android:text="Shipper"
+        android:textAllCaps="false"
+        android:textColor="@color/color_primary"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMerchant" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

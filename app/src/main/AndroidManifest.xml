@@ -17,6 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".shipper.ShipperActivity"
+            android:exported="false"
+            android:label="@string/title_activity_shipper" />
+        <activity
             android:name=".customer.address.CustomerAddressActivity"
             android:exported="false" />
         <activity android:name=".customer.product_detail.ProductDetailActivity" />

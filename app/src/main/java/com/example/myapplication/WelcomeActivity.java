@@ -25,6 +25,7 @@ import com.example.myapplication.customer.home.HomeActivity;
 import com.example.myapplication.merchant.choose_store.ChooseStoreActivity;
 import com.example.myapplication.models.User;
 import com.example.myapplication.models.UserSession;
+import com.example.myapplication.shipper.ShipperActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.firebase.database.DatabaseReference;
@@ -38,7 +39,7 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
 
     LocationManager locationManager;
     FusedLocationProviderClient fusedLocationProviderClient;
-    private Button btnCustomer;
+    private Button btnCustomer, btnShipper;
     private Button btnMerchant;
     private TextView tvUsername;
     private UserSession userSession;
@@ -49,6 +50,7 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
 
     private void initUi()
     {
+        btnShipper = (Button) findViewById(R.id.btnShipper);
         btnCustomer = (Button) findViewById(R.id.btnCustomer);
         btnMerchant = (Button) findViewById(R.id.btnMerchant);
         tvUsername = (TextView) findViewById(R.id.txt_username);
@@ -108,6 +110,15 @@ public class WelcomeActivity extends AppCompatActivity implements LocationListen
             public void onClick(View view) {
                 WelcomeActivity.type_usr = 0;
                 Intent switchActivityIntent = new Intent(WelcomeActivity.this, ChooseStoreActivity.class);
+                startActivity(switchActivityIntent);
+            }
+        });
+
+        btnShipper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                WelcomeActivity.type_usr = 0;
+                Intent switchActivityIntent = new Intent(WelcomeActivity.this, ShipperActivity.class);
                 startActivity(switchActivityIntent);
             }
         });
