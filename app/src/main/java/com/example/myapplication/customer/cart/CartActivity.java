@@ -18,6 +18,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.customer.home.myorderpage.order_confirmation.OrderConfirmationActivity;
 import com.example.myapplication.models.CartItem;
 import com.example.myapplication.models.CartSession;
+import com.example.myapplication.models.Store;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -33,6 +34,13 @@ public class CartActivity extends AppCompatActivity {
     private TextView tvDeleteAllItem, tvTotal;
     private ImageView ivEmptyCart, ivBtnBack;
     private Button btnDelivery;
+    private Store storeInfo;
+
+    private void receiveStoreInfo()
+    {
+        Intent intent = getIntent();
+        storeInfo = (Store) intent.getSerializableExtra("store");
+    }
 
     private void initUi()
     {
@@ -86,6 +94,7 @@ public class CartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
         initUi();
+        receiveStoreInfo();
         updateTotalPrice();
         tvDeleteAllItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +127,7 @@ public class CartActivity extends AppCompatActivity {
                 if(cartSession.count() > 0)
                 {
                     Intent switchActivityIntent = new Intent(CartActivity.this, OrderConfirmationActivity.class);
+                    switchActivityIntent.putExtra("store", storeInfo);
                     startActivity(switchActivityIntent);
                 }
                 else

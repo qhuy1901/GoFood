@@ -345,7 +345,23 @@ public class GoFoodDatabase {
         });
     }
 
-
+//    public void loadShippingFeeToTextView(String storeId, TextView tvShippingFee, int lenOfCustomerAddress)
+//    {
+//        mDatabase = FirebaseDatabase.getInstance().getReference();
+//        mDatabase.child("stores").child(storeId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                if (!task.isSuccessful()) {
+//                    Log.e("firebase", "Error getting data", task.getException());
+//                }
+//                else {
+//                    Store store = task.getResult().getValue(Store.class);
+//                    float distance = (float) ((store.getStoreAddress().length() + lenOfCustomerAddress) / 100 + 0.3);
+//                    tvShippingFee.setText("(" + distance + " km)");
+//                }
+//            }
+//        });
+//    }
 
     public void updateOrder(Order order) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -355,6 +371,4 @@ public class GoFoodDatabase {
         childUpdates.put("/orders/"+ order.getOrderId(),values);
         mDatabase.updateChildren(childUpdates);
     }
-
-
 }

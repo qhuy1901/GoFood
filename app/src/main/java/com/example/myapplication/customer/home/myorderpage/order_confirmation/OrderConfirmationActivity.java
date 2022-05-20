@@ -27,28 +27,36 @@ import com.example.myapplication.models.CartItem;
 import com.example.myapplication.models.CartSession;
 import com.example.myapplication.models.Order;
 import com.example.myapplication.models.ShippingAddress;
+import com.example.myapplication.models.Store;
 
 import java.text.NumberFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Random;
 
 public class OrderConfirmationActivity extends AppCompatActivity {
     private RecyclerView rcvProduct;
     private CartSession cartSession;
     private List<CartItem> cart;
     private CartItemForOrderConfirmationAdapter adapter;
-    private TextView tvTotal, tvApplyFee, tvDeliveryFee, tvSum, tvShippingAddress, tvCustomerPhone, tvCustomerName;
+    private TextView tvTotal, tvApplyFee, tvDeliveryFee, tvSum, tvShippingAddress, tvCustomerPhone, tvCustomerName, tvDistance;
     private SwitchCompat scDoorDelivery, scTakeEatingUtensils;
     private Button btnCofirm;
     private RadioGroup rgPaymentMethod;
     private RadioButton rbCash, rbOnlinePayment;
     private int sum = 0, deliveryFee = 0, applyFee = 0, total = 0;
+    private float distance = 0;
     private ImageView  ivBtnBack;
     private ConstraintLayout clAddress;
     private GoFoodDatabase goFoodDatabase;
     private String userId;
+    private Store storeInfo;
+
+    private void receiveStoreInfo()
+    {
+        Intent intent = getIntent();
+        storeInfo = (Store) intent.getSerializableExtra("store");
+    }
 
     private void initUi()
     {
@@ -68,6 +76,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         tvShippingAddress = (TextView) findViewById(R.id.activity_order_confirmation_shipping_address);
         tvCustomerPhone = (TextView) findViewById(R.id.activity_order_confirmation_customer_phone);
         tvCustomerName = (TextView) findViewById(R.id.activity_order_confirmation_customer_name);
+        tvDistance = (TextView) findViewById(R.id.activity_order_confirmation_tv_distance);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rcvProduct.setLayoutManager(linearLayoutManager);
@@ -96,9 +105,13 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         tvApplyFee.setText(applyFeeString);
 
         // Load delivery fee
-        Random rand = new Random();
-        int ranNum = rand.nextInt(10) * 1000;
-        deliveryFee = 12000 + ranNum;
+
+        distance = (float) ((storeInfo.getStoreAddress().length() + tvShippingAddress.getText().toString().length() + tvCustomerName.getText().toString().length()) / 20 + 0.3);
+        tvDistance.setText("(" + distance + " km)");
+        if(distance > 3)
+            deliveryFee = 15000 + (int)distance * 1000 ;
+        else
+            deliveryFee = 15000 + (int)distance * 5000;
         String deliveryFeeString = currencyVN.format(deliveryFee).replace("₫", "")+ " ₫";
         tvDeliveryFee.setText(deliveryFeeString);
 
@@ -154,6 +167,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_confirmation);
         initUi();
+        receiveStoreInfo();
         getUserInfo();
         loadInfoToForm();
         btnCofirm.setOnClickListener(new View.OnClickListener() {

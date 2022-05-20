@@ -183,8 +183,20 @@
                 android:paddingTop="10dp"
                 android:paddingRight="25dp"
                 android:paddingBottom="10dp"
-                android:textSize="18dp"
-                android:text="Phí giao hàng (2.4 km)" />
+                android:text="Phí giao hàng"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/activity_order_confirmation_tv_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:layout_marginLeft="115dp"
+                android:paddingTop="10dp"
+                android:paddingRight="25dp"
+                android:paddingBottom="10dp"
+                android:text="(2.4 km)"
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/activity_order_confirmation_tv_delivery_fee"
