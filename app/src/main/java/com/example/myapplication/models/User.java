@@ -10,6 +10,7 @@ public class User {
     private String fullName;
     private String phoneNumber;
     private String email;
+    private String cur_location;
 
     public User() {
     }
@@ -46,11 +47,21 @@ public class User {
         this.email = email;
     }
 
+    public String getCur_location() {
+        return cur_location;
+    }
+
+    public void setCur_location(String cur_location) {
+        this.cur_location = cur_location;
+    }
+
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("userId", userId);
         result.put("fullName", fullName);
+        result.put("cur_location", cur_location);
+        result.put("phoneNumber", phoneNumber);
         return result;
     }
 }

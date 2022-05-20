@@ -5,9 +5,7 @@ import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.IgnoreExtraProperties;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @IgnoreExtraProperties
@@ -16,27 +14,27 @@ public class Store implements Serializable
     private String storeId;
     private String storeName;
     private String storeCategory;
-    private String description;
     private String owner;
     private String avatar;
     private Integer rating;
     private String deliveryTime;
+    private String storeAddress;
 
+    public Store(String storeId, String storeName, String storeCategory, String owner, String avatar, Integer rating, String deliveryTime, String storeAddress) {
+        this.storeId = storeId;
+        this.storeName = storeName;
+        this.storeCategory = storeCategory;
+        this.owner = owner;
+        this.avatar = avatar;
+        this.rating = rating;
+        this.deliveryTime = deliveryTime;
+        this.storeAddress = storeAddress;
+    }
 
     public Store() {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
     }
 
-    public Store(String storeId, String storeName, String storeCategory, String description, String owner, String avatar, Integer rating, String deliveryTime) {
-        this.storeId = storeId;
-        this.storeName = storeName;
-        this.storeCategory = storeCategory;
-        this.description = description;
-        this.owner = owner;
-        this.avatar = avatar;
-        this.rating = rating;
-        this.deliveryTime = deliveryTime;
-    }
 
     public String getAvatar() {
         return avatar;
@@ -54,14 +52,17 @@ public class Store implements Serializable
         return storeCategory;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public String getOwner() {
         return owner;
     }
 
+    public String getStoreAddress() {
+        return storeAddress;
+    }
+
+    public void setStoreAddress(String storeAddress) {
+        this.storeAddress = storeAddress;
+    }
 
     public void setStoreId(String storeId) {
         this.storeId = storeId;
@@ -73,10 +74,6 @@ public class Store implements Serializable
 
     public void setStoreCategory(String storeCategory) {
         this.storeCategory = storeCategory;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public void setOwner(String owner) {
@@ -109,7 +106,7 @@ public class Store implements Serializable
         result.put("storeId", storeId);
         result.put("storeName", storeName);
         result.put("storeCategory", storeCategory);
-        result.put("description", description);
+        result.put("storeAddress", storeAddress);
         result.put("owner", owner);
         result.put("avatar", avatar);
         result.put("rating", rating);

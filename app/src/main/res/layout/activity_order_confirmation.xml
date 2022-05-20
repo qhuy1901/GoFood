@@ -70,17 +70,36 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/activity_order_confirmation_textView12"
-                android:layout_width="match_parent"
+                android:id="@+id/activity_order_confirmation_customer_name"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:paddingBottom="10dp"
+                android:text="Quang Huy"
                 android:textSize="16dp"
-                android:text="Quang Huy - 0365990290"
                 app:layout_constraintTop_toBottomOf="@+id/activity_order_confirmation_textView10" />
 
             <TextView
-                android:id="@+id/activity_order_confirmation_textView11"
+                android:id="@+id/activity_order_confirmation_tv_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text=" - "
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/activity_order_confirmation_customer_name"
+                app:layout_constraintTop_toBottomOf="@+id/activity_order_confirmation_textView10" />
+            <TextView
+                android:id="@+id/activity_order_confirmation_customer_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="0365990290"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/activity_order_confirmation_tv_1"
+                app:layout_constraintTop_toBottomOf="@+id/activity_order_confirmation_textView10" />
+
+            <TextView
+                android:id="@+id/activity_order_confirmation_shipping_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
@@ -88,7 +107,7 @@
                 android:paddingBottom="10dp"
                 android:textSize="16dp"
                 android:text="Hẻm 2 Đoàn Văn Cự, P. Tam Hiệp, TP. Biên Hòa, Đồng Nai, Việt Nam"
-                app:layout_constraintTop_toBottomOf="@+id/activity_order_confirmation_textView12" />
+                app:layout_constraintTop_toBottomOf="@+id/activity_order_confirmation_customer_name" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View

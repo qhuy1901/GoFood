@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Order implements Serializable {
+public class Order implements Serializable{
     private String orderId;
     private String userId;
     private String storeId;
@@ -22,12 +22,12 @@ public class Order implements Serializable {
     private Date orderDate;
     private String cancelReason;
     private Date finishTime;
-
+    private ShippingAddress shippingAddress;
 
     public Order() {
     }
 
-    public Order(String orderId, String userId, String storeId, List<CartItem> orderDetail, int applyFee, int deliveryFee, int doorDelivery, String paymentMethod, int total, String orderStatus, Date orderDate) {
+    public Order(String orderId, String userId, String storeId, List<CartItem> orderDetail, int applyFee, int deliveryFee, int doorDelivery, String paymentMethod, int total, String orderStatus, Date orderDate, String cancelReason, Date finishTime, ShippingAddress shippingAddress) {
         this.orderId = orderId;
         this.userId = userId;
         this.storeId = storeId;
@@ -39,6 +39,9 @@ public class Order implements Serializable {
         this.total = total;
         this.orderStatus = orderStatus;
         this.orderDate = orderDate;
+        this.cancelReason = cancelReason;
+        this.finishTime = finishTime;
+        this.shippingAddress = shippingAddress;
     }
 
     public Date getFinishTime() {
@@ -144,6 +147,14 @@ public class Order implements Serializable {
         this.doorDelivery = doorDelivery;
     }
 
+    public ShippingAddress getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public void setShippingAddress(ShippingAddress shippingAddress) {
+        this.shippingAddress = shippingAddress;
+    }
+
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
@@ -160,6 +171,7 @@ public class Order implements Serializable {
         result.put("orderDate", orderDate);
         result.put("cancelReason", cancelReason);
         result.put("finishTime", finishTime);
+        result.put("shippingAddress", shippingAddress);
         return result;
     }
 }
