@@ -1,6 +1,9 @@
 package com.example.myapplication.shipper.ui.shipper_order.receive_order;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.GoFoodDatabase;
@@ -19,6 +23,8 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class ShipperReceiveOrderAdapter extends RecyclerView.Adapter<ShipperReceiveOrderAdapter.ShipperReceiveOrderViewHolder>
 {
@@ -56,6 +62,40 @@ public class ShipperReceiveOrderAdapter extends RecyclerView.Adapter<ShipperRece
         goFoodDatabase.loadShippingAddressToTextViewByOrderId(order.getOrderId(), holder.tvCustomerName, holder.tvCustomerAddress);
         goFoodDatabase.loadStoreNameAndAddressToTextView(order.getStoreId(), holder.tvStoreName, holder.tvStoreAddress);
         holder.tvDistance.setText(order.getDistance() +" km");
+        holder.btnAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new SweetAlertDialog(context, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                        .setTitleText("Xác nhận")
+                        .setContentText("Bạn có chắc muốn nhận đơn hàng này?").setCustomImage(R.drawable.shipper_icon)
+                        .setConfirmText("Đồng ý")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.dismissWithAnimation();
+                                SharedPreferences prefs = context.getSharedPreferences("Session", MODE_PRIVATE);
+                                String userId = prefs.getString("userId", "No name defined");
+                                order.setShipperId(userId);
+                                order.setOrderStatus("Đang vận chuyển");
+                                goFoodDatabase.updateOrder(order);
+                            }
+                        })
+                        .setCancelButton("Hủy", new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.dismissWithAnimation();
+                            }
+                        })
+                        .show();
+            }
+        });
+        holder.btnSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                orders.remove(order);
+                notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
@@ -68,7 +108,7 @@ public class ShipperReceiveOrderAdapter extends RecyclerView.Adapter<ShipperRece
     public class ShipperReceiveOrderViewHolder extends RecyclerView.ViewHolder{
         private TextView tvShipFee, tvTotalPayable, tvTotalReceived, tvStoreName, tvCustomerName, tvOrderDate, tvStoreAddress, tvCustomerAddress, tvDistance;
         private Button btnAccept, btnSkip;
-        //private ConstraintLayout clParent;
+        private ConstraintLayout clParent;
 
         public ShipperReceiveOrderViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -83,6 +123,7 @@ public class ShipperReceiveOrderAdapter extends RecyclerView.Adapter<ShipperRece
             tvStoreAddress = itemView.findViewById(R.id.item_order_for_shipper_order_tv_start_address);
             tvCustomerAddress = itemView.findViewById(R.id.item_order_for_shipper_order_tv_end_address);
             tvDistance = itemView.findViewById(R.id.item_order_for_shipper_order_tv_distance);
+            clParent = itemView.findViewById(R.id.item_order_for_shipper_order_cl_parent);
         }
     }
 }

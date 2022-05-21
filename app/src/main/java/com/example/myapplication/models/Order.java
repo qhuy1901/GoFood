@@ -25,6 +25,7 @@ public class Order implements Serializable{
     private ShippingAddress shippingAddress;
     private float distance;
     private int takeEatingUtensils;
+    private String shipperId;
 
     public Order() {
     }
@@ -173,6 +174,14 @@ public class Order implements Serializable{
         this.takeEatingUtensils = takeEatingUtensils;
     }
 
+    public String getShipperId() {
+        return shipperId;
+    }
+
+    public void setShipperId(String shipperId) {
+        this.shipperId = shipperId;
+    }
+
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
@@ -192,6 +201,7 @@ public class Order implements Serializable{
         result.put("shippingAddress", shippingAddress);
         result.put("distance", distance);
         result.put("takeEatingUtensils", takeEatingUtensils);
+        result.put("shipperId", shipperId);
         return result;
     }
 }

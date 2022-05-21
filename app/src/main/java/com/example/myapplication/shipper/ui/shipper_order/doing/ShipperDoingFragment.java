@@ -1,65 +1,84 @@
 package com.example.myapplication.shipper.ui.shipper_order.doing;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.R;
+import com.example.myapplication.databinding.FragmentShipperDoingBinding;
+import com.example.myapplication.models.Order;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ShipperDoingFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShipperDoingFragment extends Fragment {
+    private RecyclerView rcvOrder;
+    private FragmentShipperDoingBinding binding;
+    private ShipperDoingAdapter adapter;
+    private List<Order> orders;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private void initUi()
+    {
+        rcvOrder = binding.fragmentShipperDoingRcvOrders;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        rcvOrder .setLayoutManager(linearLayoutManager);
 
-    public ShipperDoingFragment() {
-        // Required empty public constructor
+        orders = new ArrayList<>();
+        adapter = new ShipperDoingAdapter(orders, getContext());
+        rcvOrder.setAdapter(adapter);
     }
+    private void getOrderFromRealtimeDatabase()
+    {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference().child("orders");
+        SharedPreferences prefs = getActivity().getSharedPreferences("Session", MODE_PRIVATE);
+        String userId = prefs.getString("userId", "No name defined");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                orders.clear();
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Order order = postSnapshot.getValue(Order.class);
+                    if(order != null && order.getShipperId().equals(userId) && !order.getOrderStatus().equals("Giao hàng thành công") && !order.getOrderStatus().contains("Đã hủy")){
+                        orders.add(order);
+                    }
+                }
+                adapter.notifyDataSetChanged();
+            }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ShipperDoingFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ShipperDoingFragment newInstance(String param1, String param2) {
-        ShipperDoingFragment fragment = new ShipperDoingFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getContext(), "Không lấy được danh sách món", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shipper_doing, container, false);
+        binding = FragmentShipperDoingBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+        initUi();
+        getOrderFromRealtimeDatabase();
+        return root;
     }
 }

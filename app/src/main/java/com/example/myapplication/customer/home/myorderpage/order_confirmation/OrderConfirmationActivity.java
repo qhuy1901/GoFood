@@ -164,6 +164,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         order.setShippingAddress(shippingAddress);
 
         order.setDistance(distance);
+        order.setShipperId(" ");
         return order;
     }
 
