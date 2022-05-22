@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -81,6 +82,25 @@ public class ProductGroupingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+        btnAddNewProductGrouping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Lấy mã cửa hàng
+                String newProductGrouping = etEnterNewProductGroup.getText().toString();
+                if(!newProductGrouping.isEmpty())
+                {
+                    SharedPreferences prefs = ProductGroupingActivity.this.getSharedPreferences("Session", MODE_PRIVATE);
+                    String storeId = prefs.getString("storeId", "No name defined");
+
+                    productGroupingList.add(newProductGrouping);
+                    GoFoodDatabase goFoodDatabase = new GoFoodDatabase();
+                    goFoodDatabase.updateProductGroupingForStore(storeId, productGroupingList);
+
+                    etEnterNewProductGroup.getText().clear();
+                    Toast.makeText(ProductGroupingActivity.this, "Thêm nhóm món thành công!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

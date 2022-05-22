@@ -34,6 +34,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -112,6 +113,11 @@ public class GoFoodDatabase {
         childUpdates.put("/stores/"+ product.getStoreId() + "/menu/products/" + product.getProductId(), productValues);
         mDatabase.updateChildren(childUpdates);
 //        addProductImageToFirebase(avatarFileName, );
+    }
+
+    public void updateProductGroupingForStore(String storeId, List<String> productGrouping) {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("stores").child(storeId).child("productGrouping").setValue(productGrouping);
     }
 
     private void addImageToStorageFirebase(String fileName, ImageView ivProductImage)
