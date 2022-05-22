@@ -63,7 +63,12 @@ public class HomeFragment extends Fragment {
         rcvStoreListByCategory = (RecyclerView) root.findViewById(R.id.rcv_store_list_by_category);
 
         storeListByCategory = new ArrayList<>();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager( getContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager( getContext()){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
         rcvStoreListByCategory.setLayoutManager(linearLayoutManager);
         listStoreAdapter = new ListStoreAdapter( storeListByCategory, getContext());
         rcvStoreListByCategory.setAdapter(listStoreAdapter);

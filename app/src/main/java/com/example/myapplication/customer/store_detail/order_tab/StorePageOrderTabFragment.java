@@ -1,18 +1,18 @@
 package com.example.myapplication.customer.store_detail.order_tab;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.myapplication.R;
 import com.example.myapplication.models.Product;
+import com.example.myapplication.models.ProductWithProductGrouping;
 import com.example.myapplication.models.Store;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,8 +27,10 @@ import java.util.List;
 public class StorePageOrderTabFragment extends Fragment {
     private Store storeInfo;
     private RecyclerView rcvProduct;
-    private List<Product> productList;
-    private ProductForStoreDetailAdapter productForStoreDetailAdapter;
+//    private ProductForStoreDetailAdapter productForStoreDetailAdapter;
+    private ProductGroupingForStoreDetailAdapter adapter;
+    private List<String> productGroupList;
+    private List<ProductWithProductGrouping> productList;
 
     public StorePageOrderTabFragment(Store storeInfo) {
         this.storeInfo = storeInfo;
@@ -37,11 +39,17 @@ public class StorePageOrderTabFragment extends Fragment {
     private void initUi(ViewGroup root)
     {
         rcvProduct = root.findViewById(R.id.rcv_store_product_list);
+        productGroupList = new ArrayList<>();
         productList = new ArrayList<>();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager( getContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext()){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
         rcvProduct.setLayoutManager(linearLayoutManager);
-        productForStoreDetailAdapter = new ProductForStoreDetailAdapter(productList, getActivity());
-        rcvProduct.setAdapter(productForStoreDetailAdapter);
+        adapter = new ProductGroupingForStoreDetailAdapter(productList, getActivity());
+        rcvProduct.setAdapter(adapter);
     }
 
     @Override
@@ -51,32 +59,76 @@ public class StorePageOrderTabFragment extends Fragment {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_store_page_order_tab, container, false);
 
         initUi(root);
-        getProductListFromRealtimeDatabase();
+        //getProductListFromRealtimeDatabase();
+        getProductGroupingListFromRealtimeDatabase();
         return root;
     }
 
-    private void getProductListFromRealtimeDatabase()
+//    private void getProductListFromRealtimeDatabase()
+//    {
+//        // Lấy mã cửa hàng
+//        String storeId = storeInfo.getStoreId();
+//
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference().child("stores").child(storeId).child("menu").child("products");
+//
+//        myRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                productList.clear();
+//                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+//                    Product product = postSnapshot.getValue(Product.class);
+//                    productList.add(product);
+//                }
+//                productForStoreDetailAdapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                Toast.makeText(getActivity(), "Không lấy được danh sách món", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
+    private void getProductGroupingListFromRealtimeDatabase()
     {
-        // Lấy mã cửa hàng
         String storeId = storeInfo.getStoreId();
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference().child("stores").child(storeId).child("menu").child("products");
+        DatabaseReference myRef = database.getReference().child("stores").child(storeId).child("productGrouping");
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 productList.clear();
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                    Product product = postSnapshot.getValue(Product.class);
-                    productList.add(product);
-                }
-                productForStoreDetailAdapter.notifyDataSetChanged();
-            }
+                    String productGrouping = postSnapshot.getValue(String.class);
+                    productGroupList.add(productGrouping);
+                    ProductWithProductGrouping productWithProductGrouping = new ProductWithProductGrouping();
+                    productWithProductGrouping.setProductGrouping(productGrouping);
+                    List<Product> pList = new ArrayList<>();
+                    // Set các món vào nhóm món
+                    database.getReference().child("stores").child(storeId).child("menu").child("products").orderByChild("productGrouping").equalTo(productGrouping).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            pList.clear();
+                            for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                                Product product = postSnapshot.getValue(Product.class);
+                                pList.add(product);
+                            }
+                            productWithProductGrouping.setProductList(pList);
+                            productList.add(productWithProductGrouping);
+                            adapter.notifyDataSetChanged();
+                        }
 
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            Toast.makeText(getContext(), "Không lấy được danh sách món", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(getActivity(), "Không lấy được danh sách món", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Không lấy được danh sách món", Toast.LENGTH_SHORT).show();
             }
         });
     }

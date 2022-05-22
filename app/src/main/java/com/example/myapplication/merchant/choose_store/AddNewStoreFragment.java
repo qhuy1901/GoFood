@@ -172,6 +172,10 @@ public class AddNewStoreFragment extends Fragment implements AdapterView.OnItemS
                 store.setStoreCategory(storeCategory);
                 store.setStoreAddress(storeAddress);
                 store.setOwner(owner);
+                List<String> productGrouping = new ArrayList<>();
+                productGrouping.add("Không xác định");
+                store.setProductGrouping(productGrouping);
+
                 goFoodDatabase.insertStore(store, binding.ivStoreAvatar);
                 Toast.makeText(getActivity(), "Thêm cửa hàng mới thành công",Toast.LENGTH_SHORT).show();
 
