@@ -14,6 +14,7 @@ public class Product implements Serializable {
     private String storeId;
     private int available;
     private String productImage;
+    private String productGrouping;
 
     public Product() {
     }
@@ -84,6 +85,13 @@ public class Product implements Serializable {
         this.storeId = storeId;
     }
 
+    public String getProductGrouping() {
+        return productGrouping;
+    }
+
+    public void setProductGrouping(String productGrouping) {
+        this.productGrouping = productGrouping;
+    }
 
     @Exclude
     public Map<String, Object> toMap() {
@@ -95,6 +103,7 @@ public class Product implements Serializable {
         result.put("productDescription", productDescription);
         result.put("available", available);
         result.put("productImage", productImage);
+        result.put("productGrouping", productGrouping);
         return result;
     }
 }

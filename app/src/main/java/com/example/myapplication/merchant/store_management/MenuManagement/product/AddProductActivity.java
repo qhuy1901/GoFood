@@ -84,6 +84,7 @@ public class AddProductActivity extends AppCompatActivity {
                 Product product= new Product();
                 product.setProductName(productName);
                 product.setPrice(price);
+                product.setProductGrouping("Không xác định");
                 if(!description.isEmpty())
                     product.setProductDescription("");
                 else

@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".merchant.store_management.MenuManagement.product.product_grouping.ProductGroupingActivity"
+            android:exported="false" />
+        <activity
             android:name=".shipper.ShipperActivity"
             android:exported="false"
             android:label="@string/title_activity_shipper" />
