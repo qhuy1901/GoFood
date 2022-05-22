@@ -40,8 +40,8 @@
         android:id="@+id/item_product_grouping_for_menu_management_view"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         android:background="@color/colorAccent"
         app:layout_constraintTop_toBottomOf="@+id/item_product_grouping_for_menu_management_tv_product_grouping_name" />
 
