@@ -6,6 +6,7 @@ import com.google.firebase.firestore.IgnoreExtraProperties;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @IgnoreExtraProperties
@@ -19,6 +20,7 @@ public class Store implements Serializable
     private Integer rating;
     private String deliveryTime;
     private String storeAddress;
+    private List<String> productGrouping;
 
     public Store(String storeId, String storeName, String storeCategory, String owner, String avatar, Integer rating, String deliveryTime, String storeAddress) {
         this.storeId = storeId;
@@ -100,6 +102,14 @@ public class Store implements Serializable
         this.deliveryTime = deliveryTime;
     }
 
+    public List<String> getProductGrouping() {
+        return productGrouping;
+    }
+
+    public void setProductGrouping(List<String> productGrouping) {
+        this.productGrouping = productGrouping;
+    }
+
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
@@ -111,6 +121,7 @@ public class Store implements Serializable
         result.put("avatar", avatar);
         result.put("rating", rating);
         result.put("deliveryTime", deliveryTime);
+        result.put("productGrouping", productGrouping);
         return result;
     }
 }

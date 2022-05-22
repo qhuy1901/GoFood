@@ -6,24 +6,22 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentViewStoreBinding;
 import com.example.myapplication.models.Store;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,44 +49,68 @@ public class ViewStoreFragment extends Fragment{
     {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference().child("stores");
-
         SharedPreferences preferences = getContext().getSharedPreferences("Session", getContext().MODE_PRIVATE);
         String owner = preferences.getString("userId", "default value");
 
-        Query query = myRef.orderByChild("owner").equalTo(owner);
-        query.addChildEventListener(new ChildEventListener() {
+        myRef.orderByChild("owner").equalTo(owner).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                //storeList.clear();
-                Store store = snapshot.getValue(Store.class);
-                if(store != null){
-                    storeList.add(store);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                storeList.clear();
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Store store = postSnapshot.getValue(Store.class);
+                    if(store != null){
+                        storeList.add(store);
+                    }
+                    storeAdapter.notifyDataSetChanged();
                 }
                 storeAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Store store = snapshot.getValue(Store.class);
-                if(store != null){
-                    storeList.add(store);
-                }
-                storeAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getContext(), "Không lấy được danh sách", Toast.LENGTH_SHORT).show();
             }
         });
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference().child("stores");
+//
+//        SharedPreferences preferences = getContext().getSharedPreferences("Session", getContext().MODE_PRIVATE);
+//        String owner = preferences.getString("userId", "default value");
+//
+//        Query query = myRef.orderByChild("owner").equalTo(owner);
+//        query.addChildEventListener(new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//                //storeList.clear();
+//                Store store = snapshot.getValue(Store.class);
+//                if(store != null){
+//                    storeList.add(store);
+//                }
+//                storeAdapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//                Store store = snapshot.getValue(Store.class);
+//                if(store != null){
+//                    storeList.add(store);
+//                }
+//                storeAdapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+//            }
+//
+//            @Override
+//            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
     }
 
 

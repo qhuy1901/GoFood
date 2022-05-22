@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color1"
+    tools:context=".merchant.store_management.MenuManagement.product.product_grouping.ProductGroupingActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            android:paddingBottom="15dp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:id="@+id/activity_product_grouping_ib_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="#FFFFFF"
+                android:src="@drawable/back_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/activity_product_grouping_textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nhóm món"
+                android:textAlignment="center"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/activity_product_grouping_view10"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@+id/bar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_product_grouping_rcv_product_grouping_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/activity_product_grouping_et_product_grouping"
+        app:layout_constraintTop_toBottomOf="@+id/bar" />
+
+    <EditText
+        android:id="@+id/activity_product_grouping_et_product_grouping"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        android:hint="Nhập tên nhóm món mới"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/activity_product_grouping_btn_add_product_grouping"
+        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/activity_product_grouping_btn_add_product_grouping"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thêm nhóm món"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

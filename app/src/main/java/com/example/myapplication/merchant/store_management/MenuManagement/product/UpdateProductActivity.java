@@ -1,5 +1,7 @@
 package com.example.myapplication.merchant.store_management.MenuManagement.product;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +19,15 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.models.Product;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -26,6 +38,11 @@ public class UpdateProductActivity extends AppCompatActivity {
     private GoFoodDatabase goFoodDatabase;
     private Product productInfo;
     private ImageView ivProductImage, ibBack;
+    private TextView tvProductGrouping;
+    private boolean[] selectedReason;
+    private List<Integer> selectedList = new ArrayList<>();
+    private List<String> productGroupingList;
+    private String[] orderStatus ={"Đã tiếp nhận đơn hàng", "Đang vận chuyển", "Giao hàng thành công"};
 
     private void initUi()
     {
@@ -37,6 +54,8 @@ public class UpdateProductActivity extends AppCompatActivity {
         btnDeleteProduct = (Button) findViewById(R.id.activity_update_product_btn_delete_product);
         ivProductImage =(ImageView) findViewById(R.id.activity_update_product_iv_product_image);
         ibBack = (ImageView) findViewById(R.id.activity_update_product_ib_back);
+        tvProductGrouping = (TextView) findViewById(R.id.activity_update_product_tv_product_grouping);
+        productGroupingList = new ArrayList<>();
     }
 
     private void receiveProductInfo()
@@ -49,6 +68,7 @@ public class UpdateProductActivity extends AppCompatActivity {
     {
         etPrice.setText(Integer.toString(productInfo.getPrice()));
         etProductName.setText(productInfo.getProductName());
+        tvProductGrouping.setText(productInfo.getProductGrouping());
         Glide.with(this).load(productInfo.getProductImage()).into(ivProductImage);
         if(!productInfo.getProductDescription().equals("") || productInfo.getProductDescription().isEmpty())
             etDescription.setText(productInfo.getProductDescription());
@@ -71,6 +91,7 @@ public class UpdateProductActivity extends AppCompatActivity {
         initUi();
         receiveProductInfo();
         loadData();
+        getProductGroupingListFromRealtimeDatabase();
 
         btnDeleteProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,12 +128,14 @@ public class UpdateProductActivity extends AppCompatActivity {
                 String productName = etProductName.getText().toString();
                 int price = Integer.parseInt(etPrice.getText().toString());
                 String description = etDescription.getText().toString();
+                String productGrouping = tvProductGrouping.getText().toString();
                 SharedPreferences prefs = getApplicationContext().getSharedPreferences("Session", MODE_PRIVATE);
                 String storeId = prefs.getString("storeId", "No name defined");
                 int isAvailable = 0;
                 if(swIsAvailable.isChecked())
                     isAvailable = 1;
                 Product product= new Product(productInfo.getProductId(), productName, price, description, storeId, isAvailable, productInfo.getProductImage());
+                product.setProductGrouping(productGrouping);
                 goFoodDatabase.updateProduct(product);
                 finish();
             }
@@ -122,6 +145,68 @@ public class UpdateProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        tvProductGrouping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int checkedItemIndex = 0;
+                for(int i = 0; i < productGroupingList.size(); i++)
+                {
+                    if(productGroupingList.get(i).equals(productInfo.getProductGrouping()))
+                    {
+                        checkedItemIndex = i;
+                        break;
+                    }
+                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(UpdateProductActivity.this);
+                builder.setTitle("Chọn nhóm món");
+                builder.setCancelable(false);
+                builder.setSingleChoiceItems(productGroupingList.toArray(new String[productGroupingList.size()]), checkedItemIndex, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        selectedList.add(i);
+                        Collections.sort(selectedList);
+                    }
+                });
+
+                builder.setPositiveButton("Xong", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String newProductGrouping = productGroupingList.get(selectedList.get(0));
+                        tvProductGrouping.setText(newProductGrouping);
+                    }
+                });
+                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                }).show();
+            }
+        });
+    }
+
+    private void getProductGroupingListFromRealtimeDatabase()
+    {
+        SharedPreferences prefs = this.getSharedPreferences("Session", MODE_PRIVATE);
+        String storeId = prefs.getString("storeId", "No name defined");
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference().child("stores").child(storeId).child("productGrouping");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    String productGrouping = postSnapshot.getValue(String.class);
+                    productGroupingList.add(productGrouping);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(UpdateProductActivity.this, "Không lấy được danh sách", Toast.LENGTH_SHORT).show();
             }
         });
     }
