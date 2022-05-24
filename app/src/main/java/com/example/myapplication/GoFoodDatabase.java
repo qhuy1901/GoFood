@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -25,6 +26,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -41,6 +43,20 @@ import java.util.Map;
 public class GoFoodDatabase {
     private DatabaseReference mDatabase;
     private FirebaseStorage storage = FirebaseStorage.getInstance();
+
+    public void insertLoveStore(Store store, String user_ID){
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        try {
+            Map<String, Object> storeValues = store.toMap();
+            Map<String, Object> childUpdates = new HashMap<>();
+            childUpdates.put("/Users/" + user_ID + "/love_list/" + store.getStoreId(), storeValues);
+            mDatabase.updateChildren(childUpdates);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
 
     public void insertProduct(Product product, ImageView ivProductImage) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
