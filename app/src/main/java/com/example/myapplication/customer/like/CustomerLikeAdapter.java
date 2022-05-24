@@ -43,7 +43,6 @@ public class CustomerLikeAdapter extends RecyclerView.Adapter<CustomerLikeAdapte
         if(store == null)
             return ;
         holder.tvStoreName.setText(store.getStoreName());
-        Glide.with(context).load("https://firebasestorage.googleapis.com/v0/b/gofooddatabase.appspot.com/o/system_image%2Fdefault_store.png?alt=media&token=89b07997-d877-40ad-bc63-4b9b6b591819").into(holder.ivStoreAvatar);
         if(!store.getAvatar().isEmpty())
         {
             Glide.with(context).load(store.getAvatar()).into(holder.ivStoreAvatar);
