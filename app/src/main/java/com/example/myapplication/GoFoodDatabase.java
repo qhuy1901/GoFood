@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 
 import com.example.myapplication.models.Order;
 import com.example.myapplication.models.Product;
+import com.example.myapplication.models.Review;
 import com.example.myapplication.models.Store;
 import com.example.myapplication.models.Topping;
 import com.example.myapplication.models.User;
@@ -56,6 +57,19 @@ public class GoFoodDatabase {
             e.printStackTrace();
         }
 
+    }
+
+    public void insertStoreComment(Review review, String store_ID, String user_ID){
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        try {
+            Map<String, Object> reviewValues = review.toMap();
+            Map<String, Object> childUpdates = new HashMap<>();
+            childUpdates.put("/stores/" + store_ID + "/reviews/" + user_ID, reviewValues);
+            mDatabase.updateChildren(childUpdates);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void insertProduct(Product product, ImageView ivProductImage) {
@@ -294,6 +308,7 @@ public class GoFoodDatabase {
         childUpdates.put("/stores/" + storeId + "/menu/topping/"+ key, orderValues);
         mDatabase.updateChildren(childUpdates);
     }
+
 
     public void loadUserFullnameToTextView(String userId, TextView tv)
     {

@@ -38,7 +38,7 @@ public class CustomerLikeFragment extends Fragment {
         rcvStore.setAdapter(adapter);
     }
 
-    public void getStoreListByCategoryFromRealtimeDatabase()
+    public void getLoveList()
     {
 
         SharedPreferences prefs = getContext().getSharedPreferences("Session", getContext().MODE_PRIVATE);
@@ -74,7 +74,7 @@ public class CustomerLikeFragment extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_customer_like, container, false);
         initUi(root);
-        getStoreListByCategoryFromRealtimeDatabase();
+        getLoveList();
         return root;
     }
 }
