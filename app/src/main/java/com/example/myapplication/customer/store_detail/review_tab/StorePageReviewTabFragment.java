@@ -52,7 +52,7 @@ public class StorePageReviewTabFragment extends Fragment {
         reviewForStoreDetailAdapter = new ReviewForStoreDetailAdapter(reviewList, getActivity());
         rcvReview.setAdapter(reviewForStoreDetailAdapter);
     }
-    private void getReviewListFromRealtimeDatabase() {
+    private void getReviewStoreListFromRealtimeDatabase() {
         // Lấy mã cửa hàng
         String storeId = storeInfo.getStoreId();
 
@@ -83,7 +83,7 @@ public class StorePageReviewTabFragment extends Fragment {
         // Inflate the layout for this fragment
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_cus_shoppage_review, container, false);
         initUI(root);
-        getReviewListFromRealtimeDatabase();
+        getReviewStoreListFromRealtimeDatabase();
 
         cmtBtn.setOnClickListener(new View.OnClickListener() {
             // comment review store
