@@ -109,7 +109,7 @@
         android:layout_height="58dp"
         android:background="@drawable/welcome_bg_btn_role_radius50"
         android:backgroundTint="@color/white"
-        android:drawableStart="@drawable/merchant_icon"
+        android:drawableStart="@drawable/delivery_man"
         android:fontFamily="@font/be_vietnam_bold"
         android:paddingStart="60dp"
         android:paddingEnd="60dp"
