@@ -33,14 +33,15 @@ import java.util.Locale;
 public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductForStoreDetailAdapter.ProductForStoreDetailViewHolder>{
     private final List<Product> productList;
     private Context context;
-    private Store store;
+
+    private Store storeInfo;
     private GoFoodDatabase goFoodDatabase = new GoFoodDatabase();
     private boolean isProductHaveTopping = false;
 
-    public ProductForStoreDetailAdapter(List<Product> productList, Context context, Store store) {
+    public ProductForStoreDetailAdapter(List<Product> productList, Context context, Store storeInfo) {
         this.productList = productList;
         this.context = context;
-        this.store = store;
+        this.storeInfo = storeInfo;
     }
 
     @NonNull
@@ -56,7 +57,6 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
         if(product == null)
             return ;
         holder.tvProductName.setText(product.getProductName());
-
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         String priceAfterFormat = currencyVN.format(product.getPrice()).replace("₫", "")+ " ₫";
@@ -85,7 +85,7 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onClickGoToDetail(product);
+                onClickGoToDetail(product, storeInfo);
             }
         });
 
@@ -102,10 +102,12 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
         }
     }
 
-    private void onClickGoToDetail(Product product)
+    private void onClickGoToDetail(Product product, Store storeInfo)
     {
         Intent switchActivityIntent = new Intent(this.context, ProductDetailActivity.class);
         switchActivityIntent.putExtra("product", product);
+        switchActivityIntent.putExtra("store", storeInfo);
+
         context.startActivity(switchActivityIntent);
     }
 

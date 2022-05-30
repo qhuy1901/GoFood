@@ -1,5 +1,6 @@
 package com.example.myapplication.customer.store_detail.review_tab;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,14 +8,20 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.models.Review;
 import com.example.myapplication.models.Store;
+import com.example.myapplication.models.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,12 +36,15 @@ public class StorePageReviewTabFragment extends Fragment {
     private RecyclerView rcvReview;
     private List<Review> reviewList;
     private ReviewForStoreDetailAdapter reviewForStoreDetailAdapter;
+    private GoFoodDatabase goFoodDatabase;
+    private ImageView cmtBtn;
 
     public StorePageReviewTabFragment(Store storeInfo) {
         this.storeInfo = storeInfo;
     }
 
     private void initUI(ViewGroup root) {
+        cmtBtn = (ImageView) root.findViewById(R.id.cmtBtn);
         rcvReview = root.findViewById(R.id.storedetail_review_rcv);
         reviewList = new ArrayList<>();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager( getContext());
@@ -42,17 +52,7 @@ public class StorePageReviewTabFragment extends Fragment {
         reviewForStoreDetailAdapter = new ReviewForStoreDetailAdapter(reviewList, getActivity());
         rcvReview.setAdapter(reviewForStoreDetailAdapter);
     }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_cus_shoppage_review, container, false);
-        initUI(root);
-        getReviewListFromRealtimeDatabase();
-        return root;
-    }
-    private void getReviewListFromRealtimeDatabase() {
+    private void getReviewStoreListFromRealtimeDatabase() {
         // Lấy mã cửa hàng
         String storeId = storeInfo.getStoreId();
 
@@ -76,5 +76,38 @@ public class StorePageReviewTabFragment extends Fragment {
                 Toast.makeText(getActivity(), "Không lấy được danh sách review", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_cus_shoppage_review, container, false);
+        initUI(root);
+        getReviewStoreListFromRealtimeDatabase();
+
+        cmtBtn.setOnClickListener(new View.OnClickListener() {
+            // comment review store
+            @Override
+            public void onClick(View view) {
+                SharedPreferences prefs = getContext().getSharedPreferences("Session", getContext().MODE_PRIVATE);
+                String userId = prefs.getString("userId", "No name defined");
+                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+                mDatabase.child("Users").child(userId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        if (!task.isSuccessful()) {
+                            Log.e("firebase", "Error getting data", task.getException());
+                        }
+                        else {
+                            User user = task.getResult().getValue(User.class);
+                            // Review review = new Review(user.getFullName(), cmt, cmt_date);
+                            // goFoodDatabase.insertStoreComment(, storeInfo.getStoreId(), userId);
+                        }
+                    }
+                });
+            }
+        });
+
+        return root;
     }
 }

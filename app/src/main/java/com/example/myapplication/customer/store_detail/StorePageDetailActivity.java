@@ -1,12 +1,14 @@
 package com.example.myapplication.customer.store_detail;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +31,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class StorePageDetailActivity extends AppCompatActivity {
 
-    private ImageView ivStoreAvatar, ivShowCart, ivButtonBack;
+    private ImageView ivStoreAvatar, ivShowCart, ivButtonBack, ivStoreWishList;
     private TextView tvStoreName, tvTotal, tvRating, tvDeliveryTime;
     private Button btnDelivery;
     private TabLayout tablayout;
@@ -50,6 +52,7 @@ public class StorePageDetailActivity extends AppCompatActivity {
     {
         ivStoreAvatar = (ImageView) findViewById(R.id.store_img);
         ivShowCart = (ImageView) findViewById(R.id.store_show_cart);
+        ivStoreWishList = (ImageView) findViewById(R.id.store_wishlist);
         tvStoreName = (TextView) findViewById(R.id.store_name);
         tvTotal = (TextView) findViewById(R.id.store_total);
         btnDelivery = (Button) findViewById(R.id.store_btn_delivery);
@@ -147,6 +150,18 @@ public class StorePageDetailActivity extends AppCompatActivity {
                 }
             }
         });
+
+        ivStoreWishList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences prefs = getSharedPreferences("Session", MODE_PRIVATE);
+                String userId = prefs.getString("userId", "No name defined");
+
+                goFoodDatabase.insertLoveStore(storeInfo, userId);
+                ivStoreWishList.setColorFilter(getApplicationContext().getResources().getColor(R.color.red));
+            }
+        });
+
         ivButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

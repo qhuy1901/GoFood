@@ -1,5 +1,6 @@
 package com.example.myapplication.customer.like;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,10 +38,14 @@ public class CustomerLikeFragment extends Fragment {
         rcvStore.setAdapter(adapter);
     }
 
-    public void getStoreListByCategoryFromRealtimeDatabase()
+    public void getLoveList()
     {
+
+        SharedPreferences prefs = getContext().getSharedPreferences("Session", getContext().MODE_PRIVATE);
+        String userId = prefs.getString("userId", "No name defined");
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference().child("stores");
+        DatabaseReference myRef = database.getReference().child("Users").child(userId).child("love_list");
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -48,17 +53,14 @@ public class CustomerLikeFragment extends Fragment {
                 storeList.clear();
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     Store store = postSnapshot.getValue(Store.class);
-                    if(store.getStoreCategory().contains("Đồ uống"))
-                    {
-                        storeList.add(store);
-                    }
+                    storeList.add(store);
                 }
                 adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(getContext(), "Không lấy được danh sách món", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Không lấy được love_list", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -72,7 +74,7 @@ public class CustomerLikeFragment extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_customer_like, container, false);
         initUi(root);
-        getStoreListByCategoryFromRealtimeDatabase();
+        getLoveList();
         return root;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -14,6 +15,7 @@ import androidx.annotation.Nullable;
 
 import com.example.myapplication.models.Order;
 import com.example.myapplication.models.Product;
+import com.example.myapplication.models.Review;
 import com.example.myapplication.models.Store;
 import com.example.myapplication.models.Topping;
 import com.example.myapplication.models.User;
@@ -25,6 +27,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -41,6 +44,33 @@ import java.util.Map;
 public class GoFoodDatabase {
     private DatabaseReference mDatabase;
     private FirebaseStorage storage = FirebaseStorage.getInstance();
+
+    public void insertLoveStore(Store store, String user_ID){
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        try {
+            Map<String, Object> storeValues = store.toMap();
+            Map<String, Object> childUpdates = new HashMap<>();
+            childUpdates.put("/Users/" + user_ID + "/love_list/" + store.getStoreId(), storeValues);
+            mDatabase.updateChildren(childUpdates);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public void insertStoreComment(Review review, String store_ID, String user_ID){
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        try {
+            Map<String, Object> reviewValues = review.toMap();
+            Map<String, Object> childUpdates = new HashMap<>();
+            childUpdates.put("/stores/" + store_ID + "/reviews/" + user_ID, reviewValues);
+            mDatabase.updateChildren(childUpdates);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 
     public void insertProduct(Product product, ImageView ivProductImage) {
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -284,6 +314,7 @@ public class GoFoodDatabase {
         mDatabase.updateChildren(childUpdates);
     }
 
+
     public void loadUserFullnameToTextView(String userId, TextView tv)
     {
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -337,6 +368,23 @@ public class GoFoodDatabase {
             }
         });
     }
+
+    /*public void loadCustomerNameToTextView(String userId, TextView txtFullName)
+    {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("Users").child(userId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                //else {
+                   // User user = task.getResult().getValue(User.class);
+                   // txtFullName.setText(user.getFullName());
+                //}
+            }
+        });
+    }*/
 
     public void loadShippingAddressToTextViewByOrderId(String orderId, TextView tvName, TextView tvAddress)
     {
