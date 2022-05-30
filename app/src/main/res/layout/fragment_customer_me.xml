@@ -26,21 +26,21 @@
 
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/txtFullName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:fontFamily="@font/be_vietnam_bold"
-                android:text="Lê Thị Hồng Cúc"
+                android:text="Quang Huy"
                 android:textColor="@color/white"
                 android:textSize="20dp"
-                app:layout_constraintBottom_toBottomOf="@+id/shapeableImageView"
-                app:layout_constraintStart_toEndOf="@+id/shapeableImageView"
-                app:layout_constraintTop_toTopOf="@+id/shapeableImageView"
+                app:layout_constraintBottom_toBottomOf="@+id/imgAvatar"
+                app:layout_constraintStart_toEndOf="@+id/imgAvatar"
+                app:layout_constraintTop_toTopOf="@+id/imgAvatar"
                 app:layout_constraintVertical_bias="0.606" />
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/shapeableImageView"
+                android:id="@+id/imgAvatar"
                 android:layout_width="88dp"
                 android:layout_height="88dp"
                 android:layout_centerHorizontal="true"
