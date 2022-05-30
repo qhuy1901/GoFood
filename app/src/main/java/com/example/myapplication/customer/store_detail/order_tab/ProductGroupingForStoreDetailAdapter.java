@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.models.ProductWithProductGrouping;
+import com.example.myapplication.models.Store;
 
 import java.util.List;
 
@@ -19,10 +20,12 @@ public class ProductGroupingForStoreDetailAdapter extends RecyclerView.Adapter<P
 {
     private final List<ProductWithProductGrouping> list;
     private Context context;
+    private Store store;
 
-    public ProductGroupingForStoreDetailAdapter(List<ProductWithProductGrouping> list, Context context) {
+    public ProductGroupingForStoreDetailAdapter(List<ProductWithProductGrouping> list, Context context, Store store) {
         this.list = list;
         this.context = context;
+        this.store = store;
     }
 
     @NonNull
@@ -54,7 +57,7 @@ public class ProductGroupingForStoreDetailAdapter extends RecyclerView.Adapter<P
     {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         holder.rcvProducts.setLayoutManager(linearLayoutManager);
-        ProductForStoreDetailAdapter adapter = new ProductForStoreDetailAdapter(productWithProductGrouping.getProductList(), context);
+        ProductForStoreDetailAdapter adapter = new ProductForStoreDetailAdapter(productWithProductGrouping.getProductList(), context, store);
         holder.rcvProducts.setAdapter(adapter);
     }
 

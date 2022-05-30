@@ -41,6 +41,7 @@ public class StorePageDetailActivity extends AppCompatActivity {
     private GoFoodDatabase goFoodDatabase;
 //    private List<Product> productList;
 //    private RecyclerView rcvProduct;
+    private TextView tvStoreStatus;
     private CartSession cartSession;
 //    private ProductForStoreDetailAdapter productForStoreDetailAdapter;
 
@@ -57,9 +58,10 @@ public class StorePageDetailActivity extends AppCompatActivity {
         tablayout = findViewById(R.id.store_tbl);
         viewPager = findViewById(R.id.store_vp);
         ivButtonBack = (ImageView) findViewById(R.id.activity_store_detail_iv_btn_back) ;
-
+        tvStoreStatus = (TextView)  findViewById(R.id.store_delivery_time);
 
         cartSession = new CartSession(StorePageDetailActivity.this);
+
     }
 
     private void receiveStoreInfo()
@@ -90,8 +92,9 @@ public class StorePageDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_detail);
-        initUi();
         receiveStoreInfo();
+        initUi();
+
         final StorePageViewPagerAdapter adapter = new StorePageViewPagerAdapter(this, storeInfo);
         viewPager.setAdapter(adapter);
 
@@ -150,7 +153,6 @@ public class StorePageDetailActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
 

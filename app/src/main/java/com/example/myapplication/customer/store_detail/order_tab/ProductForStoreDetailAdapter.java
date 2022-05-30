@@ -23,6 +23,7 @@ import com.example.myapplication.customer.product_detail.ProductDetailActivity;
 import com.example.myapplication.customer.store_detail.StorePageDetailActivity;
 import com.example.myapplication.customer.store_detail.ToppingBottomSheetDialog;
 import com.example.myapplication.models.Product;
+import com.example.myapplication.models.Store;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -32,12 +33,14 @@ import java.util.Locale;
 public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductForStoreDetailAdapter.ProductForStoreDetailViewHolder>{
     private final List<Product> productList;
     private Context context;
+    private Store store;
     private GoFoodDatabase goFoodDatabase = new GoFoodDatabase();
     private boolean isProductHaveTopping = false;
 
-    public ProductForStoreDetailAdapter(List<Product> productList, Context context) {
+    public ProductForStoreDetailAdapter(List<Product> productList, Context context, Store store) {
         this.productList = productList;
         this.context = context;
+        this.store = store;
     }
 
     @NonNull
@@ -85,6 +88,18 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
                 onClickGoToDetail(product);
             }
         });
+
+        if(product.getAvailable() == 1)
+        {
+            holder.ivIsAvailable.setVisibility(View.GONE);
+        }
+        else
+            holder.btnAddToCart.setVisibility(View.GONE);
+        if(store.getStoreStatus() == 0)
+        {
+            holder.ivIsAvailable.setVisibility(View.GONE);
+            holder.btnAddToCart.setVisibility(View.GONE);
+        }
     }
 
     private void onClickGoToDetail(Product product)
@@ -103,7 +118,7 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
 
     public class ProductForStoreDetailViewHolder  extends RecyclerView.ViewHolder{
         private TextView tvProductName, tvPrice, tvDescription;
-        private ImageView ivProductImage;
+        private ImageView ivProductImage, ivIsAvailable;
         private ConstraintLayout clProductItem;
         private ImageButton btnAddToCart;
 
@@ -115,6 +130,7 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
             clProductItem = itemView.findViewById(R.id.item_product_for_store_detail_cl_product_item);
             btnAddToCart = itemView.findViewById(R.id.item_product_for_store_detail_btn_add_to_cart);
             tvDescription = itemView.findViewById(R.id.item_product_for_store_detail_tv_description);
+            ivIsAvailable = itemView.findViewById(R.id.item_product_for_store_detail_iv_is_available);
         }
     }
 }

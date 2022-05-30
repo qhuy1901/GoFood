@@ -48,7 +48,7 @@ public class StorePageOrderTabFragment extends Fragment {
             }
         };
         rcvProduct.setLayoutManager(linearLayoutManager);
-        adapter = new ProductGroupingForStoreDetailAdapter(productList, getActivity());
+        adapter = new ProductGroupingForStoreDetailAdapter(productList, getActivity(), storeInfo);
         rcvProduct.setAdapter(adapter);
     }
 

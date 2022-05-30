@@ -43,6 +43,8 @@ public class ProductDetailActivity extends AppCompatActivity {
         if(productInfo.getProductDescription().isEmpty())
             tvDescription.setVisibility(View.GONE);
         Glide.with(ProductDetailActivity.this).load(productInfo.getProductImage()).into(tvProductImage);
+        if(productInfo.getAvailable() == 0)
+            btnAdd.setVisibility(View.GONE);
     }
 
     private void receiveProductInfo()

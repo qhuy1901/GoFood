@@ -5,6 +5,7 @@ import static android.content.Context.MODE_PRIVATE;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +49,11 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
         holder.ivAvatar.setImageResource(R.drawable.default_store);
         if(!store.getAvatar().isEmpty())
             Glide.with(context).load(store.getAvatar()).into(holder.ivAvatar);
-
+        if(store.getStoreStatus() == 1)
+        {
+            holder.tvStoreStatus.setText("Đang hoạt động");
+            holder.tvStoreStatus.setTextColor(Color.parseColor("#00C21D"));
+        }
         holder.clStoreItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +83,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
 
     public class StoreViewHolder extends RecyclerView.ViewHolder{
         private TextView tvStoreName;
-        private TextView tvStoreCategory;
+        private TextView tvStoreCategory, tvStoreStatus;
         private ImageView ivAvatar;
         private ConstraintLayout clStoreItem;
 
@@ -88,6 +93,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
             tvStoreCategory = itemView.findViewById(R.id.tvStoreCategory);
             ivAvatar = itemView.findViewById(R.id.ivAvatar);
             clStoreItem = itemView.findViewById(R.id.clStoreItem);
+            tvStoreStatus = itemView.findViewById(R.id.tv_store_status);
         }
     }
 }

@@ -21,6 +21,7 @@ public class Store implements Serializable
     private String deliveryTime;
     private String storeAddress;
     private List<String> productGrouping;
+    private int storeStatus;
 
     public Store(String storeId, String storeName, String storeCategory, String owner, String avatar, Integer rating, String deliveryTime, String storeAddress) {
         this.storeId = storeId;
@@ -110,6 +111,14 @@ public class Store implements Serializable
         this.productGrouping = productGrouping;
     }
 
+    public int getStoreStatus() {
+        return storeStatus;
+    }
+
+    public void setStoreStatus(int storeStatus) {
+        this.storeStatus = storeStatus;
+    }
+
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
@@ -122,6 +131,7 @@ public class Store implements Serializable
         result.put("rating", rating);
         result.put("deliveryTime", deliveryTime);
         result.put("productGrouping", productGrouping);
+        result.put("storeStatus", storeStatus);
         return result;
     }
 }

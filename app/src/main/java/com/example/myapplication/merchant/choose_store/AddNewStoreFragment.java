@@ -37,6 +37,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class AddNewStoreFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
@@ -172,6 +173,10 @@ public class AddNewStoreFragment extends Fragment implements AdapterView.OnItemS
                 store.setStoreCategory(storeCategory);
                 store.setStoreAddress(storeAddress);
                 store.setOwner(owner);
+                store.setStoreStatus(1);
+                Random rand = new Random();
+                int dt = 10 + rand.nextInt(40);
+                store.setDeliveryTime(dt +"");
                 List<String> productGrouping = new ArrayList<>();
                 productGrouping.add("Không xác định");
                 store.setProductGrouping(productGrouping);

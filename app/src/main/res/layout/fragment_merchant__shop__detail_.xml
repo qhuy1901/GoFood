@@ -268,7 +268,7 @@
             app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
         <Switch
-            android:id="@+id/simpleSwitch"
+            android:id="@+id/fragment_mertchant_me_sw_store_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="right"

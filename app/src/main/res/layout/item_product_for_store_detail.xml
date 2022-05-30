@@ -17,6 +17,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/item_product_for_store_detail_iv_is_available"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:src="@drawable/het_mon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/item_product_for_store_detail_btn_add_to_cart" />
+
     <TextView
         android:id="@+id/item_product_for_store_detail_tv_product_name"
         android:layout_width="0dp"
