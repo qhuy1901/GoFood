@@ -39,7 +39,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
     private CartSession cartSession;
     private List<CartItem> cart;
     private CartItemForOrderConfirmationAdapter adapter;
-    private TextView tvTotal, tvApplyFee, tvDeliveryFee, tvSum, tvShippingAddress, tvCustomerPhone, tvCustomerName, tvDistance;
+    private TextView tvTotal, tvApplyFee, tvDeliveryFee, tvSum, tvDistance, tvShippingAddress, tvCustomerPhone, tvCustomerName;
     private SwitchCompat scDoorDelivery, scTakeEatingUtensils;
     private Button btnCofirm;
     private RadioGroup rgPaymentMethod;

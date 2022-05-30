@@ -447,10 +447,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/be_vietnam_semibold"
-                android:text="Phí giao hàng"
+                android:text="Phí giao hàng "
                 android:textSize="16dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_merchant_order_detail_tv_take_eating_utensils2" />
+            <TextView
+                android:id="@+id/activity_merchant_order_detail_tv_tv_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/be_vietnam_semibold"
+                android:text="(2.3 km)"
+                android:textSize="16dp"
+                app:layout_constraintStart_toEndOf="@+id/activity_merchant_order_detail_tv_43"
                 app:layout_constraintTop_toBottomOf="@+id/activity_merchant_order_detail_tv_take_eating_utensils2" />
 
             <TextView

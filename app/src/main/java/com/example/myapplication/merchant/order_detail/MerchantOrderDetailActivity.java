@@ -36,7 +36,7 @@ public class MerchantOrderDetailActivity extends AppCompatActivity {
     private TextView tvCustomerName, tvTotal, tvCountProduct, tvOrderId, tvChangeOrderStatus;
     private ImageView ivBtnBack;
     private Button btnAccept, btnReject;
-    private TextView tvOrderDate, tvOrderStatus, tvSubTotal, tvShipper, tv16, tvShipperName, tvShipperPhone, tvReceiver, tvApplyFee, tvShipFee, tvReceiverPhone, tvShippingAddress, tvStoreName, tvStoreAddress;
+    private TextView tvOrderDate, tvOrderStatus, tvSubTotal, tvShipper, tv16, tvShipperName, tvDistance, tvShipperPhone, tvReceiver, tvApplyFee, tvShipFee, tvReceiverPhone, tvShippingAddress, tvStoreName, tvStoreAddress;
     private RecyclerView rcvProductList;
     private ProductForMerchantOrderDetailAdapter adapter;
     private CheckBox ckbDoorDelivery, ckbTakeEatingUtensils;
@@ -72,6 +72,7 @@ public class MerchantOrderDetailActivity extends AppCompatActivity {
         tvShipper  = (TextView) findViewById(R.id.activity_merchant_order_detail_tv_shipper);
         tv16 =  (TextView) findViewById(R.id.activity_merchant_order_detail_tv_16);
         tvSubTotal =  (TextView) findViewById(R.id.activity_merchant_order_detail_tv_sub_total);
+        tvDistance = (TextView) findViewById(R.id.activity_merchant_order_detail_tv_tv_distance);
 //        tvChangeOrderStatus = (TextView) findViewById(R.id.activity_merchant_order_detail_tv_change_order_status);
 
 //        tvChangeOrderStatus.setText(order.getOrderStatus());
@@ -116,6 +117,7 @@ public class MerchantOrderDetailActivity extends AppCompatActivity {
         else
             goFoodDatabase.loadUserFullNameAndPhoneToTextView(order.getShipperId(), tvShipperName, tvShipperPhone);
         tvOrderStatus.setText(order.getOrderStatus());
+        tvDistance.setText("(" + order.getDistance() +"km)");
         if(order.getOrderStatus().contains("Đã hủy"))
         {
             tvOrderStatus.setText("Đã hủy");
