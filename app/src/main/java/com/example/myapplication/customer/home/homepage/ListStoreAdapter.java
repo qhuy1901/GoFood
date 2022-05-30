@@ -62,7 +62,7 @@ public class ListStoreAdapter extends RecyclerView.Adapter<ListStoreAdapter.Stor
         Random rand = new Random();
 //        int deliveryTime = 10 + rand.nextInt(40);
         double distance = rand.nextInt(4) + (double) Math.round(rand.nextDouble() * 10) / 10;
-        holder.tvDeliveryTime.setText(store.getDeliveryTime() +"min");
+        holder.tvDeliveryTime.setText(store.getDeliveryTime());
         holder.tvDistance.setText(distance+"km");
     }
 

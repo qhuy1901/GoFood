@@ -95,7 +95,7 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
         }
         else
             holder.btnAddToCart.setVisibility(View.GONE);
-        if(store.getStoreStatus() == 0)
+        if(storeInfo.getStoreStatus() == 0)
         {
             holder.ivIsAvailable.setVisibility(View.GONE);
             holder.btnAddToCart.setVisibility(View.GONE);

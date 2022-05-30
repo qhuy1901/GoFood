@@ -176,7 +176,7 @@ public class AddNewStoreFragment extends Fragment implements AdapterView.OnItemS
                 store.setStoreStatus(1);
                 Random rand = new Random();
                 int dt = 10 + rand.nextInt(40);
-                store.setDeliveryTime(dt +"");
+                store.setDeliveryTime(dt +"mins");
                 List<String> productGrouping = new ArrayList<>();
                 productGrouping.add("Không xác định");
                 store.setProductGrouping(productGrouping);
