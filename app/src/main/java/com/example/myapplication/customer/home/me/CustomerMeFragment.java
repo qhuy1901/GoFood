@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +35,7 @@ public class CustomerMeFragment extends Fragment {
     private ConstraintLayout clCustomerAddress,clMerchant;
     private GoFoodDatabase goFoodDatabase;
     private String userId;
-
-    /*@RequiresApi(api = Build.VERSION_CODES.N)
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void loadInfoToForm()
     {
         goFoodDatabase = new GoFoodDatabase();
@@ -47,7 +47,7 @@ public class CustomerMeFragment extends Fragment {
         SharedPreferences preferences = getContext().getSharedPreferences("Session", getContext().MODE_PRIVATE);
         userId = preferences.getString("userId", "default value");
     }
-    @RequiresApi(api = Build.VERSION_CODES.N)*/
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,9 +56,9 @@ public class CustomerMeFragment extends Fragment {
         btnBack = (Button) root.findViewById(R.id.fragment_cus_me_logout_btn);
         clCustomerAddress = (ConstraintLayout)  root.findViewById(R.id.fragment_customer_me_cl_customer_address);
         clMerchant = (ConstraintLayout)  root.findViewById(R.id.fragment_customer_me_cl_merchant);
-        txtFullName = (TextView) root.findViewById(R.id.txt_username);
-        /*getUserInfo();
-        loadInfoToForm();*/
+        txtFullName = (TextView) root.findViewById(R.id.txtFullName);
+        getUserInfo();
+        loadInfoToForm();
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
