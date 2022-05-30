@@ -3,9 +3,11 @@ package com.example.myapplication.merchant.order_detail;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +19,9 @@ import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.models.Order;
 
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -32,8 +36,10 @@ public class MerchantOrderDetailActivity extends AppCompatActivity {
     private TextView tvCustomerName, tvTotal, tvCountProduct, tvOrderId, tvChangeOrderStatus;
     private ImageView ivBtnBack;
     private Button btnAccept, btnReject;
+    private TextView tvOrderDate, tvOrderStatus, tvSubTotal, tvShipper, tv16, tvShipperName, tvShipperPhone, tvReceiver, tvApplyFee, tvShipFee, tvReceiverPhone, tvShippingAddress, tvStoreName, tvStoreAddress;
     private RecyclerView rcvProductList;
     private ProductForMerchantOrderDetailAdapter adapter;
+    private CheckBox ckbDoorDelivery, ckbTakeEatingUtensils;
     private boolean[] selectedReason;
     private List<Integer> selectedList = new ArrayList<>();
     private String[] cancelReason = {"Quán hết món", "Quán tạm nghỉ, không nhận đơn hàng này", "Tài xế từ chối vận chuyển đơn hàng"};
@@ -49,9 +55,26 @@ public class MerchantOrderDetailActivity extends AppCompatActivity {
         ivBtnBack = (ImageView) findViewById(R.id.activity_merchant_order_detail_iv_btn_back);
         btnAccept = (Button)findViewById(R.id.activity_merchant_order_detail_btn_accept) ;
         btnReject  = (Button) findViewById(R.id.activity_merchant_order_detail_btn_reject);
-        tvChangeOrderStatus = (TextView) findViewById(R.id.activity_merchant_order_detail_tv_change_order_status);
 
-        tvChangeOrderStatus.setText(order.getOrderStatus());
+        tvOrderDate =  (TextView) findViewById(R.id.activity_merchant_order_detail_tv_order_date);
+        tvOrderStatus = (TextView) findViewById(R.id.activity_merchant_order_detail_tv_oder_status);
+        tvReceiver = (TextView) findViewById(R.id.activity_merchant_order_detail_receiver);
+        tvReceiverPhone = (TextView) findViewById(R.id.activity_merchant_order_detail_tv_phone);
+        tvShippingAddress = (TextView) findViewById(R.id.activity_merchant_order_detail_tv_shipping_address);
+        tvStoreName = (TextView) findViewById(R.id.activity_merchant_order_detail_tv_store_name);
+        tvStoreAddress = (TextView) findViewById(R.id.activity_merchant_order_detail_tv_store_address);
+        ckbDoorDelivery = (CheckBox) findViewById(R.id.activity_merchant_order_detail_ckb_door_delivery);
+        ckbTakeEatingUtensils = (CheckBox) findViewById(R.id.activity_merchant_order_detail_ckb_take_eating_utensils);
+        tvShipFee =  (TextView) findViewById(R.id.activity_merchant_order_detail_tv_shipping_fee);
+        tvShipperName = (TextView) findViewById(R.id.activity_merchant_order_detail_tv_shipper_name);
+        tvShipperPhone = (TextView) findViewById(R.id.activity_merchant_order_detail_tv_shipper_phone);
+        tvApplyFee = (TextView) findViewById(R.id.activity_merchant_order_detail_tv_apply_fee);
+        tvShipper  = (TextView) findViewById(R.id.activity_merchant_order_detail_tv_shipper);
+        tv16 =  (TextView) findViewById(R.id.activity_merchant_order_detail_tv_16);
+        tvSubTotal =  (TextView) findViewById(R.id.activity_merchant_order_detail_tv_sub_total);
+//        tvChangeOrderStatus = (TextView) findViewById(R.id.activity_merchant_order_detail_tv_change_order_status);
+
+//        tvChangeOrderStatus.setText(order.getOrderStatus());
 
         if(!order.getOrderStatus().equals("Đặt hàng thành công"))
         {
@@ -59,16 +82,18 @@ public class MerchantOrderDetailActivity extends AppCompatActivity {
             btnReject.setVisibility(View.GONE);
         }
 
-        if(!order.getOrderStatus().equals("Đã tiếp nhận đơn hàng") && !order.getOrderStatus().equals("Đang vận chuyển"))
-        {
-            tvChangeOrderStatus.setVisibility(View.GONE);
-        }
+//        if(!order.getOrderStatus().equals("Đã tiếp nhận đơn hàng") && !order.getOrderStatus().equals("Đang vận chuyển"))
+//        {
+//            tvChangeOrderStatus.setVisibility(View.GONE);
+//        }
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MerchantOrderDetailActivity.this);
         rcvProductList.setLayoutManager(linearLayoutManager);
 
+
         adapter = new ProductForMerchantOrderDetailAdapter( order.getOrderDetail(), MerchantOrderDetailActivity.this);
         rcvProductList.setAdapter(adapter);
+        rcvProductList.setNestedScrollingEnabled(false);
     }
 
     private void receiveOrderInfo()
@@ -81,13 +106,53 @@ public class MerchantOrderDetailActivity extends AppCompatActivity {
     {
         GoFoodDatabase goFoodDatabase = new GoFoodDatabase();
         goFoodDatabase.loadUserFullnameToTextView(order.getUserId(), tvCustomerName);
-
+        if(order.getShipperId().equals(" "))
+        {
+            tvShipperName.setVisibility(View.GONE);
+            tvShipperPhone.setVisibility(View.GONE);
+            tvShipper.setVisibility(View.GONE);
+            tv16.setVisibility(View.GONE);
+        }
+        else
+            goFoodDatabase.loadUserFullNameAndPhoneToTextView(order.getShipperId(), tvShipperName, tvShipperPhone);
+        tvOrderStatus.setText(order.getOrderStatus());
+        if(order.getOrderStatus().contains("Đã hủy"))
+        {
+            tvOrderStatus.setText("Đã hủy");
+            tvOrderStatus.setTextColor(Color.RED);
+        }
+        else
+        {
+            tvOrderStatus.setText(order.getOrderStatus());
+        }
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         String total = currencyVN.format(order.getTotal()).replace("₫", "")+ " ₫";
         tvTotal.setText(total);
-        tvCountProduct.setText(order.getOrderDetail().size() + " Món");
+        tvCountProduct.setText("(" + order.getOrderDetail().size() + " món)");
         tvOrderId.setText("Mã đơn hàng: " + order.getOrderId());
+        int subTotal = 0;
+        if(order.getDoorDelivery() == 1)
+        {
+            ckbDoorDelivery.setChecked(true);
+            subTotal += 5000;
+        }
+        subTotal = subTotal + order.getTotal() - order.getApplyFee() - order.getDeliveryFee();
+        if(order.getTakeEatingUtensils() == 1)
+            ckbTakeEatingUtensils.setChecked(true);
+        ckbDoorDelivery.setEnabled(false);
+        ckbTakeEatingUtensils.setEnabled(false);
+        String shipFee = currencyVN.format(order.getDeliveryFee()).replace("₫", "")+ " ₫";
+        String applyFee = currencyVN.format(order.getApplyFee()).replace("₫", "")+ " ₫";
+        String subTotalString = currencyVN.format(subTotal).replace("₫", "")+ " ₫";
+        tvApplyFee.setText(applyFee);
+        tvShipFee.setText(shipFee);
+        tvSubTotal.setText(subTotalString);
+        DateFormat dateFormat = new SimpleDateFormat("hh:mm dd-MM-yyyy");
+        tvOrderDate.setText(dateFormat.format(order.getOrderDate()));
+        goFoodDatabase.loadShippingAddressToTextViewByOrderId(order.getOrderId(), tvReceiver, tvShippingAddress);
+        goFoodDatabase.loadStoreNameAndAddressToTextView(order.getStoreId(), tvStoreName, tvStoreAddress);
+
     }
 
     @Override
@@ -170,53 +235,53 @@ public class MerchantOrderDetailActivity extends AppCompatActivity {
                 builder.show();
             }
         });
-        tvChangeOrderStatus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int checkedItemIndex = 0;
-                for(int i = 0; i < orderStatus.length; i++)
-                {
-                    if(orderStatus[i].equals(order.getOrderStatus()))
-                    {
-                        checkedItemIndex = i;
-                        break;
-                    }
-                }
-                AlertDialog.Builder builder = new AlertDialog.Builder(MerchantOrderDetailActivity.this);
-                builder.setTitle("Chọn trạng thái mới cho đơn hàng");
-                builder.setCancelable(false);
-                builder.setSingleChoiceItems(orderStatus, checkedItemIndex, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        selectedList.add(i);
-                        Collections.sort(selectedList);
-                    }
-                });
-
-                builder.setPositiveButton("Xong", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        String newOrderStatus = orderStatus[selectedList.get(0)];
-                        order.setOrderStatus(newOrderStatus);
-                        goFoodDatabase.updateOrder(order);
-                        tvChangeOrderStatus.setText(newOrderStatus);
-                        new SweetAlertDialog(MerchantOrderDetailActivity.this, SweetAlertDialog.SUCCESS_TYPE)
-                                .setTitleText("Thành công")
-                                .setContentText("Đã thay đổi trạng thái đơn hàng!")
-                                .show();
-                        if(newOrderStatus.equals("Giao hàng thành công"))
-                        {
-                            tvChangeOrderStatus.setVisibility(View.GONE);
-                        }
-                    }
-                });
-                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                }).show();
-            }
-        });
+//        tvChangeOrderStatus.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                int checkedItemIndex = 0;
+//                for(int i = 0; i < orderStatus.length; i++)
+//                {
+//                    if(orderStatus[i].equals(order.getOrderStatus()))
+//                    {
+//                        checkedItemIndex = i;
+//                        break;
+//                    }
+//                }
+//                AlertDialog.Builder builder = new AlertDialog.Builder(MerchantOrderDetailActivity.this);
+//                builder.setTitle("Chọn trạng thái mới cho đơn hàng");
+//                builder.setCancelable(false);
+//                builder.setSingleChoiceItems(orderStatus, checkedItemIndex, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        selectedList.add(i);
+//                        Collections.sort(selectedList);
+//                    }
+//                });
+//
+//                builder.setPositiveButton("Xong", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        String newOrderStatus = orderStatus[selectedList.get(0)];
+//                        order.setOrderStatus(newOrderStatus);
+//                        goFoodDatabase.updateOrder(order);
+//                        tvChangeOrderStatus.setText(newOrderStatus);
+//                        new SweetAlertDialog(MerchantOrderDetailActivity.this, SweetAlertDialog.SUCCESS_TYPE)
+//                                .setTitleText("Thành công")
+//                                .setContentText("Đã thay đổi trạng thái đơn hàng!")
+//                                .show();
+//                        if(newOrderStatus.equals("Giao hàng thành công"))
+//                        {
+//                            tvChangeOrderStatus.setVisibility(View.GONE);
+//                        }
+//                    }
+//                });
+//                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        dialogInterface.dismiss();
+//                    }
+//                }).show();
+//            }
+//        });
     }
 }
