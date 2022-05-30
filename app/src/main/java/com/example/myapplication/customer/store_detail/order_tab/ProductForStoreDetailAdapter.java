@@ -33,6 +33,7 @@ import java.util.Locale;
 public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductForStoreDetailAdapter.ProductForStoreDetailViewHolder>{
     private final List<Product> productList;
     private Context context;
+
     private Store storeInfo;
     private GoFoodDatabase goFoodDatabase = new GoFoodDatabase();
     private boolean isProductHaveTopping = false;
@@ -87,6 +88,18 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
                 onClickGoToDetail(product, storeInfo);
             }
         });
+
+        if(product.getAvailable() == 1)
+        {
+            holder.ivIsAvailable.setVisibility(View.GONE);
+        }
+        else
+            holder.btnAddToCart.setVisibility(View.GONE);
+        if(store.getStoreStatus() == 0)
+        {
+            holder.ivIsAvailable.setVisibility(View.GONE);
+            holder.btnAddToCart.setVisibility(View.GONE);
+        }
     }
 
     private void onClickGoToDetail(Product product, Store storeInfo)
@@ -107,7 +120,7 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
 
     public class ProductForStoreDetailViewHolder  extends RecyclerView.ViewHolder{
         private TextView tvProductName, tvPrice, tvDescription;
-        private ImageView ivProductImage;
+        private ImageView ivProductImage, ivIsAvailable;
         private ConstraintLayout clProductItem;
         private ImageButton btnAddToCart;
 
@@ -119,6 +132,7 @@ public class ProductForStoreDetailAdapter extends RecyclerView.Adapter<ProductFo
             clProductItem = itemView.findViewById(R.id.item_product_for_store_detail_cl_product_item);
             btnAddToCart = itemView.findViewById(R.id.item_product_for_store_detail_btn_add_to_cart);
             tvDescription = itemView.findViewById(R.id.item_product_for_store_detail_tv_description);
+            ivIsAvailable = itemView.findViewById(R.id.item_product_for_store_detail_iv_is_available);
         }
     }
 }

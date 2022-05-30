@@ -11,7 +11,6 @@
     android:layout_marginBottom="5dp"
     android:background="@drawable/store_bg">
 
-
     <ImageView
         android:id="@+id/ivAvatar"
         android:layout_width="374.79dp"
@@ -55,4 +54,29 @@
         app:layout_constraintStart_toStartOf="@+id/tvStoreName"
         app:layout_constraintTop_toBottomOf="@+id/tvStoreName"
         app:layout_constraintVertical_bias="0.0"></TextView>
+
+    <TextView
+        android:id="@+id/tv_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:text=" - "
+        android:textColor="#8F9698"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/tvStoreCategory"
+        app:layout_constraintTop_toBottomOf="@+id/tvStoreName"/>
+
+    <TextView
+        android:id="@+id/tv_store_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:text="Quán đóng cửa"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/tv_2"
+        app:layout_constraintTop_toBottomOf="@+id/tvStoreName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

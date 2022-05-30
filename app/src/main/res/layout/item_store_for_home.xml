@@ -79,7 +79,7 @@
         app:layout_constraintTop_toBottomOf="@+id/item_store_for_home_tv_store_name" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/item_store_for_home_distance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
@@ -96,7 +96,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:background="@color/gray"
-        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintStart_toEndOf="@+id/item_store_for_home_distance"
         app:layout_constraintTop_toBottomOf="@+id/item_store_for_home_tv_store_name" />
 
     <ImageView
@@ -110,7 +110,7 @@
         app:layout_constraintTop_toBottomOf="@+id/item_store_for_home_tv_store_name" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/item_store_for_home_delivery_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -119,4 +119,13 @@
         android:text="19min"
         app:layout_constraintStart_toEndOf="@+id/imageView20"
         app:layout_constraintTop_toBottomOf="@+id/item_store_for_home_tv_store_name" />
+
+    <ImageView
+        android:id="@+id/item_store_for_home_iv_store_status"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/quan_dong_cua"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 </androidx.constraintlayout.widget.ConstraintLayout>

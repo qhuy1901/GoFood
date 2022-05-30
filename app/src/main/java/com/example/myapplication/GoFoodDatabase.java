@@ -150,6 +150,11 @@ public class GoFoodDatabase {
         mDatabase.child("stores").child(storeId).child("productGrouping").setValue(productGrouping);
     }
 
+    public void updateStoreStatus(String storeId, int storeStatus) {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("stores").child(storeId).child("storeStatus").setValue(storeStatus);
+    }
+
     private void addImageToStorageFirebase(String fileName, ImageView ivProductImage)
     {
         StorageReference storageRef = storage.getReference(fileName);

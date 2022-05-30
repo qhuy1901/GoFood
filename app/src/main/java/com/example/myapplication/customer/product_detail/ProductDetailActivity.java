@@ -63,6 +63,8 @@ public class ProductDetailActivity extends AppCompatActivity {
             tvDescription.setVisibility(View.GONE);
         Glide.with(ProductDetailActivity.this).load(productInfo.getProductImage()).into(tvProductImage);
 
+        if(productInfo.getAvailable() == 0)
+            btnAdd.setVisibility(View.GONE);
         rcvProdReview = findViewById(R.id.productdetail_review_rcv);
         reviewList = new ArrayList<>();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ProductDetailActivity.this);

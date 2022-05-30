@@ -19,6 +19,7 @@ import com.example.myapplication.customer.store_detail.StorePageDetailActivity;
 import com.example.myapplication.models.Store;
 
 import java.util.List;
+import java.util.Random;
 
 public class ListStoreAdapter extends RecyclerView.Adapter<ListStoreAdapter.StoreForHomeViewHolder>{
     private final List<Store> storeList;
@@ -48,10 +49,6 @@ public class ListStoreAdapter extends RecyclerView.Adapter<ListStoreAdapter.Stor
         {
             Glide.with(context).load(store.getAvatar()).into(holder.ivStoreAvatar);
         }
-//        if(!store.getAvatar().isEmpty())
-//        {
-//            goFoodDatabase.loadImageToImageView(holder.ivStoreAvatar, store.getAvatar());
-//        }
         holder.clStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +57,13 @@ public class ListStoreAdapter extends RecyclerView.Adapter<ListStoreAdapter.Stor
                 context.startActivity(switchActivityIntent);
             }
         });
+        if(store.getStoreStatus() == 1)
+            holder.ivStoreStatus.setVisibility(View.GONE);
+        Random rand = new Random();
+//        int deliveryTime = 10 + rand.nextInt(40);
+        double distance = rand.nextInt(4) + (double) Math.round(rand.nextDouble() * 10) / 10;
+        holder.tvDeliveryTime.setText(store.getDeliveryTime() +"min");
+        holder.tvDistance.setText(distance+"km");
     }
 
     @Override
@@ -70,8 +74,8 @@ public class ListStoreAdapter extends RecyclerView.Adapter<ListStoreAdapter.Stor
     }
 
     public class StoreForHomeViewHolder  extends RecyclerView.ViewHolder{
-        private TextView tvStoreName;
-        private ImageView ivStoreAvatar;
+        private TextView tvStoreName, tvDeliveryTime, tvDistance;
+        private ImageView ivStoreAvatar, ivStoreStatus;
         private ConstraintLayout clStore;
 
         public StoreForHomeViewHolder(@NonNull View itemView) {
@@ -79,6 +83,9 @@ public class ListStoreAdapter extends RecyclerView.Adapter<ListStoreAdapter.Stor
             tvStoreName = (TextView) itemView.findViewById(R.id.item_store_for_home_tv_store_name);
             ivStoreAvatar = (ImageView) itemView.findViewById(R.id.item_store_for_home_iv_store_avatar);
             clStore = (ConstraintLayout) itemView.findViewById(R.id.item_store_for_home_cl_store_parent);
+            ivStoreStatus = itemView.findViewById(R.id.item_store_for_home_iv_store_status);
+            tvDeliveryTime = itemView.findViewById(R.id.item_store_for_home_delivery_time);
+            tvDistance= itemView.findViewById(R.id.item_store_for_home_distance);
         }
     }
 }
