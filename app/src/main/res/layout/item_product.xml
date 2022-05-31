@@ -8,7 +8,7 @@
     android:layout_margin="10dp">
 
     <TextView
-        android:id="@+id/item_product_tv_product_name"
+        android:id="@+id/item_storename"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -29,8 +29,8 @@
         android:fontFamily="@font/be_vietnam_medium"
         android:text="Đã bán +999"
         android:textSize="12dp"
-        app:layout_constraintStart_toStartOf="@+id/item_product_tv_product_name"
-        app:layout_constraintTop_toBottomOf="@+id/item_product_tv_product_name" />
+        app:layout_constraintStart_toStartOf="@+id/item_storename"
+        app:layout_constraintTop_toBottomOf="@+id/item_storename" />
 
     <View
         android:id="@+id/item_new_and_confirm_order_item_new_and_confirm_order_tv_order"
