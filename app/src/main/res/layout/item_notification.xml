@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp">
+
+    <TextView
+        android:id="@+id/item_storename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Đơn hàng tại Ha Chic - Gà Ran và Kimbap - Đường 385 đã hoàn tất"
+        android:textColor="#0A191E"
+        android:textSize="14dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/item_product_iv_product_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:text="Hãy chia sẻ cảm nhận của bạn về đơn hàng để giúp những Khách hàng khác có thể tham khảo nhé"
+        android:textSize="11dp"
+        app:layout_constraintStart_toStartOf="@+id/item_storename"
+        app:layout_constraintTop_toBottomOf="@+id/item_storename" />
+
+
+
+
+    <TextView
+        android:id="@+id/item_product_tv_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:maxLines="1"
+        android:text="07/05/2022 12:06"
+        android:textColor="#8E8E8E"
+        android:textSize="11dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/item_product_iv_product_image"
+        android:layout_width="57dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_product_image"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:shapeAppearanceOverlay="@style/roundimageview" />>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
