@@ -4,7 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_color1"
     tools:context=".customer.address.CustomerAddressActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_customer_address_activity_customer_address_cl_1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/activity_customer_address_activity_customer_address_txtDiaChi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/be_vietnam_bold"
+            android:text="Địa chỉ"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.appcompat.widget.SearchView
         android:id="@+id/activity_customer_address_activity_customer_address_searchAddress"
         android:layout_width="360dp"
@@ -16,31 +38,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_customer_address_activity_customer_address_txtDiaChi"
+        app:layout_constraintTop_toBottomOf="@+id/activity_customer_address_activity_customer_address_cl_1"
         app:layout_constraintVertical_bias="0.726"
         app:queryHint="Nhập địa chỉ" />
 
-    <TextView
-        android:id="@+id/activity_customer_address_activity_customer_address_txtDiaChi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/be_vietnam_bold"
-        android:text="Địa chỉ"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextContrastCheck" />
+
 
     <ImageView
         android:id="@+id/activity_customer_address_iconBack"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ei_arrowleft" />
@@ -122,17 +130,7 @@
         app:layout_constraintTop_toTopOf="@+id/activity_customer_address_activity_customer_address_txtAddHomeAddress2"
         app:srcCompat="@drawable/continue_arrow" />
 
-    <Button
-        android:id="@+id/activity_customer_address_activity_customer_address_btnAddAdress"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="20dp"
-        android:text="Thêm địa chỉ mới"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/activity_customer_address_activity_customer_address_cus_address_itemList"
@@ -199,5 +197,65 @@
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/activity_customer_address_activity_customer_address_txtName"
             app:layout_constraintTop_toTopOf="@+id/activity_customer_address_activity_customer_address_txtName" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="10dp">
+
+        <EditText
+            android:id="@+id/activity_customer_address_activity_customer_address_et_enter_receiver"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/background_color1"
+            android:hint="Tên người nhận"
+            android:padding="10dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/activity_customer_address_activity_customer_address_et_enter_phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/activity_customer_address_activity_customer_address_et_enter_phone"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/background_color1"
+            android:hint="SDT người nhận"
+            android:padding="10dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/activity_customer_address_activity_customer_address_et_enter_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/background_color1"
+            android:hint="Địa chỉ giao hàng"
+            android:padding="10dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_customer_address_activity_customer_address_et_enter_receiver" />
+        <Button
+            android:id="@+id/activity_customer_address_activity_customer_address_btnAddAdress"
+            android:layout_width="0dp"
+
+            android:layout_height="55dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="20dp"
+            android:text="Thêm địa chỉ mới"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
