@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.myapplication.models.Notification;
 import com.example.myapplication.models.Order;
 import com.example.myapplication.models.Product;
 import com.example.myapplication.models.Review;
@@ -55,6 +56,19 @@ public class GoFoodDatabase {
             e.printStackTrace();
         }
 
+    }
+    public void insertNotification(Notification notification){
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        String key = mDatabase.child("Users").child(notification.getUserId()).child("notifications").push().getKey();
+
+        try {
+            Map<String, Object> storeValues = notification.toMap();
+            Map<String, Object> childUpdates = new HashMap<>();
+            childUpdates.put("/Users/" + notification.getUserId() + "/notifications/" + key, storeValues);
+            mDatabase.updateChildren(childUpdates);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void insertStoreComment(Review review, String store_ID, String user_ID){

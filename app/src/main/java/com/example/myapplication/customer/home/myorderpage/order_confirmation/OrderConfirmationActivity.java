@@ -25,6 +25,7 @@ import com.example.myapplication.customer.address.CustomerAddressActivity;
 import com.example.myapplication.customer.home.HomeActivity;
 import com.example.myapplication.models.CartItem;
 import com.example.myapplication.models.CartSession;
+import com.example.myapplication.models.Notification;
 import com.example.myapplication.models.Order;
 import com.example.myapplication.models.ShippingAddress;
 import com.example.myapplication.models.Store;
@@ -168,6 +169,16 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         return order;
     }
 
+    private void createNotification(Order order)
+    {
+        Notification notification = new Notification();
+        notification.setUserId(order.getUserId());
+        notification.setTitle("Thông báo đặt hàng thành công");
+        notification.setContent("Cảm ơn quý khách đã đặt hàng. Đơn hàng của quý khách đang được xử lý. Mã đơn hàng của quý khách là: " + order.getOrderId());
+        notification.setNotificationTime(new Date());
+        goFoodDatabase.insertNotification(notification);
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -182,7 +193,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Order order = getOrderInfoFromForm();
                 goFoodDatabase.insertOrder(order);
-
+                createNotification(order);
                 cartSession.removeAllItem();
 
                 Toast.makeText(OrderConfirmationActivity.this, "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();

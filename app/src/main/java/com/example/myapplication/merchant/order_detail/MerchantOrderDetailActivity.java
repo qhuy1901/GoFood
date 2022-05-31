@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
+import com.example.myapplication.models.Notification;
 import com.example.myapplication.models.Order;
 
 import java.text.DateFormat;
@@ -157,6 +158,26 @@ public class MerchantOrderDetailActivity extends AppCompatActivity {
 
     }
 
+    private void createAcceptNotification(Order order)
+    {
+        Notification notification = new Notification();
+        notification.setUserId(order.getUserId());
+        notification.setTitle("Thay đổi trạng thái đơn hàng");
+        notification.setContent("Đơn hàng " +  order.getOrderId() + " của quý khách đã được cửa hàng " + tvStoreName.getText() + " tiếp nhận và đang được xử lý");
+        notification.setNotificationTime(new Date());
+        goFoodDatabase.insertNotification(notification);
+    }
+
+    private void createCancelNotification(Order order)
+    {
+        Notification notification = new Notification();
+        notification.setUserId(order.getUserId());
+        notification.setTitle("Đơn hàng của bạn đã bị hủy");
+        notification.setContent("Đơn hàng "+ order.getOrderId() + " của quý khách tại cửa hàng " + tvStoreName.getText() + " đã bị hủy. Vui lòng đặt hàng lại hoặc liên hệ với cửa hàng để biết thêm thông tin chi tiết.");
+        notification.setNotificationTime(new Date());
+        goFoodDatabase.insertNotification(notification);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -183,6 +204,7 @@ public class MerchantOrderDetailActivity extends AppCompatActivity {
                         .show();
                 btnAccept.setVisibility(View.GONE);
                 btnReject.setVisibility(View.GONE);
+                createAcceptNotification(order);
             }
         });
 
@@ -224,6 +246,7 @@ public class MerchantOrderDetailActivity extends AppCompatActivity {
                         }
                         order.setCancelReason(stringBuilder.toString());
                         goFoodDatabase.updateOrder(order);
+                        createCancelNotification(order);
                         finish();
                     }
                 });
