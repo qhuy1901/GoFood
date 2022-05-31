@@ -6,7 +6,7 @@
     android:layout_margin="10dp">
 
     <TextView
-        android:id="@+id/item_storename"
+        android:id="@+id/item_notification_tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -15,26 +15,26 @@
         android:textSize="14dp"
         android:fontFamily="@font/be_vietnam_medium"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/item_product_iv_product_image"
+        app:layout_constraintStart_toEndOf="@+id/item_notification_iv_icon"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/item_notification_tv_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/be_vietnam_medium"
         android:text="Hãy chia sẻ cảm nhận của bạn về đơn hàng để giúp những Khách hàng khác có thể tham khảo nhé"
         android:textSize="11dp"
-        app:layout_constraintStart_toStartOf="@+id/item_storename"
-        app:layout_constraintTop_toBottomOf="@+id/item_storename" />
+        app:layout_constraintStart_toStartOf="@+id/item_notification_tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/item_notification_tv_title" />
 
 
 
 
     <TextView
-        android:id="@+id/item_product_tv_description"
+        android:id="@+id/item_notification_tv_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -45,11 +45,11 @@
         android:textColor="#8E8E8E"
         android:textSize="11dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintStart_toStartOf="@+id/item_notification_tv_content"
+        app:layout_constraintTop_toBottomOf="@+id/item_notification_tv_content" />
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/item_product_iv_product_image"
+        android:id="@+id/item_notification_iv_icon"
         android:layout_width="57dp"
         android:layout_height="50dp"
         android:scaleType="centerCrop"

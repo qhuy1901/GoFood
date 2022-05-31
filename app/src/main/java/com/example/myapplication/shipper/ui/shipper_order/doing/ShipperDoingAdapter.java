@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.merchant.order_detail.ProductForMerchantOrderDetailAdapter;
+import com.example.myapplication.models.Notification;
 import com.example.myapplication.models.Order;
 
 import java.text.DateFormat;
@@ -83,6 +84,7 @@ public class ShipperDoingAdapter extends RecyclerView.Adapter<ShipperDoingAdapte
                                 order.setOrderStatus("Giao hàng thành công");
                                 order.setFinishTime(new Date());
                                 goFoodDatabase.updateOrder(order);
+                                createNotification(order, holder);
                             }
                         })
                         .setCancelButton("Hủy", new SweetAlertDialog.OnSweetClickListener() {
@@ -102,6 +104,17 @@ public class ShipperDoingAdapter extends RecyclerView.Adapter<ShipperDoingAdapte
         holder.rcvProducts.setLayoutManager(linearLayoutManager);
         ProductForMerchantOrderDetailAdapter adapter = new ProductForMerchantOrderDetailAdapter(order.getOrderDetail(), context);
         holder.rcvProducts.setAdapter(adapter);
+    }
+
+    private void createNotification(Order order, @NonNull ShipperDoingViewHolder holder)
+    {
+        Notification notification = new Notification();
+        notification.setUserId(order.getUserId());
+        notification.setTitle("Giao hàng thành công");
+        notification.setContent("Đơn hàng " + order.getOrderId()  + " của quý khách tại cửa hàng "+holder.tvStoreName.getText()+ " đã giao thành công. Cảm ơn quý khách đã sử dụng dịch vụ của chúng tôi");
+        notification.setNotificationTime(new Date());
+        GoFoodDatabase goFoodDatabase = new GoFoodDatabase();
+        goFoodDatabase.insertNotification(notification);
     }
 
     @Override

@@ -16,11 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
+import com.example.myapplication.models.Notification;
 import com.example.myapplication.models.Order;
 
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -78,6 +80,7 @@ public class ShipperReceiveOrderAdapter extends RecyclerView.Adapter<ShipperRece
                                 order.setShipperId(userId);
                                 order.setOrderStatus("Đang vận chuyển");
                                 goFoodDatabase.updateOrder(order);
+                                createNotification(order);
                             }
                         })
                         .setCancelButton("Hủy", new SweetAlertDialog.OnSweetClickListener() {
@@ -96,6 +99,17 @@ public class ShipperReceiveOrderAdapter extends RecyclerView.Adapter<ShipperRece
                 notifyDataSetChanged();
             }
         });
+    }
+
+    private void createNotification(Order order)
+    {
+        Notification notification = new Notification();
+        notification.setUserId(order.getUserId());
+        notification.setTitle("Đơn hàng của bạn đang được vận chuyển");
+        notification.setContent("Đơn hàng " + order.getOrderId()  + " của quý khách đã được shipper tiếp nhận và đang được vận chuyển. Vui lòng xem chi tiết đơn hàng để biết thông tin về người vận chuyển.");
+        notification.setNotificationTime(new Date());
+        GoFoodDatabase goFoodDatabase = new GoFoodDatabase();
+        goFoodDatabase.insertNotification(notification);
     }
 
     @Override
