@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.myapplication.models.Notification;
+import com.example.myapplication.models.OrdAddress;
 import com.example.myapplication.models.Order;
 import com.example.myapplication.models.Product;
 import com.example.myapplication.models.Review;
@@ -27,6 +28,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -56,6 +59,20 @@ public class GoFoodDatabase {
             e.printStackTrace();
         }
 
+    }
+    public void insertOrdAddress(OrdAddress address, String user_ID){
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        String key = mDatabase.child("Users").child(user_ID).child("address_ord_list").push().getKey();
+
+        try {
+            Map<String, Object> addValues = address.toMap();
+            Map<String, Object> childUpdates = new HashMap<>();
+            childUpdates.put("/Users/" + user_ID + "/address_ord_list/" + key, addValues);
+            mDatabase.updateChildren(childUpdates);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     public void insertNotification(Notification notification){
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -144,6 +161,25 @@ public class GoFoodDatabase {
             }
         });
     }
+    public void deleteOrdAddress(String ordAddress_phone, String user_ID)
+    {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        Query addressQuery = mDatabase.child("Users").child(user_ID).child("address_ord_list").orderByChild("phone_number").equalTo(ordAddress_phone);
+        addressQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot addSnapshot: snapshot.getChildren()) {
+                    addSnapshot.getRef().removeValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("ERR", "delete ord address");
+            }
+        });
+    }
+
 
     public void updateProduct(Product product) {
         mDatabase = FirebaseDatabase.getInstance().getReference();

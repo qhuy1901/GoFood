@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
 import com.example.myapplication.customer.cart.CartActivity;
+import com.example.myapplication.customer.home.HomeActivity;
 import com.example.myapplication.customer.home.myorderpage.order_confirmation.OrderConfirmationActivity;
 import com.example.myapplication.models.CartSession;
 import com.example.myapplication.models.Store;
@@ -165,7 +166,9 @@ public class StorePageDetailActivity extends AppCompatActivity {
         ivButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent switchActivityIntent = new Intent(StorePageDetailActivity.this, HomeActivity.class);
+                switchActivityIntent.putExtra("store", storeInfo);
+                startActivity(switchActivityIntent);
             }
         });
     }
