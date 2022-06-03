@@ -1,4 +1,4 @@
-package com.example.myapplication.customer.home.myorderpage;
+package com.example.myapplication.customer.home.myorderpage.order_history;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.customer.home.myorderpage.order_history.MyOrderHistoryTabAdapter;
 import com.example.myapplication.models.Order;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

@@ -52,6 +52,9 @@
             android:name=".merchant.store_management.MenuManagement.product.AddProductActivity"
             android:exported="false" />
         <activity
+            android:name=".customer.home.myorderpage.order_history.WriteStoreReview"
+            android:exported="false" />
+        <activity
             android:name=".merchant.store_management.StoreManagementActivity"
             android:exported="false"
             android:label="@string/title_activity_store_detail" />

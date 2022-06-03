@@ -85,29 +85,6 @@ public class StorePageReviewTabFragment extends Fragment {
         initUI(root);
         getReviewStoreListFromRealtimeDatabase();
 
-        cmtBtn.setOnClickListener(new View.OnClickListener() {
-            // comment review store
-            @Override
-            public void onClick(View view) {
-                SharedPreferences prefs = getContext().getSharedPreferences("Session", getContext().MODE_PRIVATE);
-                String userId = prefs.getString("userId", "No name defined");
-                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-                mDatabase.child("Users").child(userId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DataSnapshot> task) {
-                        if (!task.isSuccessful()) {
-                            Log.e("firebase", "Error getting data", task.getException());
-                        }
-                        else {
-                            User user = task.getResult().getValue(User.class);
-                            // Review review = new Review(user.getFullName(), cmt, cmt_date);
-                            // goFoodDatabase.insertStoreComment(, storeInfo.getStoreId(), userId);
-                        }
-                    }
-                });
-            }
-        });
-
         return root;
     }
 }

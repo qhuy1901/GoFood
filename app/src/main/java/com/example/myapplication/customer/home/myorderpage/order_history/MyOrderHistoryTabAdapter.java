@@ -1,4 +1,4 @@
-package com.example.myapplication.customer.home.myorderpage;
+package com.example.myapplication.customer.home.myorderpage.order_history;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
 import com.example.myapplication.customer.home.myorderpage.order_detail.CustomerOrderDetailActivity;
 import com.example.myapplication.models.Order;
+import com.example.myapplication.models.Store;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -94,6 +95,15 @@ public class MyOrderHistoryTabAdapter extends RecyclerView.Adapter<MyOrderHistor
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
+        holder.btnCheckReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent switchActivityIntent = new Intent(context, WriteStoreReview.class);
+                switchActivityIntent.putExtra("order", order);
+                context.startActivity(switchActivityIntent);
             }
         });
     }
