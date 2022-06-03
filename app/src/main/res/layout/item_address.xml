@@ -1,6 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_item_address"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:background="@color/white"
+    android:paddingLeft="8dp"
+    android:paddingTop="8dp"
+    android:paddingRight="8dp"
+    android:paddingBottom="8dp">
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/activity_customer_address_activity_customer_address_imageView8"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/location_icon" />
+
+    <TextView
+        android:id="@+id/item_add_address"
+        android:layout_width="359dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:text="2 Hẻm 70/12 Đoàn Văn Cự, P.Tam Hiệp, TP Biên Hòa, Đồng Nai, Việt Nam"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/activity_customer_address_activity_customer_address_imageView8"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_add_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="0dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:text="Quang Huy"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/activity_customer_address_activity_customer_address_imageView8"
+        app:layout_constraintTop_toBottomOf="@+id/item_add_address" />
+
+    <TextView
+        android:id="@+id/item_add_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:text="0365990290"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/item_add_name"
+        app:layout_constraintTop_toBottomOf="@+id/item_add_address" />
+</androidx.constraintlayout.widget.ConstraintLayout>

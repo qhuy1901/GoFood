@@ -1,8 +1,8 @@
 package com.example.myapplication.customer.home.myorderpage.order_confirmation.address;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerAddressActivity extends AppCompatActivity {
+public class CustomerOrdAddressActivity extends AppCompatActivity {
 
     private ImageView ivBtnBack;
     private RecyclerView rcvLiAddress;
@@ -36,6 +36,7 @@ public class CustomerAddressActivity extends AppCompatActivity {
     private Button btnAddAddress;
     private String userId;
     private GoFoodDatabase goFoodDatabase;
+    private Store storeInfo;
 
     private void initUi()
     {
@@ -46,9 +47,9 @@ public class CustomerAddressActivity extends AppCompatActivity {
         btnAddAddress = (Button) findViewById(R.id.activity_customer_address_btnAddAdress);
         rcvLiAddress = (RecyclerView) findViewById(R.id.rcv_li_address_ord);
         liOrdAddress = new ArrayList<>();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(CustomerAddressActivity.this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(CustomerOrdAddressActivity.this);
         rcvLiAddress.setLayoutManager(linearLayoutManager);
-        adapter =  new CustomerOrdAddressAdapter(liOrdAddress, CustomerAddressActivity.this);
+        adapter =  new CustomerOrdAddressAdapter(liOrdAddress, CustomerOrdAddressActivity.this, storeInfo);
         rcvLiAddress.setAdapter(adapter);
     }
     public void getOrdAddressList()
@@ -70,25 +71,33 @@ public class CustomerAddressActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(CustomerAddressActivity.this, "Không lấy được list addres", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CustomerOrdAddressActivity.this, "Không lấy được list addres", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    private void receiveStoreInfo()
+    {
+        Intent intent = getIntent();
+        storeInfo = (Store) intent.getSerializableExtra("store");
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_address);
-        initUi();
-
         // receive user info
         SharedPreferences prefs = this.getSharedPreferences("Session", this.MODE_PRIVATE);
         userId = prefs.getString("userId", "No name defined");
 
+        // receive store info
+        receiveStoreInfo();
+
         // connect to gofood database
         goFoodDatabase = new GoFoodDatabase();
 
+        initUi();
         getOrdAddressList();
+
         ivBtnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

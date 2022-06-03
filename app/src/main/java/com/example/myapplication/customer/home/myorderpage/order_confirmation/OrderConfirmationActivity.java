@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,11 +22,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.R;
-import com.example.myapplication.customer.address.CustomerAddressActivity;
+import com.example.myapplication.customer.home.myorderpage.order_confirmation.address.CustomerOrdAddressActivity;
 import com.example.myapplication.customer.home.HomeActivity;
+import com.example.myapplication.customer.store_detail.StorePageDetailActivity;
 import com.example.myapplication.models.CartItem;
 import com.example.myapplication.models.CartSession;
 import com.example.myapplication.models.Notification;
+import com.example.myapplication.models.OrdAddress;
 import com.example.myapplication.models.Order;
 import com.example.myapplication.models.ShippingAddress;
 import com.example.myapplication.models.Store;
@@ -52,11 +55,22 @@ public class OrderConfirmationActivity extends AppCompatActivity {
     private GoFoodDatabase goFoodDatabase;
     private String userId;
     private Store storeInfo;
+    private OrdAddress ordAddressInfo;
 
     private void receiveStoreInfo()
     {
         Intent intent = getIntent();
         storeInfo = (Store) intent.getSerializableExtra("store");
+    }
+    private void receiveOrdAddressInfo(){
+        Intent intent = getIntent();
+        ordAddressInfo = (OrdAddress) intent.getSerializableExtra("address");
+    }
+
+    private void getUserInfo()
+    {
+        SharedPreferences prefs = this.getSharedPreferences("Session", MODE_PRIVATE);
+        userId = prefs.getString("userId", "No name defined");
     }
 
     private void initUi()
@@ -124,13 +138,14 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         btnCofirm.setText("Đặt đơn - " + totalString);
 
         // Load Shipping Address
-        goFoodDatabase.loadCustomerShippingAddressToTextView(userId, tvCustomerName, tvCustomerPhone, tvShippingAddress);
-    }
-
-    private void getUserInfo()
-    {
-        SharedPreferences prefs = this.getSharedPreferences("Session", MODE_PRIVATE);
-        userId = prefs.getString("userId", "No name defined");
+        if(ordAddressInfo != null) {
+            Log.d("addressinfo", ordAddressInfo.getAddress());
+            tvCustomerName.setText(ordAddressInfo.getName());
+            tvShippingAddress.setText(ordAddressInfo.getAddress().replace(", Vietnam", "").replace(", Việt Nam", ""));
+            tvCustomerPhone.setText(ordAddressInfo.getPhone_number());
+        }else {
+            goFoodDatabase.loadCustomerShippingAddressToTextView(userId, tvCustomerName, tvCustomerPhone, tvShippingAddress);
+        }
     }
 
     private Order getOrderInfoFromForm()
@@ -186,6 +201,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_confirmation);
         initUi();
         receiveStoreInfo();
+        receiveOrdAddressInfo();
         getUserInfo();
         loadInfoToForm();
         btnCofirm.setOnClickListener(new View.OnClickListener() {
@@ -204,13 +220,16 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         ivBtnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent switchActivityIntent = new Intent(OrderConfirmationActivity.this, StorePageDetailActivity.class);
+                switchActivityIntent.putExtra("store", storeInfo);
+                startActivity(switchActivityIntent);
             }
         });
         clAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent switchActivityIntent = new Intent(OrderConfirmationActivity.this, CustomerAddressActivity.class);
+                Intent switchActivityIntent = new Intent(OrderConfirmationActivity.this, CustomerOrdAddressActivity.class);
+                switchActivityIntent.putExtra("store", storeInfo);
                 startActivity(switchActivityIntent);
             }
         });
