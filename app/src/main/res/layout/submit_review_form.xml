@@ -4,7 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="">
+    tools:context=".customer.home.myorderpage.order_history.WriteStoreReview">
+
+    <ImageView
+        android:id="@+id/btn_submit_back"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:background="#FFFFFF"
+        android:src="@drawable/back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RatingBar
         android:id="@+id/rating_submit"
@@ -12,14 +23,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:progressTint="@color/color_primary"
-        android:secondaryProgressTint="@color/color_primary"
         android:rating="3.5"
+        android:secondaryProgressTint="@color/color_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDanhGia" />
 
-    <TextView
+    <EditText
         android:id="@+id/txtReviewSubmit"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -28,7 +39,7 @@
         android:layout_marginEnd="40dp"
         android:background="@drawable/border_textfield"
         android:fontFamily="@font/be_vietnam_medium"
-        android:text="TextView"
+        android:text=""
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,17 +50,18 @@
         android:layout_width="0sp"
         android:layout_height="60dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="160dp"
         android:fontFamily="@font/be_vietnam_bold"
         android:paddingTop="4dp"
         android:paddingBottom="4sp"
         android:text="Gửi đánh giá"
         android:textAllCaps="false"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtReviewSubmit" />
 
     <TextView
         android:id="@+id/txtDanhGiaSP"
