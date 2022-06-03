@@ -69,14 +69,15 @@
         app:layout_constraintTop_toBottomOf="@+id/item_cart_item_tv_note" />
 
     <android.widget.ImageButton
+        android:id="@+id/item_cart_item_plus"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:id="@+id/item_cart_item_plus"
         android:layout_marginRight="10dp"
         android:background="@drawable/plus_icon"
         android:src="@drawable/plus1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/item_cart_item_quantity"
