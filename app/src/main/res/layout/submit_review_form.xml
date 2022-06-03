@@ -10,20 +10,21 @@
         android:id="@+id/rating_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:progressTint="@color/color_primary"
+        android:secondaryProgressTint="@color/color_primary"
         android:rating="3.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDanhGia" />
 
     <TextView
         android:id="@+id/txtReviewSubmit"
         android:layout_width="fill_parent"
-        android:layout_height="200sp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/border_textfield"
         android:fontFamily="@font/be_vietnam_medium"
@@ -31,13 +32,15 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rating_submit" />
+        app:layout_constraintTop_toBottomOf="@+id/txtBinhLuan" />
 
     <Button
         android:id="@+id/btn_submit_review"
-        android:layout_width="200dp"
+        android:layout_width="0sp"
         android:layout_height="60dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="160dp"
         android:fontFamily="@font/be_vietnam_bold"
         android:paddingTop="4dp"
         android:paddingBottom="4sp"
@@ -47,5 +50,45 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtDanhGiaSP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/be_vietnam_bold"
+        android:text="Đánh giá sản phẩm"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtDanhGia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/be_vietnam_bold"
+        android:text="* Đánh giá của bạn"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDanhGiaSP" />
+
+    <TextView
+        android:id="@+id/txtBinhLuan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/be_vietnam_bold"
+        android:text="* Bình luận của bạn"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rating_submit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
