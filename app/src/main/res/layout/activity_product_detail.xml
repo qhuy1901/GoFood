@@ -127,14 +127,156 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activity_product_detail_v" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/productdetail_review_rcv"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/white"
-            app:layout_constraintTop_toBottomOf="@+id/activity_product_detail_tv_dg"
-            tools:layout_editor_absoluteX="0dp" />
+            android:layout_margin="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/activity_product_detail_tv_dg">
+
+            <RatingBar
+                android:id="@+id/activity_product_detail_fragement_cus_shoppage_review_item_rating_bar"
+                style="@style/CustomRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:rating="4.3"
+                app:layout_constraintStart_toStartOf="@+id/activity_product_detail_txt_fragement_cus_shoppage_review_item_username"
+                app:layout_constraintTop_toBottomOf="@+id/activity_product_detail_txt_fragement_cus_shoppage_review_item_username" />
+
+            <ImageView
+                android:id="@+id/activity_product_detail_img_txt_fragement_cus_shoppage_review_item_user_avt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/round_outline"
+                android:clipToOutline="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/btn_bg" />
+
+            <TextView
+                android:id="@+id/activity_product_detail_txt_fragement_cus_shoppage_review_item_username"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/be_vietnam_medium"
+                android:text="thuysnga"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/activity_product_detail_img_txt_fragement_cus_shoppage_review_item_user_avt"
+                app:layout_constraintTop_toTopOf="@+id/activity_product_detail_img_txt_fragement_cus_shoppage_review_item_user_avt" />
+
+            <View
+                android:id="@+id/activity_product_detail_fragement_cus_shoppage_review_item_line1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="16dp" />
+
+            <TextView
+                android:id="@+id/activity_product_detail_txt_fragement_cus_shoppage_review_item_comment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="12dp"
+                android:fontFamily="@font/be_vietnam_medium"
+                android:text="Sản phẩm rất ngon, mềm mịn và tươi, giao hàng nhanh, chất lượng rất phù hợp với giá tiền"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/activity_product_detail_txt_fragement_cus_shoppage_review_item_username"
+                app:layout_constraintTop_toBottomOf="@+id/activity_product_detail_img_txt_fragement_cus_shoppage_review_item_user_avt" />
+
+
+            <TextView
+                android:id="@+id/activity_product_detail_txt_fragement_cus_shoppage_review_item_comment_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/be_vietnam_medium"
+                android:text="15:00 16/4/2022"
+                android:textSize="12dp"
+                app:layout_constraintStart_toStartOf="@+id/activity_product_detail_txt_fragement_cus_shoppage_review_item_comment"
+                app:layout_constraintTop_toBottomOf="@+id/activity_product_detail_txt_fragement_cus_shoppage_review_item_comment" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout10"
+            android:layout_margin="10dp">
+
+            <RatingBar
+                android:id="@+id/activity_product_detail_fragement_cus_shoppage_review_item_rating_bar2"
+                style="@style/CustomRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:rating="3.5"
+                app:layout_constraintStart_toStartOf="@+id/activity_product_detail_txt_fragement_cus_shoppage_review_item_username2"
+                app:layout_constraintTop_toBottomOf="@+id/activity_product_detail_txt_fragement_cus_shoppage_review_item_username2" />
+
+            <ImageView
+                android:id="@+id/activity_product_detail_img_txt_fragement_cus_shoppage_review_item_user_avt2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/round_outline"
+                android:clipToOutline="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/btn_bg" />
+
+            <TextView
+                android:id="@+id/activity_product_detail_txt_fragement_cus_shoppage_review_item_username2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/be_vietnam_medium"
+                android:text="quanghuy"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/activity_product_detail_img_txt_fragement_cus_shoppage_review_item_user_avt2"
+                app:layout_constraintTop_toTopOf="@+id/activity_product_detail_img_txt_fragement_cus_shoppage_review_item_user_avt2" />
+
+            <View
+                android:id="@+id/activity_product_detail_fragement_cus_shoppage_review_item_line12"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="16dp" />
+
+            <TextView
+                android:id="@+id/activity_product_detail_txt_fragement_cus_shoppage_review_item_comment2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="12dp"
+                android:fontFamily="@font/be_vietnam_medium"
+                android:text="Món ngon, đậm đà, nhiều topping nữa, nhưng giao hàng hơi lâu"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/activity_product_detail_txt_fragement_cus_shoppage_review_item_username2"
+                app:layout_constraintTop_toBottomOf="@+id/activity_product_detail_img_txt_fragement_cus_shoppage_review_item_user_avt2" />
+
+
+            <TextView
+                android:id="@+id/activity_product_detail_txt_fragement_cus_shoppage_review_item_comment_time2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/be_vietnam_medium"
+                android:text="15:00 16/4/2022"
+                android:textSize="12dp"
+                app:layout_constraintStart_toStartOf="@+id/activity_product_detail_txt_fragement_cus_shoppage_review_item_comment2"
+                app:layout_constraintTop_toBottomOf="@+id/activity_product_detail_txt_fragement_cus_shoppage_review_item_comment2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

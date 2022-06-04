@@ -65,12 +65,6 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         if(productInfo.getAvailable() == 0)
             btnAdd.setVisibility(View.GONE);
-        rcvProdReview = findViewById(R.id.productdetail_review_rcv);
-        reviewList = new ArrayList<>();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ProductDetailActivity.this);
-        rcvProdReview.setLayoutManager(linearLayoutManager);
-        reviewForProductDetailAdapter = new ReviewForProductDetailAdapter(reviewList, ProductDetailActivity.this);
-        rcvProdReview.setAdapter(reviewForProductDetailAdapter);
     }
 
     private void receiveInfo()
@@ -81,39 +75,12 @@ public class ProductDetailActivity extends AppCompatActivity {
     }
 
 
-    private void getReviewProductListFromRealtimeDatabase() {
-        String storeID = storeInfo.getStoreId();
-        String prodID = productInfo.getProductId();
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference().child("stores").child(storeID).child("menu").child("products").child(prodID).child("reviews");
-
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                reviewList.clear();
-                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                    Review review= postSnapshot.getValue(Review.class);
-                    reviewList.add(review);
-                }
-                reviewForProductDetailAdapter.notifyDataSetChanged();
-            }
-
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(ProductDetailActivity.this, "Không lấy được danh sách review", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
         receiveInfo();
         initUi();
-        getReviewProductListFromRealtimeDatabase();
         ivBtnback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
