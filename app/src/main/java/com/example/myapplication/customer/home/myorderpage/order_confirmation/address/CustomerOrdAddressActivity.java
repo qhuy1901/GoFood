@@ -113,6 +113,9 @@ public class CustomerOrdAddressActivity extends AppCompatActivity {
 
                 OrdAddress ordAddress = new OrdAddress(name, address, phone_number);
                 goFoodDatabase.insertOrdAddress(ordAddress, userId);
+                edtAddress.getText().clear();
+                edtName.getText().clear();
+                edtPhone_Number.getText().clear();
             }
         });
     }

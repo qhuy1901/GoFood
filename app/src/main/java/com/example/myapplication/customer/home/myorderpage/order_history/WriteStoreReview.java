@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class WriteStoreReview extends AppCompatActivity {
 
     private EditText txtReview;
+    private RatingBar ratingBar;
     private Button btnSubmit;
     private ImageView btnSubmitBack;
     private GoFoodDatabase goFoodDatabase;
@@ -48,6 +50,7 @@ public class WriteStoreReview extends AppCompatActivity {
         btnSubmit = (Button) findViewById(R.id.btn_submit_review);
         btnSubmitBack = (ImageView) findViewById(R.id.btn_submit_back);
         txtReview = (EditText) findViewById(R.id.txtReviewSubmit);
+        ratingBar = (RatingBar) findViewById(R.id.rating_submit);
     }
     private void receiveOrdInfo(){
         Intent intent = getIntent();
@@ -65,6 +68,7 @@ public class WriteStoreReview extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String cmt = txtReview.getText().toString();
+                float rating = ratingBar.getRating();
                 SharedPreferences prefs = view.getContext().getSharedPreferences("Session", view.getContext().MODE_PRIVATE);
                 String userId = prefs.getString("userId", "No name defined");
                 DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -78,8 +82,10 @@ public class WriteStoreReview extends AppCompatActivity {
                             User user = task.getResult().getValue(User.class);
                             DateFormat dateFormat = new SimpleDateFormat("hh:mm dd-MM-yyyy");
                             String cmt_date = dateFormat.format(orderInfo.getOrderDate());
-                            Review review = new Review(user.getFullName(), cmt, cmt_date);
+                            Review review = new Review(user.getFullName(), cmt, cmt_date, rating);
                             goFoodDatabase.insertStoreComment(review, orderInfo.getStoreId(), userId);
+                            goFoodDatabase.updateRatingtotal(orderInfo.getStoreId());
+
                             txtReview.getText().clear();
                             new SweetAlertDialog(view.getContext(), SweetAlertDialog.SUCCESS_TYPE)
                                     .setContentText("Viết review thành công")
@@ -87,6 +93,7 @@ public class WriteStoreReview extends AppCompatActivity {
                         }
                     }
                 });
+                finish();
             }
         });
         btnSubmitBack.setOnClickListener(new View.OnClickListener() {

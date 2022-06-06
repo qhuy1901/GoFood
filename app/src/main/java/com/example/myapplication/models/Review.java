@@ -10,13 +10,23 @@ public class Review implements Serializable {
     private String user_cmt_name;
     private String cmt;
     private String cmt_date;
+    private float rating;
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
 
     public Review(){}
 
-    public Review(String user_cmt_name, String cmt, String cmt_date) {
+    public Review(String user_cmt_name, String cmt, String cmt_date, float rating) {
         this.user_cmt_name = user_cmt_name;
         this.cmt = cmt;
         this.cmt_date = cmt_date;
+        this.rating = rating;
     }
 
     public String getUser_cmt_name() {
@@ -49,6 +59,7 @@ public class Review implements Serializable {
         result.put("user_cmt_name", user_cmt_name);
         result.put("cmt", cmt);
         result.put("cmt_date", cmt_date);
+        result.put("rating", rating);
         return result;
     }
 }

@@ -4,26 +4,36 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.GoFoodDatabase;
+import com.example.myapplication.LoginTabFragment;
 import com.example.myapplication.R;
 import com.example.myapplication.customer.cart.CartActivity;
 import com.example.myapplication.customer.home.HomeActivity;
 import com.example.myapplication.customer.home.myorderpage.order_confirmation.OrderConfirmationActivity;
 import com.example.myapplication.models.CartSession;
+import com.example.myapplication.models.Review;
 import com.example.myapplication.models.Store;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -38,15 +48,14 @@ public class StorePageDetailActivity extends AppCompatActivity {
     private TabLayout tablayout;
     private ViewPager2 viewPager;
     private ToppingBottomSheetDialog toppingBottomSheetDialog;
+    private RatingBar storeRatingBar;
 
 
     private Store storeInfo;
     private GoFoodDatabase goFoodDatabase;
-//    private List<Product> productList;
-//    private RecyclerView rcvProduct;
     private TextView tvStoreStatus;
     private CartSession cartSession;
-//    private ProductForStoreDetailAdapter productForStoreDetailAdapter;
+    DatabaseReference realtimedbRef;
 
 
     private void initUi()
@@ -63,6 +72,7 @@ public class StorePageDetailActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.store_vp);
         ivButtonBack = (ImageView) findViewById(R.id.activity_store_detail_iv_btn_back) ;
         tvStoreStatus = (TextView)  findViewById(R.id.store_delivery_time);
+        storeRatingBar = (RatingBar) findViewById(R.id.store_ratingbar);
 
         cartSession = new CartSession(StorePageDetailActivity.this);
 
@@ -91,6 +101,30 @@ public class StorePageDetailActivity extends AppCompatActivity {
         return toppingBottomSheetDialog;
     }
 
+    public void getRatingTotal(){
+        realtimedbRef = FirebaseDatabase.getInstance().getReference();
+        realtimedbRef.child("stores").child(storeInfo.getStoreId()).child("reviews").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                float total = 0;
+                int num_review = 0;
+                for (DataSnapshot querysnapshot: snapshot.getChildren()) {
+                    Review review = querysnapshot.getValue(Review.class);
+                    total += review.getRating();
+                    num_review += 1;
+                }
+                storeRatingBar.setRating(total / num_review);
+                tvRating.setText(String.valueOf(total / num_review));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+        });
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +132,7 @@ public class StorePageDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_store_detail);
         receiveStoreInfo();
         initUi();
+        getRatingTotal();
 
         final StorePageViewPagerAdapter adapter = new StorePageViewPagerAdapter(this, storeInfo);
         viewPager.setAdapter(adapter);
@@ -123,7 +158,7 @@ public class StorePageDetailActivity extends AppCompatActivity {
         goFoodDatabase = new GoFoodDatabase();
         Glide.with(StorePageDetailActivity.this).load(storeInfo.getAvatar()).into(ivStoreAvatar);
         tvStoreName.setText(storeInfo.getStoreName());
-        tvRating.setText(storeInfo.getRating().toString());
+        tvRating.setText(String.valueOf(storeInfo.getRating()));
         tvDeliveryTime.setText(storeInfo.getDeliveryTime());
         ivShowCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,7 +194,8 @@ public class StorePageDetailActivity extends AppCompatActivity {
                 String userId = prefs.getString("userId", "No name defined");
 
                 goFoodDatabase.insertLoveStore(storeInfo, userId);
-                ivStoreWishList.setColorFilter(getApplicationContext().getResources().getColor(R.color.red));
+                // ivStoreWishList.setColorFilter(getApplicationContext().getResources().getColor(R.color.red));
+                ivStoreWishList.setImageDrawable(getApplicationContext().getResources().getDrawable(R.drawable.red_heart));
             }
         });
 
