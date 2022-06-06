@@ -64,6 +64,7 @@ public class ListStoreAdapter extends RecyclerView.Adapter<ListStoreAdapter.Stor
         double distance = rand.nextInt(4) + (double) Math.round(rand.nextDouble() * 10) / 10;
         holder.tvDeliveryTime.setText(store.getDeliveryTime());
         holder.tvDistance.setText(distance+"km");
+        holder.tvRating.setText(String.valueOf(store.getRating()));
     }
 
     @Override
@@ -74,7 +75,7 @@ public class ListStoreAdapter extends RecyclerView.Adapter<ListStoreAdapter.Stor
     }
 
     public class StoreForHomeViewHolder  extends RecyclerView.ViewHolder{
-        private TextView tvStoreName, tvDeliveryTime, tvDistance;
+        private TextView tvStoreName, tvDeliveryTime, tvDistance, tvRating;
         private ImageView ivStoreAvatar, ivStoreStatus;
         private ConstraintLayout clStore;
 
@@ -86,6 +87,7 @@ public class ListStoreAdapter extends RecyclerView.Adapter<ListStoreAdapter.Stor
             ivStoreStatus = itemView.findViewById(R.id.item_store_for_home_iv_store_status);
             tvDeliveryTime = itemView.findViewById(R.id.item_store_for_home_delivery_time);
             tvDistance= itemView.findViewById(R.id.item_store_for_home_distance);
+            tvRating = itemView.findViewById(R.id.store_rating_home);
         }
     }
 }

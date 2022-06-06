@@ -100,6 +100,28 @@ public class GoFoodDatabase {
             e.printStackTrace();
         }
     }
+    public void updateRatingtotal(String store_ID){
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("stores").child(store_ID).child("reviews").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                float total = 0;
+                int num_review = 0;
+                for (DataSnapshot querysnapshot: snapshot.getChildren()) {
+                    Review review = querysnapshot.getValue(Review.class);
+                    total += review.getRating();
+                    num_review += 1;
+                }
+                mDatabase.child("stores").child(store_ID).child("rating").setValue(total / num_review);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+        });
+    }
 
     public void insertProduct(Product product, ImageView ivProductImage) {
         mDatabase = FirebaseDatabase.getInstance().getReference();

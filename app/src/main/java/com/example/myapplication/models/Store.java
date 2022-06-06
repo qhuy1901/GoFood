@@ -17,13 +17,22 @@ public class Store implements Serializable
     private String storeCategory;
     private String owner;
     private String avatar;
-    private Integer rating;
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    private float rating;
     private String deliveryTime;
     private String storeAddress;
     private List<String> productGrouping;
     private int storeStatus;
 
-    public Store(String storeId, String storeName, String storeCategory, String owner, String avatar, Integer rating, String deliveryTime, String storeAddress) {
+    public float getRating() {
+        return rating;
+    }
+
+    public Store(String storeId, String storeName, String storeCategory, String owner, String avatar, float rating, String deliveryTime, String storeAddress) {
         this.storeId = storeId;
         this.storeName = storeName;
         this.storeCategory = storeCategory;
@@ -87,13 +96,6 @@ public class Store implements Serializable
         this.avatar = avatar;
     }
 
-    public Integer getRating() {
-        return rating;
-    }
-
-    public void setRating(Integer rating) {
-        this.rating = rating;
-    }
 
     public String getDeliveryTime() {
         return deliveryTime;
