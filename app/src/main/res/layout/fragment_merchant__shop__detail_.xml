@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/imgStoreAvt"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:scaleType="centerCrop"
@@ -63,7 +64,7 @@
                 app:layout_constraintVertical_bias="0.038" />
 
             <TextView
-                android:id="@+id/txtFullName"
+                android:id="@+id/txtStoreName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
@@ -77,18 +78,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/activity_add_product_ib_back" />
 
             <TextView
-                android:id="@+id/textView17"
+                android:id="@+id/txtRating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/be_vietnam_semibold"
                 android:text="4.9"
                 android:textColor="@color/white"
                 android:textSize="13dp"
+                android:layout_marginLeft="25dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/txtFullName"
-                app:layout_constraintHorizontal_bias="0.543"
-                app:layout_constraintStart_toStartOf="@+id/txtFullName"
-                app:layout_constraintTop_toBottomOf="@+id/txtFullName"
+                app:layout_constraintStart_toStartOf="@+id/txtStoreName"
+                app:layout_constraintTop_toBottomOf="@+id/txtStoreName"
                 app:layout_constraintVertical_bias="0.239" />
 
             <TextView
@@ -101,9 +101,9 @@
                 android:textColor="@color/white"
                 android:textSize="11dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/textView17"
-                app:layout_constraintStart_toStartOf="@+id/textView17"
-                app:layout_constraintTop_toBottomOf="@+id/textView17"
+                app:layout_constraintEnd_toEndOf="@+id/txtRating"
+                app:layout_constraintStart_toStartOf="@+id/txtRating"
+                app:layout_constraintTop_toBottomOf="@+id/txtRating"
                 app:layout_constraintVertical_bias="0.0" />
 
             <View
@@ -114,11 +114,11 @@
                 android:background="@color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/textView10"
                 app:layout_constraintStart_toEndOf="@+id/textView10"
-                app:layout_constraintTop_toTopOf="@+id/textView17"
+                app:layout_constraintTop_toTopOf="@+id/txtRating"
                 app:layout_constraintVertical_bias="0.45" />
 
             <TextView
-                android:id="@+id/text"
+                android:id="@+id/txtLikeAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="45dp"
@@ -126,9 +126,9 @@
                 android:text="1k"
                 android:textColor="@color/white"
                 android:textSize="13dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView17"
+                app:layout_constraintBottom_toBottomOf="@+id/txtRating"
                 app:layout_constraintStart_toEndOf="@+id/item_new_and_confirm_order_item_new_and_confirm_order_tv_order"
-                app:layout_constraintTop_toTopOf="@+id/textView17"
+                app:layout_constraintTop_toTopOf="@+id/txtRating"
                 app:layout_constraintVertical_bias="1.0" />
 
             <TextView
@@ -141,10 +141,10 @@
                 android:textColor="@color/white"
                 android:textSize="11dp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView10"
-                app:layout_constraintEnd_toEndOf="@+id/text"
+                app:layout_constraintEnd_toEndOf="@+id/txtLikeAmount"
                 app:layout_constraintHorizontal_bias="0.103"
                 app:layout_constraintStart_toEndOf="@+id/item_new_and_confirm_order_item_new_and_confirm_order_tv_order"
-                app:layout_constraintTop_toBottomOf="@+id/text"
+                app:layout_constraintTop_toBottomOf="@+id/txtLikeAmount"
                 app:layout_constraintVertical_bias="0.0" />
 
             <View
@@ -157,10 +157,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.108"
                 app:layout_constraintStart_toEndOf="@+id/textView11"
-                app:layout_constraintTop_toTopOf="@+id/text" />
+                app:layout_constraintTop_toTopOf="@+id/txtLikeAmount" />
 
             <TextView
-                android:id="@+id/text2"
+                android:id="@+id/txtTimeActi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
@@ -170,7 +170,7 @@
                 android:textSize="13dp"
                 app:layout_constraintBottom_toTopOf="@+id/textView11"
                 app:layout_constraintStart_toEndOf="@+id/item_order"
-                app:layout_constraintTop_toTopOf="@+id/text" />
+                app:layout_constraintTop_toTopOf="@+id/txtLikeAmount" />
 
             <TextView
                 android:id="@+id/textView12"
@@ -180,9 +180,9 @@
                 android:text="Giờ mở cửa"
                 android:textColor="@color/white"
                 android:textSize="11dp"
-                app:layout_constraintEnd_toEndOf="@+id/text2"
-                app:layout_constraintStart_toStartOf="@+id/text2"
-                app:layout_constraintTop_toBottomOf="@+id/text2" />
+                app:layout_constraintEnd_toEndOf="@+id/txtTimeActi"
+                app:layout_constraintStart_toStartOf="@+id/txtTimeActi"
+                app:layout_constraintTop_toBottomOf="@+id/txtTimeActi" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -229,7 +229,7 @@
             android:layout_height="12dp"
             android:layout_marginRight="15dp"
             android:src="@drawable/ic_next_arrow_24"
-            app:layout_constraintBottom_toBottomOf="@+id/text"
+            app:layout_constraintBottom_toBottomOf="@+id/txtLikeAmount"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/text11" />
 

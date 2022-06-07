@@ -451,7 +451,22 @@ public class GoFoodDatabase {
             }
         });
     }
-
+    public void loadStoreInfoToTextView(String storeId, TextView tvName)
+    {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("stores").child(storeId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    Store store = task.getResult().getValue(Store.class);
+                    tvName.setText(store.getStoreName());
+                }
+            }
+        });
+    }
     public void loadShippingAddressToTextViewByOrderId(String orderId, TextView tvName, TextView tvAddress)
     {
         mDatabase = FirebaseDatabase.getInstance().getReference();

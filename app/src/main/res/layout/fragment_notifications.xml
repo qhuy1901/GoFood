@@ -25,7 +25,7 @@
 
 
             <TextView
-                android:id="@+id/txtFullName"
+                android:id="@+id/txtShipperName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -168,7 +168,7 @@
             android:layout_height="30dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
-            android:src="@drawable/shop"
+            android:src="@drawable/online_shopping"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -178,7 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:fontFamily="@font/be_vietnam_semibold"
-            android:text="Ứng dụng cho chủ quán"
+            android:text="Giao diện cho người mua"
             android:textColor="@color/black"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView6"
