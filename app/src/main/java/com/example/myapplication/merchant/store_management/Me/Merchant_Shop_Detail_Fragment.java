@@ -43,7 +43,7 @@ public class Merchant_Shop_Detail_Fragment extends Fragment {
     {
         goFoodDatabase = new GoFoodDatabase();
 
-        goFoodDatabase.loadStoreInfoToTextView(storeId, txtStoreName);
+        goFoodDatabase.loadStoreInfoToTextView(storeId, txtStoreName,swStoreStatus,imgStoreAvt, getContext());
 
 
     }
