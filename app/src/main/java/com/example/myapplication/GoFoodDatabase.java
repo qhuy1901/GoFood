@@ -7,11 +7,13 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.models.Notification;
 import com.example.myapplication.models.OrdAddress;
 import com.example.myapplication.models.Order;
@@ -473,7 +475,7 @@ public class GoFoodDatabase {
             }
         });
     }
-    public void loadStoreInfoToTextView(String storeId, TextView tvName)
+    public void loadStoreInfoToTextView(String storeId, TextView tvName, Switch ivSwitch, ImageView Avt, Context context)
     {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("stores").child(storeId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -485,6 +487,8 @@ public class GoFoodDatabase {
                 else {
                     Store store = task.getResult().getValue(Store.class);
                     tvName.setText(store.getStoreName());
+                    if(store.getStoreStatus()==1) ivSwitch.setChecked(true);
+                    Glide.with(context).load(store.getAvatar()).into(Avt);
                 }
             }
         });
