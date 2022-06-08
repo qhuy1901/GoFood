@@ -108,7 +108,7 @@ public class StorePageDetailActivity extends AppCompatActivity {
                     tab.setText("Đặt đơn");
                     break;
                 case 1:
-                    tab.setText("Bình luận");
+                    tab.setText("Đánh giá");
                     break;
                 case 2:
                     tab.setText("Thông tin");
