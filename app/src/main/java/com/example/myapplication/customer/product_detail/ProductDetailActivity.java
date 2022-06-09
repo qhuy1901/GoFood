@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
+import com.example.myapplication.customer.cart.CartActivity;
+import com.example.myapplication.customer.store_detail.StorePageDetailActivity;
 import com.example.myapplication.customer.store_detail.ToppingBottomSheetDialog;
 import com.example.myapplication.customer.store_detail.review_tab.ReviewForStoreDetailAdapter;
 import com.example.myapplication.models.Product;
@@ -37,10 +39,6 @@ public class ProductDetailActivity extends AppCompatActivity {
     private TextView tvPrice, tvProductName, tvDescription;
     private ImageView ivBtnback, tvProductImage;
     private ImageButton btnAdd;
-    private RecyclerView rcvProdReview;
-
-    private List<Review> reviewList;
-    private ReviewForProductDetailAdapter reviewForProductDetailAdapter;
 
 
     private void initUi() {
@@ -84,7 +82,27 @@ public class ProductDetailActivity extends AppCompatActivity {
         ivBtnback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                if(storeInfo == null){
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference();
+
+                    myRef.child("stores").child(productInfo.getStoreId()).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Store new_storeInfo = dataSnapshot.getValue(Store.class);
+                            Intent switchActivityIntent = new Intent(ProductDetailActivity.this, StorePageDetailActivity.class);
+                            switchActivityIntent.putExtra("store", new_storeInfo);
+                            startActivity(switchActivityIntent);
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            Toast.makeText(ProductDetailActivity.this, "Không lấy được store info", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }else{
+                    finish();
+                }
             }
         });
         btnAdd.setOnClickListener(new View.OnClickListener() {
