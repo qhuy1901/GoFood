@@ -6,14 +6,35 @@ public class Home_RecommendedModel {
     String deliveryTime;
     String deliveryType;
     String price;
+    String store_ID;
+    String product_ID;
 
     public Home_RecommendedModel() { }
-    public Home_RecommendedModel(String img_url, String name, String deliveryTime, String deliveryType, String price){
+
+    public String getStore_ID() {
+        return store_ID;
+    }
+
+    public void setStore_ID(String store_ID) {
+        this.store_ID = store_ID;
+    }
+
+    public String getProduct_ID() {
+        return product_ID;
+    }
+
+    public void setProduct_ID(String product_ID) {
+        this.product_ID = product_ID;
+    }
+
+    public Home_RecommendedModel(String img_url, String name, String deliveryTime, String deliveryType, String price, String store_ID, String product_ID){
         this.img_url = img_url;
         this.name = name;
         this.deliveryTime = deliveryTime;
         this.deliveryType = deliveryType;
         this.price = price;
+        this.store_ID = store_ID;
+        this.product_ID = product_ID;
     }
 
     public String getImg_url() {
