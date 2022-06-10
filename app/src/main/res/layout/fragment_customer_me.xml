@@ -48,7 +48,7 @@
                 android:elevation="15dp"
                 android:padding="5dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/default_store"
+                android:src="@drawable/user41"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

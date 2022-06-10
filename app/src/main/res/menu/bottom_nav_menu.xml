@@ -16,12 +16,7 @@
         android:title="@string/title_menu"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/navigation_statistic"
-        android:enabled="true"
-        android:icon="@drawable/ic_statistic_black_24dp"
-        android:title="Thống kê"
-        app:showAsAction="always" />
+
     <item
         android:id="@+id/navigation_setting"
         android:enabled="true"
