@@ -95,14 +95,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/dang_hoat_dong"
                 android:fontFamily="@font/be_vietnam_bold"
                 android:text="Giao hàng thành công"
-                android:textStyle="bold"
+                android:textColor="@color/dang_hoat_dong"
                 android:textSize="14sp"
-                android:layout_marginRight="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_merchant_order_detail_tv_12" />
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/activity_merchant_order_detail_tv_14"
+                app:layout_constraintTop_toBottomOf="@+id/activity_merchant_order_detail_tv_14" />
     
             <TextView
                 android:id="@+id/activity_merchant_order_detail_tv_order_date"
