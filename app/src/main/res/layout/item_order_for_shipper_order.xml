@@ -33,15 +33,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_marginBottom="2dp"
         android:fontFamily="@font/be_vietnam_semibold"
         android:text="48.000 đ"
-        android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/item_order_for_shipper_order_tv_order_date"
+        app:layout_constraintEnd_toStartOf="@+id/item_order_for_shipper_order_tv_distance"
+        app:layout_constraintStart_toEndOf="@+id/item_order_for_shipper_order_tv_order_date" />
 
     <View
         android:id="@+id/item_order_for_shipper_order_item_order_for_shipper_order_tv_order"
