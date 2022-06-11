@@ -121,7 +121,7 @@ public class CustomerOrderDetailActivity extends AppCompatActivity {
         String total = currencyVN.format(order.getTotal()).replace("₫", "")+ " ₫";
         tvTotal.setText(total);
         tvCountProduct.setText("(" + order.getOrderDetail().size() + " món)");
-        tvOrderId.setText("Mã đơn hàng: " + order.getOrderId());
+        tvOrderId.setText(order.getOrderId());
         int subTotal = 0;
         if(order.getDoorDelivery() == 1)
         {
