@@ -240,7 +240,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <android.widget.Button
-        android:id="@+id/fragment_cus_me_logout_btn"
+        android:id="@+id/fragment_noti_logout_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
