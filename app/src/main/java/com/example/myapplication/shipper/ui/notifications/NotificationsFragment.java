@@ -12,18 +12,21 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myapplication.GoFoodDatabase;
 import com.example.myapplication.LoginActivity;
 import com.example.myapplication.R;
+import com.example.myapplication.customer.home.HomeActivity;
 import com.example.myapplication.databinding.FragmentNotificationsBinding;
 
 public class NotificationsFragment extends Fragment {
     private GoFoodDatabase goFoodDatabase;
     private TextView txtShipperName;
     private String userId;
+    private ConstraintLayout clCustomer;
     private Button btnBack;
     private FragmentNotificationsBinding binding;
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -48,12 +51,21 @@ public class NotificationsFragment extends Fragment {
         View root = binding.getRoot();
         btnBack = (Button) root.findViewById(R.id.fragment_noti_logout_btn);
         txtShipperName = (TextView) root.findViewById(R.id.txtShipperName);
+        clCustomer = (ConstraintLayout) root.findViewById(R.id.fragment_shipper_to_customer) ;
+
         getUserInfo();
         loadInfoToForm();
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent switchActivityIntent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(switchActivityIntent);
+            }
+        });
+        clCustomer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent switchActivityIntent = new Intent(getActivity(), HomeActivity.class);
                 startActivity(switchActivityIntent);
             }
         });
